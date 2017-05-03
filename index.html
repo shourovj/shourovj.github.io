@@ -1,253 +1,170 @@
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Michael Stephen Saxon</title>
-    <style>
-  /* pallette - black white purple red blue 071013, FFFFC B65CC1, 9B1D20 C9DAEA
-/*CSS RESET:*/
-div{
-  width: 100%;
-  text-align: center;
-  float:left;
-  margin:0; padding:0; box-sizing:border-box;
-  background-repeat: no-repeat;
-}
-div.header{
-  font-family: monospace;
-  color: #071013;
-  font-weight: 900;
-  background-image: url(img/t2.svg), url(img/t4.svg),  url(img/t5.svg);
-  background-color: #FFFFFC;
-  background-size: 40vh 100vh, 80vh 100vh, 120vh 100vh;
-  /*border-top: 5px solid rgb(182, 92,193);*/
-  border-top: 5px solid black;
-  background-repeat: no-repeat, no-repeat;
-  height: 100%;
-  vertical-align: middle;
-  display: flex;
-  justify-content: center;
-  background-attachment: fixed, fixed;
-  text-shadow:
-   -1px -1px 0 #FFFFFC,
-    1px -1px 0 #FFFFFC,
-    -1px 1px 0 #FFFFFC,
-     1px 1px 0 #FFFFFC;
-       size: 25;
-}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
 
-div.content-box-about{
-  font-family: serif;
-  background-image: url(img/t2.svg);
-  background-color: #FFFFFC;
-  background-size: 40vh 100vh;
-  background-position: left top;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  height: 100%;
-  vertical-align: middle;
-  display: flex;
-  justify-content: center;
-  /*border-top: 5px solid #B65CC1;*/
-  border-top: 5px solid black;
-  font-size:2vh;
-}
-div.transition-box{
-  height: 10vh;
-  background-image: url(img/t2.svg), url(img/t4.svg),  url(img/t5.svg);
-  background-color: #FFFFFC;
-  background-size: 40vh 100vh, 80vh 100vh, 120vh 100vh;
-/*  border-top: 5px solid rgb(182, 92,193);*/
-border-top: 5px solid black;
+    <title>MINIMAL - Free Bootstrap 3 Theme</title>
 
-  background-repeat: no-repeat, no-repeat;
-  width:100%;
-  background-attachment: fixed, fixed;
-}
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
 
-div.content-box-projects{
-  font-family: serif;
-  background-image: url(img/t4.svg);
-  background-color: #FFFFFC;
-  background-size: 80vh 100vh;
-  background-position: left top;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  height:100%;
-  border-top: 5px solid black;
-  /*border-top: 5px solid #9B1D20;*/
-  font-size:2vh;
-  text-shadow:
-  -1px -1px 0 rgb(230,230,230),
-   1px -1px 0 rgb(230,230,230),
-   -1px 1px 0 rgb(230,230,230),
-    1px 1px 0 rgb(230,230,230);
-}
-div.blackbox{
-  font-family: serif;
-  color: white;
-  background-color: rgb(35, 35, 39);
-}
-div.half-box{
-  width: 100%;
-  margin:2hw;
-  margin-top: 5vw;
-  border: 0;
-  display: inline-block;
-  vertical-align: top;
-  align-self: center;
-  width: 40%;
-}
-mark{
-  background-color: rgb(239, 193, 0);
-  text-shadow: none;
-}
-img {
-  margin: 10px auto;
-  border: 1px solid;
-}
-div.midfloat{
-  align-self: center;
-  width: 40%;
-}
-h1.header{
-  font-size: 7vh;
-  font-style: italic;
-  font-weight: 255;
-  font-family: monospace;
+    <!-- Custom styles for this template -->
+    <link href="assets/css/main.css" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 
-}
-h2.header{
-  font-size: 3vh;
-  font-style: italic;
-  font-weight: 255;
-  font-family: monospace;
-
-
-}
-body{
-  background-color: rgb(206, 236, 255);
-}
-
-p{
-  text-align: justify;
-  margin: 5pt;
-  padding-left: 5px;
-  padding-right: 5px;
-  background-color: #FFFFFC;
-}
-
-h2{
-  font-family: monospace;
-}
-ul{
-  text-align: left;
-}
-
-ul.nav{
-list-style-type: none;
-margin: 0;
-margin-top: 4vh;
-padding: 0;
-overflow: hidden;
-    vertical-align: bottom;
-}
-
-li.nav{
-    float: center;
-
-}
-
-li.nav a {
-    display: block;
-    color: inherit;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 2vh;
-
-}
-
-/* Change the link color to #111 (black) on hover */
-li.nav a:hover {
-  text-decoration: line-through;
-  text-decoration-color:  rgb(239, 193, 0);
-}
-::-moz-selection { /* Code for Firefox */
-    background:  rgb(239, 193, 0);
-      text-shadow: none;
-}
-
-::selection {
-  background:  rgb(239, 193, 0);
-
-  text-shadow: none;
-}
-Try it Yourself »
+    <script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/modernizr.custom.js"></script>
 
 
 
-html{color:#000;background:#FFF}
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,blockquote,th,td{margin:0;padding:0}
-table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal}
-ol,ul{list-style:none}caption,th{text-align:left}q:before,q:after{content:''}
-abbr,acronym{border:0;font-variant:normal}sup{vertical-align:text-top}sub{vertical-align:text-bottom}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit}
-input,textarea,select{*font-size:100%}legend{color:#000}#yui3-css-stamp.cssreset{display:none}
-    </style>
-    <!--  background-color: rgb(255, 242, 188);-->
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+      <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
   </head>
 
-    <div class="header" id="home">
+  <body data-spy="scroll" data-offset="0" data-target="#theMenu">
 
-          <div class="midfloat"><h1 class="header">Michael Stephen Saxon</h1>
-      <h2 class="header">Pursuing the singularity at Arizona State University<br><mark>Under Construction</mark></h2>
-      <ul class="nav">
-        <li class="nav"><a href="#about">About</a></li>
-        <li class="nav"><a href="">Projects</a></li>
-        <li class="nav"><a href="">Other</a></li>
-        <!-- Navbar HTML and CSS from w3schools at http://www.w3schools.com/css/css_navbar.asp-->
-      </ul>
+	<!-- Menu -->
+	<nav class="menu" id="theMenu">
+		<div class="menu-wrap">
+			<h1 class="logo"><a href="index.html#home">Minimal</a></h1>
+			<i class="icon-remove menu-close"></i>
+			<a href="#home" class="smoothScroll">Home</a>
+			<a href="#about" class="smoothScroll">About</a>
+			<a href="#portfolio" class="smoothScroll">Portfolio</a>
+			<a href="#contact" class="smoothScroll">Contact</a>
+			<a href="#"><i class="icon-facebook"></i></a>
+			<a href="#"><i class="icon-twitter"></i></a>
+			<a href="#"><i class="icon-dribbble"></i></a>
+			<a href="#"><i class="icon-envelope"></i></a>
+		</div>
 
-    </div>
-    </div>
+		<!-- Menu button -->
+		<div id="menuToggle"><i class="icon-reorder"></i></div>
+	</nav>
 
-    <div class="content-box-about" id="about">
-        <div class="half-box">
-          <h2 class="content"><mark>About</mark></h2>
-          <p>I am a researcher and undergraduate student at Arizona State University, studying Electrical Engineering and Computational Mathematical Sciences, and a member of Barrett, the Honors College.</p>
-          <p>My dream is a career in research at the intersection of signal processing and data analysis, and I plan to pursue graduate studies in Computer Science to this end.</p>
-          <p>Right now, I lead the executive board of Sun Devil Robotics and am a member of the Luminsoity Lab, an ASU strategic initiative.</p>
-          <p>I have performed grant-funded research in the Nanoelectronics and Integration Lab at ASU under the direction of Dr. Hongbin Yu and did a research exchange with the Social Robotics Lab at the National University of Singapore.</p>        </div>
-        <div class="half-box">
-          <img src="img/me.jpg" alt="A picture of Michael" height="25%">
-          <p>Hopefully I can populate this website with the fun things that I make!</p>
+
+
+	<!-- ========== HEADER SECTION ========== -->
+	<section id="home" name="home"></section>
+	<div id="headerwrap">
+		<div class="container">
+      <br>
+      <br>
+			<br>
+			<div class="row">
+				<h1>MICHAEL STEPHEN SAXON</h1>
+				<br>
+				<h3>Let's create the future.</h3>
+				<br>
+				<br>
+				<div class="col-lg-6 col-lg-offset-3">
+				</div>
+			</div>
+		</div><!-- /container -->
+	</div><!-- /headerwrap -->
+
+
+
+	<!-- ========== ABOUT SECTION ========== -->
+	<section id="about" name="about"></section>
+	<div id="f">
+		<div class="container">
+			<div class="row">
+				<h3>ABOUT ME</h3>
+				<p class="centered"><i class="icon icon-circle"></i><i class="icon icon-circle"></i><i class="icon icon-circle"></i></p>
+
+				<!-- INTRO INFORMATIO-->
+				<div class="col-lg-6">
+					<p>I am an Electrical Engineering with a focus in Digital Signal Processing and Computational Mathematical Sciences major in Barrett, the Honors College at Arizona State University.</p>
+					<p>My passion is machine perception: pushing the envelope of how computers and robots understand the world.  Through advancements in computer vision, natural language processing, and sensing I hope to create a world where humans interact with machines in a natural and instinctive way.</p>
+					<p>Sometimes I blog about design and web trends. Also I share links and my thoughts on <a href="http://twitter.com/BlackTie_co">Twitter</a>. Need a free handsome bootstrap theme? <a href="http://blacktie.co">Done!</a></p>
+					<p>I'm available for freelance jobs. Contact me now.</p>
+					<p><button type="button" class="btn btn-warning">I HAVE A FREELANCE JOB</button></p>
+				</div>
+
+        <!-- INTRO INFORMATIO-->
+        <div class="col-lg-6">
+          <p>A full time theme crafter based in Madrid, Spain. I love designing beautiful, clean and user-friendly interfaces for websites.</p>
+          <p>My passion is turning good ideas and products into eye-catching sites.</p>
+          <p>Sometimes I blog about design and web trends. Also I share links and my thoughts on <a href="http://twitter.com/BlackTie_co">Twitter</a>. Need a free handsome bootstrap theme? <a href="http://blacktie.co">Done!</a></p>
+          <p>I'm available for freelance jobs. Contact me now.</p>
+          <p><button type="button" class="btn btn-warning">I HAVE A FREELANCE JOB</button></p>
         </div>
-      </div>
-      <div class="transition-box"></div>
+			</div>
+		</div><!-- /container -->
+	</div><!-- /f -->
 
-        <div class="content-box-projects" id="projects">
-        <div class="half-box">
-          <h2><mark>Selected Coursework</mark></h2>
-              <font color="red">(P)</font> &rarr; In Progress
-              <ul>
-                <li>CSE230 - Computer Architecture, Assembly Lang</li>
-                <li>CSE240 - Programming Languages</li>
-                <li>EEE241 - Fundamentals of Electromagnetics</li>
-                <li>EEE202, 334, 335 - Circuits 1, 2, 3</li>
-                <li>EEE304 - Signals and Systems II <font color="red">(P)</font></li>
-                <li>EEE333 - Verilog HDL and Logic Design <font color="red">(P)</font></li>
-                <li>EEE404 - Real-Time Digial Signal Processing <font color="red">(P)</font></li>
-                <li>MAT371 - Advanced Calculus</li>
-                <li>MAT420 - Scientific Computing</li>
-                <li>MAT421 - Applied Computational Methods <font color="red">(P)</font></li>
-                <li>MAT447 - Cryptography</li>
-              </ul>
-          </p>
-        </div>
-      </div>
-      </div>
-    </div>
-    <div class="blackbox">    <br> &copy; 2017 Michael Stephen Saxon    <br><br></div>
 
-  </body>
+	<!-- ========== CAROUSEL SECTION ========== -->
+	<section id="portfolio" name="portfolio"></section>
+	<div id="f">
+		<div class="container">
+			<div class="row centered">
+				<h3>SOME PROJECTS</h3>
+				<p class="centered"><i class="icon icon-circle"></i><i class="icon icon-circle"></i><i class="icon icon-circle"></i></p>
+
+				<div class="col-lg-6 col-lg-offset-3">
+					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+						<!-- Wrapper for slides -->
+						<div class="carousel-inner">
+							<div class="item active centered">
+								<img class="img-responsive" src="assets/img/c1.png" alt="">
+							</div>
+							<div class="item centered">
+								<img class="img-responsive" src="assets/img/c2.png" alt="">
+							</div>
+							<div class="item centered">
+								<img class="img-responsive" src="assets/img/c3.png" alt="">
+							</div>
+						</div>
+						<br>
+						<br>
+						<ol class="carousel-indicators">
+						    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+						    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+						    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+						</ol>
+					</div>
+				</div><!-- col-lg-8 -->
+			</div><!-- row -->
+		</div><!-- container -->
+	</div>	<!-- f -->
+
+	<!-- ========== CONTACT SECTION ========== -->
+	<section id="contact" name="contact"></section>
+	<div id="f">
+		<div class="container">
+			<div class="row">
+				<h3>CONTACT ME</h3>
+				<p class="centered"><i class="icon icon-circle"></i><i class="icon icon-circle"></i><i class="icon icon-circle"></i></p>
+
+				<div class="col-lg-6 col-lg-offset-3">
+					<p>Some Avenue, 987<br/>Madrid, Spain<br/>+34 8984-4343</p>
+					<p>iam@awesomemail.com</p>
+					<p><button type="button" class="btn btn-warning">YEAH! CONTACT ME NOW!</button></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<script src="assets/js/classie.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/smoothscroll.js"></script>
+	<script src="assets/js/main.js"></script>
+</body>
 </html>
