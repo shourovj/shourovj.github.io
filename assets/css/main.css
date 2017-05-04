@@ -79,13 +79,13 @@ a:after {
    ========================================================================== */
 
 #headerwrap {
-	background: url(../img/phoenix-skyline.jpg) no-repeat center bottom;
+	background: url(../img/bg.jpg) no-repeat center bottom;
 	margin-top: -10px;
 	padding-top:20px;
 	text-align:center;
 	background-attachment: relative;
-	background-position: center bottom;
-	min-height: 700px;
+	background-position: left bottom;
+	min-height: 50vh;
 	width: 100%;
 
       text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
@@ -139,6 +139,13 @@ a:after {
 	letter-spacing: 1px;
 }
 
+#f h4 {
+	color: white;
+	font-size: 20px;
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+
 #f i {
 	font-size: 8px;
 	color: #fff;
@@ -148,12 +155,22 @@ a:after {
 #f p {
 	font-size: 20px;
 	color: #f2f2f2;
+  text-align:justify;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 #f img {
 	text-align: center;
+  max-width: 75%;
 }
 
+#f p{
+  text-align:justify;
+}
+#f p.centered{
+  text-align:center;
+}
 
 /* MENU CONF*/
 
