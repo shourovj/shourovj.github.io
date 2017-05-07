@@ -22,7 +22,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Oswald', sans-serif;
     font-weight: 300;
-    color: #333;
+    /*color: #333;*/
 }
 
 
@@ -79,7 +79,7 @@ a:after {
    ========================================================================== */
 
 #headerwrap {
-	background: url(../img/bg.jpg) no-repeat center bottom;
+	background: url(../img/bg_2.png) no-repeat center bottom;
 	margin-top: -10px;
 	padding-top:20px;
 	text-align:center;
@@ -88,7 +88,7 @@ a:after {
 	min-height: 50vh;
 	width: 100%;
 
-      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+      text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
 
     -webkit-background-size: 100%;
     -moz-background-size: 100%;
@@ -125,34 +125,59 @@ a:after {
 
 /* Footer Wrap */
 
-#f {
-	background: #020202;
+#content {
+	background: rgb(56,46,57);
 	padding-top: 70px;
 	padding-bottom: 70px;
-	text-align: center
+	text-align: center;
+	color: white;
 }
 
-#f h3 {
+#falt {
+	background: #FAFAFA;
+	padding-top: 70px;
+	padding-bottom: 70px;
+	text-align: center;
+	color: black;
+}
+
+#fred {
+	background: #EB5E55;
+	padding-top: 70px;
+	padding-bottom: 70px;
+	text-align: center;
 	color: white;
+}
+
+#content h2{
+	font-size: 36px;
+	font-weight: 700;
+	letter-spacing: 1px;
+  font-style: italic;
+}
+
+#content h3{
 	font-size: 28px;
 	font-weight: 700;
 	letter-spacing: 1px;
 }
 
-#f h4 {
-	color: white;
+#content h4{
 	font-size: 20px;
 	font-weight: 700;
 	letter-spacing: 1px;
 }
+#content h5{
+	letter-spacing: 1px;
+}
 
-#f i {
+#content i{
 	font-size: 8px;
 	color: #fff;
     padding: 3px;
 }
 
-#f p {
+#f p{
 	font-size: 20px;
 	color: #f2f2f2;
   text-align:justify;
@@ -160,15 +185,34 @@ a:after {
   margin-right: 5px;
 }
 
-#f img {
-	text-align: center;
-  max-width: 75%;
+#fred p{
+	font-size: 20px;
+	color: #f2f2f2;
+  text-align:justify;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
-#f p{
+#falt p{
+	font-size: 20px;
+	color: #000000;
+  text-align:justify;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+
+#content img {
+	text-align: center;
+  margin-left: auto;
+  max-width: 75%;
+  margin-right: auto;
+}
+
+#conetnt p{
   text-align:justify;
 }
-#f p.centered{
+#content p.centered{
   text-align:center;
 }
 
