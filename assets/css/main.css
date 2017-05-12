@@ -9,7 +9,7 @@
 
 body {
   background-color: #000;
-    font-family: 'EB Garamond', serif;
+    font-family: 'Times New Roman', serif;
     font-weight: 300;
     font-size: 16px;
     color: #000;
@@ -112,7 +112,7 @@ a:after {
 	color: white;
 	font-size: 30px;
 	font-weight: 100;
-    font-family: 'EB Garamond', serif;
+    font-family: 'Times New Roman', serif;
     font-style: oblique;
 }
 
@@ -243,7 +243,7 @@ a:after {
 }
 
 .menu h1.logo a {
-	font-family: 'Courier New', sans-serif;
+	font-family: 'Oswald', sans-serif;
 	font-size: 16px;
 	font-weight: 700;
 	letter-spacing: 0.15em;
