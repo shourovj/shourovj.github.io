@@ -1,0 +1,85 @@
+
+body{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 2px;
+  margin-right: 2px;
+  background-color: white;
+}
+.page {
+  max-width: 600px;
+  margin: auto;
+  border: 1px solid black;
+  background-color: white;
+}
+.title{
+  text-align: center;
+  background-color: white;
+  background-image: url(img/desert.jpg);
+  background-size:cover;
+  background-position: center;
+  width:100%;
+  font-family: 'Oswald', sans-serif;
+  color: white;
+  font-size: 70px;
+  font-weight: 800;
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+  font-style: italic;
+  border-bottom: 1px solid black;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(235, 94, 85);
+  font-weight:600;
+}
+
+ul.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border-bottom: 1px solid black;
+}
+
+ul.menu li {float: left;}
+
+h3{
+  padding: 0;
+  margin: 5px;
+  font-style: italic;
+}
+
+ul.menu li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.menu li a:hover:not(.active) {
+  color: rgb(235, 94, 85);
+}
+
+ul.menu li a.active {
+  background-color: rgb(235, 94, 85);
+  color: white;
+}
+
+ul.menu li.right {float: right;}
+
+@media screen and (max-width: 600px){
+    ul.menu li.right,
+    ul.menu li {float: none;}
+}
+
+p{
+  margin: 5px;
+  text-align: justify;
+}
+
+.mns {
+  font-family: monospace;
+  font-weight: 800;
+}
