@@ -5,6 +5,7 @@ body{
   margin-left: 2px;
   margin-right: 2px;
   background-color: white;
+  font-family: 'Merriweather', serif;
 }
 .page {
   max-width: 600px;
@@ -80,6 +81,6 @@ p{
 }
 
 .mns {
-  font-family: monospace;
+  font-family: 'Ubuntu Mono', monospace;
   font-weight: 800;
 }
