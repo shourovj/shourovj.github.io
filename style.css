@@ -31,7 +31,7 @@ body{
 
 a {
   text-decoration: none;
-  color: rgb(235, 94, 85);
+  color: rgb(96, 114, 145);
   font-weight:600;
 }
 
@@ -60,11 +60,11 @@ ul.menu li a {
 }
 
 ul.menu li a:hover:not(.active) {
-  color: rgb(235, 94, 85);
+  color: rgb(120, 142, 181);
 }
 
 ul.menu li a.active {
-  background-color: rgb(235, 94, 85);
+  background-color: rgb(120, 142, 181);
   color: white;
 }
 
