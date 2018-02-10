@@ -1,0 +1,16 @@
+<NotepadPlus>
+    <Project name="Website">
+        <Folder name="img">
+            <File name="img\desert.jpg" />
+            <File name="img\me.jpg" />
+        </Folder>
+        <File name="blog.html" />
+        <File name="CNAME" />
+        <File name="fun.html" />
+        <File name="index.html" />
+        <File name="projects.html" />
+        <File name="research.html" />
+        <File name="resume_saxon.pdf" />
+        <File name="style.css" />
+    </Project>
+</NotepadPlus>
