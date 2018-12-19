@@ -15,16 +15,17 @@ body{
 }
 .title{
   text-align: center;
-  background-color: white;
+  background-color: rgb(96, 114, 145);
   background-image: url(img/desert.jpg);
   background-size:cover;
   background-position: center;
   width:100%;
   font-family: 'Oswald', sans-serif;
   color: white;
+  text-shadow: -2px -2px 0 rgb(96, 114, 145), 2px -2px 0 rgb(96, 114, 145), -2px 2px 0 rgb(96, 114, 145), 2px 2px 0 rgb(96, 114, 145);
+
   font-size: 70px;
   font-weight: 800;
-  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
   font-style: italic;
   border-bottom: 1px solid black;
 }
