@@ -28,8 +28,8 @@ body{
   font-style: italic;
   border-bottom: 0px solid black;
   filter: brightness(160%) saturate(35%);
-  padding-bottom:50px;
-  padding-top: 50px;
+  padding-bottom:30px;
+  padding-top: 30px;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   margin-bottom: 1%;
 
@@ -65,7 +65,7 @@ ul.menu li a {
     display: block;
     color: black;
     text-align: center;
-    padding: 14px 16px;
+    padding: 8px 10px;
     text-decoration: none;
 }
 
@@ -83,6 +83,9 @@ ul.menu li.right {float: right;}
 @media screen and (max-width: 600px){
     ul.menu li.right,
     ul.menu li {float: none;}
+    .title{font-size: 40px;
+    		padding-bottom:10px;
+    		padding-top: 10px;}
 }
 
 p{
