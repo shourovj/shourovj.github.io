@@ -103,12 +103,10 @@ p{
 
 ::selection {
   background-color: black;
-  text-shadow: none;
   color: white;
 }
 
 ::-moz-selection {
   background-color: black;
-  text-shadow: 0px 0px;
   color: white;
 }
