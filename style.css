@@ -18,7 +18,7 @@ body{
 .title{
   text-align: center;
   background-color: rgb(96, 114, 145);
-  background-image: url(img/desert.jpg);
+  background-image: url(img/my_desert.jpg);
   background-size:cover;
   background-position: center;
   width:100%;
