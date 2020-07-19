@@ -17,7 +17,7 @@ body{
 body.pgh {
   background: url(img/bg-pgh.jpg), linear-gradient(0deg, rgba(146,197,241,1) 0%, rgba(105,165,223,1) 100%),rgb(146,197,241);
   background-position: center calc(-30vw);
-  background-size: cover;
+  background-size: 100% auto;
   margin: 0px;
   background-color: rgb(250,252,255);
   font-family: 'Merriweather', serif;
@@ -29,7 +29,7 @@ body.pgh {
 body.phx {
   background: url(img/bg-phx.jpg), linear-gradient(0deg, rgba(146,197,241,1) 0%, rgba(105,165,223,1) 100%),rgb(146,197,241);
   background-position: center calc(-18vw);
-  background-size: cover;
+  background-size: 100% auto;
   margin: 0px;
   background-color: rgb(250,252,255);
   font-family: 'Merriweather', serif;
@@ -41,7 +41,7 @@ body.phx {
 body.sba {
   background: url(img/bg-sba.jpg), linear-gradient(0deg, rgba(146,197,241,1) 0%, rgba(105,165,223,1) 100%),rgb(146,197,241);
   background-position: center calc(-40vw);
-  background-size: cover;
+  background-size: 100% auto;
   margin: 0px;
   background-color: rgb(250,252,255);
   font-family: 'Merriweather', serif;
@@ -61,7 +61,8 @@ body.sba {
   float:left;
   text-align: right;
   position: fixed;
-  height:100%;
+  min-height: calc(100vh);
+
 }
 /*background-color: rgb(250,252,255);*/
 
@@ -76,11 +77,13 @@ body.sba {
 
 .page {
   background-color: rgb(250,252,255);
-  width: 100%;
-  min-height: 100%;
 
 }
 
+.pagel {
+  min-height: 2000px;
+
+}
 
 
 .contentl {
@@ -88,6 +91,7 @@ body.sba {
   margin-right: 10px;
   float: right;
   text-align: center;
+
 }
 
 .contentl h3 {
@@ -124,6 +128,7 @@ background-attachment: fixed;
 
 
 .header h1{
+  white-space: nowrap;
   display: table-cell;
   margin: auto;
   text-align: right;
@@ -216,12 +221,37 @@ ul.menu li a.active {
 
 ul.menu li.right {float: right;}
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 1000px){
     /*ul.menu li.right,
     ul.menu li {float: none;}*/
-    .title{font-size: 40px;
+    .header{
+        height: 100px;
     		padding-bottom:10px;
     		padding-top: 10px;}
+    .header h1 {
+      font-size: 50px;
+      margin-left: 20px;
+      padding-left: 20px;
+      text-align: left;
+    }
+    .pageextl {
+      position: inherit;
+
+    }
+    .contentl {
+      position: -webkit-sticky; /* Safari */
+      position: sticky;
+        top: 0;
+    }
+    .pagel {
+      position: inherit;
+      height: 2000px;
+
+    }
+    .page {
+      min-height: 2000px;
+      }
+
 }
 
 p{
