@@ -28,8 +28,8 @@ body.pgh {
 
 body.phx {
   background: url(img/bg-phx.jpg), linear-gradient(0deg, rgba(146,197,241,1) 0%, rgba(105,165,223,1) 100%),rgb(146,197,241);
-  background-position: center -300px;
-  background-size: auto;
+  background-position: center calc(-18vw);
+  background-size: cover;
   margin: 0px;
   background-color: rgb(250,252,255);
   font-family: 'Merriweather', serif;
