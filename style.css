@@ -78,11 +78,11 @@ body.sba {
 .page {
   background-color: rgb(250,252,255);
 
+
 }
 
 .pagel {
-  min-height: 2000px;
-
+  min-height: 500px;
 }
 
 
@@ -245,11 +245,9 @@ ul.menu li.right {float: right;}
     }
     .pagel {
       position: inherit;
-      height: 2000px;
 
     }
     .page {
-      min-height: 2000px;
       }
 
 }

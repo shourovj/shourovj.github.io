@@ -4,8 +4,11 @@
 
 <link href="https://fonts.googleapis.com/css?family=Merriweather|Oswald|Ubuntu+Mono" rel="stylesheet">
 <title>Michael Saxon</title>
+<script src="resize.js">
+</script>
+
 </head>
-<body class="pgh">
+<body class="pgh" onload="resizeleft()" onresize="resizeleft()">
 
 
   <div class="pageextl">
@@ -14,7 +17,7 @@
 
 
 
-  <div class="page pagel">
+  <div class="page pagel" id="leftcontent">
     <div class="contentl">
     <div class="menucontainer">
     <ul class="menu">
@@ -57,7 +60,7 @@
   <div class="pageextr">
   <div class="header">&nbsp;</div>
 
-  <div class="page">
+  <div class="page" id="rightcontent">
   <div class="contentr">
 
 
