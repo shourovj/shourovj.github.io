@@ -1,6 +1,6 @@
 function resizeleft() {
 var rh = document.getElementById('rightcontent').offsetHeight;
-document.getElementById('leftcontent').style.height=rh+ 'px';
+document.getElementById('leftcontent').style.height=rh 'px';
 }
 
 function showhideattrib() {
