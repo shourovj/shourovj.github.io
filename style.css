@@ -272,6 +272,41 @@ p{
 }
 
 
+a::selection {
+  background-color:  rgb(96, 114, 145);
+  color: white;
+}
+
+a::-moz-selection {
+  background-color:  rgb(96, 114, 145);
+  color: white;
+}
+
+ul.menu li a::selection {
+  background-color: black;
+  color: white;
+}
+
+ul.menu li a::-moz-selection {
+  background-color: black;
+  color: white;
+}
+
+
+.tomato {
+  color: tomato;
+}
+
+
+.tomato::selection {
+  background-color:  tomato;
+  color: white;
+}
+
+.tomato::-moz-selection {
+  background-color:  tomato;
+  color: white;
+}
 
 ul.icons {
   margin-right: auto;
