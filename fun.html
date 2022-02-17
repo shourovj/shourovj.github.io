@@ -1,0 +1,76 @@
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css?family=PT+Serif|Merriweather|Oswald|Ubuntu+Mono" rel="stylesheet">
+<title>Michael Saxon - About</title>
+
+<script src="resize.js">
+</script>
+
+<script>
+  var txts = ["Hi, I'm Michael!", "初めまして、マイケルです！", "¡Hola, me llamo Michael!"]
+  //var styles = ["italic", "normal", "italic"]
+  //var variant = ["small-caps", "normal", "normal"]
+  var counter = 1;
+  function nameswap() {
+    var doc = document.getElementById('nameintro')
+    doc.innerHTML = txts[counter%3];
+    //doc.fontStyle = styles[counter%3];
+    //doc.fontVariant = variant[counter%3];
+    counter++;
+  }
+</script>
+
+<!--tomato-->
+
+</head>
+<!--body class="phx" onload="resizeleft()" onresize="resizeleft()"-->
+<body>
+
+
+
+
+  <!--div class="header"><h1>&nbsp;</h1></div-->
+
+
+<header style="border-top:4px solid black; border-bottom: 1px dotted #676767; position:relative; min-height: 60px; overflow:hidden;"">
+  <!--div class="menucontainer"-->
+  <div class="page">
+  <h2 style="margin-top:6pt;float:left;"><a class="active" href="/">Michael Saxon</a></h2>
+  <ul class="menu" style="margin-top:10pt;">
+  <!--li><a href="projects.html">Projects</a></li-->
+  <li><a href="research">Research</a></li>
+  <li><a class="active" href="fun">Fun</a></li>
+  <!--<li><a href="fun.html">Fun</a></li>-->
+    <li><a href="doc/cv_saxon.pdf">CV</a></li>
+  </ul>
+</div>
+</header>
+
+<div class="page" id="rightcontent" style="padding-top:15pt; overflow: hidden;">
+
+<h3>Fun!</h3>
+
+<p>Under construction.</p>
+
+</div>
+
+
+<footer style="margin-top:25pt; border-top: 1px dotted #676767; padding-top:10pt;"">
+  <ul class="icons">
+    <li><a href="https://scholar.google.com/citations?user=pAlwjdgAAAAJ&hl=en" ><img src="img/ico/google-scholar-logo.png"></a></li>
+    <li><a href="https://twitter.com/m2saxon" ><img src="img/ico/twitter.png"></a></li>
+    <li><a href="https://www.researchgate.net/profile/Michael_Saxon"><img src="img/ico/researchgate.png"></a></li>
+    <li><a href="https://www.linkedin.com/in/mssaxon/"><img src="img/ico/linkedin.png"></a></li>
+    <li><a href="https://github.com/michaelsaxon"><img src="img/ico/github.png"></a></li>
+    <li><a href="mailto:saxon@ucsb.edu"><img src="img/ico/email.png"></a></li>
+  
+    </ul>
+  
+  <p style="font-size:10pt; text-align: center">&copy; 2017-2022 Michael Saxon. Source available on <a href="https://github.com/michaelsaxon/michaelsaxon.github.io">GitHub</a>.   <!--&nbsp;&nbsp;&nbsp;<span onclick="showhideattrib();resizeleft()" style="font-size:8pt;"><a>[Icon Attribution]</a></span--></p>
+  </footer>
+  
+
+
+</body>

@@ -8,11 +8,44 @@ body{
   margin-left: 2px;
   margin-right: 2px;*/
   margin: 0px;
-  background-color: rgb(252,252,252);
+  background-color: rgb(255,255,248);
   font-family: 'PT Serif', serif;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  font-size: 11pt;
+  font-size: 12.5pt;
+}
+
+body.pgh {
+  background: url(img/bg-pgh.jpg), linear-gradient(0deg, rgba(146,197,241,1) 0%, rgba(105,165,223,1) 100%),rgb(146,197,241);
+  background-position: center calc(-30vw);
+  background-size: 100% auto;
+  margin: 0px;
+  background-color: rgb(255,255,248);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+}
+
+body.phx {
+  background: url(img/bg-phx.jpg), linear-gradient(0deg, rgba(146,197,241,1) 0%, rgba(105,165,223,1) 100%),rgb(146,197,241);
+  background-position: center calc(-18vw);
+  background-size: 100% auto;
+  margin: 0px;
+  background-color: rgb(255,255,248);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+}
+
+body.sba {
+  background: url(img/bg-sba.jpg), linear-gradient(0deg, rgba(146,197,241,1) 0%, rgba(105,165,223,1) 100%),rgb(146,197,241);
+  background-position: center calc(-40vw);
+  background-size: 100% auto;
+  margin: 0px;
+  background-color: rgb(255,255,248);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
 }
 
 
@@ -41,10 +74,9 @@ body{
 
 
 .page {
-  background-color: rgb(252,252,252);
-  max-width: 800px;
-  margin: auto;
-  padding: 0 2pt;
+  background-color: rgb(255,255,248);
+
+
 }
 
 .pagel {
@@ -58,6 +90,9 @@ body{
   float: right;
   text-align: center;
 
+}
+
+.contentl h3 {
 }
 
 .contentr {
@@ -89,23 +124,6 @@ background-attachment: fixed;
 
 }
 
-header{
-  /*background: url(img/my_desert.jpg), linear-gradient(0deg, rgba(146,197,241,1) 0%, rgba(105,165,223,1) 100%),rgb(146,197,241);
-  background-position: center -250;
-background-repeat: no-repeat;
-background-attachment: fixed;
-
-  background-size:auto;*/
-  /*background-size:cover; */
-  /*filter: brightness(160%) saturate(35%);*/
-  /*padding-bottom:13pt;*/
-  /*background: url(img/bg-phx.jpg), linear-gradient(0deg, rgba(146,197,241,1) 0%, rgba(105,165,223,1) 100%),rgb(146,197,241);
-  background-position: center calc(-18vw);
-  background-size: 100% auto;*/
-
-}
-
-
 
 .header h1{
   white-space: nowrap;
@@ -122,47 +140,43 @@ background-attachment: fixed;
   vertical-align: middle;
 }
 
-header h2{
+.header h2{
   display: table-cell;
-  float: left;
+  padding-right: 30%;
+  text-align: right;
   font-family: 'Oswald', sans-serif;
-  /*color: white;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;*/
-  color: black;
-  font-size: 32pt;
-  font-weight: 600;
+  color: white;
+  font-size: 50px;
+  font-weight: 500;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   vertical-align: bottom;
-  padding: 5pt 5pt;
-  margin:5pt 5pt;
-  margin-left: 5pt;
 }
 
 a {
   text-decoration: none;
-  color: rgb(50, 115, 228);
+  color: rgb(96, 114, 145);
   font-weight:600;
 }
 
-
-
 .menucontainer {
-  background-color: rgb(252,252,252);
+  background-color: rgb(255,255,248);
+  display:block;
   /*
 position: fixed;
   top: -15;
   display: flex;
 
-  right: 0;
-  width: 100%;*/
+  right: 0;*/
+  width: 100%;
   padding: none;
-  margin: auto;
+  margin: none;
   text-align: right;
 }
 
 ul.menu {
   font-weight: 800;
   font-family: 'Merriweather', serif;
-  font-size:13pt;
+  font-size:11pt;
     list-style-type: none;
     padding: 0;
     overflow: hidden;
@@ -173,34 +187,17 @@ margin-right: auto;
 margin-left: auto;
 margin-top: 0;
         width: auto;
-        float:right;
-      padding-top: 8pt;
 }
 
-ul.menu li {float: left;}
-
+ul.menu li {float: right;}
 
 h3{
   padding: 0;
-  margin-top: 1pt;
-  margin-bottom: 5pt;
+  margin: 5px;
+  padding-bottom: 8pt;
   font-style: italic;
-  font-size: 15pt;
-  color:rgb(205, 76, 53)
+  font-variant: small-caps;
 }
-
-h4{
-  padding: 0;
-  margin-top: 1pt;
-  margin-bottom: 5pt;
-  font-size: 13pt;
-  font-style: italic;
-  color:rgb(205, 76, 53)
-}
-
-
-
-
 
 ul.menu li a {
     display: block;
@@ -208,30 +205,18 @@ ul.menu li a {
     text-align: center;
     padding: 8px 10px;
     text-decoration: none;
-    background-color: rgb(252,252,252);
+    background-color: rgb(255,255,248);
 
-}
-
-a:hover {
-  text-decoration: underline;
 }
 
 ul.menu li a:hover:not(.active) {
-  color: rgb(50, 115, 228);
-}
-
-ul.menu li a:hover {
-  text-decoration: underline;
+  color: rgb(120, 142, 181);
 }
 
 ul.menu li a.active {
-  color: rgb(147, 54, 37);
-}
-
-a.active {
   /*background-color: rgb(120, 142, 181);*/
-  /*background-color: black;*/
-  color: rgb(147, 54, 37);
+  background-color: black;
+  color: white;
 }
 
 ul.menu li.right {float: right;}
@@ -279,16 +264,57 @@ p{
 }
 
 
-.tomato {
-  color: rgb(147, 54, 37);
+::selection {
+  background-color: black;
+  color: white;
+}
+
+::-moz-selection {
+  background-color: black;
+  color: white;
 }
 
 
+a::selection {
+  background-color:  rgb(96, 114, 145);
+  color: white;
+}
+
+a::-moz-selection {
+  background-color:  rgb(96, 114, 145);
+  color: white;
+}
+
+ul.menu li a::selection {
+  background-color: black;
+  color: white;
+}
+
+ul.menu li a::-moz-selection {
+  background-color: black;
+  color: white;
+}
+
+
+.tomato {
+  color: tomato;
+}
+
+
+.tomato::selection {
+  background-color:  tomato;
+  color: white;
+}
+
+.tomato::-moz-selection {
+  background-color:  tomato;
+  color: white;
+}
 
 ul.icons {
   margin-right: auto;
   margin-left: auto;
-  max-width: 300px;
+  max-width: 225px;
   font-weight: 800;
   font-family: 'Merriweather', serif;
   font-size:11pt;
@@ -308,7 +334,7 @@ ul.icons li a {
     text-align: center;
     padding: 10px 10px;
     text-decoration: none;
-    background-color: rgb(252,252,252);
+    background-color: rgb(255,255,248);
 
 }
 
@@ -320,89 +346,3 @@ ul.icons li img {
 ul.icons li a:hover:not(.active) img{
   filter: opacity(50%);
 }
-
-.page p{
-  padding-left: 5pt;
-}
-
-
-
-
-
-::selection {
-  background-color: black;
-  color: white;
-}
-
-::-moz-selection {
-  background-color: black;
-  color: white;
-}
-
-/*
-h3::selection {
-  background-color: rgb(205, 76, 53);
-  color: white;
-}
-
-h3::-moz-selection {
-  background-color: rgb(205, 76, 53);
-  color: white;
-}
-
-
-h4::selection {
-  background-color: rgb(205, 76, 53);
-  color: white;
-}
-
-h4::-moz-selection {
-  background-color: rgb(205, 76, 53);
-  color: white;
-}
-
-a::selection {
-  background-color:  rgb(50, 115, 228);
-  color: white;
-}
-
-a::-moz-selection {
-  background-color:  rgb(50, 115, 228);
-  color: white;
-}
-
-ul.menu li a::selection {
-  background-color: rgb(50, 115, 228);
-  color: white;
-}
-
-ul.menu li a::-moz-selection {
-  background-color: rgb(50, 115, 228);
-  color: white;
-}
-
-ul.menu li a.active::selection {
-  background-color: rgb(147, 54, 37);
-  color: white;
-
-}
-
-
-.tomato::selection {
-  background-color:  rgb(147, 54, 37);
-  color: white;
-}
-
-.tomato::-moz-selection {
-  background-color:  rgb(147, 54, 37);
-  color: white;
-}
-
-
-
-ul.menu li a.active::-moz-selection {
-  background-color: rgb(147, 54, 37);
-  color: white;
-
-}
-*/
