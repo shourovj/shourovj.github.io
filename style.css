@@ -16,6 +16,11 @@ body{
 }
 
 
+.worldmap {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 300px;
+}
 
 /* divs for aligning*/
 .pageextl {
