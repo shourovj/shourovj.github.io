@@ -1,0 +1,40 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- #
+
+AUTHOR = 'Michael Saxon'
+SITENAME = 'Michael Saxon'
+SITEURL = 'saxon.me/blog'
+
+PATH = 'content'
+
+RELATIVE_URLS = True
+
+TIMEZONE = 'US/Pacific'
+
+DEFAULT_LANG = 'en'
+
+# Feed generation is usually not desired when developing
+FEED_ALL_ATOM = "feeds/all.atom.xml"
+CATEGORY_FEED_ATOM = "feeds/{slug}.atom.xml"
+AUTHOR_FEED_ATOM = "feeds/{slug}.atom.xml"
+FEED_ALL_RSS = 'feeds/all.rss.xml'
+CATEGORY_FEED_RSS = 'feeds/{slug}.rss.xml'
+AUTHOR_FEED_RSS = 'feeds/{slug}.rss.xml'
+
+
+# Blogroll
+LINKS = (('Pelican', 'https://getpelican.com/'),
+         ('Python.org', 'https://www.python.org/'),
+         ('Jinja2', 'https://palletsprojects.com/p/jinja/'),
+         ('You can modify those links in your config file', '#'),)
+
+# Social widget
+SOCIAL = (('You can add links in your config file', '#'),
+          ('Another social link', '#'),)
+
+DEFAULT_PAGINATION = 10
+
+PLUGINS = ["pelican_katex"]
+
+# Uncomment following line if you want document-relative URLs when developing
+#RELATIVE_URLS = True

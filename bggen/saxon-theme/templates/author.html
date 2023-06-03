@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+
+<!--{% block pathadd %}../{% endblock %}-->
+
+{% block title %}{{ SITENAME }} - Posts by {{ author }}{% endblock %}
+
+{% block content_title %}
+</div>
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 thumb">
+<h3>{{ author }}</h3>
+{% include ['authorbios/' + author.slug + '.html', 'authorbios/default.html'] %}
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 thumb">
+<h4>Blog Posts by {{ author }}</h4>
+<span><a href="{{ SITEURL }}/feeds/{{ author.slug }}.rss.xml">[RSS Feed]</a> <a href="{{ SITEURL }}/feeds/{{ author.slug }}.atom.xml">[Atom Feed]</a></span>
+{% endblock %}

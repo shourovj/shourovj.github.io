@@ -1,0 +1,74 @@
+<html>
+<head>
+    {% block head %}
+    <link rel="stylesheet" href="{{ SITEURL }}/../style.css">
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif|Merriweather|Oswald|Ubuntu+Mono" rel="stylesheet">
+    <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/code.css">
+    <!-- FOR KATEX -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
+          crossorigin="anonymous">
+    {% if FEED_ALL_ATOM %}
+    <link href="{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed" />
+    {% endif %}
+    {% if FEED_ALL_RSS %}
+    <link href="{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Full RSS Feed" />
+    {% endif %}
+    {% if FEED_ATOM %}
+    <link href="{{ FEED_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
+    {% endif %}
+    {% if FEED_RSS %}
+    <link href="{{ FEED_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
+    {% endif %}
+    {% endblock %}
+</head>
+<body>
+<header style="border-top:2px solid black; border-bottom: 1px dotted #676767; position:relative; min-height: 60px; overflow:hidden;">
+  <!--div class="menucontainer"-->
+  <div class="page">
+  <h2 style="margin-top:6pt;float:left;"><a class="active" href="{{ SITEURL }}/../">Michael Saxon</a></h2>
+  <ul class="menu" style="margin-top:10pt;">
+  <!--li><a href="projects.html">Projects</a></li-->
+  <!--li><a href="/">About</a></li-->
+  <li><a href="{{ SITEURL }}/../research">Publications</a></li>
+    <li><a href="{{ SITEURL }}/../doc/cv_saxon.pdf">CV</a></li>
+  <li><a href="{{ SITEURL }}">Blog</a></li>
+  </ul>
+</div>
+</header>
+
+
+
+<div class="page" id="rightcontent" style="padding-top:15pt; overflow: hidden;">
+    {% block content %}
+    {% endblock %}
+
+
+</div>
+
+
+<footer style="margin-top:25pt; border-top: 1px dotted #676767; padding-top:10pt;"">
+  <ul class="icons">
+    <li><a href="https://www.semanticscholar.org/author/Michael-Stephen-Saxon/48227633" ><img src="{{ SITEURL }}/../img/ico/semantic.png"></a></li>
+    <li><a href="https://scholar.google.com/citations?user=pAlwjdgAAAAJ&hl=en" ><img src="{{ SITEURL }}/../img/ico/scholar-color.png"></a></li>
+    <li><a href="https://www.researchgate.net/profile/Michael_Saxon"><img src="{{ SITEURL }}/../img/ico/researchgate-color.png"></a></li>
+    <li><a href="mailto:saxon@ucsb.edu"><img src="{{ SITEURL }}/../img/ico/email-color.png"></a></li>
+    <li><a href="https://github.com/michaelsaxon"><img src="{{ SITEURL }}/../img/ico/github.png"></a></li>
+    <li><a href="https://www.linkedin.com/in/mssaxon/"><img src="{{ SITEURL }}/../img/ico/linkedin-color.png"></a></li>
+    <li><a rel="me" href="https://sigmoid.social/@saxon"><img src="{{ SITEURL }}/../img/ico/mastodon-color.png"></a></li>
+    <li><a href="https://twitter.com/m2saxon" ><img src="{{ SITEURL }}/../img/ico/twitter-color.png"></a></li>
+  
+    </ul>
+
+    <div class="worldmap"><script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=tt&d=IuxqtNT-Q6MDtRyPajTC07_66TRmeCIPbVD4z2v4M_U&co=474747&cmn=547bfc'></script></div>
+
+    <div style="max-width: 800px;   margin-right: auto; margin-left: auto;">
+	    <p style="font-size:10pt; text-align: center">Core webpage incrementally scratchbuilt by me. Feel free to steal my source from <a href="https://github.com/michaelsaxon/michaelsaxon.github.io">GitHub</a>. Blog functionality made using <a href="https://getpelican.com/">Pelican</a>. Aesthetic design shamelessly ripped off from <a href="http://tisjune.github.io/">Justine Zhang's website</a>.   <!--&nbsp;&nbsp;&nbsp;<span onclick="showhideattrib();resizeleft()" style="font-size:8pt;"><a>[Icon Attribution]</a></span--></p>
+    </div>
+    </footer>
+  
+
+
+</body>
+</html>

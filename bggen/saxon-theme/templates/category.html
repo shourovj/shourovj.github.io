@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+
+<!--{% block pathadd %}../{% endblock %}-->
+
+
+{% block title %}{{ SITENAME }} - {{ category }} category{% endblock %}
+
+{% block content_title %}
+<h3><span style="font-style: normal; color: black; font-weight:100;">Posts in category</span> {{ category }}</h3>
+<span><a href="{{ SITEURL }}/feeds/{{ category.slug }}.rss.xml">[RSS Feed]</a> <a href="{{ SITEURL }}/feeds/{{ category.slug }}.atom.xml">[Atom Feed]</a></span>
+{% endblock %}
