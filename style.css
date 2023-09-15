@@ -435,3 +435,9 @@ blockquote {
 code {
   background: #f5f5f5;
 }
+
+
+
+.page img {
+  max-width: 100%;
+}
