@@ -15,6 +15,7 @@ In case you're unfamiliar, the Association for Computational Linguistics (ACL), 
 
 
 This essay is my attempt at laying bare the harms this policy visits on early career researchers as an inclusion-oriented argument for its removal. In particular, I will argue:
+
 1. That social media self-promotion is a crucial career development tool that **all early-career researchers benefit from** and has a **leveling effect across existing hierarchies of institutional prestige**
 2. That discussing one's most recent research **using preprints is integral to online self-promo**
 3. That the reduction in preprinting achieved under the current policy comes by **disproportionately stifling the participation of the least privileged ECRs** in the public self-promotion process
@@ -87,6 +88,7 @@ On the balance, social media participation improves the fairness and inclusion o
 
 
 So far all points have only argued for general participation in namebuilding through online self-promotion. *But why is a pro-preprinting culture important?* We believe there are two key benefits for individual authors, and one for the community:
+
 1. Individual authors can "namebuild" faster and more effectively when they are able to discuss their latest and most freshest work, and preprinting provides a critical multi-month head start in doing so
 2. Scooping is prevented in a materially beneficial way that is not provided by anonymized preprints
 3. The whole community gets **higher-quality, fresher** preprints

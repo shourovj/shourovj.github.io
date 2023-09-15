@@ -4,11 +4,13 @@
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;img alt="&amp;quot;King Solomon was really doing his best to reach a compromise amenable to both parties when he said to cut the baby in half, you see!&amp;quot;" src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Gaspar_de_Crayer_-_The_judgement_of_Solomon.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;In case you're unfamiliar, the Association for Computational Linguistics (ACL), the premier venue for natural language processing (NLP) research, has an extremely strict "anonymity embargo policy," restricting the ability of researchers to publicly share or discuss their latest work online within a time window starting 1 month prior to a given conference's submission deadline, through the date when acceptance decisions are conveyed (about a four month period). &lt;strong&gt;The ACL Executive committe is currently considering abolishing this policy, and I strongly believe removing it is the right thing for the science and the community, and in particular I think removing it will, on the balance, have inclusionary outcomes for early-career researchers.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;This essay is my attempt at laying bare the harms this policy visits on early career researchers as an inclusion-oriented argument for its removal. In particular, I will argue:
-1. That social media self-promotion is a crucial career development tool that &lt;strong&gt;all early-career researchers benefit from&lt;/strong&gt; and has a &lt;strong&gt;leveling effect across existing hierarchies of institutional prestige&lt;/strong&gt;
-2. That discussing one's most recent research &lt;strong&gt;using preprints is integral to online self-promo&lt;/strong&gt;
-3. That the reduction in preprinting achieved under the current policy comes by &lt;strong&gt;disproportionately stifling the participation of the least privileged ECRs&lt;/strong&gt; in the public self-promotion process
-4. That these exclusionary effects are disproportionately visited on &lt;strong&gt;cross-disciplinary researchers in AI, ML, and computer vision-adjacent subfields&lt;/strong&gt; who we really ought to keep in the *ACL community&lt;/p&gt;
+&lt;p&gt;This essay is my attempt at laying bare the harms this policy visits on early career researchers as an inclusion-oriented argument for its removal. In particular, I will argue:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;That social media self-promotion is a crucial career development tool that &lt;strong&gt;all early-career researchers benefit from&lt;/strong&gt; and has a &lt;strong&gt;leveling effect across existing hierarchies of institutional prestige&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;That discussing one's most recent research &lt;strong&gt;using preprints is integral to online self-promo&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;That the reduction in preprinting achieved under the current policy comes by &lt;strong&gt;disproportionately stifling the participation of the least privileged ECRs&lt;/strong&gt; in the public self-promotion process&lt;/li&gt;
+&lt;li&gt;That these exclusionary effects are disproportionately visited on &lt;strong&gt;cross-disciplinary researchers in AI, ML, and computer vision-adjacent subfields&lt;/strong&gt; who we really ought to keep in the *ACL community&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;I believe in many other arguments for why the embargo policy should be repealed, beyond those presented here. In particular, I think claims that it significantly protects the integrity of double-blind review are unsubstantiated, or at the very least too questionable to justify the documented costs the policy has on the community. In any case, we leave those points to be argued by others or in future posts. &lt;strong&gt;Here the focus is on the "exclusionary harm to ECRs" angle.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;In allowing preprints only for those who can meet an arbitrary and difficult filter, it produces a class of authors who can choose to operate without anonymity, and a class who cannot (as their papers are incomplete by the onerous month-in-advance embargo deadline). 
 Like King Solomon deciding to halve the baby to each self-proclaimed mother, this policy is a worst-of-all worlds compromise.
@@ -50,10 +52,12 @@ I strongly believe that on the balance the democratization of in-community nameb
 &lt;p&gt;On the balance, social media participation improves the fairness and inclusion of career-level outcomes within scientific communities.&lt;br&gt;
 &lt;strong&gt;Consequently, ACL's embargo policy negatively impacts career outcome fairness and inclusion in our community by interfering with early career researchers' ability to speak freely and openly about their work. In hindering the most accessible avenue to name-building, it entrenches the powerful position of the more institutionally privileged in attaining opportunities.&lt;/strong&gt;&lt;/p&gt;
 &lt;h3&gt;Career-impacting self-promo is time-sensitive for ECRs, warranting preprinting&lt;/h3&gt;
-&lt;p&gt;So far all points have only argued for general participation in namebuilding through online self-promotion. &lt;em&gt;But why is a pro-preprinting culture important?&lt;/em&gt; We believe there are two key benefits for individual authors, and one for the community:
-1. Individual authors can "namebuild" faster and more effectively when they are able to discuss their latest and most freshest work, and preprinting provides a critical multi-month head start in doing so
-2. Scooping is prevented in a materially beneficial way that is not provided by anonymized preprints
-3. The whole community gets &lt;strong&gt;higher-quality, fresher&lt;/strong&gt; preprints&lt;/p&gt;
+&lt;p&gt;So far all points have only argued for general participation in namebuilding through online self-promotion. &lt;em&gt;But why is a pro-preprinting culture important?&lt;/em&gt; We believe there are two key benefits for individual authors, and one for the community:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Individual authors can "namebuild" faster and more effectively when they are able to discuss their latest and most freshest work, and preprinting provides a critical multi-month head start in doing so&lt;/li&gt;
+&lt;li&gt;Scooping is prevented in a materially beneficial way that is not provided by anonymized preprints&lt;/li&gt;
+&lt;li&gt;The whole community gets &lt;strong&gt;higher-quality, fresher&lt;/strong&gt; preprints&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;Why is high speed namebuilding important for early-career researchers? 
 Many ECRs are students, who have a limited number of summers to expend on critical research opportunities such as internships. 
 A monthslong period muzzled from discussing a student's most recent work can literally mean the difference between a career trajectory-defining internship opportunity and an empty summer.&lt;/p&gt;
