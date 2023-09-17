@@ -26,7 +26,7 @@ I believe in many other arguments for why the embargo policy should be repealed,
 
 In allowing preprints only for those who can meet an arbitrary and difficult filter, it produces a class of authors who can choose to operate without anonymity, and a class who cannot (as their papers are incomplete by the onerous month-in-advance embargo deadline). 
 In trying to split the difference between two irreconcilable states of equality (preprints for all or preprints forbidden) it produces a novel sort of inequality where only some authors are even given the ability to decide.
-This worst-of-all-worlds compromise is akin to King Solomon's offer give half the baby to each self-proclaimed mother&mdash;we must choose one option or the other.
+This worst-of-all-worlds compromise is akin to King Solomon's offer to give half of the baby to each self-proclaimed mother&mdash;we must choose one option or the other.
 By communicating why so many ECRs are so opposed to this policy, I hope to aid the community in finding a consensus option.
 **All I ask is for is that everyone consider this angle, the way in which ECRs are hindered in traversing the prestige hierarchy when they are shut out of online promotion and preprinting, when doing the fairness calculus to decide how to balance the concerns of anonymity and its consequences.**
 
