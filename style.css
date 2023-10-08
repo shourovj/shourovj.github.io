@@ -1,4 +1,6 @@
-
+:root {
+  --base-size: 12pt;
+}
 
 
 
@@ -12,7 +14,8 @@ body{
   font-family: 'PT Serif', serif;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  font-size: 11pt;
+  font-size: 11pt; /* fallback for bad browser */
+  font-size: var(--base-size);
 }
 
 
@@ -52,8 +55,8 @@ body{
   padding: 0 2pt;
 }
 
-.pagel {
-  height: calc(100vh);
+.pagefull {
+  max-width: none;
 }
 
 
@@ -119,7 +122,8 @@ background-attachment: fixed;
   text-align: right;
   font-family: 'Oswald', sans-serif;
   color: white;
-  font-size: 70px;
+  font-size: 44pt; /* fallback for bad browser */
+  font-size: calc(var(--base-size) * 4);
   font-weight: 800;
   font-style: italic;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
@@ -134,7 +138,8 @@ header h2{
   /*color: white;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;*/
   color: black;
-  font-size: 32pt;
+  font-size: 28pt; /* fallback for bad browser */
+  font-size: calc(var(--base-size) * 2.5);
   font-weight: 600;
   vertical-align: bottom;
   padding: 5pt 5pt;
@@ -167,7 +172,8 @@ position: fixed;
 ul.menu {
   font-weight: 800;
   font-family: 'Merriweather', serif;
-  font-size:13pt;
+  font-size: 13pt; /* fallback for bad browser */
+  font-size: calc(var(--base-size) * 13 / 11);
     list-style-type: none;
     padding: 0;
     overflow: hidden;
@@ -190,7 +196,8 @@ h3{
   margin-top: 1pt;
   margin-bottom: 5pt;
   font-style: italic;
-  font-size: 15pt;
+  font-size: 15pt; /* fallback for bad browser */
+  font-size: calc(var(--base-size) * 15 / 11);
   color:rgb(205, 76, 53)
 }
 
@@ -198,7 +205,8 @@ h4{
   padding: 0;
   margin-top: 1pt;
   margin-bottom: 5pt;
-  font-size: 13pt;
+  font-size: 13pt; /* fallback for bad browser */
+  font-size: calc(var(--base-size) * 13 / 11);
   font-style: italic;
   color:rgb(205, 76, 53)
 }
