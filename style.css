@@ -307,7 +307,7 @@ p{
 
 .tomato {
   color: rgb(147, 54, 37);
-  color: var(--dark-header);
+  /*color: var(--dark-header);*/
 }
 
 
