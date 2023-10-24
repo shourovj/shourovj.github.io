@@ -1,5 +1,9 @@
 :root {
   --base-size: 12pt;
+  /*--dark-header: rgb(147, 54, 37);
+  --light-header: rgb(205, 76, 53);*/
+  --dark-header: rgb(81, 89, 55);
+  --light-header: rgb(90, 97, 63);
 }
 
 
@@ -198,7 +202,8 @@ h3{
   font-style: italic;
   font-size: 15pt; /* fallback for bad browser */
   font-size: calc(var(--base-size) * 15 / 11);
-  color:rgb(205, 76, 53)
+  color:rgb(205, 76, 53);
+  color: var(--light-header);
 }
 
 h4{
@@ -208,7 +213,8 @@ h4{
   font-size: 13pt; /* fallback for bad browser */
   font-size: calc(var(--base-size) * 13 / 11);
   font-style: italic;
-  color:rgb(205, 76, 53)
+  color:rgb(205, 76, 53);
+  color: var(--light-header);
 }
 
 
@@ -244,12 +250,14 @@ ul.menu li a:hover {
 
 ul.menu li a.active {
   color: rgb(147, 54, 37);
+  color: var(--dark-header);
 }
 
 a.active {
   /*background-color: rgb(120, 142, 181);*/
   /*background-color: black;*/
   color: rgb(147, 54, 37);
+  color: var(--dark-header);
 }
 
 ul.menu li.right {float: right;}
@@ -299,6 +307,7 @@ p{
 
 .tomato {
   color: rgb(147, 54, 37);
+  color: var(--dark-header);
 }
 
 
@@ -432,7 +441,9 @@ ul.menu li a.active::-moz-selection {
 blockquote {
   background: #f5f5f5;
   border-left: 4pt solid rgb(205, 76, 53);
+  border-left: 4pt solid   var(--light-header);
   border-right: 0.5pt solid rgb(205, 76, 53);
+  border-right: 4pt solid   var(--light-header);
   width: auto;
   margin-right: 0;
   padding: 5pt 20pt 5pt 5pt;
