@@ -443,7 +443,7 @@ blockquote {
   border-left: 4pt solid rgb(205, 76, 53);
   border-left: 4pt solid   var(--light-header);
   border-right: 0.5pt solid rgb(205, 76, 53);
-  border-right: 4pt solid   var(--light-header);
+  border-right: 0.5pt solid   var(--light-header);
   width: auto;
   margin-right: 0;
   padding: 5pt 20pt 5pt 5pt;
