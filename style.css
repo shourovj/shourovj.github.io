@@ -7,7 +7,6 @@
 }
 
 
-
 body{
   /*margin-top: 0px;
   margin-bottom: 5px;
@@ -315,7 +314,7 @@ p{
 ul.icons {
   margin-right: auto;
   margin-left: auto;
-  max-width: 360px;
+  max-width: 460px;
   font-weight: 800;
   font-family: 'Merriweather', serif;
   font-size:11pt;
@@ -347,6 +346,15 @@ ul.icons li img {
 ul.icons li a:hover:not(.active) img{
   filter: opacity(50%);
 }
+
+
+
+.filtercolor {
+  filter: invert(33%) sepia(3%) saturate(5832%) hue-rotate(56deg) brightness(93%) contrast(78%);
+}
+
+
+
 
 .page p{
   padding-left: 5pt;
