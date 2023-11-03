@@ -4,6 +4,7 @@
   --light-header: rgb(205, 76, 53);*/
   --dark-header: rgb(81, 89, 55);
   --light-header: rgb(90, 97, 63);
+  --my-red: rgb(147, 54, 37)
 }
 
 
@@ -374,74 +375,6 @@ ul.icons li a:hover:not(.active) img{
   background-color: black;
   color: white;
 }
-
-/*
-h3::selection {
-  background-color: rgb(205, 76, 53);
-  color: white;
-}
-
-h3::-moz-selection {
-  background-color: rgb(205, 76, 53);
-  color: white;
-}
-
-
-h4::selection {
-  background-color: rgb(205, 76, 53);
-  color: white;
-}
-
-h4::-moz-selection {
-  background-color: rgb(205, 76, 53);
-  color: white;
-}
-
-a::selection {
-  background-color:  rgb(50, 115, 228);
-  color: white;
-}
-
-a::-moz-selection {
-  background-color:  rgb(50, 115, 228);
-  color: white;
-}
-
-ul.menu li a::selection {
-  background-color: rgb(50, 115, 228);
-  color: white;
-}
-
-ul.menu li a::-moz-selection {
-  background-color: rgb(50, 115, 228);
-  color: white;
-}
-
-ul.menu li a.active::selection {
-  background-color: rgb(147, 54, 37);
-  color: white;
-
-}
-
-
-.tomato::selection {
-  background-color:  rgb(147, 54, 37);
-  color: white;
-}
-
-.tomato::-moz-selection {
-  background-color:  rgb(147, 54, 37);
-  color: white;
-}
-
-
-
-ul.menu li a.active::-moz-selection {
-  background-color: rgb(147, 54, 37);
-  color: white;
-
-}
-*/
 
 
 
