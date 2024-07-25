@@ -1,8 +1,9 @@
 <html>
 <head>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="test_menu.css">
 
-<link href="https://fonts.googleapis.com/css?family=PT+Serif|Merriweather|Oswald|Ubuntu+Mono" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=PT+Serif&Merriweather&Oswald&Ubuntu+Mono&Arimo:ital,wght@0,400..700;1,400..700" rel="stylesheet">
 <title>Michael Saxon - Publications</title>
 <script src="resize.js">
 </script>
@@ -16,21 +17,25 @@
 
 
 
-  <header style="border-top:2px solid black; border-bottom: 1px dotted #676767; position:relative; min-height: 60px; overflow:hidden;">
-    <!--div class="menucontainer" -->
-    <div class="page">
-    <h2 style="margin-top:6pt;float:left;"><a class="active" href="/">Michael Saxon</a></h2>
-    <ul class="menu" style="margin-top:10pt;">
-    <!--li><a href="projects.html">Projects</a></li-->
-    <!--li><a href="/">About</a></li-->
-    <li><a href="research">Publications</a></li>
-    <!--li><a href="fun">Fun</a></li-->
+<header style="border-top:2px solid black; border-bottom: 1px dotted #676767; position:relative; min-height: 60px; ">
+    <div class="top-nav">
+    <!--div class="menucontainer"-->
+    <div style="margin-right: auto;">
+    <h2><a class="active" href="/">Michael Saxon</a></h2>
+    </div>
+    <input id="menu-toggle" type="checkbox" />
+    <label class='menu-button-container' for="menu-toggle">
+    <div class='menu-button'></div>
+  </label>
+    <ul class="menu">
+      <li><a href="research">Publications</a></li>
       <li><a href="doc/cv_saxon.pdf">CV</a></li>
       <li><a href="blog/">Blog</a></li>
     </ul>
   </div>
   </header>
-
+  
+  
 
   <div class="page" id="rightcontent" style="padding-top:15pt; overflow: hidden;">
 
@@ -41,7 +46,7 @@
 <p style="padding-bottom: 10pt;"><b style="font-size:13pt;"><span class="tomato">New!</span>  Benchmarks as Microscopes: A Call for Model Metrology </b><br>
 <u>Michael Saxon</u>, Ari Holtzman, Peter West, William Yang Wang, Naomi Saphra<br>
 <b>COLM 2024</b> <br>
-<a href="doc/metrology.pdf">[pdf]</a> </p>
+<a href="https://arxiv.org/pdf/2407.16711">arXiv:2407.16711</a> <a href="https://arxiv.org/pdf/2407.16711">[pdf]</a> </p>
 
 
 <p style="padding-bottom: 10pt;"><b style="font-size:13pt;"><span class="tomato">New!</span>  Losing Visual Needles in Image Haystacks: Vision Language Models are Easily Distracted in Short and Long Contexts </b><br>

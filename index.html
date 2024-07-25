@@ -1,8 +1,9 @@
 <html>
 <head>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="test_menu.css">
 
-<link href="https://fonts.googleapis.com/css?family=PT+Serif|Merriweather|Oswald|Ubuntu+Mono" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=PT+Serif&Merriweather&Oswald&Ubuntu+Mono&Arimo:ital,wght@0,400..700;1,400..700" rel="stylesheet">
 <title>Michael Saxon - About</title>
 
 
@@ -36,15 +37,18 @@
   <!--div class="header"><h1>&nbsp;</h1></div-->
 
 
-<header style="border-top:2px solid black; border-bottom: 1px dotted #676767; position:relative; min-height: 60px; overflow:hidden;">
+<header style="border-top:2px solid black; border-bottom: 1px dotted #676767; position:relative; min-height: 60px; ">
+  <div class="top-nav">
   <!--div class="menucontainer"-->
-  <div class="page">
-  <h2 style="margin-top:6pt;float:left;"><a class="active" href="/">Michael Saxon</a></h2>
-  <ul class="menu" style="margin-top:10pt;">
-  <!--li><a href="projects.html">Projects</a></li-->
-  <!--li><a href="/">About</a></li-->
-  <li><a href="research">Publications</a></li>
-  <!--li><a href="fun">Fun</a></li-->
+  <div style="margin-right: auto;">
+  <h2><a class="active" href="/">Michael Saxon</a></h2>
+  </div>
+  <input id="menu-toggle" type="checkbox" />
+  <label class='menu-button-container' for="menu-toggle">
+  <div class='menu-button'></div>
+</label>
+  <ul class="menu">
+    <li><a href="research">Publications</a></li>
     <li><a href="doc/cv_saxon.pdf">CV</a></li>
     <li><a href="blog/">Blog</a></li>
   </ul>
@@ -53,63 +57,123 @@
 
 
 
-<div class="page" id="rightcontent" style="padding-top:15pt; overflow: hidden;">
+<div class="page" style="padding-top:15pt; overflow: hidden;">
 
   <!--/div-->
-  <div style="max-width: 200px; float: left; text-align: center;">
-  <!--img style='border-radius:50%;padding-right:20px;padding-bottom:20px;margin-top:20px;margin-left:20px;' src='img/me.png' width="150px" -->
-  <img style='margin-right:20px;margin-bottom:20px;margin-top:6pt;margin-left:20px; border:1px solid #676767;padding:1px;' src='img/michael.jpg' width="150px" >
-  <!--p style="text-align:center">Ph.D. Student, CS<br>
-  UC Santa Barbara</p-->
-  
+<div class="profilesec">
+
+  <div class="profilebox">
+  <img src='img/michael.jpg' width="150px" >
+  </div>
+
+  <div class="profiletext">
+
+  <p>
+    I study generative AI artifacts like LLMs and text-to-image models.
+    I'm particularly interested in making <b>meaningful evaluations of new capabilities that are difficult to measure</b> in these artifacts.
+    I think ethical issues in GenAI are both important to address and motivate interesting new technical challenges.
+  </p>
+  <p>
+    Lately I've been thinking a lot about <b>automated metrics for text-to-image systems</b>. Unlike in the text domain, in continuous domains, characterizing things like "knowledge" in outputs by comparing to references is a challenge.
+    My recent work <a href="https://aclanthology.org/2023.acl-long.266/">"CoCo-CroLa"</a> was a start in assessing multilingual knowledge for T2Is.
+  </p>
+  </div>
+
 </div>
 
+<!--div style="max-width: 800px; text-align: center;">
+  <h4>Current</h4>
+</div>  
+
+<div class="affilsec">
+  <div class="affilicon">
+    <img  style="max-height: 60px;"  src="https://static.wikia.nocookie.net/logopedia/images/5/52/AMD_Arrows.svg">
+  </div>
+  <div class="affiltext">
+    <p><a href="https://www.amd.com/en/corporate/research.html">AMD Research, Open GenAI</a><br>
+      Intern (Summer 2024)</p>
+  </div>
+</div>  
+
+<div class="affilsec">
+  <div class="affilicon">
+    <img style="max-height: 80px;"src="img/ico/UC-Santa-Barbara-seal-2 Color RGB.png">
+  </div>
+  <div class="affiltext">
+    <p>PhD student, <a href="http://nlp.cs.ucsb.edu/">NLP Lab</a>, <a href="https://cs.ucsb.edu/">Computer Science</a>, <a href="https://www.ucsb.edu/">UC Santa Barbara</a> (2020&ndash;)<br> 
+      Advised by <a href="https://sites.cs.ucsb.edu/~william/">William Yang Wang</a><br>
+      Recipient, <a href="https://www.nsfgrfp.org/">NSF Graduate Research Fellowship</a> (2020)</p>
+  </div>
+</div>  
+
+<div style="max-width: 800px; text-align: center;">
+  <h4>Previous</h4>
+</div>  
 
 
-<!--div class="header">&nbsp;</div-->
+<div class="affilsec">
+  <div class="affilicon">
+    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F1000logos.net%2Fwp-content%2Fuploads%2F2021%2F10%2Flogo-Meta.png&f=1&nofb=1&ipt=2756632108fd063cbdd0b6d2872975930286d12f1139cc89105e65360fa9afad&ipo=images">
+  </div>
+  <div class="affiltext">
+    <p>  Intern, <a href="https://ai.facebook.com/">Meta AI (Cognitive AI/Conversational AI Research)</a> (2022)<br>
+    </p>
+  </div>
+</div>  
 
-<div style="float:left; max-width: 600px;">
-<!--h3 id="nameintro" onclick="nameswap()">Hi, I'm Michael!</h3-->
-<p>
-  I study generative AI artifacts like LLMs and text-to-image models.
-  I'm particularly interested in making <b>meaningful evaluations of hard-to-measure new capabilities</b> in these artifacts.
-  I think ethical issues in GenAI are both important to address and motivate interesting new technical challenges.
-</p>
-<p>
-  Lately I've been thinking a lot about <b>automated metrics for text-to-image systems</b>. Unlike in the text domain, in continuous domains, characterizing things like "knowledge" in outputs by comparing to references is a challenge.
-  My recent work <a href="https://aclanthology.org/2023.acl-long.266/">"CoCo-CroLa"</a> was a start in assessing multilingual knowledge for T2Is.
-</p>
+<div class="affilsec">
+  <div class="affilicon">
+    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpluspng.com%2Fimg-png%2Famazon-logo-vector-png-amazon-logo-amazon-logo-1659.png&f=1&nofb=1&ipt=79835aeb23e39254f516fb9e17ac65703d0ed7462e54e53196ac7f4f424b07b5&ipo=images">
+  </div>
+  <div class="affiltext">
+    <p>    Intern, <a href="https://www.amazon.science/publications">Amazon Alexa Web-based QA</a> (2021)<br>
+      Intern, <a href="https://www.amazon.science/working-at-amazon/alexa-how-do-you-know-everything">Amazon Alexa Hybrid Science</a> (2019, 2020)<br>
+    </p>
+  </div>
+</div>  
 
-
-<!--p>In 2020 I completed my MS in Computer Engineering at Arizona State University, with research activities centered around speech processing, natural language processing, and deep learning methods for low-resourced populations with neurological disorders, and affective computing.</p-->
-<!--In particular, I am interested in goal-based natural language generation, and assessing the “quality” of datasets. I want to improve our theoretical understanding of how aspects of dataset distribution and model assumptions drive generalization performance, and produce tools that can analyze data for unseen correlations, hidden confounders, and the like using empirical methods. I am most interested in applying these techniques to the learning of generalized natural language representations with an eye for their use in generating coherent, goal-oriented text.  Long term my aim is to work in the space of maximizing societal benefits and minimizing societal harms of natural language understanding.</p-->
-<!--h3>Coursework</h3>
-<p>My coursework choices have been selected to prepare me for this career, focusing on signal theory, signal processing, numerical methods, and AI, including <span class="mns">EEE404</span> <i>Real Time Digital Signal Processing</i>, <span class="mns">CSE310</span> <i>Algorithms and Data Structures</i>,
-<span class="mns">MAT442</span> <i>Advanced Linear Algebra</i>, <span class="mns">EEE508</span> <i>Digital Image and Video Processing and Compression</i>, and <span class="mns">MAT421</span><i> Applied Computational Methods</i> to name a few.</p>
-<p>In the Spring 2019 semester I will be taking <span class="mns">EEE554</span> <i>Random Signal Theory</i> and <span class="mns">EEE598</span> <i>Deep Learning for Media Processing and Understanding</i>, among other required electives.-->
-</div>
-
-<!--div style="max-width: 800px; float:left; background-color: #f5f5f5; padding: 10pt; margin: 5pt; border: 2pt solid rgb(147, 54, 37);">
-
-<p><b class="tomato">
-  I am looking for a Summer 2024 research internship! If you're looking for PhD interns to work on: </p>
-  <ul>
-    <li>Novel evaluations for generative AI</li>
-    <li>Ethics in generative AI</li>
-    <li>Multilinguality in text-to-image systems</li>
-    <li>Building better text-to-image systems</li>
-    <li>Something else?</li>
-  </ul>
-<p>
-Then please reach out to my email: <emph><a href="mailto:saxon@ucsb.edu">saxon@ucsb.edu</a></emph>, thanks!</b>
-</p>
-</div>
-
-<div style="max-width: 800px; float:right;"-->
+<div class="affilsec">
+  <div class="affilicon">
+    <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fclipartmag.com%2Fimages%2Farizona-state-cliparts-3.png&f=1&nofb=1&ipt=214c05e5b83fab94e2be94405864073ffbb8a3f637c4dba816c8c6eff8f119a9&ipo=images">
+  </div>
+  <div class="affiltext">
+    <p>  MS <a href="https://cen.engineering.asu.edu/">Computer Engineering</a>, <a href="https://www.asu.edu/">Arizona State University</a> (2018&ndash;2020)<br>
+      Advised by <a href="https://www.public.asu.edu/~visar/index.html">Visar Berisha</a> &amp; <a href="https://cubic.asu.edu/people">Sethuraman Panchanathan</a>    </p>
+  </div>
+</div>  
 
 
 
+<div class="affilsec">
+  <div class="affilicon">
+    <img src="https://s3-us-west-2.amazonaws.com/cbi-image-service-prd/modified/b8dbcdf4-b5cd-4d89-93ff-2def8caf53d5.png
+    ">
+  </div>
+  <div class="affiltext">
+    <p>    Intern, <a href="https://www.amazon.science/publications">Amazon Alexa Web-based QA</a> (2021)<br>
+      Intern, <a href="https://www.amazon.science/working-at-amazon/alexa-how-do-you-know-everything">Amazon Alexa Hybrid Science</a> (2019, 2020)<br>
+    </p>
+  </div>
+</div>  
+
+<div class="affilsec">
+  <div class="affilicon">
+    <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fclipartmag.com%2Fimages%2Farizona-state-cliparts-3.png&f=1&nofb=1&ipt=214c05e5b83fab94e2be94405864073ffbb8a3f637c4dba816c8c6eff8f119a9&ipo=images">
+  </div>
+  <div class="affiltext">
+    <p> 
+      BSE <a href="https://ecee.engineering.asu.edu/">Electrical Engineering</a>,  <a href="https://www.asu.edu/">Arizona State University</a> (2014&ndash;2018)
+    </p>
+  </div>
+</div-->  
+
+
+
+<div style="max-width: 800px; float:right;">
 <h4>Current</h4>
+
+
+
 <p>Intern, <a href="https://www.amd.com/en/corporate/research.html">AMD Research, Open GenAI</a> (2024)</p>
 <p>PhD student, <a href="http://nlp.cs.ucsb.edu/">NLP Lab</a>, <a href="https://cs.ucsb.edu/">Computer Science</a>, <a href="https://www.ucsb.edu/">UC Santa Barbara</a> (2020&ndash;)<br> 
   Advised by <a href="https://sites.cs.ucsb.edu/~william/">William Yang Wang</a><br>

@@ -15,7 +15,9 @@ body{
   margin-right: 2px;*/
   margin: 0px;
   background-color: rgb(252,252,252);
-  font-family: 'PT Serif', serif;
+  /*font-family: 'PT Serif', serif;*/
+  font-family: 'Arimo', sans-serif;
+  font-weight: 100;
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-size: 11pt; /* fallback for bad browser */
@@ -92,29 +94,9 @@ background-attachment: fixed;
   /*filter: brightness(160%) saturate(35%);*/
   /*padding-bottom:13pt;*/
   display: table;
-  height: 200px;
-  padding-top: 15pt;
-  padding-bottom: 15pt;
   border-bottom: 1px solid black;
   width:100%;
   margin: 0 auto;
-
-}
-
-header{
-  /*background: url(img/my_desert.jpg), linear-gradient(0deg, rgba(146,197,241,1) 0%, rgba(105,165,223,1) 100%),rgb(146,197,241);
-  background-position: center -250;
-background-repeat: no-repeat;
-background-attachment: fixed;
-
-  background-size:auto;*/
-  /*background-size:cover; */
-  /*filter: brightness(160%) saturate(35%);*/
-  /*padding-bottom:13pt;*/
-  /*background: url(img/bg-phx.jpg), linear-gradient(0deg, rgba(146,197,241,1) 0%, rgba(105,165,223,1) 100%),rgb(146,197,241);
-  background-position: center calc(-18vw);
-  background-size: 100% auto;*/
-
 }
 
 
@@ -124,7 +106,7 @@ background-attachment: fixed;
   display: table-cell;
   margin: auto;
   text-align: right;
-  font-family: 'Oswald', sans-serif;
+  font-family: Arimo, sans-serif;
   color: white;
   font-size: 44pt; /* fallback for bad browser */
   font-size: calc(var(--base-size) * 4);
@@ -138,14 +120,16 @@ background-attachment: fixed;
 header h2{
   display: table-cell;
   float: left;
-  font-family: 'Oswald', sans-serif;
+  /*font-family: 'Oswald', sans-serif;
+    font-variant: small-caps;
+  */
+  font-family: Arimo, sans-serif;
   /*color: white;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;*/
   color: black;
   font-size: 28pt; /* fallback for bad browser */
   font-size: calc(var(--base-size) * 2.5);
   font-weight: 700;
-  font-variant: small-caps;
   vertical-align: bottom;
   padding: 5pt 5pt;
   margin:5pt 5pt;
@@ -176,21 +160,19 @@ position: fixed;
 
 ul.menu {
   font-weight: 800;
-  font-family: 'Merriweather', serif;
+  font-family: Arimo, sans-serif;
   font-size: 13pt; /* fallback for bad browser */
   font-size: calc(var(--base-size) * 13 / 11);
-    list-style-type: none;
-    padding: 0;
-    overflow: hidden;
-    /*border: 1px solid rgb(120, 142, 181);*/
-      font-style: italic;
-        text-shadow: none;
-margin-right: auto;
-margin-left: auto;
-margin-top: 0;
-        width: auto;
-        float:right;
-      padding-top: 8pt;
+  list-style-type: none;
+  padding: 0;
+  overflow: hidden;
+  /*border: 1px solid rgb(120, 142, 181);*/
+  font-style: italic;
+  text-shadow: none;
+  margin-left: auto;
+  margin-top: 0;
+  width: auto;
+  float:right;
 }
 
 ul.menu li {float: left;}
@@ -231,9 +213,9 @@ ul.menu li a {
     display: block;
     color: black;
     text-align: center;
-    padding: 8px 10px;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
     text-decoration: none;
-    background-color: rgb(252,252,252);
 
 }
 
@@ -261,7 +243,6 @@ a.active {
   color: var(--dark-header);
 }
 
-ul.menu li.right {float: right;}
 
 @media screen and (max-width: 1000px){
     /*ul.menu li.right,
@@ -294,7 +275,7 @@ ul.menu li.right {float: right;}
 
 }
 
-p{
+p {
   margin: 5px;
   padding-bottom: 5pt;
   text-align: justify;
@@ -318,7 +299,7 @@ ul.icons {
   margin-left: auto;
   max-width: 460px;
   font-weight: 800;
-  font-family: 'Merriweather', serif;
+  font-family: Arimo, sans-serif;
   font-size:11pt;
     list-style-type: none;
     padding: 0;
@@ -355,10 +336,35 @@ ul.icons li a:hover:not(.active) img{
   filter: invert(33%) sepia(3%) saturate(5832%) hue-rotate(56deg) brightness(93%) contrast(78%);
 }
 
+.profilesec {
+  display: flex; max-width: 800px;
+}
+
+.profilebox {
+  width: 200px; float: left; text-align: center;
+  margin-left: 10px;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.profilebox img {
+  margin-right:20px;margin-bottom:20px;margin-top:6pt;margin-left:20px; border:1px solid #676767;padding:1px; width: 90%;
+}
 
 
+@media only screen and (max-width: 600px) {
+  .profilebox {
+      display: none;
+  }
+}
 
-.page p{
+.profiletext {
+  width:600px;
+  float:left; 
+  flex-shrink: 1.5;
+}
+
+.page p {
   padding-left: 5pt;
 }
 
@@ -401,4 +407,53 @@ code {
 
 .page img {
   max-width: 100%;
+}
+
+
+
+.affilsec {
+  margin-left:auto;
+  margin-right:auto;
+  max-width: 600px; display: flex; 
+  margin-top: 10pt;
+  margin-bottom: 10pt;
+  padding-top: 2pt;
+  padding-bottom: 2pt;
+}
+
+.affilicon {
+  width: 100px;
+  float: left; 
+  text-align: center;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: auto;
+  margin-bottom: auto;
+  flex-shrink: 1;
+}
+
+.affilicon img {
+  max-height: 60px;
+}
+
+@media only screen and (max-width: 700px) {
+  header h2{
+    font-size: 20pt;
+    font-size: calc(var(--base-size) * 2);
+  }
+}
+
+
+@media only screen and (max-width: 400px) {
+  .affilicon {
+      display: none;
+  }
+}
+
+.affiltext {
+  width:600px;
+  float:left; 
+  flex-shrink: 1.5;
+  margin-top: auto;
+  margin-bottom: auto;
 }
