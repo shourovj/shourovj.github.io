@@ -22,6 +22,7 @@ CATEGORY_FEED_RSS = 'feeds/{slug}.rss.xml'
 AUTHOR_FEED_RSS = 'feeds/{slug}.rss.xml'
 
 
+
 # Blogroll
 LINKS = (('Pelican', 'https://getpelican.com/'),
          ('Python.org', 'https://www.python.org/'),
@@ -35,6 +36,11 @@ SOCIAL = (('You can add links in your config file', '#'),
 DEFAULT_PAGINATION = 10
 
 PLUGINS = ["pelican_katex"]
+
+SLUGIFY_SOURCE = 'basename'
+
+ARTICLE_URL = '{date:%Y}/{slug}/'
+ARTICLE_SAVE_AS = '{date:%Y}/{slug}/index.html'
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
