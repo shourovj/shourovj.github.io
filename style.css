@@ -276,6 +276,7 @@ a.active {
 }
 
 p {
+  line-height: 1.15;
   margin: 5px;
   padding-bottom: 5pt;
   text-align: justify;
