@@ -1,5 +1,5 @@
 :root {
-  --base-size: 12pt;
+  --base-size: 16px;
   /*--dark-header: rgb(147, 54, 37);
   --light-header: rgb(205, 76, 53);*/
   --dark-header: rgb(81, 89, 55);
@@ -31,57 +31,19 @@ body{
   max-width: 300px;
 }
 
-/* divs for aligning*/
-.pageextl {
-  width: calc(50% - 200px);
-  margin: 0;
-  padding: 0;
-  border: 0;
-  float:left;
-  text-align: right;
-  position: fixed;
-  min-height: calc(100vh);
-
-}
-/*background-color: rgb(250,252,255);*/
-
-.pageextr {
-  width: calc(50% + 200px);
-  margin: 0;
-  padding: 0;
-  border: 0;
-  float:right;
-}
 
 
 .page {
   background-color: rgb(252,252,252);
-  max-width: 800px;
-  margin: auto;
+  max-width: 80rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   padding: 0 2pt;
 }
 
-.pagefull {
-  max-width: none;
-}
 
 
-.contentl {
-  max-width: 300px;
-  margin-right: 10px;
-  float: right;
-  text-align: center;
-
-}
-
-.contentr {
-  max-width: 800px;
-  margin-left: 20px;
-  border: 0px solid black;
-  padding: 50px 0px;
-  /* vertical height - contentr padding - header height - header padding */
-  min-height: calc(100vh - 100px - 200px - 31pt)
-}
 
 .header{
   /*background: url(img/my_desert.jpg), linear-gradient(0deg, rgba(146,197,241,1) 0%, rgba(105,165,223,1) 100%),rgb(146,197,241);
@@ -257,21 +219,6 @@ a.active {
       padding-left: 20px;
       text-align: left;
     }
-    .pageextl {
-      position: inherit;
-
-    }
-    .contentl {
-      position: -webkit-sticky; /* Safari */
-      position: sticky;
-        top: 0;
-    }
-    .pagel {
-      position: inherit;
-
-    }
-    .page {
-      }
 
 }
 
@@ -338,11 +285,12 @@ ul.icons li a:hover:not(.active) img{
 }
 
 .profilesec {
-  display: flex; max-width: 800px;
+  display: flex;
+  margin-left: auto;
 }
 
 .profilebox {
-  width: 200px; float: left; text-align: center;
+  width: 200px; float: right; text-align: center;
   margin-left: 10px;
   margin-right: 20px;
   flex-shrink: 0;
@@ -361,7 +309,7 @@ ul.icons li a:hover:not(.active) img{
 
 .profiletext {
   width:600px;
-  float:left; 
+  float:right; 
   flex-shrink: 1.5;
 }
 
