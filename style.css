@@ -67,22 +67,27 @@ background-attachment: fixed;
 h1 {
   margin: 0;
   padding: 10pt;
+  margin-top:10pt;
 }
 h2 {
   margin: 0;
   padding: 10pt;
+  margin-top:10pt;
 }
 h3 {
   margin: 0;
   padding: 10pt;
+  margin-top:10pt;
 }
 h4 {
   margin: 0;
   padding: 10pt;
+  margin-top:10pt;
 }
 h5 {
   margin: 0;
   padding: 10pt;
+  margin-top:10pt;
 }
 
 
@@ -256,7 +261,7 @@ p {
   line-height: 1.15;
   margin: 0;
   padding: 5pt;
-  text-align: justify;
+  text-align: left;
 }
 
 .mns {
