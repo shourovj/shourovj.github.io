@@ -1,5 +1,5 @@
 :root {
-  --base-size: 16px;
+  --base-size: 14pt;
   /*--dark-header: rgb(147, 54, 37);
   --light-header: rgb(205, 76, 53);*/
   --dark-header: rgb(81, 89, 55);
@@ -35,7 +35,7 @@ body{
 
 .page {
   background-color: rgb(252,252,252);
-  max-width: 80rem;
+  max-width: 800px;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -62,8 +62,25 @@ background-attachment: fixed;
 }
 
 
+h1 {
+  padding-right: 10pt; padding-left: 10pt;
+}
+h2 {
+  padding-right: 10pt; padding-left: 10pt;
+}
+h3 {
+  padding-right: 10pt; padding-left: 10pt;
+}
+h4 {
+  padding-right: 10pt; padding-left: 10pt;
+}
+h5 {
+  padding-right: 10pt; padding-left: 10pt;
+}
+
 
 .header h1{
+  margin: 0;
   white-space: nowrap;
   display: table-cell;
   margin: auto;
@@ -77,9 +94,12 @@ background-attachment: fixed;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   padding-right: 20px;
   vertical-align: middle;
+  padding-right: 10pt;
+  padding-left: 10pt;
 }
 
 header h2{
+  margin: 0;
   display: table-cell;
   float: left;
   /*font-family: 'Oswald', sans-serif;
@@ -94,8 +114,7 @@ header h2{
   font-weight: 700;
   vertical-align: bottom;
   padding: 5pt 5pt;
-  margin:5pt 5pt;
-  margin-left: 5pt;
+  padding:5pt 5pt;
 }
 
 a {
@@ -141,25 +160,30 @@ ul.menu li {float: left;}
 
 
 h3{
+  margin: 0;
   padding: 0;
-  margin-top: 1pt;
-  margin-bottom: 5pt;
+  padding-top: 1pt;
+  padding-bottom: 5pt;
   font-style: italic;
   font-size: 15pt; /* fallback for bad browser */
   font-size: calc(var(--base-size) * 15 / 11);
   color:rgb(205, 76, 53);
   color: var(--light-header);
+  padding-left: 5pt;
+  padding-right: 5pt;
 }
 
 h4{
   padding: 0;
-  margin-top: 1pt;
-  margin-bottom: 5pt;
+  padding-top: 1pt;
+  padding-bottom: 5pt;
   font-size: 13pt; /* fallback for bad browser */
   font-size: calc(var(--base-size) * 13 / 11);
   font-style: italic;
   color:rgb(205, 76, 53);
   color: var(--light-header);
+  padding-left: 5pt;
+  padding-right: 5pt;
 }
 
 
@@ -215,7 +239,6 @@ a.active {
     		padding-top: 10px;}
     .header h1 {
       font-size: 50px;
-      margin-left: 20px;
       padding-left: 20px;
       text-align: left;
     }
@@ -224,8 +247,8 @@ a.active {
 
 p {
   line-height: 1.15;
-  margin: 5px;
-  padding-bottom: 5pt;
+  margin: 0;
+  padding: 5pt;
   text-align: justify;
 }
 
@@ -290,6 +313,7 @@ ul.icons li a:hover:not(.active) img{
 }
 
 .profilebox {
+  margin: 0;
   width: 200px; float: right; text-align: center;
   margin-left: 10px;
   margin-right: 20px;
@@ -297,6 +321,7 @@ ul.icons li a:hover:not(.active) img{
 }
 
 .profilebox img {
+  margin: 0;
   margin-right:20px;margin-bottom:20px;margin-top:6pt;margin-left:20px; border:1px solid #676767;padding:1px; width: 90%;
 }
 
@@ -315,6 +340,7 @@ ul.icons li a:hover:not(.active) img{
 
 .page p {
   padding-left: 5pt;
+  padding-right: 5pt;
 }
 
 
