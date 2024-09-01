@@ -24,6 +24,21 @@
     <link href="{{ FEED_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
     {% endif %}
     {% endblock %}
+    <meta name="title" content="{{ self.title() }}" />
+    <meta name="description" content="{% block description %}{% endblock %}" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://saxon.me/" />
+    <meta property="og:title" content="{{ self.title() }}" />
+    <meta property="og:description" content="{{ self.description() }}" />
+    <meta property="og:image" content="{% block imgurl %}https://saxon.me/img/bg-sba.jpg{% endblock %}" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://saxon.me/" />
+    <meta property="twitter:title" content="{{ self.title() }}" />
+    <meta property="twitter:description" content="{{ self.description() }}" />
+    <meta property="twitter:image" content="{{ self.imgurl() }}" />
 </head>
 <body>
 

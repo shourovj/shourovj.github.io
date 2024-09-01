@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% block title %}{{ article.title }} - {{SITENAME}}{% endblock title %}
+{% block description %}{{ article.summary | trim | striptags }}{% endblock description %}
+{% block imgurl %}{{ article.image }}{% endblock imgurl %}
 {% block content %}
     <h1 style="margin-top: 0; margin-bottom: 5pt;"><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
          title="Permalink to {{ article.title|striptags }}" style="color: rgb(81, 89, 55);">{{ article.title }}</a></h1>
