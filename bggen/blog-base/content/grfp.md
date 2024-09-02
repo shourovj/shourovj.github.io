@@ -4,7 +4,7 @@ Category: Career
 Tags: PhD, Admissions, NSF GRFP, Applications
 Authors: Michael Saxon
 Summary: Reflections and advice from my successful NSF GRFP proposal in NLP. Why I think my applications worked well, what I wish I did differently, and links to my actual statements and feedback from the GRFP reviewing panel.
-Image: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fnationallycompetitivescholarships.utah.edu%2Fwp-content%2Fuploads%2Fsites%2F63%2F2021%2F05%2Fnsf-grfp-logo.png&f=1&nofb=1&ipt=4a75caac5a624d46b8af79d627966cf6c42dba02ae23d4399f9502350802e517&ipo=images
+Image: https://astrobites.org/wp-content/uploads/2015/09/NSF_Logo.jpg
 
 ### On applying to PhD programs (and the NSF GRFP) in NLP and ML
 
@@ -76,7 +76,7 @@ Additionally, you provide your CV. Here's what I submitted:
 
 After you apply, you get feedback from the reviewers (whether your application was accepted or rejected). Here's the feedback I got:
 
-- Feedback I recieved from the reviewer panel: [pdf link](../../../doc/grfp_statements/reviewer-feedback.pdf)
+- Feedback I received from the reviewer panel: [pdf link](../../../doc/grfp_statements/reviewer-feedback.pdf)
 
 ### 3. Why do I think I succeeded in applying for NSF GRFP?
 
