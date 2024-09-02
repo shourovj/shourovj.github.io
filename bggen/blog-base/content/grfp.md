@@ -40,35 +40,38 @@ Rowan Zellers similarly shared [a good post with advice](https://rowanzellers.co
 
 The idea is that you need to show your promise as a scientist who can plan a *concrete and attainable project* you **demonstrably care about** (grounded in your prior work) and are on board for the **mission of publicly funded science**---*helpfully impacting society* through your research---and that you **understand how the former fits in to the latter**.
 Note here that I italicized the attainability of the project and the final impact, while I bolded ideas of "caring" "having a mission" and "understanding."
-The important part is showing you have some promise and your heart is in the right place; you are not being stack ranked against candidates on any objective measure of project plan---a plan that they do not even expect you to actually carry out.
 
-Another important consideration that Rowan points out which I strongly agree with:
+You only need to show **you have promise and your heart is in the right place**; you are not being stack ranked against candidates on any objective measure of project plan---they don't even expect you to specifically carry out your project.
+
+I also want to emphasize this point from Rowan's post, on soliciting feedback:
 
 > You should talk to people in your area as well as not in your area. That's good for two reasons: you want to **make sure that your application is easy to understand for a non-specialist**, but on the same token, if someone in your area happens to read your application, you don't want them to ding you points for feasibility or correctness.
 
-Your application readers may be in any field of computer science (or electrical engineering, etc), but may be experts in your field as well, so keep in mind you're threading a needle of understandability, correctness, and oversimplification. Don't worry about this too much but do keep it in mind.
+Your application readers may be in any field of computer science (or electrical engineering, etc), with no knowledge of your research topic at all, but they *might* be NLP experts as well. You need to thread the needle of maximizing understandability for non-experts while minimizing the impression of oversimplification for experts.
 
-As for the process of actually preparing your application and submitting, Alex Lang provides a useful [guide for applying](https://www.alexhunterlang.com/nsf-fellowship) including a highlighted copy of the call for proposals and a timeline to take for preparing your statements. Also, he has a [giant spreadsheet](https://docs.google.com/spreadsheets/d/1xoezGhbtcpg3BvNdag2F5dTQM-Xl2EELUgAfG1eUg0s/edit?gid=0#gid=0) containing hundreds application samples from tons of fields; definitely take a look at some examples in computer science.
+As for the process of actually preparing your application and submitting, Alex Lang provides a useful [application guide](https://www.alexhunterlang.com/nsf-fellowship), including an annotated copy of the call for proposals and a timeline to take for preparing your statements. Also, he has a [giant spreadsheet](https://docs.google.com/spreadsheets/d/1xoezGhbtcpg3BvNdag2F5dTQM-Xl2EELUgAfG1eUg0s/edit?gid=0#gid=0) containing hundreds application samples from tons of fields; definitely take a look at some examples in computer science.
 
-Here are some assorted quotes form my friends reflecting on their own applications and my thoughts:
+I also asked some successful applicant friends for their thoughts on applying:
 
 > All my reviewer feedback was about **my background being good prep for the proposed direction** + strong service/outreach. I applied as an undergrad, so **I didn’t link the proposal to a specific advisor**. I had a feasibility paragraph where I discussed where I’d get data, how I’d run experiments, and some concrete statements on how my training prepared me to do the proposed research etc
 
-There are some important details here which I've bolded. Once again, you really should focus on telling a story that connects to your demonstrated background and explains why you can do good research. It does not matter if you actually do the project you proposed.
-You don't need to tie your application to a specific advisor.
+Once again, you really should focus on telling a story that connects to your demonstrated background and explains why you can do good research. It does not matter if you actually do the project you proposed.
+You don't even need to tie your application to a specific advisor (though there can be benefits to doing so, as I did, see below for more discussion).
 
-To end on a lighter note, some quotes from other friends illustrating why you shouldn't fear the panelists too much:
+Other friends gave me more lighthearted stories from their applications:
 
 > I personally wouldn’t dig too far in the reviews, one of them thought I went to UCLA lol (from a student from a different UC)
 
-They probably are reading these applications quite fast, as well...
+The panelists are really trying to breeze through these. Passing is really about meeting a 1/8 bar for excellence, not about being the very best of all your peers.
 
 > I spelled "sociolect" wrong over and over in my research statement. I became a fellow anyways, but maybe good to know that they don't check spelling. 
 
+Like I said---the panelists are reading fast.
+
 ### 2. My GRFP statements and feedback
 
-When you apply for the NSF GRFP, in addition to getting 3 recommendation letters, you have to complete two statements, a "**Graduate Research Plan Statement**" and a **personal statement** ("Personal, Relevant Background, and Future Goals Statement"). 
-Additionally, you provide your CV. Here's what I submitted:
+The two statements you will submit are "**Graduate Research Plan Statement**" and a **personal statement** ("Personal, Relevant Background, and Future Goals Statement"). 
+Additionally, you provide your CV, and solicit 3 letters of recommendation from mentors. Here's what I submitted:
 
 - My Graduate Research Plan Statement: [pdf](../../../doc/grfp_statements/research-plan.pdf)
 - My personal statement: [pdf](../../../doc/grfp_statements/personal-statement.pdf)
@@ -77,6 +80,7 @@ Additionally, you provide your CV. Here's what I submitted:
 After you apply, you get feedback from the reviewers (whether your application was accepted or rejected). Here's the feedback I got:
 
 - Feedback I received from the reviewer panel: [pdf link](../../../doc/grfp_statements/reviewer-feedback.pdf)
+
 
 ### 3. Why do I think I succeeded in applying for NSF GRFP?
 
