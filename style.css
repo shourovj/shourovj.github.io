@@ -54,6 +54,7 @@ body{
   background-attachment: fixed;
   font-size: 11pt; /* fallback for bad browser */
   font-size: var(--base-size);
+  font-stretch: 95%;
 }
 
 
@@ -298,7 +299,7 @@ a.active {
 }
 
 p {
-  line-height: 1.15;
+  line-height: 1.4;
   margin: 0;
   padding: 5pt;
   text-align: left;
