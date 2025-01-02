@@ -7,6 +7,38 @@
   --my-red: rgb(147, 54, 37)
 }
 
+@font-face {
+  font-family: Univers;
+  src: url('font/UniversLTStd.woff2');
+}
+@font-face {
+  font-family: Univers;
+  src: url('font/UniversLTStd-Bold.woff2');
+  font-weight: 700;
+}
+@font-face {
+  font-family: Univers;
+  src: url('font/UniversLTStd-BoldObl.woff2');
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: Univers;
+  src: url('font/UniversLTStd-Obl.woff2');
+  font-style: italic;
+}
+@font-face {
+  font-family: Univers;
+  src: url('font/UniversLTStd-XBlack.woff2');
+  font-weight: 900;
+}
+@font-face {
+  font-family: Univers;
+  src: url('font/UniversLTStd-XBlackObl.woff2');
+  font-weight: 900;
+  font-style: italic;
+}
+
 
 body{
   /*margin-top: 0px;
@@ -16,7 +48,7 @@ body{
   margin: 0px;
   background-color: rgb(252,252,252);
   /*font-family: 'PT Serif', serif;*/
-  font-family: 'Arimo', sans-serif;
+  font-family: 'Univers', sans-serif;
   font-weight: 100;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -97,17 +129,25 @@ h5 {
   display: table-cell;
   margin: auto;
   text-align: right;
-  font-family: Arimo, sans-serif;
+  font-family: Univers, sans-serif;
   color: white;
   font-size: 44pt; /* fallback for bad browser */
   font-size: calc(var(--base-size) * 4);
-  font-weight: 700;
+  font-weight: 900;
   font-style: italic;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   padding-right: 20px;
   vertical-align: middle;
   padding-right: 10pt;
   padding-left: 10pt;
+}
+
+strong {
+  font-weight: 700;
+}
+
+em {
+  font-style: italic;
 }
 
 header h2{
@@ -117,13 +157,13 @@ header h2{
   /*font-family: 'Oswald', sans-serif;
     font-variant: small-caps;
   */
-  font-family: Arimo, sans-serif;
+  font-family: Univers, sans-serif;
   /*color: white;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;*/
   color: black;
   font-size: 28pt; /* fallback for bad browser */
   font-size: calc(var(--base-size) * 2.5);
-  font-weight: 700;
+  font-weight: 900;
   vertical-align: bottom;
   padding: 5pt 5pt;
   padding:5pt 5pt;
@@ -132,7 +172,7 @@ header h2{
 a {
   text-decoration: none;
   color: rgb(50, 115, 228);
-  font-weight:600;
+  font-weight:700;
 }
 
 
@@ -153,7 +193,7 @@ position: fixed;
 
 ul.menu {
   font-weight: 800;
-  font-family: Arimo, sans-serif;
+  font-family: Univers, sans-serif;
   font-size: 13pt; /* fallback for bad browser */
   font-size: calc(var(--base-size) * 13 / 11);
   list-style-type: none;
@@ -285,7 +325,7 @@ ul.icons {
   margin-left: auto;
   max-width: 800px;
   font-weight: 800;
-  font-family: Arimo, sans-serif;
+  font-family: Univers, sans-serif;
   font-size:11pt;
     list-style-type: none;
     padding: 0;
@@ -450,5 +490,5 @@ code {
 }
 
 b {
-  font-weight: 800;
+  font-weight: 700;
 }
