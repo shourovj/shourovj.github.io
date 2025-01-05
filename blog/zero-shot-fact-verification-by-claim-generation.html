@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content="Pelican" />
+        <title>Zero-shot Fact Verification by Claim Generation</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
+        <meta name="description" content="ACL-IJCNLP 2021 Paper "Zero-shot Fact Verification by Claim Generation"" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">A Pelican Blog</a></h1>
+                <nav><ul>
+                    <li><a href="/category/about.html">About</a></li>
+                    <li class="active"><a href="/category/acl-2021.html">ACL 2021</a></li>
+                    <li><a href="/category/announcements.html">Announcements</a></li>
+                    <li><a href="/category/career.html">Career</a></li>
+                    <li><a href="/category/improving-ai-science.html">Improving AI Science</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/zero-shot-fact-verification-by-claim-generation.html" rel="bookmark"
+           title="Permalink to Zero-shot Fact Verification by Claim Generation">Zero-shot Fact Verification by Claim Generation</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2021-08-01T17:30:00+00:00">
+                Published: Sun 01 August 2021
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/liangming-pan.html">Liangming Pan</a>
+        </address>
+<p>In <a href="/category/acl-2021.html">ACL 2021</a>.</p>
+<p>tags: <a href="/tag/fact-checking.html">Fact Checking</a> <a href="/tag/question-generation.html">Question Generation</a> <a href="/tag/claim-generation.html">Claim Generation</a> <a href="/tag/zero-shot-learning.html">Zero-shot Learning</a> </p>
+</footer><!-- /.post-info -->      <h3>Introduction</h3>
+<p><strong>Fact verification</strong> aims to validate a claim in the context of evidence. Given a claim $\mathcal{C}$ and a piece of evidence $\mathcal{P}$ as inputs, a fact verification model $\mathcal{F}$ predicts a label $\mathcal{Y} \in {\texttt{supported}, \texttt{refuted}, \texttt{NEI} }$ to verify whether $\mathcal{C}$ is supported, refuted, or can not be verified by the information in $\mathcal{P}$. Fact verification task has attracted growing interest with the rise in disinformation in news and social media. Rapid progress has been made by training large neural models on the <a href="https://arxiv.org/abs/1803.05355">FEVER dataset</a>, containing more than 100K human-crafted (evidence, claim) pairs based on Wikipedia.</p>
+<p>Fact verification is demanded in many domains, including news articles, social media, and scientific documents. However, it is not realistic to assume that large-scale training data is available for every new domain that requires fact verification. Creating training data by asking humans to write claims and search for evidence to support/refute them can be extremely costly. </p>
+<h4>Zero/Few-shot Fact Verification</h4>
+<p>Could we train a good fact checking model without human annotation? <strong>We explore this possibility of automatically generating large-scale (evidence, claim, label) data to train the fact verification model.</strong> </p>
+<p>As illustrated in Figure 1 below, we propose a simple yet general framework <strong>Question Answering for Claim Generation (QACG)</strong> to generate three types of claims from any given evidence: </p>
+<ol>
+<li>Claims that are supported by the evidence</li>
+<li>Claims that are refuted by the evidence</li>
+<li>Claims that the evidence does Not have Enough Information (NEI) to verify</li>
+</ol>
+<p><strong>Zero-shot Fact Verification</strong>: We assume no human-annotated training example is available. We only use the generated (evidence, claim, label) data are used to train the fact verification model. </p>
+<p><strong>Few-shot Fact Verification</strong>: We assume only a few human-labeled (evidence, claim) pairs are available. We first train the fact verification model with the generated data. Then we fine-tune the model with the limited amount of human-labeled data. </p>
+<p>!Fig!8!
+<img alt="zero-shot-fact-verification" class="img-fluid" src="images/2108/zero-shot-fact-verification.png">
+Our zero-shot fact verification framework.</p>
+<h4>Main Observations</h4>
+<p><strong>Reducing Human Labor</strong>: pretraining the fact verification model with generated claims greatly reduces the demand for in-domain human annotation. 
+- <strong>Zero-shot Setting</strong>: Although we do not use any human-labeled training examples, the model achieves over 70% of the F1 performance of a fully-supervised setting. 
+- <strong>Few-shot Setting</strong>: By fine-tuning the model with only 100 labeled examples, we further close the performance gap, achieving 89.1% of fully-supervised performance. </p>
+<p><strong>Improving Robustness</strong>: When evaluating the model on an unbiased test set for FEVER, we find that training with generated claims also produces a more robust fact verification model. </p>
+<h3><strong>Claim Generation Model</strong></h3>
+<p>As illustrated in Figure 2 below, our claim generation model QACG has two major components: </p>
+<h4>Question Generator</h4>
+<p>A <strong>Question Generator</strong> $\mathcal{G}$ takes as input an evidence $P$ and a text span $A$ from the given evidence and aims to generate a question $Q$ with $A$ as the answer. We implement this with the <a href="https://arxiv.org/abs/1910.13461">BART model</a>, a large transformer-based sequence-to-sequence model pretrained on 160GB of text. The model is finetuned on the SQuAD dataset processed by <a href="https://arxiv.org/abs/1704.01792">Zhou et al. (2017)</a>, where the model encodes the concatenation of the SQuAD passage and the answer text and then learns to decode the question. </p>
+<h4>QA-to-Claim model</h4>
+<p>The <strong>QA-to-Claim model</strong> $\mathcal{M}$ takes as inputs $Q$ and $A$, and outputs the declarative sentence $C$ for the $(Q, A)$ pair. We also treat this as a sequence-to-sequence problem and finetune the BART model on the <a href="https://arxiv.org/abs/1809.02922">QA2D dataset</a>, which contains the human-annotated declarative sentence for each $(Q, A)$ pair in SQuAD. </p>
+<p>!Fig!10!
+<img alt="framework" src="images/2108/framework.png">
+Our claim generation model.</p>
+<h3>Using the Model to Generate Claims</h3>
+<p>Given the pretrained question generator $G$ and the QA-to-Claim model $M$, we then formally introduce how we generate claims with different labels. </p>
+<h4><em>Supported</em> Claim Generation</h4>
+<p>Given an evidence $P$, we use named entity recognition to identify all entities within $P$. We treat each identified entity $a$ as an answer and generate a question $q$ with the question generator. The question–answer pair $(q, a)$ are then sent to the QA-to-Claim model to generate the supported claim $c$. </p>
+<h4><em>Refuted</em> Claim Generation</h4>
+<p>To generate a refuted claim, after we generate the question–answer pair $(q, a)$, we use <strong>answer replacement</strong> to replace the answer $a$ with another entity $a'$ with the same type such that $a'$ becomes an incorrect answer to the question $q$. Using $a$ as the query, we randomly sample a phrase from the top-5 most similar phrases in the pretrained <a href="https://github.com/explosion/sense2vec">Sense2Vec</a> as the replacing answer $a'$. The new pair $(q, a')$ is then fed to the QA-to-Claim model to generate the refuted claim. </p>
+<h4><em>NEI</em> Claim Generation</h4>
+<p>We need to generate a question $q'$ which is relevant but cannot be answered by $P$. To this end, we link $P$ back to its original Wikipedia article $W$ and expand the evidence with additional contexts $P_{ext}$, which are five randomly-retrieved sentences from $W$ that are not present in $P$. As shown in the example in the above Figure, one additional context retrieved is "By the time the riots ended, 63 people had been killed". We then concatenate $P$ and $P_{ext}$ as the expanded evidence, based on which we generate a supported claim given an entity in $P_{ext}$ as the answer (e.g., "63"). This results in a claim relevant to but unverifiable by the original evidence $P$.  </p>
+<h3>Experiments</h3>
+<p>By applying our QACG model to each of the 18,541 Wikipedia articles in the FEVER training set, we generate a total number of 176,370 supported claims, 360,924 refuted claims, and 258,452 NEI claims. </p>
+<h4>Evaluation Datasets</h4>
+<ul>
+<li><strong>FEVER-S/R</strong>: Since only the supported and refuted claims are labeled with gold evidence in FEVER, we take the claim–evidence pairs of these two classes from the FEVER test set for evaluation.</li>
+<li><strong>FEVER-Symmetric</strong>: this is a carefully-designed unbiased test set designed by <a href="https://arxiv.org/abs/1908.05267">Schuster et al. (2019)</a> to detect the robustness of the fact verification model. Only supported and refuted claims are present in this test set. </li>
+<li><strong>FEVER-S/R/N</strong>: The full FEVER test set are used for a three-class verification. We use the system of <a href="https://arxiv.org/abs/1901.02534">Malon (2019)</a> to retrieve evidence sentences for NEI claims. </li>
+</ul>
+<h4>Zero-shot Fact Verification</h4>
+<p>Models for comparison: </p>
+<ul>
+<li><strong>Supervised</strong>: the RoBERTa-large model fine-tuned on the FEVER training set as the supervised model. </li>
+<li><strong>QACG</strong>: the RoBERTa-large model fine-tuned on our generated training set. </li>
+<li><strong>Perplexity</strong>: It predicts the class label based on the perplexity of the claim under a pretrained GPT2 language model, following the assumption that "misinformation has high perplexity". </li>
+<li><strong>LM as Fact Checker</strong> <a href="https://arxiv.org/abs/2006.04102">(Lee et al., 2020b)</a>: It leverages the implicit knowledge stored in the pretrained BERT language model to verify a claim. </li>
+</ul>
+<p>!Fig!8!
+<img alt="zero-shot-experiment" src="images/2108/zero-shot-experiment.png">
+Our zero-shot experiment.</p>
+<p>QACG attains 78.1 F1 on the FEVER-S/R and 62.6 F1 on the FEVER-S/R/N. Although QACG does not see any human-labelled (evidence, claim) pair in training, the F1 gap to the fully-supervised model is only 17.0 and 15.2 on these two settings, respectively. <strong>The results demonstrate the effectiveness of QACG in generating good (evidence, claim) pairs for training the fact verification model.</strong> We observe a large performance drop when the supervised model is evaluated on the FEVER-Symmetric test set (−9.6 F1). However, the models trained with our generated data drop only 1.2 and 1.0 F1 drop. This suggests that the wide range of different claims we generate as training data helps eliminate some of the annotation artifacts present in FEVER, leading to a more robust fact verification model. </p>
+<h4>Few-shot Fact Verification</h4>
+<p>The blue solid line in the below Figure shows the F1 scores on FEVER-Symmetric after fine-tuning with different numbers of labeled training data. We compare this with training the model from scratch with the human-labeled data (grey dashed line). Our model performs consistently better than the model without pretraining, regardless of the amount of labeled training data. The improvement is especially prominent in data-poor regimes.  The results show pretraining fact verification with QACG greatly reduces the demand for in-domain humanannotated data. <strong>Our method can provide a "warm start" for fact verification system when applied to a new domain where training data are limited.</strong> </p>
+<p>!Fig!5!
+<img alt="few-shot-fact-verification" src="images/2108/few-shot-fact-verification.png">
+Our few-shot fact verification experiment.</p>
+<h4>Case Study</h4>
+<p>The below Table shows representative claims generated by our model. The claims are fluent, label-cohesive, and exhibit encouraging language variety.  However, one limitation is that our generated claims are mostly <strong>lack of deep reasoning over the evidence</strong>. This is because we finetune the question generator on the SQuAD dataset, in which more than 80% of its questions are shallow factoid questions. </p>
+<p>!Fig!10!
+<img alt="example-claims" src="images/2108/example-claims.png">
+Example claims generated by our model in the case study.</p>
+<h3>Conclusion</h3>
+<p>In this work, we utilize the question generation model to ask different questions for given evidence and convert question–answer pairs into claims with different labels. We show that the generated claims can train a well-performing fact verification model in both the zero-shot and the few-shot learning setting. In summary, our contributions are: </p>
+<ul>
+<li>We explore the possibility of automatically <strong>generating large-scale (evidence, claim) pairs</strong> to train the fact verification model.</li>
+<li>We propose a simple yet general framework <strong>Question Answering for Claim Generation (QACG)</strong> to generate three types of claims from any given evidence: 1) claims that are <strong>supported</strong> by the evidence, 2) claims that are <strong>refuted</strong> by the evidence, and 3) claims that the evidence does <strong>Not have Enough Information (NEI)</strong> to verify.</li>
+<li>We show that the generated training data can greatly benefit the fact verification system in both <strong>zero-shot and few-shot learning settings</strong>. </li>
+</ul>
+<p>You can check out our full paper <a href="https://arxiv.org/pdf/2105.14682.pdf">here</a> and our source code/data on <a href="https://github.com/teacherpeterpan/Zero-shot-Fact-Verification">GitHub</a>. If you have questions, please feel free to email us.</p>
+<ul>
+<li>Liangming Pan: <a href="mailto:liangmingpan@u.nus.edu">liangmingpan@u.nus.edu</a></li>
+<li>Wenhu Chen: <a href="mailto:wenhuchen@cs.ucsb.edu">wenhuchen@cs.ucsb.edu</a></li>
+</ul>
+<h3><strong>Acknowledgments</strong></h3>
+<p>This blog post is based on the paper:</p>
+<ul>
+<li><a href="https://arxiv.org/pdf/2105.14682.pdf">Zero-shot Fact Verification by Claim Generation</a>. <a href="https://liangmingpan.com/">Liangming Pan</a>, <a href="https://wenhuchen.github.io/">Wenhu Chen</a>, <a href="https://xwhan.github.io/">Wenhan Xiong</a>, <a href="https://www.comp.nus.edu.sg/~kanmy/">Min-Yen Kan</a>, and <a href="https://sites.cs.ucsb.edu/~william/">William Yang Wang</a>. ACL-IJCNLP 2021. </li>
+</ul>
+<p>Many thanks to my collaborators and advisors, Wenhu Chen, Wenhan Xiong, Min-Yen Kan and William Yang Wang for their help. Many thanks to Michael Saxon for edits on this blog post. </p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
