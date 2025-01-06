@@ -277,11 +277,11 @@ ul.icons {
   font-weight: 800;
   font-family: Univers, sans-serif;
   font-size:11pt;
-    list-style-type: none;
-    padding: 0;
-    /*border: 1px solid rgb(120, 142, 181);*/
-      font-style: italic;
-        text-shadow: none;
+  list-style-type: none;
+  padding: 0;
+  /*border: 1px solid rgb(120, 142, 181);*/
+  font-style: italic;
+  text-shadow: none;
 }
 
 ul.icons li {float: right;}
@@ -308,7 +308,8 @@ ul.icons li a:hover:not(.active) img{
 
 
 .filtercolor {
-  filter: invert(33%) sepia(3%) saturate(5832%) hue-rotate(56deg) brightness(93%) contrast(78%);
+  /*filter: invert(33%) sepia(3%) saturate(5832%) hue-rotate(56deg) brightness(93%) contrast(78%);*/
+  color: black;
 }
 
 .profilesec {
