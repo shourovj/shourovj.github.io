@@ -6,7 +6,9 @@ Authors: Michael Saxon
 Summary: Meditations and reflections of a (former?) epileptic
 Image: https://media.npr.org/assets/img/2023/02/13/gettyimages-956351618-439dfbeecd642f753b2880ee4ebca163ddf8f8e4.jpg
 
-*My New Year's resolution is to blog regularly, even if it means writing random nonsense that has little to do with research. To start, I wanted to tell the story of my health for my research career. This is not a pity party but a documentary effort. Now that I think I have (fingers crossed) closed this chapter of my life, I feel ready to write a bit about it. A lot of this story is about me being stupid. Don't be stupid like me.* 
+> *My New Year's resolution is to blog regularly, even if it means writing random nonsense that has little to do with research. To start, I wanted to tell the story of my health for my research career. This is not a pity party but a documentary effort. Now that I think I have (fingers crossed) closed this chapter of my life, I feel ready to write a bit about it. A lot of this story is about me being stupid. Don't be stupid like me.* 
+
+### Beginnings
 
 I had my first seizure when I was 21, on Thanksgiving day my senior year of college. After four days straight of roughly 2-3 hours of sleep a night, I collapsed in the living room while studying for a final. Losing the ability to read while looking at a dense math book is strange---I wasn't sure if I was just out of my depth or something was actually wrong until I felt a buzzing numb sensation move up my body while trying to sound out the word "the." As I woke up, I thought my dad was kidding when he told me I had just had a seizure.
 
@@ -25,6 +27,8 @@ My first neurologist was ok with me refusing to go on medication. In hindsight, 
 
 I was in denial.
 
+### Acclimation
+
 For the next few years, I was unmedicated, and had sufficiently infrequent seizures that I could pretend to live a normal life. I stopped driving[^4] but living in the dense neighborhoods around ASU made this a limited impediment. Through my first four years as an epileptic, I came to live with the roughly 4 to 8 seizures a year. Less than one a month isn't that bad, 
 right??
 
@@ -41,6 +45,8 @@ I don't know exactly how many seizures I had between January 2018 and August 202
 [^5]: Albeit, with very limited driving
 
 I completed my masters and applied to PhD programs. Living in Pittsburgh, I took the offer to come back to the west coast to PhD at UCSB. For the pandemic, I moved back home with my parents and did my first year of PhD in my childhood bedroom in Mesa, AZ. Financially this was a good decision, socially I'm not sure, but safety-wise, this turned out to be very prescient.
+
+### Injuries
 
 I had a seizure where I dislocated my right shoulder. It turns out, the human body is very strong---if you swing your arm straight up and continue rotating backward, with all of your strength, your arm can pull itself out of its own socket. Finally, far too late, I met with a second neurologist to get on my first seizure medication.
 
@@ -62,6 +68,8 @@ On the maximum dose, they still didn't stop. I didn't want to try a new one and 
 
 I have observed a scaling law in arm dislocations. The human shoulder has recursive self-improvement in dislocation capabilities. When one happens, it damages the tendons, cartilage, and bones, making the next one easier. By the third or fourth I had, the ER doctor implored me to get reconstructive surgery.
 
+### The easy fix?
+
 Figuring that the last thing I should do is let myself mess up the expensive repair job, I finally gave in and agreed to try a new medication.
 
 I got the surgery, and had the longest period of arm non-use yet.
@@ -76,6 +84,8 @@ I can confidently drive again. I feel like I can live long term in the sun belt 
 
 I feel like such an idiot. This is all I had to do?! But my obstinance toward drug experimentation is in the past.
 
+### Looking back
+
 My life will never be quite the same as it was before, and my experience with epilepsy drove important changes in my life.
 
 I had to skip an exciting visiting scholar opportunity for my shoulder surgery.
@@ -87,6 +97,8 @@ This need for constant audio started with a seizure and hospitalization during o
 [^7]: That and losing my work laptop in a classic SF smash-and-grab robbery...
 
 My epilepsy robbed me of music---my most cherished hobby---for years. I have played piano since childhood, producing my own arrangements of music from perfect pitch. As any musician would tell you, sitting at the piano was the ultimate form of active relaxation. In my first year of the PhD, I felt a new set of overwhelming sensations overcome me when I was playing the piano, triggering a seizure. I didn't touch the piano for several weeks, and when I did again, the same sensation happened. Out of an abundance of caution, I stopped making music completely---I didn't want to strengthen the connection, and I didn't want to trigger any unnecessary seizures. I had to mostly stop listening to piano music as I felt like the sensations may start. Once you get in your own head, the fear of feeling the aura, or the doubt of whether a sensation is part of the aura or not, starts to feel like the aura in and of itself. I had to cut it off entirely, and I stopped engaging with music for four years. Should I try again? I want to, but I think I'll wait longer.
+
+### Looking forward
 
 I think I'm better now though. I certainly hope I am! There's a bit of survivor's guilt in that. A friend has had his life be completely derailed by debilitating epilepsy---what right do I have to feel disadvantaged by mine?? How can I feel joy for seemingly "overcoming" my disability while so many continue to suffer?
 
