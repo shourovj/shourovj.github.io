@@ -10,32 +10,32 @@
 
 @font-face {
   font-family: Univers;
-  src: url('font/UniversLTStd.woff2');
+  src: url('https://saxon.me/font/UniversLTStd.woff2');
 }
 @font-face {
   font-family: Univers;
-  src: url('font/UniversLTStd-Bold.woff2');
+  src: url('https://saxon.me/font/UniversLTStd-Bold.woff2');
   font-weight: 700;
 }
 @font-face {
   font-family: Univers;
-  src: url('font/UniversLTStd-BoldObl.woff2');
+  src: url('https://saxon.me/font/UniversLTStd-BoldObl.woff2');
   font-weight: 700;
   font-style: italic;
 }
 @font-face {
   font-family: Univers;
-  src: url('font/UniversLTStd-Obl.woff2');
+  src: url('https://saxon.me/font/UniversLTStd-Obl.woff2');
   font-style: italic;
 }
 @font-face {
   font-family: Univers;
-  src: url('font/UniversLTStd-XBlack.woff2');
+  src: url('https://saxon.me/font/UniversLTStd-XBlack.woff2');
   font-weight: 900;
 }
 @font-face {
   font-family: Univers;
-  src: url('font/UniversLTStd-XBlackObl.woff2');
+  src: url('https://saxon.me/font/UniversLTStd-XBlackObl.woff2');
   font-weight: 900;
   font-style: italic;
 }
@@ -53,7 +53,7 @@ body{
   font-size: 11pt; /* fallback for bad browser */
   font-size: var(--base-size);
   font-stretch: 95%;
-}
+ }
 
 .worldmap {
   margin-right: auto;

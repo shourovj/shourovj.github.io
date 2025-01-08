@@ -47,11 +47,16 @@ def figure_postprocess(lines):
 
 IGNORE_FILES = ["archives.html", "authors.html", "categories.html", "index.html", "tags.html"]
 
+def char_replacements(lines):
+    # replace -- with en dash and --- with em dash
+    for i, line in enumerate(lines):
+        lines[i] = line.replace("---", "&mdash;").replace("--", "&ndash;")
+    return lines
 
 @click.command()
 @click.option('--dir', default="/Users/mssaxon/Documents/github/michaelsaxon.github.io/blog")
 def main(dir):
-    files = glob.glob(f"{dir}/*.html")
+    files = glob.glob(f"{dir}/*/*/*.html")
     print("Backing up all blogpost files...")
     for file in files:
         if file in IGNORE_FILES:
@@ -60,6 +65,7 @@ def main(dir):
         with open(file, "r") as f:
             lines = f.readlines()
         lines = figure_postprocess(lines)
+        lines = char_replacements(lines)
         with open(file, "w") as f:
             f.writelines(lines)
 
