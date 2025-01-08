@@ -14,7 +14,6 @@
             {{ article.summary }}
     </div>
 
-    <hr>
     {{ article.content }}
     <hr>
     <p style="font-size: 10pt; font-style: italic;">Category: <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>; Tags: {% if article.tags %}{% for tag in article.tags %}<a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}</p>
