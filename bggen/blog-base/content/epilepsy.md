@@ -1,10 +1,10 @@
-Title: A seizure-free year
+Title: A seizure-free year for Michael! 
 Date: 2025-01-07 19:35
 Category: Personal
 Tags: health, grad student life
 Authors: Michael Saxon
-Summary: Meditations and reflections of a (former?) epileptic
-Image: https://media.npr.org/assets/img/2023/02/13/gettyimages-956351618-439dfbeecd642f753b2880ee4ebca163ddf8f8e4.jpg
+Summary: Meditations and reflections of a (former?) epileptic in recovery
+Image: https://healthmatters.nyp.org/wp-content/uploads/2021/11/epilepsy-hero.jpg
 
 > *My New Year's resolution is to blog regularly, even if it means writing random nonsense that has little to do with research. To start, I wanted to tell the story of my health for my research career. This is not a pity party but a documentary effort. Now that I think I have (fingers crossed) closed this chapter of my life, I feel ready to write a bit about it. A lot of this story is about me being stupid. Don't be stupid like me.* 
 
