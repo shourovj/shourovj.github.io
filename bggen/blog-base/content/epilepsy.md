@@ -62,7 +62,9 @@ Having a low base rate of seizures is a blessing and a curse. You can't know if 
 
 Unfortunately, the seizures didn't stop, and I started dislocating my arm more. After the third or fourth breakthrough seizure, my neurologist convinced me to start raising the dose. We kept cranking it up, hoping the seizures would stop. Maybe they slowed down? It was unclear.
 
-They came in embarrassing times. I had to explain to my desk neighbor that I was stopping my work to lay down on my jacket out of an abundance of caution because I had felt the sensations---she didn't need to worry and if I had a seizure, she needed to only call 911 if it lasted more than a couple minutes. One time, when I was alone in lab, I did have a seizure, and vomited on the carpet. Embarrassed and sore, I wiped it up off the carpet myself, and there's still a small stain(which thankfully has been covered by a larger stain from an AC leak we had last year).
+They came in embarrassing times. I had to explain to my desk neighbor that I was stopping my work to lay down on my jacket out of an abundance of caution because I had felt the sensations---she didn't need to worry and if I had a seizure, she needed to only call 911 if it lasted more than a couple minutes. One time, when I was alone in lab, I did have a seizure, and vomited on the carpet. Embarrassed and sore, I wiped it up off the carpet myself, and there's still a small stain[^7].
+
+[^7]: This stain has thankfully since been covered by a larger stain from an AC leak.
 
 On the maximum dose, they still didn't stop. I didn't want to try a new one and risk worsening things. But the dislocations also continued.
 
@@ -92,9 +94,9 @@ I had to skip an exciting visiting scholar opportunity for my shoulder surgery.
 
 I have anxieties related to the seizures that will probably not abate for a long time. Every moment of deja vu scares the hell out of me. Weird coping habits I developed linger. I developed the habit of almost always listening to some kind of podcast or speech, just so I could immediately notice if the loss of language understanding has come. Or if I did feel overwhelmed by the aura, I would have something to focus on and maybe beat back the seizure. This auditory safety blanket definitely hampered my ability to sit and ponder, and I am getting used to feeling comfortable without it and sitting in silence.
 
-This need for constant audio started with a seizure and hospitalization during one of my summer internships. I feel like learning to work with this coping mechanism played a part in derailing my intern project[^7].
+This need for constant audio started with a seizure and hospitalization during one of my summer internships. I feel like learning to work with this coping mechanism played a part in derailing my intern project[^8].
 
-[^7]: That and losing my work laptop in a classic SF smash-and-grab robbery...
+[^8]: That and losing my work laptop in a classic SF smash-and-grab robbery...
 
 My epilepsy robbed me of music---my most cherished hobby---for years. I have played piano since childhood, producing my own arrangements of music from perfect pitch. As any musician would tell you, sitting at the piano was the ultimate form of active relaxation. In my first year of the PhD, I felt a new set of overwhelming sensations overcome me when I was playing the piano, triggering a seizure. I didn't touch the piano for several weeks, and when I did again, the same sensation happened. Out of an abundance of caution, I stopped making music completely---I didn't want to strengthen the connection, and I didn't want to trigger any unnecessary seizures. I had to mostly stop listening to piano music as I felt like the sensations may start. Once you get in your own head, the fear of feeling the aura, or the doubt of whether a sensation is part of the aura or not, starts to feel like the aura in and of itself. I had to cut it off entirely, and I stopped engaging with music for four years. Should I try again? I want to, but I think I'll wait longer.
 
