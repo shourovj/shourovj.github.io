@@ -4,6 +4,7 @@ Category: About
 Tags: About
 Authors: Michael Saxon
 Summary: To test that my blog implementation works, I'll share my pytorchlightning-based replication of dataset cartography!
+Image: https://images.rove.me/w_1920,q_85/mqmkudxwery6sdg2kvqv/florida-kennedy-space-center-rocket-launch.jpg
 
 ### About my blog
 

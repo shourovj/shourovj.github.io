@@ -10,7 +10,7 @@ PATH = 'content'
 RELATIVE_URLS = True
 
 TIMEZONE = 'US/Pacific'
-
+DEFAULT_DATE_FORMAT= '%B %-d, %Y'
 DEFAULT_LANG = 'en'
 
 # Feed generation is usually not desired when developing
