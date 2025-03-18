@@ -37,7 +37,7 @@ DEFAULT_PAGINATION = 10
 
 # Add the plugin path
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ["pelican_katex", "footnote_popups", "infobox"]
+PLUGINS = ["pelican_katex", "footnote_popups", "infobox", "shorten_filter"]
 
 SLUGIFY_SOURCE = 'basename'
 

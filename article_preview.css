@@ -1,0 +1,121 @@
+.article-preview {
+    display: flex;
+    max-width: 800px;
+    margin: 1.5rem auto;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: border 0.2s ease;
+    min-height: 200px;
+    position: relative;
+    border: 2px solid transparent;  /* Transparent border by default */
+}
+
+.article-preview:hover {
+    border: 2px solid var(--light-header);  /* Use theme color on hover */
+}
+
+.preview-image {
+    width: 200px;
+    flex: none;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.preview-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 40px;
+    background: linear-gradient(to right, transparent, white);
+}
+
+.preview-content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.preview-title {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+    color: #333;
+    text-decoration: none;
+}
+
+.preview-title a {
+    text-decoration: none;
+    color: inherit;
+    pointer-events: none;  /* Disable individual link clicks */
+}
+
+.preview-title a:hover {
+    color: var(--light-header);
+}
+
+.preview-meta {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.preview-description {
+    color: #444;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Style for the overlay link that covers the entire preview */
+.article-preview-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    cursor: pointer;
+}
+
+/* Remove text decoration from the overlay link */
+.article-preview-link:hover {
+    text-decoration: none;
+}
+
+/* Style for any links within the content */
+.preview-content a {
+    position: relative;
+    z-index: 3;  /* Above the overlay link */
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .article-preview {
+        flex-direction: column;
+        margin: 1rem;
+        min-height: unset;
+    }
+
+    .preview-image {
+        width: 100%;
+        height: 150px;
+        min-height: unset;
+    }
+
+    .preview-image::after {
+        width: 100%;
+        height: 20px;
+        top: 130px;
+        background: linear-gradient(to bottom, transparent, white);;
+    }
+
+    .preview-content {
+        padding: 1rem;
+        height: auto;
+    }
+} 
