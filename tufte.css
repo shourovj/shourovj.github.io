@@ -178,7 +178,9 @@ section > table {
     width: 55%;
 }
 
+
 section > blockquote {
+    margin: auto;
     width: 87.5%;
 }
 
@@ -363,7 +365,7 @@ label.margin-toggle:not(.sidenote-number) {
 
 @media (max-width: 760px) {
     div.tuftebody {
-        width: 100%;
+        width: calc(100%-4rem);
     }
     hr,
     section > p,

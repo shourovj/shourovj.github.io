@@ -1,0 +1,98 @@
+/* Define page width variable */
+.page {
+    --page-width: min(800px, 100vw);
+    overflow: visible !important;
+    position: relative;
+}
+
+/* Style the footnote reference container */
+sup[id^="fnref"] {
+    position: relative;
+    display: inline;
+    z-index: 1;
+    font-size: 0.7em;
+    vertical-align: baseline;
+    position: relative;
+    top: -0.6em;
+    line-height: 0;
+}
+
+/* Style the footnote number */
+.footnote-ref {
+    color: rgb(50, 115, 228);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    width: 1em;
+    height: 1em;
+    border: 1px solid rgb(50, 115, 228);
+    border-radius: 50%;
+    position: relative;
+    transition: background-color 0.2s;
+    line-height: normal;
+}
+
+/* Create larger invisible hit area */
+.footnote-ref::before {
+    content: '';
+    position: absolute;
+    top: -0.5em;
+    right: -0.5em;
+    bottom: -0.5em;
+    left: -0.5em;
+    z-index: -1;
+}
+
+/* Hover effect */
+.footnote-ref:hover {
+    background-color: rgba(50, 115, 228);
+    color: white !important;
+}
+
+/* Style the popup container */
+.footnote-popup {
+    visibility: hidden;
+    position: absolute;
+    width: min(400px, calc(var(--page-width) - 40px));
+    background: rgb(252,252,252);
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: var(--base-size);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 9999;
+    bottom: 100%;
+    margin-bottom: 10px;
+    opacity: 0;
+    transition: opacity 0.2s, visibility 0.2s;
+    text-align: left;
+    line-height: 1.4;
+    white-space: normal;
+    pointer-events: none;
+    color: black;
+    font-family: 'Univers', sans-serif;    
+    /* Center by default */
+    left: 50%;
+    transform: translateX(calc(-50% + var(--popup-shift, 0px)));
+}
+
+/* Show popup */
+sup[id^="fnref"]:hover .footnote-popup {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Style the arrow */
+.footnote-popup::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    border-width: 0 10px 10px 10px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+    left: calc(50% - var(--popup-shift, 0px));
+    transform: translateX(-50%) rotate(180deg);
+}
