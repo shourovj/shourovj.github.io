@@ -34,6 +34,7 @@ Putting early-career researchers in a double bind where they cannot have both br
 I will now provide more lengthy explanations for why I believe each of the four points above to be true. 
 
 
+> [!NOTE]
 > *Disclaimers: Parts of this essay are written in a raw style; I seek to convey both the rationale and emotions behind my support for the swift removal of the embargo policy. 
 Apologies if you feel I have unfairly characterized your position or motivations. 
 Although I consider this policy exclusionary, I recognize the well-intentionedness of its creators and supporters, and do not hold malice towards them. 

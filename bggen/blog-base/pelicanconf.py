@@ -35,7 +35,9 @@ SOCIAL = (('You can add links in your config file', '#'),
 
 DEFAULT_PAGINATION = 10
 
-PLUGINS = ["pelican_katex"]
+# Add the plugin path
+PLUGIN_PATHS = ['plugins']
+PLUGINS = ["pelican_katex", "footnote_popups", "infobox"]
 
 SLUGIFY_SOURCE = 'basename'
 
@@ -44,3 +46,6 @@ ARTICLE_SAVE_AS = '{date:%Y}/{slug}/index.html'
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
+
+# Add to your existing config
+STATIC_PATHS = ['images', 'js', 'css', 'fonts']  # Add any other static paths you need
