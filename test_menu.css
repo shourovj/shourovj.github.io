@@ -102,11 +102,19 @@
     align-items: center;
     z-index: 1000;
     background-color: white;
-    display: none;
+    
+    /* Change display: none to these properties for animation */
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(-50%) translateY(-1em);
+    transition: all 0.2s ease-in-out;
   }
 
   #menu-toggle:checked ~ .menu {
-    display: flex;
+    /* Change display: flex to these properties */
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
   }
 
   .menu > li {
