@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Michael Saxon - Career</title><link href="saxon.me/blog/" rel="alternate"></link><link href="saxon.me/blog/feeds/career.atom.xml" rel="self"></link><id>saxon.me/blog/</id><updated>2024-08-31T17:45:00-07:00</updated><entry><title>NSF GRFP Application Tips for NLP, AI, CS</title><link href="saxon.me/blog/2024/grfp/" rel="alternate"></link><published>2024-08-31T17:45:00-07:00</published><updated>2024-08-31T17:45:00-07:00</updated><author><name>Michael Saxon</name></author><id>tag:None,2024-08-31:saxon.me/blog/2024/grfp/</id><summary type="html">&lt;p&gt;Reflections and advice from my successful NSF GRFP proposal in NLP. Why I think my applications worked well, what I wish I did differently, and links to my actual statements and feedback from the GRFP reviewing panel.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;On applying to PhD programs (and the NSF GRFP) in NLP and ML&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Michael Saxon - Career</title><link href="saxon.me/blog/" rel="alternate"></link><link href="saxon.me/blog/feeds/career.atom.xml" rel="self"></link><id>saxon.me/blog/</id><updated>2024-08-31T17:45:00-07:00</updated><entry><title>NSF GRFP Application Tips for NLP, AI, CS</title><link href="saxon.me/blog/2024/grfp/" rel="alternate"></link><published>2024-08-31T17:45:00-07:00</published><updated>2024-08-31T17:45:00-07:00</updated><author><name>Michael Saxon</name></author><id>tag:None,2024-08-31:saxon.me/blog/2024/grfp/</id><summary type="html">Reflections and advice from my successful NSF GRFP proposal in NLP. Why I think my applications worked well, what I wish I did differently, and links to my actual statements and feedback from the GRFP reviewing panel.</summary><content type="html">&lt;h3&gt;On applying to PhD programs (and the NSF GRFP) in NLP and ML&lt;/h3&gt;
 &lt;p&gt;While I'm not a particularly important person with singular sage advice, I still often find myself coaching aspiring applicants for PhD programs (and fellowship applications), and have a much better understanding of the process now than I did at my application time.
 So, I'm documenting the nuggets of advice I do have here to save me a bit of time sharing them with my mentees, and hopefully others will get some use out of them too!&lt;/p&gt;
 &lt;p&gt;If you are an US citizen or permanent resident entering a PhD in CS, you absolutely must apply for the &lt;a href="https://www.nsfgrfp.org/"&gt;National Science Foundation Graduate Research Fellowship Program (NSF GRFP)&lt;/a&gt; grant. 
@@ -21,10 +21,12 @@ Hopefully if more of us share our advice and statements, this gulf can be narrow
 &lt;blockquote&gt;
 &lt;p&gt;Focus on the personal element of the application and demonstrate &lt;strong&gt;a pattern of determination and curiosity&lt;/strong&gt; about science in general. One of the main mistakes I see in other people who apply for the GRFP is that they focus almost entirely on their research proposal and neglecting the personal elements. It’s important to remember that &lt;strong&gt;the purpose of the GRFP is to nurture promising scientists, not necessarily to fund the best scientific proposals&lt;/strong&gt; (although these often go together). &lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;Rowan Zellers similarly shared &lt;a href="https://rowanzellers.com/blog/nsf-grfp/"&gt;a good post with advice&lt;/a&gt;  on GRFP apps specifically for NLP. An important point that he hammers home is that the statement &lt;em&gt;does&lt;/em&gt; need to convincingly address a real broader impact, which may at first brush seem the reverse of Zach's advice, but they are actually well aligned. From Rowan's post:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The NSF does not expect you to actually carry out your research proposal. On the contrary, the research proposal requirement seems to test your ability to sketch out a coherent research plan for a couple of years... and to discuss its (hopefully fantastic!) *broader impact on society. &lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;The idea is that you need to show your promise as a scientist who can plan a &lt;em&gt;concrete and attainable project&lt;/em&gt; you &lt;strong&gt;demonstrably care about&lt;/strong&gt; (grounded in your prior work) and are on board for the &lt;strong&gt;mission of publicly funded science&lt;/strong&gt;---&lt;em&gt;helpfully impacting society&lt;/em&gt; through your research---and that you &lt;strong&gt;understand how the former fits in to the latter&lt;/strong&gt;.
 Note here that I italicized the attainability of the project and the final impact, while I bolded ideas of "caring" "having a mission" and "understanding."&lt;/p&gt;
 &lt;p&gt;You only need to show &lt;strong&gt;you have promise and your heart is in the right place&lt;/strong&gt;; you are not being stack ranked against candidates on any objective measure of project plan---they don't even expect you to specifically carry out your project.&lt;/p&gt;
@@ -32,22 +34,26 @@ Note here that I italicized the attainability of the project and the final impac
 &lt;blockquote&gt;
 &lt;p&gt;You should talk to people in your area as well as not in your area. That's good for two reasons: you want to &lt;strong&gt;make sure that your application is easy to understand for a non-specialist&lt;/strong&gt;, but on the same token, if someone in your area happens to read your application, you don't want them to ding you points for feasibility or correctness.&lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;Your application readers may be in any field of computer science (or electrical engineering, etc), with no knowledge of your research topic at all, but they &lt;em&gt;might&lt;/em&gt; be NLP experts as well. You need to thread the needle of maximizing understandability for non-experts while minimizing the impression of oversimplification for experts.&lt;/p&gt;
 &lt;p&gt;As for the process of actually preparing your application and submitting, Alex Lang provides a useful &lt;a href="https://www.alexhunterlang.com/nsf-fellowship"&gt;application guide&lt;/a&gt;, including an annotated copy of the call for proposals and a timeline to take for preparing your statements. Also, he has a &lt;a href="https://docs.google.com/spreadsheets/d/1xoezGhbtcpg3BvNdag2F5dTQM-Xl2EELUgAfG1eUg0s/edit?gid=0#gid=0"&gt;giant spreadsheet&lt;/a&gt; containing hundreds application samples from tons of fields; definitely take a look at some examples in computer science.&lt;/p&gt;
 &lt;p&gt;I also asked some successful applicant friends for their thoughts on applying:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;All my reviewer feedback was about &lt;strong&gt;my background being good prep for the proposed direction&lt;/strong&gt; + strong service/outreach. I applied as an undergrad, so &lt;strong&gt;I didn’t link the proposal to a specific advisor&lt;/strong&gt;. I had a feasibility paragraph where I discussed where I’d get data, how I’d run experiments, and some concrete statements on how my training prepared me to do the proposed research etc&lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;Once again, you really should focus on telling a story that connects to your demonstrated background and explains why you can do good research. It does not matter if you actually do the project you proposed.
 You don't even need to tie your application to a specific advisor (though there can be benefits to doing so, as I did, see below for more discussion).&lt;/p&gt;
 &lt;p&gt;Other friends gave me more lighthearted stories from their applications:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;I personally wouldn’t dig too far in the reviews, one of them thought I went to UCLA lol (from a student from a different UC)&lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;The panelists are really trying to breeze through these. Passing is really about meeting a 1/8 bar for excellence, not about being the very best of all your peers.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;I spelled "sociolect" wrong over and over in my research statement. I became a fellow anyways, but maybe good to know that they don't check spelling. &lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;Like I said---the panelists are reading fast.&lt;/p&gt;
 &lt;h3&gt;2. My GRFP statements and feedback&lt;/h3&gt;
 &lt;p&gt;The two statements you will submit are "&lt;strong&gt;Graduate Research Plan Statement&lt;/strong&gt;" and a &lt;strong&gt;personal statement&lt;/strong&gt; ("Personal, Relevant Background, and Future Goals Statement"). 

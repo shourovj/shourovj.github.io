@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Michael Saxon - Improving AI Science</title><link href="saxon.me/blog/" rel="alternate"></link><link href="saxon.me/blog/feeds/improving-ai-science.atom.xml" rel="self"></link><id>saxon.me/blog/</id><updated>2023-09-15T14:44:00-07:00</updated><entry><title>The ACL Anonymity Embargo Period is exclusionary, actually: an early-career researcher's perspective</title><link href="saxon.me/blog/2023/anti-acl-anon/" rel="alternate"></link><published>2023-09-15T14:44:00-07:00</published><updated>2023-09-15T14:44:00-07:00</updated><author><name>Michael Saxon</name></author><id>tag:None,2023-09-15:saxon.me/blog/2023/anti-acl-anon/</id><summary type="html">&lt;p&gt;Preprinting and promoting one's work online is one of the most impactful and accessible career advancement methods for early-career researchers. Policies that hinder this process are thus disproportionately harmful to early career scientists, relative to their senior peers. As online promotion is more accessible than traditional routes of namebuilding, we contend that depriving "low-prestige institution"-affiliated early-career researchers of this avenue for self-advancement futher disproportionately harms them relative to their "high-prestige" peers. Finally, a broad culture of posting quality preprints has community-level and scientific benefits. We contend that the ACL anonymity policy is harmful for the ways in which it forces early-career researchers (ECRs) to choose between participating in ACL or doing what's best for their careers.&lt;/p&gt;</summary><content type="html">&lt;p&gt;In case you're unfamiliar, the Association for Computational Linguistics (ACL), the premier venue for natural language processing (NLP) research, has an extremely strict "anonymity embargo policy," restricting the ability of researchers to publicly share or discuss their latest work online within a time window starting 1 month prior to a given conference's submission deadline, through the date when acceptance decisions are conveyed (about a four month period). &lt;strong&gt;The ACL Executive committe is currently considering abolishing this policy, and I strongly believe removing it is the right thing for both our science and community, and in particular I think removing it will, on the balance, have inclusionary outcomes for early-career researchers.&lt;/strong&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Michael Saxon - Improving AI Science</title><link href="saxon.me/blog/" rel="alternate"></link><link href="saxon.me/blog/feeds/improving-ai-science.atom.xml" rel="self"></link><id>saxon.me/blog/</id><updated>2023-09-15T14:44:00-07:00</updated><entry><title>The ACL Anonymity Embargo Period is exclusionary, actually: an early-career researcher's perspective</title><link href="saxon.me/blog/2023/anti-acl-anon/" rel="alternate"></link><published>2023-09-15T14:44:00-07:00</published><updated>2023-09-15T14:44:00-07:00</updated><author><name>Michael Saxon</name></author><id>tag:None,2023-09-15:saxon.me/blog/2023/anti-acl-anon/</id><summary type="html">Preprinting and promoting one's work online is one of the most impactful and accessible career advancement methods for early-career researchers. Policies that hinder this process are thus disproportionately harmful to early career scientists, relative to their senior peers. As online promotion is more accessible than traditional routes of namebuilding, we contend that depriving "low-prestige institution"-affiliated early-career researchers of this avenue for self-advancement futher disproportionately harms them relative to their "high-prestige" peers. Finally, a broad culture of posting quality preprints has community-level and scientific benefits. We contend that the ACL anonymity policy is harmful for the ways in which it forces early-career researchers (ECRs) to choose between participating in ACL or doing what's best for their careers.</summary><content type="html">&lt;p&gt;In case you're unfamiliar, the Association for Computational Linguistics (ACL), the premier venue for natural language processing (NLP) research, has an extremely strict "anonymity embargo policy," restricting the ability of researchers to publicly share or discuss their latest work online within a time window starting 1 month prior to a given conference's submission deadline, through the date when acceptance decisions are conveyed (about a four month period). &lt;strong&gt;The ACL Executive committe is currently considering abolishing this policy, and I strongly believe removing it is the right thing for both our science and community, and in particular I think removing it will, on the balance, have inclusionary outcomes for early-career researchers.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;This essay is my attempt at laying bare the harms this policy visits on early career researchers as an inclusion-oriented argument for its removal. In particular, I will argue:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;That social media self-promotion is a crucial career development tool that &lt;strong&gt;all early-career researchers benefit from&lt;/strong&gt; and has a &lt;strong&gt;leveling effect across existing hierarchies of institutional prestige&lt;/strong&gt;&lt;/li&gt;
@@ -17,10 +17,11 @@ By communicating why so many ECRs are so opposed to this policy, I hope to aid t
 Putting early-career researchers in a double bind where they cannot have both broadly accessible hierarchy-leveling online self-promotion and prompt conference participation, the ACL embargo policy is thus counter-inclusionary, and must be repealed at once.&lt;/p&gt;
 &lt;p&gt;I will now provide more lengthy explanations for why I believe each of the four points above to be true. &lt;/p&gt;
 &lt;blockquote class="infobox infobox-note"&gt;
-&lt;p&gt;Disclaimers: Parts of this essay are written in a raw style; I seek to convey both the rationale and emotions behind my support for the swift removal of the embargo policy. 
+
+&lt;p&gt;&lt;em&gt;Disclaimers: Parts of this essay are written in a raw style; I seek to convey both the rationale and emotions behind my support for the swift removal of the embargo policy. 
 Apologies if you feel I have unfairly characterized your position or motivations. 
 Although I consider this policy exclusionary, I recognize the well-intentionedness of its creators and supporters, and do not hold malice towards them. 
-Sorry it's so wordy, if I had more time I would have written it shorter.&lt;/p&gt;
+Sorry it's so wordy, if I had more time I would have written it shorter.&lt;/em&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3&gt;Social media self-promotion is key for early career researcher (ECR) success and leveling across prestige hierarchies&lt;/h3&gt;
 &lt;p&gt;Name- and reputation-building are necessary for a successful scientific career.
@@ -128,38 +129,47 @@ When we get there, stay tuned for posts explicitly laying out the cases for and 
 &lt;blockquote&gt;
 &lt;p&gt;What do you think of the first proposed change that allows authors to freely make versions of their submitted paper available online at any time?&lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;I support the proposed change.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;What do you think of the second proposed change that allows authors to mention their preprints at any time, including on social media?&lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;I support the proposed change.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;If you think that either changing or not changing these policies would potentially harm your career, or harm you in some other way, please explain: &lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;Early-career researchers need the ability to promptly share their preprints online for time-sensitive opportunities such as internships and fellowships. As an ECR I think the first change is absolutely necessary. The second change would further enable ECRs to freely discuss their freshest work, improving their ability to network and grow. As an ECR, I believe I would also benefit from the second change. I feel that not making the changes harms me.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Regardless of your answers to previous questions, and assuming a “magic solution” in which author identities remain unknown to reviewers and introduce no biases during review: would you like to pre-print (some of) your papers during review and discuss them on social media? Please briefly explain your answer.&lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;Yes, the reasons I support preprinting are orthogonal to acceptance, it's about career opportunites and I don't believe preprinting or not preprinting will impact my acceptance odds.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Do you have any other suggestions on how ACL could balance the desire for open scientific discourse with the risk that it may contribute to reviewing bias?&lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;I think if we remove the limitations we should continue collecting fine-grained data on acceptance rates and deanonymization; if the policy was preventing outcome-impacting reviewer bias, it will be visible, and we can consider reinstituting an embargo in that case with the knowledge that having it actually makes a difference.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;How strongly (1-5) do your future career goals require the visibility of your papers?&lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;5 (extremely)&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;If reviewers were able to see de-anonymized versions of my submissions (including authors and affiliations), I think it would typically:&lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;Neither increase nor decrease&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;I mainly publish at:&lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;ACL NLP venues, ML venues&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;How often do you use social media (e.g., Twitter) to share or discuss your paper?&lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;Always&lt;/p&gt;
 &lt;h3&gt;Acknowledgements&lt;/h3&gt;
 &lt;p&gt;I am solely responsible for the editorial content here. Do not hold any of the following acknowledged responsible for anything you take issue with in here. &lt;/p&gt;

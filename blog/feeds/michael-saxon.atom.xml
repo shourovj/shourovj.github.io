@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Michael Saxon - Michael Saxon</title><link href="saxon.me/blog/" rel="alternate"></link><link href="saxon.me/blog/feeds/michael-saxon.atom.xml" rel="self"></link><id>saxon.me/blog/</id><updated>2025-01-07T19:35:00-08:00</updated><entry><title>A seizure-free year for Michael!</title><link href="saxon.me/blog/2025/epilepsy/" rel="alternate"></link><published>2025-01-07T19:35:00-08:00</published><updated>2025-01-07T19:35:00-08:00</updated><author><name>Michael Saxon</name></author><id>tag:None,2025-01-07:saxon.me/blog/2025/epilepsy/</id><summary type="html">&lt;p&gt;Meditations and reflections of a (former?) epileptic in recovery&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Michael Saxon - Michael Saxon</title><link href="saxon.me/blog/" rel="alternate"></link><link href="saxon.me/blog/feeds/michael-saxon.atom.xml" rel="self"></link><id>saxon.me/blog/</id><updated>2025-01-07T19:35:00-08:00</updated><entry><title>A seizure-free year for Michael!</title><link href="saxon.me/blog/2025/epilepsy/" rel="alternate"></link><published>2025-01-07T19:35:00-08:00</published><updated>2025-01-07T19:35:00-08:00</updated><author><name>Michael Saxon</name></author><id>tag:None,2025-01-07:saxon.me/blog/2025/epilepsy/</id><summary type="html">Meditations and reflections of a (former?) epileptic in recovery</summary><content type="html">&lt;blockquote&gt;
 &lt;p&gt;&lt;em&gt;My New Year's resolution is to blog regularly, even if it means writing random nonsense that has little to do with research. To start, I wanted to tell the story of my health for my research career. This is not a pity party but a documentary effort. Now that I think I have (fingers crossed) closed this chapter of my life, I feel ready to write a bit about it. A lot of this story is about me being stupid. Don't be stupid like me.&lt;/em&gt; &lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3&gt;Beginnings&lt;/h3&gt;
@@ -73,7 +73,7 @@ right??&lt;/p&gt;
 &lt;p&gt;That and losing my work laptop in a classic SF smash-and-grab robbery... &lt;a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</content><category term="Personal"></category><category term="health"></category><category term="grad student life"></category></entry><entry><title>NSF GRFP Application Tips for NLP, AI, CS</title><link href="saxon.me/blog/2024/grfp/" rel="alternate"></link><published>2024-08-31T17:45:00-07:00</published><updated>2024-08-31T17:45:00-07:00</updated><author><name>Michael Saxon</name></author><id>tag:None,2024-08-31:saxon.me/blog/2024/grfp/</id><summary type="html">&lt;p&gt;Reflections and advice from my successful NSF GRFP proposal in NLP. Why I think my applications worked well, what I wish I did differently, and links to my actual statements and feedback from the GRFP reviewing panel.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;On applying to PhD programs (and the NSF GRFP) in NLP and ML&lt;/h3&gt;
+&lt;/div&gt;</content><category term="Personal"></category><category term="health"></category><category term="grad student life"></category></entry><entry><title>NSF GRFP Application Tips for NLP, AI, CS</title><link href="saxon.me/blog/2024/grfp/" rel="alternate"></link><published>2024-08-31T17:45:00-07:00</published><updated>2024-08-31T17:45:00-07:00</updated><author><name>Michael Saxon</name></author><id>tag:None,2024-08-31:saxon.me/blog/2024/grfp/</id><summary type="html">Reflections and advice from my successful NSF GRFP proposal in NLP. Why I think my applications worked well, what I wish I did differently, and links to my actual statements and feedback from the GRFP reviewing panel.</summary><content type="html">&lt;h3&gt;On applying to PhD programs (and the NSF GRFP) in NLP and ML&lt;/h3&gt;
 &lt;p&gt;While I'm not a particularly important person with singular sage advice, I still often find myself coaching aspiring applicants for PhD programs (and fellowship applications), and have a much better understanding of the process now than I did at my application time.
 So, I'm documenting the nuggets of advice I do have here to save me a bit of time sharing them with my mentees, and hopefully others will get some use out of them too!&lt;/p&gt;
 &lt;p&gt;If you are an US citizen or permanent resident entering a PhD in CS, you absolutely must apply for the &lt;a href="https://www.nsfgrfp.org/"&gt;National Science Foundation Graduate Research Fellowship Program (NSF GRFP)&lt;/a&gt; grant. 
@@ -95,10 +95,12 @@ Hopefully if more of us share our advice and statements, this gulf can be narrow
 &lt;blockquote&gt;
 &lt;p&gt;Focus on the personal element of the application and demonstrate &lt;strong&gt;a pattern of determination and curiosity&lt;/strong&gt; about science in general. One of the main mistakes I see in other people who apply for the GRFP is that they focus almost entirely on their research proposal and neglecting the personal elements. It’s important to remember that &lt;strong&gt;the purpose of the GRFP is to nurture promising scientists, not necessarily to fund the best scientific proposals&lt;/strong&gt; (although these often go together). &lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;Rowan Zellers similarly shared &lt;a href="https://rowanzellers.com/blog/nsf-grfp/"&gt;a good post with advice&lt;/a&gt;  on GRFP apps specifically for NLP. An important point that he hammers home is that the statement &lt;em&gt;does&lt;/em&gt; need to convincingly address a real broader impact, which may at first brush seem the reverse of Zach's advice, but they are actually well aligned. From Rowan's post:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The NSF does not expect you to actually carry out your research proposal. On the contrary, the research proposal requirement seems to test your ability to sketch out a coherent research plan for a couple of years... and to discuss its (hopefully fantastic!) *broader impact on society. &lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;The idea is that you need to show your promise as a scientist who can plan a &lt;em&gt;concrete and attainable project&lt;/em&gt; you &lt;strong&gt;demonstrably care about&lt;/strong&gt; (grounded in your prior work) and are on board for the &lt;strong&gt;mission of publicly funded science&lt;/strong&gt;---&lt;em&gt;helpfully impacting society&lt;/em&gt; through your research---and that you &lt;strong&gt;understand how the former fits in to the latter&lt;/strong&gt;.
 Note here that I italicized the attainability of the project and the final impact, while I bolded ideas of "caring" "having a mission" and "understanding."&lt;/p&gt;
 &lt;p&gt;You only need to show &lt;strong&gt;you have promise and your heart is in the right place&lt;/strong&gt;; you are not being stack ranked against candidates on any objective measure of project plan---they don't even expect you to specifically carry out your project.&lt;/p&gt;
@@ -106,22 +108,26 @@ Note here that I italicized the attainability of the project and the final impac
 &lt;blockquote&gt;
 &lt;p&gt;You should talk to people in your area as well as not in your area. That's good for two reasons: you want to &lt;strong&gt;make sure that your application is easy to understand for a non-specialist&lt;/strong&gt;, but on the same token, if someone in your area happens to read your application, you don't want them to ding you points for feasibility or correctness.&lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;Your application readers may be in any field of computer science (or electrical engineering, etc), with no knowledge of your research topic at all, but they &lt;em&gt;might&lt;/em&gt; be NLP experts as well. You need to thread the needle of maximizing understandability for non-experts while minimizing the impression of oversimplification for experts.&lt;/p&gt;
 &lt;p&gt;As for the process of actually preparing your application and submitting, Alex Lang provides a useful &lt;a href="https://www.alexhunterlang.com/nsf-fellowship"&gt;application guide&lt;/a&gt;, including an annotated copy of the call for proposals and a timeline to take for preparing your statements. Also, he has a &lt;a href="https://docs.google.com/spreadsheets/d/1xoezGhbtcpg3BvNdag2F5dTQM-Xl2EELUgAfG1eUg0s/edit?gid=0#gid=0"&gt;giant spreadsheet&lt;/a&gt; containing hundreds application samples from tons of fields; definitely take a look at some examples in computer science.&lt;/p&gt;
 &lt;p&gt;I also asked some successful applicant friends for their thoughts on applying:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;All my reviewer feedback was about &lt;strong&gt;my background being good prep for the proposed direction&lt;/strong&gt; + strong service/outreach. I applied as an undergrad, so &lt;strong&gt;I didn’t link the proposal to a specific advisor&lt;/strong&gt;. I had a feasibility paragraph where I discussed where I’d get data, how I’d run experiments, and some concrete statements on how my training prepared me to do the proposed research etc&lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;Once again, you really should focus on telling a story that connects to your demonstrated background and explains why you can do good research. It does not matter if you actually do the project you proposed.
 You don't even need to tie your application to a specific advisor (though there can be benefits to doing so, as I did, see below for more discussion).&lt;/p&gt;
 &lt;p&gt;Other friends gave me more lighthearted stories from their applications:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;I personally wouldn’t dig too far in the reviews, one of them thought I went to UCLA lol (from a student from a different UC)&lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;The panelists are really trying to breeze through these. Passing is really about meeting a 1/8 bar for excellence, not about being the very best of all your peers.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;I spelled "sociolect" wrong over and over in my research statement. I became a fellow anyways, but maybe good to know that they don't check spelling. &lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;Like I said---the panelists are reading fast.&lt;/p&gt;
 &lt;h3&gt;2. My GRFP statements and feedback&lt;/h3&gt;
 &lt;p&gt;The two statements you will submit are "&lt;strong&gt;Graduate Research Plan Statement&lt;/strong&gt;" and a &lt;strong&gt;personal statement&lt;/strong&gt; ("Personal, Relevant Background, and Future Goals Statement"). 
@@ -155,7 +161,7 @@ In a less crowded field your chances are better!&lt;/p&gt;
 &lt;p&gt;Philip Guo wrote some amazing stuff on how to apply to the GRFP (and PhD programs in general) in the past, but has unfortunately chosen to completely nuke them. Here's where I would put links to them, &lt;a href="https://www.youtube.com/watch?v=omguEZ7jy5E"&gt;IF I HAD ONE&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;Contact&lt;/h3&gt;
 &lt;p&gt;If you have any further questions about applying to the GRFP, or &lt;strong&gt;if you have your own previous successful application materials that you would like to share with me so I can distribute them as examples for other prospective applicants&lt;/strong&gt; please email me.&lt;/p&gt;
-&lt;p&gt;I also have a modest collection of other people's successful applications. While I am not comfortable just posting them all, I will share them with you privately, &lt;strong&gt;provided you then share &lt;em&gt;your statements back to me&lt;/em&gt; after so I can &lt;a href="https://www.youtube.com/watch?v=abBabSWyNOI"&gt;add them to my collection&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;</content><category term="Career"></category><category term="PhD"></category><category term="Admissions"></category><category term="NSF GRFP"></category><category term="Applications"></category></entry><entry><title>The ACL Anonymity Embargo Period is exclusionary, actually: an early-career researcher's perspective</title><link href="saxon.me/blog/2023/anti-acl-anon/" rel="alternate"></link><published>2023-09-15T14:44:00-07:00</published><updated>2023-09-15T14:44:00-07:00</updated><author><name>Michael Saxon</name></author><id>tag:None,2023-09-15:saxon.me/blog/2023/anti-acl-anon/</id><summary type="html">&lt;p&gt;Preprinting and promoting one's work online is one of the most impactful and accessible career advancement methods for early-career researchers. Policies that hinder this process are thus disproportionately harmful to early career scientists, relative to their senior peers. As online promotion is more accessible than traditional routes of namebuilding, we contend that depriving "low-prestige institution"-affiliated early-career researchers of this avenue for self-advancement futher disproportionately harms them relative to their "high-prestige" peers. Finally, a broad culture of posting quality preprints has community-level and scientific benefits. We contend that the ACL anonymity policy is harmful for the ways in which it forces early-career researchers (ECRs) to choose between participating in ACL or doing what's best for their careers.&lt;/p&gt;</summary><content type="html">&lt;p&gt;In case you're unfamiliar, the Association for Computational Linguistics (ACL), the premier venue for natural language processing (NLP) research, has an extremely strict "anonymity embargo policy," restricting the ability of researchers to publicly share or discuss their latest work online within a time window starting 1 month prior to a given conference's submission deadline, through the date when acceptance decisions are conveyed (about a four month period). &lt;strong&gt;The ACL Executive committe is currently considering abolishing this policy, and I strongly believe removing it is the right thing for both our science and community, and in particular I think removing it will, on the balance, have inclusionary outcomes for early-career researchers.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I also have a modest collection of other people's successful applications. While I am not comfortable just posting them all, I will share them with you privately, &lt;strong&gt;provided you then share &lt;em&gt;your statements back to me&lt;/em&gt; after so I can &lt;a href="https://www.youtube.com/watch?v=abBabSWyNOI"&gt;add them to my collection&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;</content><category term="Career"></category><category term="PhD"></category><category term="Admissions"></category><category term="NSF GRFP"></category><category term="Applications"></category></entry><entry><title>The ACL Anonymity Embargo Period is exclusionary, actually: an early-career researcher's perspective</title><link href="saxon.me/blog/2023/anti-acl-anon/" rel="alternate"></link><published>2023-09-15T14:44:00-07:00</published><updated>2023-09-15T14:44:00-07:00</updated><author><name>Michael Saxon</name></author><id>tag:None,2023-09-15:saxon.me/blog/2023/anti-acl-anon/</id><summary type="html">Preprinting and promoting one's work online is one of the most impactful and accessible career advancement methods for early-career researchers. Policies that hinder this process are thus disproportionately harmful to early career scientists, relative to their senior peers. As online promotion is more accessible than traditional routes of namebuilding, we contend that depriving "low-prestige institution"-affiliated early-career researchers of this avenue for self-advancement futher disproportionately harms them relative to their "high-prestige" peers. Finally, a broad culture of posting quality preprints has community-level and scientific benefits. We contend that the ACL anonymity policy is harmful for the ways in which it forces early-career researchers (ECRs) to choose between participating in ACL or doing what's best for their careers.</summary><content type="html">&lt;p&gt;In case you're unfamiliar, the Association for Computational Linguistics (ACL), the premier venue for natural language processing (NLP) research, has an extremely strict "anonymity embargo policy," restricting the ability of researchers to publicly share or discuss their latest work online within a time window starting 1 month prior to a given conference's submission deadline, through the date when acceptance decisions are conveyed (about a four month period). &lt;strong&gt;The ACL Executive committe is currently considering abolishing this policy, and I strongly believe removing it is the right thing for both our science and community, and in particular I think removing it will, on the balance, have inclusionary outcomes for early-career researchers.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;This essay is my attempt at laying bare the harms this policy visits on early career researchers as an inclusion-oriented argument for its removal. In particular, I will argue:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;That social media self-promotion is a crucial career development tool that &lt;strong&gt;all early-career researchers benefit from&lt;/strong&gt; and has a &lt;strong&gt;leveling effect across existing hierarchies of institutional prestige&lt;/strong&gt;&lt;/li&gt;
@@ -173,10 +179,11 @@ By communicating why so many ECRs are so opposed to this policy, I hope to aid t
 Putting early-career researchers in a double bind where they cannot have both broadly accessible hierarchy-leveling online self-promotion and prompt conference participation, the ACL embargo policy is thus counter-inclusionary, and must be repealed at once.&lt;/p&gt;
 &lt;p&gt;I will now provide more lengthy explanations for why I believe each of the four points above to be true. &lt;/p&gt;
 &lt;blockquote class="infobox infobox-note"&gt;
-&lt;p&gt;Disclaimers: Parts of this essay are written in a raw style; I seek to convey both the rationale and emotions behind my support for the swift removal of the embargo policy. 
+
+&lt;p&gt;&lt;em&gt;Disclaimers: Parts of this essay are written in a raw style; I seek to convey both the rationale and emotions behind my support for the swift removal of the embargo policy. 
 Apologies if you feel I have unfairly characterized your position or motivations. 
 Although I consider this policy exclusionary, I recognize the well-intentionedness of its creators and supporters, and do not hold malice towards them. 
-Sorry it's so wordy, if I had more time I would have written it shorter.&lt;/p&gt;
+Sorry it's so wordy, if I had more time I would have written it shorter.&lt;/em&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3&gt;Social media self-promotion is key for early career researcher (ECR) success and leveling across prestige hierarchies&lt;/h3&gt;
 &lt;p&gt;Name- and reputation-building are necessary for a successful scientific career.
@@ -284,43 +291,52 @@ When we get there, stay tuned for posts explicitly laying out the cases for and 
 &lt;blockquote&gt;
 &lt;p&gt;What do you think of the first proposed change that allows authors to freely make versions of their submitted paper available online at any time?&lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;I support the proposed change.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;What do you think of the second proposed change that allows authors to mention their preprints at any time, including on social media?&lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;I support the proposed change.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;If you think that either changing or not changing these policies would potentially harm your career, or harm you in some other way, please explain: &lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;Early-career researchers need the ability to promptly share their preprints online for time-sensitive opportunities such as internships and fellowships. As an ECR I think the first change is absolutely necessary. The second change would further enable ECRs to freely discuss their freshest work, improving their ability to network and grow. As an ECR, I believe I would also benefit from the second change. I feel that not making the changes harms me.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Regardless of your answers to previous questions, and assuming a “magic solution” in which author identities remain unknown to reviewers and introduce no biases during review: would you like to pre-print (some of) your papers during review and discuss them on social media? Please briefly explain your answer.&lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;Yes, the reasons I support preprinting are orthogonal to acceptance, it's about career opportunites and I don't believe preprinting or not preprinting will impact my acceptance odds.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Do you have any other suggestions on how ACL could balance the desire for open scientific discourse with the risk that it may contribute to reviewing bias?&lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;I think if we remove the limitations we should continue collecting fine-grained data on acceptance rates and deanonymization; if the policy was preventing outcome-impacting reviewer bias, it will be visible, and we can consider reinstituting an embargo in that case with the knowledge that having it actually makes a difference.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;How strongly (1-5) do your future career goals require the visibility of your papers?&lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;5 (extremely)&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;If reviewers were able to see de-anonymized versions of my submissions (including authors and affiliations), I think it would typically:&lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;Neither increase nor decrease&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;I mainly publish at:&lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;ACL NLP venues, ML venues&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;How often do you use social media (e.g., Twitter) to share or discuss your paper?&lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;Always&lt;/p&gt;
 &lt;h3&gt;Acknowledgements&lt;/h3&gt;
 &lt;p&gt;I am solely responsible for the editorial content here. Do not hold any of the following acknowledged responsible for anything you take issue with in here. &lt;/p&gt;
 &lt;p&gt;Thank you to Naomi Saphra, Gowthami Sommepalli, Weixi Feng, Royi Rassin, Alon Albalak, Danish Pruthi, Sharon Levy, Ofir Press, and Liangming Pan for discussing various components (big or small) or stages (early or late) of this draft with me.&lt;/p&gt;
-&lt;p&gt;In addition to the aforementioned, thank you to Anna Rogers, Carlos Gómez-Rodríguez, Yoav Goldberg, Nathan Schneider, Sebastian Schuster, Zachary Lipton, Leon Derczynski, Asad Sayeed, Andrew Drozdov, Shaily Bhatt, Manuel Mager, Thamar Solorio, Dmytro Mishkin, Alexander Hoyle, Leshem Choshen, Yoshitomo Matsubara, Julia Mendelsohn, and probably many others who have shaped my thinking on this topic by discussing it with me publicly online :)&lt;/p&gt;</content><category term="Improving AI Science"></category><category term="Policy"></category><category term="ACL"></category><category term="AI"></category><category term="Metascience"></category><category term="Fairness"></category></entry><entry><title>Extremely soft blog launch!</title><link href="saxon.me/blog/2023/softlaunch/" rel="alternate"></link><published>2023-06-03T00:00:00-07:00</published><updated>2023-06-03T00:00:00-07:00</updated><author><name>Michael Saxon</name></author><id>tag:None,2023-06-03:saxon.me/blog/2023/softlaunch/</id><summary type="html">&lt;p&gt;To test that my blog implementation works, I'll share my pytorchlightning-based replication of dataset cartography!&lt;/p&gt;</summary><content type="html">&lt;h3&gt;About my blog&lt;/h3&gt;
+&lt;p&gt;In addition to the aforementioned, thank you to Anna Rogers, Carlos Gómez-Rodríguez, Yoav Goldberg, Nathan Schneider, Sebastian Schuster, Zachary Lipton, Leon Derczynski, Asad Sayeed, Andrew Drozdov, Shaily Bhatt, Manuel Mager, Thamar Solorio, Dmytro Mishkin, Alexander Hoyle, Leshem Choshen, Yoshitomo Matsubara, Julia Mendelsohn, and probably many others who have shaped my thinking on this topic by discussing it with me publicly online :)&lt;/p&gt;</content><category term="Improving AI Science"></category><category term="Policy"></category><category term="ACL"></category><category term="AI"></category><category term="Metascience"></category><category term="Fairness"></category></entry><entry><title>Extremely soft blog launch!</title><link href="saxon.me/blog/2023/softlaunch/" rel="alternate"></link><published>2023-06-03T00:00:00-07:00</published><updated>2023-06-03T00:00:00-07:00</updated><author><name>Michael Saxon</name></author><id>tag:None,2023-06-03:saxon.me/blog/2023/softlaunch/</id><summary type="html">To test that my blog implementation works, I'll share my pytorchlightning-based replication of dataset cartography!</summary><content type="html">&lt;h3&gt;About my blog&lt;/h3&gt;
 &lt;p&gt;I have thoughts I'd like to share from time-to-time. I have been testing my Pelican-based blog generator for a while and got it working, but a lack of fully-formed blogpost ideas to upload has consequently kept me from updating my website for months. This has become a problem for me as news and results have accumulated. Thus at this point, I have no choice but to push a placeholder blogpost such as this. Looking forward to making a more substantial post soon 🫡&lt;/p&gt;
 &lt;h3&gt;Implemented in PL&lt;/h3&gt;
 &lt;p&gt;Check out this code! You can pass in any &lt;code&gt;Callback&lt;/code&gt; object from pytorch lightning, to track the training process of a model in pytorch lightning. This automatically collects the training dynamics statistics and writes them to a given output csv file for future processing and analysis!&lt;/p&gt;

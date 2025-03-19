@@ -21,18 +21,6 @@ FEED_ALL_RSS = 'feeds/all.rss.xml'
 CATEGORY_FEED_RSS = 'feeds/{slug}.rss.xml'
 AUTHOR_FEED_RSS = 'feeds/{slug}.rss.xml'
 
-
-
-# Blogroll
-LINKS = (('Pelican', 'https://getpelican.com/'),
-         ('Python.org', 'https://www.python.org/'),
-         ('Jinja2', 'https://palletsprojects.com/p/jinja/'),
-         ('You can modify those links in your config file', '#'),)
-
-# Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
-
 DEFAULT_PAGINATION = 10
 
 # Add the plugin path
@@ -44,8 +32,18 @@ SLUGIFY_SOURCE = 'basename'
 ARTICLE_URL = '{date:%Y}/{slug}/'
 ARTICLE_SAVE_AS = '{date:%Y}/{slug}/index.html'
 
+PAGE_URL = '{slug}/'
+PAGE_SAVE_AS = '{slug}/index.html'
+
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
 # Add to your existing config
 STATIC_PATHS = ['images', 'js', 'css', 'fonts']  # Add any other static paths you need
+
+# Add these settings
+PAGE_PATHS = ['pages']  # Look for pages in content/pages/
+ARTICLE_PATHS = ['']    # Look for articles in content root
+
+# Optional: Exclude pages directory from articles search
+ARTICLE_EXCLUDES = ['pages']
