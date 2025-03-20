@@ -300,21 +300,17 @@ ul.icons li a {
     text-decoration: none;
     background-color: rgb(252,252,252);
 
-}
+} 
 
 ul.icons li img {
   height: 25px;
   width: 25px;
 }
 
-ul.icons li a:hover:not(.active) img{
-  filter: opacity(50%);
-}
-
+/* 
 .filtercolor {
-  /*filter: invert(33%) sepia(3%) saturate(5832%) hue-rotate(56deg) brightness(93%) contrast(78%);*/
   color: black;
-}
+} */
 
 .profilesec {
   display: flex;
@@ -596,4 +592,45 @@ ul, ol {
 
 .news-box > p {
   margin-bottom: 0.6rem;
+}
+
+/* Common social icon styles */
+.icons, .header-icons {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+}
+
+.icons img, .header-icons img {
+    width: 1rem;
+    height: 1rem;
+    opacity: 0.6;
+    transition: all 0.15s ease;
+    /* Start with grayscale black icons */
+    filter: grayscale(100%) brightness(0.4);
+}
+
+.icons img:hover, .header-icons img:hover {
+    opacity: 1;
+    /* Transform to red on hover using specific filter values */
+    filter: invert(24%) sepia(87%) saturate(1017%) hue-rotate(346deg) brightness(92%) contrast(93%);
+}
+
+/* Footer-specific icon styles */
+.icons {
+    justify-content: center;
+    margin: 1rem 0;
+    gap: 0.75rem;  /* Slightly wider spacing in footer */
+}
+
+/* Header-specific icon styles */
+.header-icons {
+    margin: 0 0 1rem 0;
+}
+
+@media (max-width: 600px) {
+    .header-icons {
+        justify-content: center;
+    }
 }

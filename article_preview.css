@@ -232,15 +232,21 @@
 }
 
 .about-title {
-    margin: 0 0 1rem 0;
+    margin: 0 0 0.15rem 0;  /* Tighter spacing to subtitle */
     font-size: 1.8rem;
     color: #333;
 }
 
+.about-subtitle {
+    margin: 0 0 0.75rem 0;  /* Less space before icons */
+    font-size: 1rem;
+    color: #666;
+}
+
 .about-description {
-    margin: 0 0 1rem 0;
+    margin: 0 0 0.75rem 0;  /* Tighter spacing between paragraphs */
     color: #444;
-    line-height: 1.5;
+    line-height: 1.4;  /* Slightly tighter line height */
 }
 
 /* Last about-description shouldn't have bottom margin */
@@ -248,7 +254,27 @@
     margin-bottom: 0;
 }
 
-/* Responsive design */
+/* Tighter header social icons */
+.header-icons {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;  /* Reduced margin after icons */
+    display: flex;
+    gap: 0.7rem;  /* Tighter spacing between icons */
+}
+
+.header-icons img {
+    width: 1.2rem;  /* Slightly smaller icons */
+    height: 1.2rem;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+}
+
+.header-icons img:hover {
+    opacity: 0.9;
+}
+
+/* Responsive adjustments */
 @media (max-width: 600px) {
     .about-header {
         flex-direction: column;
@@ -272,5 +298,9 @@
 
     .about-content {
         padding: 1rem;
+    }
+
+    .header-icons {
+        justify-content: center;
     }
 } 
