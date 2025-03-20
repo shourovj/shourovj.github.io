@@ -529,24 +529,16 @@ ul, ol {
 }
 
 /* News box styling */
-.news-box {
-    height: 30em;
-    width: auto;
-    overflow: auto;
-    padding: 1rem;
+/* Outer container for border and header */
+.news-section {
     position: relative;
     background: #fff;
     border-radius: 12px;
-    margin: 0 0 1rem 0;
-    z-index: 2;
+    margin: 2rem 0 1rem 0;
+    padding: 1rem 0 0 1rem;
 }
 
-.news-box > * {
-    position: relative;
-    z-index: 3;  /* Ensure content is above the gradient border */
-}
-
-.news-box::before {
+.news-section::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -567,7 +559,20 @@ ul, ol {
         linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    z-index: 1;  /* Keep border behind content */
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Inner scrollable container */
+.news-box {
+    height: 30em;
+    width: auto;
+    overflow: auto;
+    padding: 0;
+    /* Hack so we don't need to separately style the news box h3 */
+    margin: -1rem 0 0 0;
+    position: relative;
+    z-index: 2;
 }
 
 /* Style the scrollbar to match our theme */
