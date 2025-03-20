@@ -69,7 +69,7 @@ body{
   margin-right: auto;
   padding: calc(0.5 * var(--base-size));
   overflow: hidden;
-  margin-top: 10px;
+  margin-top: 1rem;
 }
 
 h1 {
@@ -378,9 +378,9 @@ ul.icons li a:hover:not(.active) img{
 } */
 
 blockquote {
-  margin: 0 1rem 1rem 1rem;
+  margin: 0 0 1rem 0;
   max-width: 800px;
-  padding: 1rem 1rem 1rem 4rem; /* Extra left padding for icon */
+  padding: 1rem 1rem 0 4rem; /* Extra left padding for icon */
   border-radius: 6px;
   position: relative;
   overflow: hidden;
@@ -537,7 +537,13 @@ ul, ol {
     position: relative;
     background: #fff;
     border-radius: 12px;
-    margin: 0 0 1rem 0;  /* Following our margin pattern */
+    margin: 0 0 1rem 0;
+    z-index: 2;
+}
+
+.news-box > * {
+    position: relative;
+    z-index: 3;  /* Ensure content is above the gradient border */
 }
 
 .news-box::before {
@@ -547,7 +553,7 @@ ul, ol {
     border-radius: 12px;
     padding: 1px;
     background: linear-gradient(
-        110deg,  /* Horizontal gradient from left */
+        110deg,
         rgb(205, 76, 53) 0%,
         #ffffff 40%,
         transparent 60%,
@@ -561,7 +567,7 @@ ul, ol {
         linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    z-index: 1;
+    z-index: 1;  /* Keep border behind content */
 }
 
 /* Style the scrollbar to match our theme */
@@ -581,4 +587,8 @@ ul, ol {
 
 .news-box::-webkit-scrollbar-thumb:hover {
     background: rgba(205, 76, 53, 0.7);
+}
+
+.news-box > p {
+  margin-bottom: 0.6rem;
 }
