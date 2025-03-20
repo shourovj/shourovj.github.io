@@ -2,6 +2,8 @@ Title: About
 Date: 2025-03-19 19:35
 Summary: Dumb dumb
 Image: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/John_Constable_023.jpg/1021px-John_Constable_023.jpg
+save_as: test_index.html
+
 
 I study generative AI artifacts like LLMs...
 
@@ -23,10 +25,9 @@ I like studying ethical issues in AI.
 > [!NOTE]
 > **Follow me on Bluesky [@saxon.me](https://bsky.app/profile/saxon.me)**
 
-> test
->> test lmao
->>
->> **woahowhaoha**
+>> My response to this quote...
+>
+> **woahowhaoha**
 
 ### Current
 

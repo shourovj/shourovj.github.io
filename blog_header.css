@@ -75,9 +75,10 @@
 }
 
 .post-meta {
+    margin: 0 0 1rem 0;  /* Remove top margin */
+    color: #666;
     font-size: 0.9rem;
     color: black;
-    margin: 0.8rem 0;
     font-weight: 300;
     display: flex;
     align-items: center;
@@ -85,13 +86,12 @@
 }
 
 .post-description {
-    font-size: 1rem;
-    color: black;
-    font-style: italic;
-    margin: 1rem 0;
+    margin: 0;  /* No margins as it's typically the last element */
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.5;
 }
 
-/* Base infobox styles - copied from style.css */
 .infobox {
     max-width: 800px;
     padding: 1rem 1rem 1rem 4rem;
@@ -101,14 +101,6 @@
     overflow: hidden;
 }
 
-/* ... (rest of the infobox styles) ... */
-
-/* Article content spacing */
-article > .infobox {
-    margin-top: 0;        /* Remove top margin from first infobox */
-    margin-bottom: 2rem;  /* Add consistent spacing after infobox */
-}
-
 /* Heading styles within articles */
 article > h1,
 article > h2,
@@ -116,7 +108,7 @@ article > h3,
 article > h4,
 article > h5,
 article > h6 {
-    margin-top: 2rem;     /* Consistent spacing before new sections */
+    margin-top: 0.5rem;
     margin-bottom: 1rem;  /* Consistent spacing after headings */
     color: black;
 }
@@ -138,19 +130,22 @@ article > h4 {
 }
 
 article > p {
-    margin: 1rem 0;      /* Consistent paragraph spacing */
+    margin: 0;      /* Consistent paragraph spacing */
+    margin-bottom: 1rem;
 }
 
 /* List styling within articles */
 article > ul,
 article > ol {
-    margin: 1rem 0;      /* Match paragraph spacing */
+    margin: 0;      /* Match paragraph spacing */
+    margin-bottom: 1rem;
     padding-left: 2rem;   /* Indent lists */
 }
 
 article > ul > li,
 article > ol > li {
-    margin: 0.5rem 0;    /* Half the spacing of paragraphs */
+    margin: 0;
+    margin-bottom: 0.5rem;
     padding-left: 0.5rem; /* Small indent for list items */
 }
 
@@ -159,5 +154,17 @@ article > ul ul,
 article > ul ol,
 article > ol ul,
 article > ol ol {
-    margin: 0.5rem 0;    /* Less spacing for nested lists */
+    margin: 0;
+    margin-bottom: 0.5rem;    /* Less spacing for nested lists */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .post-hero {
+        height: 200px;
+    }
+
+    .post-title {
+        font-size: 2rem;
+    }
 } 

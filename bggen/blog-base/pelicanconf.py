@@ -42,8 +42,12 @@ PAGE_SAVE_AS = '{slug}/index.html'
 STATIC_PATHS = ['images', 'js', 'css', 'fonts']  # Add any other static paths you need
 
 # Add these settings
+USE_FOLDER_AS_CATEGORY = False
+DISPLAY_PAGES_ON_MENU = False
 PAGE_PATHS = ['pages']  # Look for pages in content/pages/
 ARTICLE_PATHS = ['']    # Look for articles in content root
 
 # Optional: Exclude pages directory from articles search
 ARTICLE_EXCLUDES = ['pages']
+
+PUBLICATIONS_SRC = 'content/pubs.bib'
