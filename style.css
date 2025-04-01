@@ -1087,13 +1087,13 @@ sup[id^="fnref"] {
 .footnote-popup {
   visibility: hidden;
   position: absolute;
-  width: min(400px, calc(var(--page-width) - 40px));
+  width: min(450px, calc(var(--page-width) - 40px));
   background: var(--bg-main);
   border: 1px solid var(--border-gray);
-  padding: 10px;
+  padding: 1.5rem;
   border-radius: 4px;
   font-size: var(--base-size);
-  box-shadow: 0 2px 5px color-mix(in srgb, var(--text-black) 20%, transparent);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   z-index: 9999;
   bottom: 100%;
   margin-bottom: 10px;
@@ -1108,6 +1108,7 @@ sup[id^="fnref"] {
   /* Center by default */
   left: 50%;
   transform: translateX(calc(-50% + var(--popup-shift, 0px)));
+  border: 1px solid var(--text-black);
 }
 
 /* Show popup */
