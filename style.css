@@ -52,6 +52,7 @@
   /* Icon filters */
   --kanagawa-dark-icon-filter: brightness(0) saturate(100%) invert(90%) sepia(83%) saturate(132%) hue-rotate(334deg) brightness(91%) contrast(89%);
   --kanagawa-light-icon-filter: brightness(0) saturate(100%) invert(9%) sepia(15%) saturate(845%) hue-rotate(201deg) brightness(92%) contrast(91%);
+  --kanagawa-icon-mouseover-filter: brightness(0) saturate(100%) invert(45%) sepia(34%) saturate(510%) hue-rotate(156deg) brightness(89%) contrast(89%);
   /* Icon filters */
   --text-filter: 40%;  /* Adjust this value to match text-body color */
 }
@@ -154,7 +155,7 @@
   --tip-text: var(--kanagawa-dark-green);
 
   --icon-filter: var(--kanagawa-light-icon-filter);
-  --icon-filter-hover: var(--kanagawa-dark-icon-filter);
+  --icon-filter-hover: var(--kanagawa-icon-mouseover-filter);
 }
 
 /* Kanagawa dark theme colors  (uses the kanagawa theme colors above) */
@@ -206,7 +207,7 @@
   --tip-text: var(--kanagawa-light-green);
 
   --icon-filter: var(--kanagawa-dark-icon-filter);
-  --icon-filter-hover: var(--kanagawa-light-icon-filter);
+  --icon-filter-hover: var(--kanagawa-icon-mouseover-filter);
 
 }
 
@@ -519,13 +520,13 @@ blockquote::before {
   top: 0.2rem;
   width: 3.6rem;
   height: 3.6rem;
-  opacity: 0.12;
+  opacity: 0.15;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 :root[data-theme="dark"] blockquote::before {
-  opacity: 0.78;
+  opacity: 0.3;
 }
 
 
@@ -697,12 +698,10 @@ ul, ol {
 }
 
 .icons img, .header-icons img {
-    /* First make black icon into white */
     filter: var(--icon-filter);
-    /* Then make it use our text color */
 }
 
-.icons img:hover, .header-icons img:hover {
+.icons li:hover img, .header-icons li:hover img {
     filter: var(--icon-filter-hover);
 }
 
@@ -1048,7 +1047,7 @@ sup[id^="fnref"] {
   line-height: 0;
 }
 
-/* Style the footnote number */
+/* Style the footnote number/plus */
 .footnote-ref {
   color: var(--link-color);
   cursor: pointer;
@@ -1063,7 +1062,8 @@ sup[id^="fnref"] {
   border-radius: 50%;
   position: relative;
   transition: background-color 0.2s;
-  line-height: normal;
+  line-height: 1;     /* Ensure vertical centering */
+  font-size: 0.85em;  /* Slightly smaller for the plus sign */
 }
 
 /* Create larger invisible hit area */
@@ -1079,7 +1079,7 @@ sup[id^="fnref"] {
 
 /* Hover effect */
 .footnote-ref:hover {
-  background-color: var(--link-color);
+  background-color: var(--link-color) !important;
   color: var(--bg-main) !important;
 }
 
@@ -1087,9 +1087,8 @@ sup[id^="fnref"] {
 .footnote-popup {
   visibility: hidden;
   position: absolute;
-  width: min(450px, calc(var(--page-width) - 40px));
+  width: min(600px, calc(var(--page-width) - 40px));
   background: var(--bg-main);
-  border: 1px solid var(--border-gray);
   padding: 1.5rem;
   border-radius: 4px;
   font-size: var(--base-size);
@@ -1108,7 +1107,7 @@ sup[id^="fnref"] {
   /* Center by default */
   left: 50%;
   transform: translateX(calc(-50% + var(--popup-shift, 0px)));
-  border: 1px solid var(--text-black);
+  border: 1px solid var(--link-color);
 }
 
 /* Show popup */
@@ -1124,7 +1123,7 @@ sup[id^="fnref"]:hover .footnote-popup {
   bottom: -10px;
   border-width: 0 10px 10px 10px;
   border-style: solid;
-  border-color: transparent transparent var(--text-black) transparent;
+  border-color: transparent transparent var(--link-color) transparent;
   left: calc(50% - var(--popup-shift, 0px));
   transform: translateX(-50%) rotate(180deg);
 }
@@ -1327,10 +1326,6 @@ sup[id^="fnref"]:hover .footnote-popup {
   transition: opacity 0.2s ease;
 }
 
-.header-icons img:hover {
-  opacity: 0.9;
-}
-
 /* Responsive adjustments */
 @media (max-width: 600px) {
   .about-header {
@@ -1470,5 +1465,95 @@ sup[id^="fnref"]:hover .footnote-popup {
         width: 1.2em;    /* Slightly larger in mobile menu */
         height: 1.2em;
     }
+}
+
+.footnote-popup.visible,
+sup[id^="fnref"]:hover .footnote-popup {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Specific styling for plus sign */
+.footnote-toggle.footnote-ref {
+    font-weight: bold;
+    padding-bottom: 0.1em;  /* Optical centering for the plus */
+}
+
+/* SVG icon styles */
+.footnote-icon {
+    display: block;
+    transition: transform 0.3s ease;
+    width: 1.2em;  /* Match the container size */
+    height: 1.2em;
+}
+
+.footnote-ref {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.2em;
+    height: 1.2em;
+    padding: 0;
+}
+
+/* Rotate to X on hover/toggle */
+.footnote-ref:hover .footnote-icon,
+.footnote-popup.visible ~ .footnote-ref .footnote-icon {
+    transform: rotate(45deg);
+}
+/* Ensure icon color matches text */
+.footnote-icon {
+    color: inherit;
+}
+
+/* Remove any previous plus-specific styles */
+.footnote-toggle.footnote-ref {
+    padding: 0;
+}
+
+/* Code block styling */
+.highlight {
+    /* Add horizontal scrolling */
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--brand-main) var(--bg-main);
+    
+    /* Container styling */
+    max-width: 100%;
+    padding: 1.2em;
+    margin: 1em 0;
+    border-radius: 6px;
+    border: 1px solid var(--brand-main);
+    background-color: var(--kanagawa-code-bg);
+    color: var(--kanagawa-code-fg);
+}
+
+.highlight pre {
+    /* Code content */
+    font-size: 0.9em;
+    line-height: 1.4;
+    margin: 0;
+    font-family: 'Ubuntu Mono', monospace;
+}
+
+/* Webkit scrollbar styling */
+.highlight::-webkit-scrollbar {
+    height: 8px;
+}
+
+.highlight::-webkit-scrollbar-track {
+    background: var(--bg-main);
+    border-radius: 4px;
+}
+
+.highlight::-webkit-scrollbar-thumb {
+    background: var(--brand-main);
+    opacity: 0.5;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.highlight::-webkit-scrollbar-thumb:hover {
+    opacity: 0.7;
 }
 

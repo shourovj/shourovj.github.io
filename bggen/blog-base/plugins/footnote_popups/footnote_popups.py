@@ -13,6 +13,11 @@ def process_footnotes(content):
 
     logger.info(f"Processing content: {getattr(content, 'source_path', 'unknown')}")
     
+    # Add debug logging for metadata
+    logger.info(f"Content metadata: {content.metadata}")
+    remove_section = content.metadata.get('remove_footnote_section', False)
+    logger.info(f"Remove footnote section: {remove_section}")
+    
     soup = BeautifulSoup(content._content, 'html.parser')
     
     # Find all footnote references
@@ -23,6 +28,16 @@ def process_footnotes(content):
         logger.info("No footnotes found, skipping processing")
         return  # No footnotes, no processing needed
     
+    # Define the SVG plus icon template
+    plus_svg = '''
+        <svg class="footnote-icon" viewBox="0 0 24 24">
+            <g class="icon-group" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                <line x1="7" y1="12" x2="17" y2="12"/>
+                <line x1="12" y1="7" x2="12" y2="17"/>
+            </g>
+        </svg>
+    '''
+
     for i, ref in enumerate(footnote_refs):
         # Get corresponding footnote content
         fn_id = ref['id'].replace('fnref:', 'fn:')
@@ -33,20 +48,31 @@ def process_footnotes(content):
             # Extract footnote text (excluding the backref)
             try:
                 footnote_text = ''.join(str(c) for c in footnote.p.contents[:-1]).strip()
-                
-                # Create popup span
                 popup = soup.new_tag('span', attrs={'class': 'footnote-popup'})
                 popup.string = footnote_text
+                
+                # If removing footnote section, modify the link behavior and text
+                if remove_section:
+                    ref.a['class'] = ref.a.get('class', []) + ['footnote-toggle']
+                    ref.a['href'] = 'javascript:void(0)'
+                    # Replace number with SVG plus icon
+                    ref.a.string = ''
+                    svg_soup = BeautifulSoup(plus_svg, 'html.parser')
+                    ref.a.append(svg_soup.svg)
+                
                 ref.append(popup)
                 logger.info(f"Added popup for footnote {fn_id}")
             except Exception as e:
                 logger.error(f"Error processing footnote {fn_id}: {str(e)}")
-        else:
-            logger.warning(f"Could not find footnote content for reference {fn_id}")
     
-    # Mark this content as having footnotes so we can add the script later
+    # Remove the footnote section if requested
+    if remove_section:
+        footnote_section = soup.find('div', class_='footnote')
+        if footnote_section:
+            footnote_section.decompose()
+            logger.info("Removed footnote section")
+    
     content.has_footnotes = True
-    
     content._content = str(soup)
     logger.info("Finished processing footnotes")
 
