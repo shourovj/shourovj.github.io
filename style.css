@@ -1666,12 +1666,14 @@ sup[id^="fnref"]:hover .footnote-popup {
     width: 2.5rem;
     height: 2.5rem;
     padding: 1.5rem;  /* Centers the smaller logo in the same space */
+    opacity: 0.7;
 }
 
 .logo-medium {
     width: 3.5rem;
     height: 3.5rem;
     padding: 1rem;
+    opacity: 0.7;
 }
 
 /* Darker filter for light mode */
