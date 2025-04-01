@@ -2,11 +2,18 @@
 
 <html>
 <head>
+<script>
+      // Check and apply theme immediately
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+      }
+  </script>
+<script src="./../static/js/theme.js"></script>
+<link href="style.css" rel="stylesheet"/>
 <link href="../../../style.css" rel="stylesheet"/>
-<link href="../../../test_menu.css" rel="stylesheet"/>
-<link href="../../../blog_header.css" rel="stylesheet"/>
-<link href="../../../blog_popup.css" rel="stylesheet"/>
-<link href="../../../article_preview.css" rel="stylesheet"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <link href="https://fonts.googleapis.com/css?family=PT+Serif&amp;Merriweather&amp;Oswald&amp;Ubuntu+Mono&amp;Arimo:ital,wght@0,400..700;1,400..700" rel="stylesheet"/>
 <title>A seizure-free year for Michael!</title>
@@ -42,6 +49,28 @@
 <li><a href="../../../research">Publications</a></li>
 <li><a href="../../../doc/cv_saxon.pdf">CV</a></li>
 <li><a href="../..">Blog</a></li>
+<li>
+<a aria-label="Toggle dark mode" href="#" id="theme-toggle">
+<svg aria-hidden="true" class="sun-and-moon" height="24" viewbox="0 0 24 24" width="24">
+<!&ndash; Moon shape &ndash;>
+<path class="moon" d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z" fill="currentColor"></path>
+<!&ndash; Sun shape (initially hidden) &ndash;>
+<g class="sun" opacity="0">
+<circle cx="12" cy="12" fill="currentColor" r="6"></circle>
+<g class="sun-beams">
+<line x1="12" x2="12" y1="1" y2="3"></line>
+<line x1="12" x2="12" y1="21" y2="23"></line>
+<line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line>
+<line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line>
+<line x1="1" x2="3" y1="12" y2="12"></line>
+<line x1="21" x2="23" y1="12" y2="12"></line>
+<line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line>
+<line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line>
+</g>
+</g>
+</svg>
+</a>
+</li>
 </ul>
 </div>
 </header>

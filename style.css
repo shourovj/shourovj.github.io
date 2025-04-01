@@ -1,11 +1,213 @@
+/* Kanagawa color variables */
 :root {
+ /* Reds */
+ --kanagawa-dark-red: #b31d1d;
+ --kanagawa-medium-red: #c34043;
+ --kanagawa-light-red: #e82424;
+
+ /* Greens */
+ --kanagawa-dark-green: #4b6b4b;
+ --kanagawa-medium-green: #76946a;
+ --kanagawa-light-green: #98bb6c;
+ --kanagawa-extra-green: #668c44;
+
+ /* Blues */
+ --kanagawa-dark-blue: #4a5cc5;
+ --kanagawa-light-blue: #7e9cd8;
+ --kanagawa-selection-blue: #4a7890;
+
+ /* Yellows */
+ --kanagawa-dark-yellow: #8f6c3f;
+ --kanagawa-medium-yellow: #c0a36e;
+ --kanagawa-light-yellow: #e6c384;
+
+ /* Magentas */
+  --kanagawa-dark-magenta: #625987;
+  --kanagawa-medium-magenta: #957fb8;
+  --kanagawa-light-magenta: #938aa9;
+
+ /* Cyans */
+ --kanagawa-dark-cyan: #3d6b62;
+ --kanagawa-medium-cyan: #6a9589;
+ --kanagawa-light-cyan: #7aa89f;
+
+ /* Blacks and Whites */
+ --kanagawa-dark-black: #090618;
+ --kanagawa-dark-bright-black: #727169;
+ --kanagawa-dark-white: #c8c093;
+ --kanagawa-dark-bright-white: #dcd7ba;
+ --kanagawa-light-black: #1f1f28;
+ --kanagawa-light-bright-black: #54534d;
+ --kanagawa-light-white: #dcd7ba;
+ --kanagawa-light-bright-white: #1f1f28;
+
+ /* Background, Foreground and Selection */
+ --kanagawa-dark-bg: #1f1f28;
+ --kanagawa-dark-text: #dcd7ba;
+ --kanagawa-light-selection: #2d4f67;
+ --kanagawa-light-bg: #efede3;
+ --kanagawa-light-text: #1f1f28;
+ --kanagawa-dark-selection: #d5dfe6;
+
+  /* Icon filters */
+  --kanagawa-dark-icon-filter: brightness(0) saturate(100%) invert(90%) sepia(83%) saturate(132%) hue-rotate(334deg) brightness(91%) contrast(89%);
+  --kanagawa-light-icon-filter: brightness(0) saturate(100%) invert(9%) sepia(15%) saturate(845%) hue-rotate(201deg) brightness(92%) contrast(91%);
+  /* Icon filters */
+  --text-filter: 40%;  /* Adjust this value to match text-body color */
+}
+
+
+/* base theme colors */
+:root {
+  /* Base sizes */
   --base-size: 13pt;
-  /*--dark-header: rgb(147, 54, 37);
-  --light-header: rgb(205, 76, 53);*/
-  --dark-header: rgb(81, 89, 55);
-  --light-header: rgb(90, 97, 63);
-  --my-red: rgb(147, 54, 37);
-  --bright-red: rgb(205, 76, 53);
+  
+  /* Core brand colors */
+  --brand-dark: rgb(147, 54, 37);      /* Dark red for hover states */
+  --brand-main: rgb(205, 76, 53);      /* Main brand red */
+  --brand-light: rgb(255, 245, 245);   /* Light red background */
+  
+  /* Text colors */
+  --text-dark: #333;         /* Dark text for headings */
+  --text-body: #444;         /* Main body text */
+  --text-muted: #666;        /* Subdued text like metadata */
+  --text-black: #000;        /* Pure black text */
+  
+  /* UI colors */
+  --bg-main: rgb(252, 252, 252);     /* Main background */
+  --link-color: rgb(50, 115, 228);    /* Link blue */
+  --selection-color: var(--text-black);
+  
+  /* Social icon colors */
+  --icon-hover: var(--brand-dark);
+  --icon-default: rgba(0, 0, 0, 0.6);  /* Default gray state */
+  
+  /* Scrollbar colors */
+  --scrollbar-bg: #f1f1f1;
+  --scrollbar-thumb: rgba(205, 76, 53, 0.5);
+  --scrollbar-thumb-hover: rgba(205, 76, 53, 0.7);
+
+  /* Infobox colors */
+  --quote-bg: rgb(246, 248, 250);
+  --quote-border: rgb(208, 215, 222);
+  --quote-text: rgb(36, 41, 47);
+
+  --note-bg: rgb(220, 243, 251);
+  --note-border: rgb(84, 174, 255);
+  --note-text: rgb(9, 105, 218);
+
+  --warning-bg: rgb(255, 235, 233);
+  --warning-border: rgb(255, 129, 130);
+  --warning-text: rgb(164, 14, 38);
+
+  --tip-bg: rgb(230, 246, 230);
+  --tip-border: rgb(87, 171, 90);
+  --tip-text: rgb(22, 108, 32);
+}
+
+/* Kanagawa light theme colors  (uses the kanagawa theme colors above) */
+:root {
+  /* Base sizes */
+  --base-size: 13pt;
+
+  /* Core brand colors */
+  --brand-dark: var(--kanagawa-dark-cyan);      /* Dark red for hover states */
+  --brand-main: var(--kanagawa-medium-cyan);      /* Main brand red */
+  --brand-light: color-mix(in srgb, var(--kanagawa-light-bg) 95%, var(--kanagawa-medium-cyan) 5%);   /* Light red background */
+  
+  /* Text colors */
+  --text-dark: var(--kanagawa-light-text);         /* Dark text for headings */
+  --text-body: color-mix(in srgb, var(--kanagawa-light-text) 90%, var(--kanagawa-light-bg) 10%);         /* Main body text */
+  --text-muted: color-mix(in srgb, var(--kanagawa-light-text) 70%, var(--kanagawa-light-bg) 30%);        /* Subdued text */
+  --text-black: var(--kanagawa-light-text);        /* Pure black text */
+  
+  /* UI colors */
+  --bg-main: var(--kanagawa-light-bg);     /* Main background */
+  --link-color: var(--kanagawa-dark-blue);    /* Link blue */
+  --selection-color: var(--kanagawa-selection-blue);
+  --selection-text-color: var(--kanagawa-dark-text);
+  
+  /* Social icon colors */
+  --icon-hover: var(--kanagawa-red);
+  --icon-default: var(--kanagawa-bright-black);
+  
+  /* Scrollbar colors */
+  --scrollbar-bg: var(--kanagawa-light-bg);
+  --scrollbar-thumb: var(--kanagawa-light-red);
+  --scrollbar-thumb-hover: var(--kanagawa-light-red);
+
+  /* Infobox colors */
+  --quote-bg: color-mix(in srgb, var(--kanagawa-light-bg) 95%, var(--kanagawa-light-bright-black) 5%);
+  --quote-border: var(--kanagawa-light-bright-black);
+  --quote-text: var(--kanagawa-light-black);
+
+  --note-bg: color-mix(in srgb, var(--kanagawa-light-bg) 95%, var(--kanagawa-light-blue) 5%);
+  --note-border: var(--kanagawa-dark-blue);
+  --note-text: var(--kanagawa-dark-blue);
+
+  --warning-bg: color-mix(in srgb, var(--kanagawa-light-bg) 95%, var(--kanagawa-light-red) 5%);
+  --warning-border: var(--kanagawa-dark-red);
+  --warning-text: var(--kanagawa-dark-red);
+
+  --tip-bg: color-mix(in srgb, var(--kanagawa-light-bg) 95%, var(--kanagawa-light-green) 5%);
+  --tip-border: var(--kanagawa-dark-green);
+  --tip-text: var(--kanagawa-dark-green);
+
+  --icon-filter: var(--kanagawa-light-icon-filter);
+  --icon-filter-hover: var(--kanagawa-dark-icon-filter);
+}
+
+/* Kanagawa dark theme colors  (uses the kanagawa theme colors above) */
+:root[data-theme="dark"] {
+  /* Base sizes */
+  --base-size: 13pt;
+
+  /* Core brand colors */
+  --brand-dark: var(--kanagawa-light-cyan);      /* Dark red for hover states */
+  --brand-main: var(--kanagawa-medium-cyan);      /* Main brand red */
+  --brand-light: color-mix(in srgb, var(--kanagawa-dark-bg) 95%, var(--kanagawa-dark-cyan) 5%);   /* Light red background */
+  
+  /* Text colors */
+  --text-dark: var(--kanagawa-dark-text);         /* Dark text for headings */
+  --text-body: color-mix(in srgb, var(--kanagawa-dark-text) 90%, var(--kanagawa-dark-bg) 10%);         /* Main body text */
+  --text-muted: color-mix(in srgb, var(--kanagawa-dark-text) 70%, var(--kanagawa-dark-bg) 30%);        /* Subdued text */
+  --text-black: var(--kanagawa-dark-text);        /* Pure black text */
+  
+  /* UI colors */
+  --bg-main: var(--kanagawa-dark-bg);     /* Main background */
+  --link-color: var(--kanagawa-light-blue);    /* Link blue */
+  --selection-color: var(--kanagawa-dark-selection);
+  --selection-text-color: var(--kanagawa-light-text);
+  
+  /* Social icon colors */
+  --icon-hover: var(--kanagawa-red);
+  --icon-default: var(--kanagawa-bright-black);
+  
+  /* Scrollbar colors */
+  --scrollbar-bg: var(--kanagawa-dark-bg);
+  --scrollbar-thumb: var(--kanagawa-light-red);
+  --scrollbar-thumb-hover: var(--kanagawa-light-red);
+
+  /* Infobox colors */
+  --quote-bg: color-mix(in srgb, var(--kanagawa-dark-bg) 95%, var(--kanagawa-dark-black) 5%);
+  --quote-border: var(--kanagawa-dark-text);
+  --quote-text: var(--kanagawa-dark-text);
+
+  --note-bg: color-mix(in srgb, var(--kanagawa-dark-bg) 95%, var(--kanagawa-dark-blue) 5%);
+  --note-border: var(--kanagawa-light-blue);
+  --note-text: var(--kanagawa-light-blue);
+
+  --warning-bg: color-mix(in srgb, var(--kanagawa-dark-bg) 95%, var(--kanagawa-dark-red) 5%);
+  --warning-border: var(--kanagawa-light-red);
+  --warning-text: var(--kanagawa-light-red);
+
+  --tip-bg: color-mix(in srgb, var(--kanagawa-dark-bg) 95%, var(--kanagawa-dark-green) 5%);
+  --tip-border: var(--kanagawa-light-green);
+  --tip-text: var(--kanagawa-light-green);
+
+  --icon-filter: var(--kanagawa-dark-icon-filter);
+  --icon-filter-hover: var(--kanagawa-light-icon-filter);
+
 }
 
 @font-face {
@@ -42,17 +244,18 @@
 
 a {
   text-decoration: none;
-  color: rgb(50, 115, 228);
+  color: var(--link-color);
   /*font-weight:700;*/
 }
 
 body{
   margin: 0px;
-  background-color: rgb(252,252,252);
+  background-color: var(--bg-main);
   font-family: 'Univers', sans-serif;
   font-size: 11pt; /* fallback for bad browser */
   font-size: var(--base-size);
   font-stretch: 95%;
+  color: var(--text-body);
  }
 
 .worldmap {
@@ -62,7 +265,7 @@ body{
 }
 
 .page {
-  background-color: rgb(252,252,252);
+  background-color: var(--bg-main);
   max-width: 800px;
   width: calc(100% - var(--base-size));
   margin-left: auto;
@@ -99,7 +302,6 @@ h5 {
 }
 
 header.site-header h1{
-  /*margin: 0;*/
   margin: 10pt 0 0 0;
   float: left;
   font-family: Univers, sans-serif;
@@ -112,23 +314,14 @@ header.site-header h1{
  }
 
 header.site-header h1 a {
-  color:rgb(205, 76, 53);
+  color:var(--brand-dark);
 }
-
-/* shrink header on size */
-/*@media only screen and (max-width: 700px) {
-  header h2{
-    font-size: 20pt;
-    font-size: calc(var(--base-size) * 2);
-  }
-}*/
 
 header.site-header {
   padding: 0;
   margin: 0;
   padding-bottom: 5pt;
-  /*min-height: 60px;*/
-  border-top:2px solid var(--bright-red);
+  border-top:2px solid var(--brand-dark);
   position:relative;
 }
 
@@ -144,7 +337,7 @@ header.site-header {
     background: linear-gradient(
         to right,
         transparent,
-        rgb(205, 76, 53) 50%,
+        var(--brand-dark) 50%,
         transparent 100%
     );
     margin:0;
@@ -159,7 +352,6 @@ ul.menu {
   list-style-type: none;
   padding: 0;
   overflow: hidden;
-  /*border: 1px solid rgb(120, 142, 181);*/
   text-shadow: none;
   font-style: italic;
   margin-left: auto;
@@ -181,7 +373,7 @@ hr {
 
 ul.menu li a {
     display: block;
-    color: black;
+    color: var(--text-black);
     text-align: center;
     padding-right: 0.5em;
     padding-left: 0.5em;
@@ -195,24 +387,13 @@ a:hover {
 }
 
 ul.menu li a:hover:not(.active) {
-  color: rgb(50, 115, 228);
+  color: var(--link-color);
 }
 
 ul.menu li a:hover {
   text-decoration: underline;
 }
 
-/*
-ul.menu li a.active {
-  color: rgb(147, 54, 37);
-  color: var(--dark-header);
-}
-
-a.active {
-  color: rgb(147, 54, 37);
-  color: var(--dark-header);
-}
-*/
 
 @media screen and (max-width: 1000px){
     /*ul.menu li.right,
@@ -226,34 +407,6 @@ a.active {
       padding-left: 20px;
       text-align: left;
     }
-
-
-
-
-/*
-h3{
-  margin: 0;
-  padding: 0;
-  padding-top: 1pt;
-  padding-bottom: 5pt;
-  font-style: italic;
-  font-size: 15pt; 
-  font-size: calc(var(--base-size) * 15 / 11);
-  padding-left: 5pt;
-  padding-right: 5pt;
-}
-
-h4{
-  padding: 0;
-  padding-top: 1pt;
-  padding-bottom: 5pt;
-  font-size: 13pt; 
-  font-size: calc(var(--base-size) * 1.1);
-  font-style: italic;
-  padding-left: 5pt;
-  padding-right: 5pt;
-}
-*/
   }
 
 p {
@@ -269,8 +422,7 @@ p {
 }
 
 .tomato {
-  color: rgb(147, 54, 37);
-  /*color: var(--dark-header);*/
+  color: var(--brand-main);
 }
 
 ul.icons {
@@ -285,7 +437,6 @@ ul.icons {
   font-size:11pt;
   list-style-type: none;
   padding: 0;
-  /*border: 1px solid rgb(120, 142, 181);*/
   font-style: italic;
   text-shadow: none;
 }
@@ -294,11 +445,11 @@ ul.icons li {float: right;}
 
 ul.icons li a {
     display: block;
-    color: black;
+    color: var(--text-black);
     text-align: center;
     padding: 10px 10px;
     text-decoration: none;
-    background-color: rgb(252,252,252);
+    background-color: var(--bg-main);
 
 } 
 
@@ -306,11 +457,6 @@ ul.icons li img {
   height: 25px;
   width: 25px;
 }
-
-/* 
-.filtercolor {
-  color: black;
-} */
 
 .profilesec {
   display: flex;
@@ -327,7 +473,7 @@ ul.icons li img {
 
 .profilebox img {
   margin: 0;
-  margin-right:20px;margin-bottom:20px;margin-top:6pt;margin-left:20px; border:1px solid #676767;padding:1px; width: 90%;
+  margin-right:20px;margin-bottom:20px;margin-top:6pt;margin-left:20px; border:1px solid var(--border-gray);padding:1px; width: 90%;
 }
 
 @media only screen and (max-width: 600px) {
@@ -341,37 +487,18 @@ ul.icons li img {
   float:right; 
   flex-shrink: 1.5;
 }
-
-/*
-.page p {
-  padding-left: 10pt;
-  padding-right: 10pt;
-}
-*/
-
 ::selection {
-  background-color: black;
-  color: white;
+  background-color: var(--selection-color) !important;
+  color: var(--selection-text-color) !important;
 }
 
 ::-moz-selection {
-  background-color: black;
-  color: white;
+  background-color: var(--selection-color) !important;
+  color: var(--selection-text-color) !important;
 }
 
-/* For blog */
 
-/* Default blockquote styling (matching previous infobox-quote) */
-/* blockquote {
-    max-width: 800px;
-    padding: 1rem 1rem 1rem 4rem;
-    margin: 5pt;
-    border-radius: 6px;
-    position: relative;
-    overflow: hidden;
-    background-color: rgb(245, 245, 245);
-    border-left: 4px solid rgb(100, 100, 100);
-} */
+
 
 blockquote {
   margin: 0 0 1rem 0;
@@ -380,8 +507,8 @@ blockquote {
   border-radius: 6px;
   position: relative;
   overflow: hidden;
-  background-color: rgb(246, 248, 250);
-  border: 2px solid rgb(208, 215, 222);
+  background-color: var(--quote-bg);
+  border: 2px solid var(--quote-border);
 }
 
 /* Base infobox style. Include quote icon for default behavior. */
@@ -397,23 +524,20 @@ blockquote::before {
   background-repeat: no-repeat;
 }
 
-/* Default blockquote styling is a quotation box */
-blockquote b {
-  color: rgb(36, 41, 47);
+:root[data-theme="dark"] blockquote::before {
+  opacity: 0.78;
 }
+
 
 blockquote::before {
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23656d76" d="M9.5 6C7 6 5 8 5 10.5V16h5v-5H7.5c0-1.1.9-2 2-2h1V6h-1zm8 0c-2.5 0-4.5 2-4.5 4.5V16h5v-5h-2.5c0-1.1.9-2 2-2h1V6h-1z"/></svg>');
   top: 0.8rem;
 }
 
-/* Note (blue) variant */
 .infobox-note {
-  background-color: rgb(220, 243, 251);
-  border: 2px solid rgb(84, 174, 255);
-}
-.infobox-note b {
-  color: rgb(9, 105, 218);
+  background-color: var(--note-bg);
+  border: 2px solid var(--note-border);
+  color: var(--note-text);
 }
 
 .infobox-note::before {
@@ -422,26 +546,21 @@ blockquote::before {
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%230969da" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-4h2v-6h-2v6zm0-8h2V6h-2v2z" fill-rule="evenodd"/></svg>');
 }
 
-/* Warning (red) variant */
 .infobox-warning {
-  background-color: rgb(255, 235, 233);
-  border: 2px solid rgb(255, 129, 130);
+  background-color: var(--warning-bg);
+  border: 2px solid var(--warning-border);
+  color: var(--warning-text);
 }
-.infobox-warning b {
-  color: rgb(164, 14, 38);
-}
+
 
 .infobox-warning::before {
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23cf222e" d="M12 3.5l8.5 14.7H3.5L12 3.5M12 1L1 21h22L12 1zm-1 14h2v2h-2v-2zm0-8v6h2V7h-2v6z" fill-rule="evenodd" stroke="%23cf222e" stroke-width="0.5" stroke-linejoin="round"/></svg>');
 }
 
-/* Tip (green) variant */
 .infobox-tip {
-  background-color: rgb(230, 246, 230);
-  border: 2px solid rgb(87, 171, 90);
-}
-.infobox-tip b {
-  color: rgb(22, 108, 32);
+  background-color: var(--tip-bg);
+  border: 2px solid var(--tip-border);
+  color: var(--tip-text);
 }
 
 .infobox-tip::before {
@@ -515,7 +634,7 @@ footer::before {
     background: linear-gradient(
         to right,
         transparent,
-        rgb(205, 76, 53) 50%,
+        var(--brand-main) 50%,
         transparent 100%
     );
 }
@@ -528,35 +647,10 @@ ul, ol {
 /* Outer container for border and header */
 .news-section {
     position: relative;
-    background: #fff;
+    background: var(--bg-main);
     border-radius: 12px;
     margin: 2rem 0 1rem 0;
     padding: 1rem 0 0 1rem;
-}
-
-.news-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 12px;
-    padding: 1px;
-    background: linear-gradient(
-        110deg,
-        rgb(205, 76, 53) 0%,
-        #ffffff 40%,
-        transparent 60%,
-        transparent 100%
-    );
-    -webkit-mask: 
-        linear-gradient(#fff 0 0) content-box, 
-        linear-gradient(#fff 0 0);
-    mask: 
-        linear-gradient(#fff 0 0) content-box, 
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    z-index: 1;
-    pointer-events: none;
 }
 
 /* Inner scrollable container */
@@ -577,17 +671,17 @@ ul, ol {
 }
 
 .news-box::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: var(--bg-main);
     border-radius: 4px;
 }
 
 .news-box::-webkit-scrollbar-thumb {
-    background: rgba(205, 76, 53, 0.5);
+    background: var(--brand-main);
     border-radius: 4px;
 }
 
 .news-box::-webkit-scrollbar-thumb:hover {
-    background: rgba(205, 76, 53, 0.7);
+    background: var(--brand-main);
 }
 
 .news-box > p {
@@ -603,18 +697,13 @@ ul, ol {
 }
 
 .icons img, .header-icons img {
-    width: 1rem;
-    height: 1rem;
-    opacity: 0.6;
-    transition: all 0.15s ease;
-    /* Start with grayscale black icons */
-    filter: grayscale(100%) brightness(0.4);
+    /* First make black icon into white */
+    filter: var(--icon-filter);
+    /* Then make it use our text color */
 }
 
 .icons img:hover, .header-icons img:hover {
-    opacity: 1;
-    /* Transform to red on hover using specific filter values */
-    filter: invert(24%) sepia(87%) saturate(1017%) hue-rotate(346deg) brightness(92%) contrast(93%);
+    filter: var(--icon-filter-hover);
 }
 
 /* Footer-specific icon styles */
@@ -629,8 +718,756 @@ ul, ol {
     margin: 0 0 1rem 0;
 }
 
+.header-icons img {
+    width: 1.75rem;
+    height: 1.75rem;
+}
+
 @media (max-width: 600px) {
     .header-icons {
         justify-content: center;
     }
 }
+
+.top-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: right;
+  max-width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 1em;
+  padding-left: 1em;
+  position: relative;
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu > li {
+  overflow: hidden;
+}
+
+.menu-button-container {
+  display: none;
+  height: 100%;
+  width: 30px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  margin-right: -15px;
+  position: relative;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+  display: block;
+  background-color: var(--brand-main);
+  position: absolute;
+  height: 4px;
+  width: 30px;
+  border-radius: 2px;
+  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.menu-button {
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.menu-button::before {
+  content: '';
+  top: -8px;
+}
+
+.menu-button::after {
+  content: '';
+  top: 8px;
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::before {
+  top: 0;
+  transform: translate(-50%, 0) rotate(45deg);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button {
+  background: rgba(255, 255, 255, 0);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::after {
+  top: 0;
+  transform: translate(-50%, 0) rotate(-45deg);
+}
+
+@media (max-width: 700px) {
+  .menu-button-container {
+    display: flex;
+  }
+  
+  .menu {
+    position: absolute;
+    top: calc(100% + -5pt + 10pt);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    background-color: var(--bg-main);
+    
+    /* Change display: none to these properties for animation */
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(-50%) translateY(-1em);
+    transition: all 0.2s ease-in-out;
+  }
+
+  #menu-toggle:checked ~ .menu {
+    /* Change display: flex to these properties */
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .menu > li {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-main);
+    border-bottom: 1px solid var(--brand-main);
+  }
+
+  .menu > li > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 0;
+    color: var(--brand-main);
+    text-decoration: none;
+  }
+}
+
+/* For non-mobile view */
+.menu > li > a {
+  text-decoration: none;
+  color: var(--text-black);
+}
+
+/* Blog post header container */
+.post-header {
+  max-width: 800px;
+  margin: 0 auto 1.5rem auto;
+  background: var(--bg-main);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--brand-main);
+}
+
+
+.post-hero {
+  width: 100%;
+  height: 300px;
+  margin: 0;
+  position: relative;
+  background-size: 800px;
+}
+
+/* Gradient overlay for image fade */
+.post-hero::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100px;
+  background: linear-gradient(to bottom, 
+      rgba(255,255,255,0) 0%, 
+      var(--bg-main) 100%
+  );
+}
+
+.post-content-wrapper {
+  padding: 1.5rem 2rem 1rem;
+  margin-top: -20px; /* Pull content up slightly to overlap with fade */
+  position: relative; /* Keep content above gradient */
+  z-index: 1;
+}
+
+.post-title {
+  font-size: 2.4rem;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.post-title a {
+  color: var(--text-black);
+  text-decoration: none;
+}
+
+.post-meta {
+  margin: 0 0 1rem 0;  /* Remove top margin */
+  color: var(--text-black);
+  font-size: 0.9rem;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.post-description {
+  margin: 0;  /* No margins as it's typically the last element */
+  font-size: 1.1rem;
+  color: var(--text-body);
+  line-height: 1.5;
+}
+/* Heading styles within articles */
+article > h1,
+article > h2,
+article > h3,
+article > h4,
+article > h5,
+article > h6 {
+  color: var(--text-black);
+}
+
+article > h1 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  padding-top: 1.2rem;
+}
+
+article > h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.75rem;
+  padding-top: 1.1rem;
+}
+
+article > h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  padding-top: 1rem;
+}
+
+article > h4 {
+  font-size: 1.2rem;
+  margin-bottom: 1.25rem;
+  padding-top: 0.9rem;
+}
+
+article > h5 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  padding-top: 0.8rem;
+}
+
+article > h6 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  padding-top: 0.7rem;
+}
+
+article > p {
+  margin: 0;      /* Consistent paragraph spacing */
+  margin-bottom: 0.6rem;
+}
+
+/* List styling within articles */
+article > ul,
+article > ol {
+  margin: 0;      /* Match paragraph spacing */
+  margin-bottom: 1rem;
+  padding-left: 2rem;   /* Indent lists */
+}
+
+article > ul > li,
+article > ol > li {
+  margin: 0;
+  margin-bottom: 0.5rem;
+  padding-left: 0.5rem; /* Small indent for list items */
+}
+
+/* Handle nested lists */
+article > ul ul,
+article > ul ol,
+article > ol ul,
+article > ol ol {
+  margin: 0;
+  margin-bottom: 0.5rem;    /* Less spacing for nested lists */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .post-hero {
+      height: 200px;
+  }
+
+  .post-title {
+      font-size: 2rem;
+  }
+} 
+
+/* Define page width variable */
+.page {
+  --page-width: min(800px, 100vw);
+  overflow: visible !important;
+  position: relative;
+}
+
+/* Style the footnote reference container */
+sup[id^="fnref"] {
+  position: relative;
+  display: inline;
+  z-index: 1;
+  font-size: 0.7em;
+  vertical-align: baseline;
+  position: relative;
+  top: -0.6em;
+  line-height: 0;
+}
+
+/* Style the footnote number */
+.footnote-ref {
+  color: var(--link-color);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+  width: 1em;
+  height: 1em;
+  border: 1px solid var(--link-color);
+  border-radius: 50%;
+  position: relative;
+  transition: background-color 0.2s;
+  line-height: normal;
+}
+
+/* Create larger invisible hit area */
+.footnote-ref::before {
+  content: '';
+  position: absolute;
+  top: -0.5em;
+  right: -0.5em;
+  bottom: -0.5em;
+  left: -0.5em;
+  z-index: -1;
+}
+
+/* Hover effect */
+.footnote-ref:hover {
+  background-color: var(--link-color);
+  color: var(--bg-main) !important;
+}
+
+/* Style the popup container */
+.footnote-popup {
+  visibility: hidden;
+  position: absolute;
+  width: min(400px, calc(var(--page-width) - 40px));
+  background: var(--bg-main);
+  border: 1px solid var(--border-gray);
+  padding: 10px;
+  border-radius: 4px;
+  font-size: var(--base-size);
+  box-shadow: 0 2px 5px color-mix(in srgb, var(--text-black) 20%, transparent);
+  z-index: 9999;
+  bottom: 100%;
+  margin-bottom: 10px;
+  opacity: 0;
+  transition: opacity 0.2s, visibility 0.2s;
+  text-align: left;
+  line-height: 1.4;
+  white-space: normal;
+  pointer-events: none;
+  color: var(--text-black);
+  font-family: 'Univers', sans-serif;    
+  /* Center by default */
+  left: 50%;
+  transform: translateX(calc(-50% + var(--popup-shift, 0px)));
+}
+
+/* Show popup */
+sup[id^="fnref"]:hover .footnote-popup {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Style the arrow */
+.footnote-popup::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  border-width: 0 10px 10px 10px;
+  border-style: solid;
+  border-color: transparent transparent var(--text-black) transparent;
+  left: calc(50% - var(--popup-shift, 0px));
+  transform: translateX(-50%) rotate(180deg);
+}
+
+
+.preview-image {
+  width: 200px;
+  flex: none;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/*
+.preview-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 40px;
+  background: linear-gradient(to right, transparent, white);
+}
+*/
+
+.preview-content {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.preview-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  text-decoration: none;
+}
+
+.preview-title a {
+  text-decoration: none;
+  color: inherit;
+  pointer-events: none;  /* Disable individual link clicks */
+}
+
+.preview-title a:hover {
+  color: var(--brand-main);
+}
+
+.preview-meta {
+  margin: 0 0 1rem 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.preview-description {
+  margin: 0;
+  color: var(--text-body);
+  line-height: 1.5;
+}
+
+/* Style for the overlay link that covers the entire preview */
+.article-preview-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  cursor: pointer;
+}
+
+/* Remove text decoration from the overlay link */
+.article-preview-link:hover {
+  text-decoration: none;
+}
+
+/* Style for any links within the content */
+.preview-content a {
+  position: relative;
+  z-index: 3;  /* Above the overlay link */
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .article-preview {
+      flex-direction: column;
+      margin: 1rem;
+      min-height: unset;
+  }
+/*
+  .article-preview::before {
+      background: linear-gradient(
+          to bottom,
+          transparent 0%,
+          transparent 20%,
+          var(--bg-main) 60%,
+          var(--text-black) 100%
+      );
+  }
+
+  .article-preview:hover::before {
+      background: linear-gradient(
+          to bottom,
+          transparent 0%,
+          transparent 20%,
+          var(--bg-main) 60%,    
+          var(--text-black) 100%
+      );
+  }
+*/
+  .preview-image {
+      width: 100%;
+      height: 150px;
+      min-height: unset;
+  }
+
+  .preview-image::after {
+      width: 100%;
+      height: 20px;
+      top: 130px;
+      background: linear-gradient(to bottom, transparent, var(--bg-main));;
+  }
+
+  .preview-content {
+      padding: 1rem;
+      height: auto;
+  }
+}
+
+/* About header styling */
+.about-header {
+  display: flex;
+  max-width: 800px;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  background: var(--bg-main);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  min-height: 200px;
+  border: 1px solid var(--brand-main);  /* Direct red border */
+}
+.about-image {
+  width: 200px;
+  flex: none;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 2;
+}
+
+.about-content {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.about-title {
+  margin: 0 0 0.15rem 0;  /* Tighter spacing to subtitle */
+  font-size: 1.8rem;
+  color: var(--text-dark);
+}
+
+.about-subtitle {
+  margin: 0 0 0.75rem 0;  /* Less space before icons */
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.about-description {
+  margin: 0 0 0.75rem 0;  /* Tighter spacing between paragraphs */
+  color: var(--text-body);
+  line-height: 1.4;  /* Slightly tighter line height */
+}
+
+/* Last about-description shouldn't have bottom margin */
+.about-description:last-child {
+  margin-bottom: 0;
+}
+
+/* Tighter header social icons */
+.header-icons {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;  /* Reduced margin after icons */
+  display: flex;
+  gap: 0.7rem;  /* Tighter spacing between icons */
+}
+
+.header-icons img {
+  width: 1.2rem;  /* Slightly smaller icons */
+  height: 1.2rem;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.header-icons img:hover {
+  opacity: 0.9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .about-header {
+      flex-direction: column;
+      margin-top: 0 auto;
+      margin-bottom: 2rem;
+  }
+  .about-image {
+      width: 100%;
+      height: 200px;
+  }
+  .about-content {
+      padding: 1rem;
+  }
+  .header-icons {
+      justify-content: center;
+  }
+} 
+
+/* Simpler article preview styling */
+.article-preview {
+  display: flex;
+  max-width: 800px;
+  margin: 0 0 1.5rem 0;
+  margin-left: auto;
+  margin-right: auto;
+  background: var(--bg-main);
+  border-radius: 6px;
+  overflow: hidden;
+  min-height: 200px;
+  position: relative;
+  border: 1px solid var(--brand-main);  /* Direct red border */
+  transition: background-color 0.2s ease;
+}
+
+
+.article-preview:hover {
+  background-color: var(--brand-light);
+}
+
+.preview-image {
+  width: 200px;
+  flex: none;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* Rest of the styles remain the same */
+.preview-content {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .article-preview {
+      flex-direction: column;
+      margin: 1rem;
+      min-height: unset;
+  }
+
+  .preview-image {
+      width: 100%;
+      height: 150px;
+  }
+} 
+
+
+#theme-toggle {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 1rem;
+    cursor: pointer;
+    color: var(--text-body);
+}
+
+/* SVG styles */
+.sun-and-moon {
+    fill: currentColor;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    transition: transform 0.5s;
+    width: 1em;
+    height: 1em;
+}
+
+.sun {
+    transition: opacity 0.5s;
+    opacity: 0;
+}
+
+.moon {
+    transition: opacity 0.5s;
+    opacity: 1;
+}
+
+/* Dark theme transforms */
+[data-theme="dark"] .sun {
+    opacity: 1;
+}
+
+[data-theme="dark"] .moon {
+    opacity: 0;
+}
+
+.sun-beams {
+    stroke-width: 2px;
+    transform-origin: center center;
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+#theme-toggle:hover {
+    opacity: 0.8;
+}
+
+/* Update the button li to match other menu items */
+.menu li:last-child {
+    display: flex;
+    align-items: center;
+}
+
+/* Responsive menu adjustments */
+@media (max-width: 700px) {
+    #theme-toggle {
+        padding: 1rem;  /* Match the padding of other menu items */
+        width: 100%;     /* Full width in mobile menu */
+        justify-content: center;
+    }
+
+    .sun-and-moon {
+        width: 1.2em;    /* Slightly larger in mobile menu */
+        height: 1.2em;
+    }
+}
+

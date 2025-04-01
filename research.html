@@ -1,8 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script>
+    // Check and apply theme immediately
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
+</script>
+<script src="./../static/js/theme.js"></script>
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="test_menu.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link href="https://fonts.googleapis.com/css?family=PT+Serif&Merriweather&Oswald&Ubuntu+Mono&Arimo:ital,wght@0,400..700;1,400..700" rel="stylesheet">
@@ -19,11 +28,11 @@
 
 
 
-<header class="site-header">
+
+  <header class="site-header">
     <div class="top-nav">
-    <!--div class="menucontainer"-->
     <div style="margin-right: auto;">
-    <h1><a class="active" href="/">Michael Saxon</a></h1>
+    <h1><a href="/">Michael Saxon</a></h1>
     </div>
     <input id="menu-toggle" type="checkbox" />
     <label class='menu-button-container' for="menu-toggle">
@@ -33,6 +42,30 @@
       <li><a href="research">Publications</a></li>
       <li><a href="doc/cv_saxon.pdf">CV</a></li>
       <li><a href="blog/">Blog</a></li>
+      <li>
+        <a href="#" id="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+            <!-- Moon shape -->
+            <path class="moon" 
+                  d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z"
+                  fill="currentColor"/>
+            <!-- Sun shape (initially hidden) -->
+            <g class="sun" opacity="0">
+              <circle cx="12" cy="12" r="6" fill="currentColor"/>
+              <g class="sun-beams">
+                <line x1="12" y1="1" x2="12" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/>
+                <line x1="21" y1="12" x2="23" y2="12"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+              </g>
+            </g>
+          </svg>
+        </a>
+      </li>
     </ul>
   </div>
   </header>
