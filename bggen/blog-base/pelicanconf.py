@@ -56,7 +56,11 @@ PUBLICATIONS_SRC = 'content/pubs.bib'
 
 MARKDOWN = {
     'extension_configs': {
-        'markdown.extensions.codehilite': {'css_class': 'highlight'},
+        'markdown.extensions.codehilite': {
+            'css_class': 'highlight',
+            'linenums': True,
+            'guess_lang': False
+        },
         'markdown.extensions.extra': {},
         'markdown.extensions.meta': {},
         'markdown.extensions.toc': {

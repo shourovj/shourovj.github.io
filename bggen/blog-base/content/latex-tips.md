@@ -224,9 +224,12 @@ $^\pscirc$, $^\psx$, $^\pssqu$, $^\pstri$
 This produces something roughly like:
 Michael Saxon<sup><img width="15pt" src="https://t2iscorescore.github.io/static/images/psx.svg"/><img width="15pt" src="https://t2iscorescore.github.io/static/images/psc.svg"/></sup>
 
-## Non-Latin alphabets on arXiv
+## Non-Latin (CJK) alphabets on arXiv
 
-XeLaTeX is the best way to do this. But arXiv (as of writing) doesn't support it 😭😭😭😭😭
+XeLaTeX is the best way to do this, with native unicode support, and a much more comprehensive distribution of multilingual fonts and modules. 
+But arXiv (as of writing) doesn't support it 😭😭😭😭😭
+
+So we need to figure out how to do it with pdfLaTeX.
 
 We have to hack it in using various packages depending on language. In my multilingual paper, I *wanted* to include CJK and Hebrew characters, but I just could not figure out Hebrew without XeLaTeX at least for CJK you can use the CJK packages.
 
@@ -242,9 +245,11 @@ I was able to get this working on arXiv:
 \newcommand{\inlinejp}[1]{\begin{CJK}{UTF8}{min}{#1}\end{CJK}}
 % gbsn font for Chinese
 \newcommand{\inlinezh}[1]{\begin{CJK}{UTF8}{gbsn}{#1}\end{CJK}}
-```
 
-This makes things like `\inlinejp{お前はもう死んでいる}` or `\inlinezh{迈克不喜欢卷}` to render properly.
+%%% in document
+\inlinejp{お前はもう死んでいる}
+\inlinezh{迈克不喜欢卷}
+```
 
 ## Learn the weird Knuth-isms
 
@@ -374,7 +379,7 @@ MAKE THE FIGURE SMALL IN GENERATION AS AN SVG THEN IT WILL BE BIG
 - rgb
 - named colors (link)
 
-# TODO: Overleaf in VSCode
+# 5. TODO: Overleaf in VSCode
 
 - use latex workshop
 - use overleaf workshop
@@ -383,7 +388,7 @@ https://github.com/iamhyc/Overleaf-Workshop
 
 Install instructions
 
-# 5. The Dark Arts (Advanced)
+# 6. The Dark Arts (Advanced)
 
 > [!WARNING]
 > These incantations will give you dark powers and break you free from the shackles of conference style files. Use wisely.

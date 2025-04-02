@@ -1529,6 +1529,7 @@ sup[id^="fnref"]:hover .footnote-popup {
     position: relative;  /* For absolute positioning of copy button */
 }
 
+
 .highlight pre {
     /* Code content */
     font-size: 0.9em;
@@ -1946,4 +1947,23 @@ h6 .toclink:hover ~ .header-link::after,
 .toclink:active {
     color: var(--brand-dark);
     text-decoration: underline;
+}
+
+.highlighttable {
+    display: table;
+    margin: 0;
+}
+
+.highlighttable td.code {
+    min-width: calc(100% - 2.4em);  /* Account for padding (1.2em * 2) */
+}
+
+.highlighttable td.linenos {
+    min-width: 1em;
+    text-align: right;
+    padding-right: 0.8em;
+    user-select: none;
+    height: 0.8em;
+    color: var(--brand-main);
+    opacity: 0.5;
 }
