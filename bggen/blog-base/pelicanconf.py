@@ -23,6 +23,8 @@ AUTHOR_FEED_RSS = 'feeds/{slug}.rss.xml'
 
 DEFAULT_PAGINATION = 10
 
+
+
 # Add the plugin path
 PLUGIN_PATHS = ['plugins']
 PLUGINS = ["pelican_katex", "footnote_popups", "infobox", "shorten_filter"]
@@ -51,3 +53,21 @@ ARTICLE_PATHS = ['']    # Look for articles in content root
 ARTICLE_EXCLUDES = ['pages']
 
 PUBLICATIONS_SRC = 'content/pubs.bib'
+
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.codehilite': {'css_class': 'highlight'},
+        'markdown.extensions.extra': {},
+        'markdown.extensions.meta': {},
+        'markdown.extensions.toc': {
+            'title': 'Table of Contents',
+            'permalink': True,
+            'permalink_class': 'header-link',
+            'permalink_title': 'Permalink to this section',
+            'toc_class': 'toc',
+            'title_class': 'toc-title',
+            'anchorlink' : True,
+        },
+    },
+    'output_format': 'html5',
+}

@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Michael Saxon - Tips</title><link href="saxon.me/blog/" rel="alternate"></link><link href="saxon.me/blog/feeds/tips.atom.xml" rel="self"></link><id>saxon.me/blog/</id><updated>2025-04-02T15:32:00-07:00</updated><entry><title>The LaTeXonomicon (LaTeX tips, tricks, and hacks)</title><link href="saxon.me/blog/2025/latex-tips/" rel="alternate"></link><published>2025-04-02T15:32:00-07:00</published><updated>2025-04-02T15:32:00-07:00</updated><author><name>Michael Saxon</name></author><id>tag:None,2025-04-02:saxon.me/blog/2025/latex-tips/</id><summary type="html">Various tricks and lessons I've learned from messing around in LaTex. Adapted and extended from a gist by [me](https://gist.github.com/michaelsaxon).</summary><content type="html">&lt;div class="toc"&gt;&lt;span class="toc-title"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#making-commands"&gt;Making commands&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#fixing-infuriating-spacing-issues"&gt;Fixing infuriating spacing issues&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#comment-commands"&gt;Comment commands&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#non-latin-alphabets-on-arxiv"&gt;Non-Latin alphabets on arXiv&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#teaser-figures-in-the-acl-format"&gt;Teaser figures in the *ACL format&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#credit"&gt;Credit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#todo-combining-multiple-images-into-one-image"&gt;TODO Combining multiple images into one image&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#todo-how-to-use-a-lot-of-various-pretty-things"&gt;TODO: How to use a lot of various pretty things&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#text"&gt;Text&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#tables"&gt;Tables&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#figures"&gt;Figures&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#making-subfigures-withwithout-captions"&gt;making subfigures with/without captions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#colors-etc"&gt;Colors etc&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#todo-overleaf-in-vscode"&gt;TODO: Overleaf in VSCode&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#advanced-dark-arts"&gt;advanced dark arts&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;h1 id="making-commands"&gt;&lt;a class="toclink" href="#making-commands"&gt;Making commands&lt;/a&gt;&lt;a class="header-link" href="#making-commands" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id="fixing-infuriating-spacing-issues"&gt;&lt;a class="toclink" href="#fixing-infuriating-spacing-issues"&gt;Fixing infuriating spacing issues&lt;/a&gt;&lt;a class="header-link" href="#fixing-infuriating-spacing-issues" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Often you want to define a command as a simple macro for some name you're using throughout the paper. Something like&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\method&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\textsc&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;BiG-BiRd&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This has the benefit of letting you change it if you aren't sure what your method is. Also if you want to do obnoxious extra formatting like a weird font or color&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref footnote-toggle" href="javascript:void(0)"&gt;&lt;svg class="footnote-icon" viewbox="0 0 24 24"&gt;
+&lt;g class="icon-group" stroke="currentColor" stroke-linecap="round" stroke-width="3"&gt;
+&lt;line x1="7" x2="17" y1="12" y2="12"&gt;&lt;/line&gt;
+&lt;line x1="12" x2="12" y1="7" y2="17"&gt;&lt;/line&gt;
+&lt;/g&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;span class="footnote-popup"&gt;As I often do...&lt;/span&gt;&lt;/sup&gt;, it's easy to reuse.&lt;/p&gt;
+&lt;p&gt;But as I'm sure you know, this method has an infuriating spacing behavior, where if you add a space &lt;em&gt;in&lt;/em&gt; the command it's always there, even before a period. If you don't add a space it will &lt;em&gt;ignore&lt;/em&gt; spaces behind the command, so "&lt;code&gt;\method is great&lt;/code&gt;" renders as "BiG-BiRdis great". Unless you do some hack every time you want a space like "&lt;code&gt;\method~ is great&lt;/code&gt;".&lt;/p&gt;
+&lt;p&gt;I recently was shown the &lt;code&gt;\xspace&lt;/code&gt; package, my savior. Just add:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;% in preamble&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;xspace&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\method&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\textsc&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;BiG-BiRd&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\xspace&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And your problems are solved.&lt;/p&gt;
+&lt;h2 id="comment-commands"&gt;&lt;a class="toclink" href="#comment-commands"&gt;Comment commands&lt;/a&gt;&lt;a class="header-link" href="#comment-commands" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I used to add comment commands really simply into my papers, something like: "&lt;code&gt;\newcommand{\mycomment}[1]{\textcolor{red}{michael: #1}}&lt;/code&gt;". It's nice and easy.&lt;/p&gt;
+&lt;p&gt;But it has two issues, first you have to define it over and over again.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\mycomment&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textcolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;red&lt;span class="nb"&gt;}{&lt;/span&gt;MS: #1&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\george&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textcolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;yellow&lt;span class="nb"&gt;}{&lt;/span&gt;GC: #1&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\jerry&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textcolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;red&lt;span class="nb"&gt;}{&lt;/span&gt;JS: #1&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\kramer&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textcolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;green&lt;span class="nb"&gt;}{&lt;/span&gt;CK: #1&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\elaine&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textcolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;blue&lt;span class="nb"&gt;}{&lt;/span&gt;EB: #1&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ew.&lt;/p&gt;
+&lt;p&gt;But the more annoying issue is that the inline comments completely mess up the text length and spacing. How are you gonna know how much you've written, and how well-aligned and spaced your figures and tables are, on the night before the deadline, if your paper is full of comments?&lt;/p&gt;
+&lt;p&gt;I give my comments an off-switch and avoid repetition by defining a base comment macro.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;%%%%%%% COMMENT DEFINITION SECTION %%%%%%%&lt;/span&gt;
+&lt;span class="k"&gt;\newif\ifcommentsoff&lt;/span&gt;
+&lt;span class="c"&gt;% uncomment this line to hide inline comments&lt;/span&gt;
+&lt;span class="c"&gt;% \commentsofftrue&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\mycomment&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[3]&lt;span class="nb"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;\ifcommentsoff\else&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;
+        &lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textcolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;#1&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\textit&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;#2:&lt;span class="nb"&gt;}&lt;/span&gt; #3&lt;span class="nb"&gt;}}&lt;/span&gt;&lt;span class="k"&gt;\xspace&lt;/span&gt;
+    &lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\fi&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\george&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\mycomment&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;red&lt;span class="nb"&gt;}{&lt;/span&gt;GC&lt;span class="nb"&gt;}{&lt;/span&gt;#1&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\jerry&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\mycomment&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;magenta&lt;span class="nb"&gt;}{&lt;/span&gt;JS&lt;span class="nb"&gt;}{&lt;/span&gt;#1&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\kramer&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\mycomment&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;blue&lt;span class="nb"&gt;}{&lt;/span&gt;CK&lt;span class="nb"&gt;}{&lt;/span&gt;#1&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\elaine&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\mycomment&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;green&lt;span class="nb"&gt;}{&lt;/span&gt;EB&lt;span class="nb"&gt;}{&lt;/span&gt;#1&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id="non-latin-alphabets-on-arxiv"&gt;&lt;a class="toclink" href="#non-latin-alphabets-on-arxiv"&gt;Non-Latin alphabets on arXiv&lt;/a&gt;&lt;a class="header-link" href="#non-latin-alphabets-on-arxiv" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;XeLaTeX is the best way to do this. But arXiv (as of writing) doesn't support it 😭😭😭😭😭&lt;/p&gt;
+&lt;p&gt;We have to hack it in using various packages depending on language. In my multilingual paper, I &lt;em&gt;wanted&lt;/em&gt; to include CJK and Hebrew characters, but I just could not figure out Hebrew without XeLaTeX at least for CJK you can use the CJK packages.&lt;/p&gt;
+&lt;p&gt;I was able to get this working on arXiv:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;%%% preamble&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="na"&gt;[utf8]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;inputenc&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;CJKutf8&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;%%% set the font for each language&lt;/span&gt;
+&lt;span class="c"&gt;% mincho font for Japanese&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\inlinejp&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;CJK&lt;span class="nb"&gt;}{&lt;/span&gt;UTF8&lt;span class="nb"&gt;}{&lt;/span&gt;min&lt;span class="nb"&gt;}{&lt;/span&gt;#1&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;CJK&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;span class="c"&gt;% gbsn font for Chinese&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\inlinezh&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;CJK&lt;span class="nb"&gt;}{&lt;/span&gt;UTF8&lt;span class="nb"&gt;}{&lt;/span&gt;gbsn&lt;span class="nb"&gt;}{&lt;/span&gt;#1&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;CJK&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This makes things like &lt;code&gt;\inlinejp{お前はもう死んでいる}&lt;/code&gt; or &lt;code&gt;\inlinezh{迈克不喜欢卷}&lt;/code&gt; to render properly.&lt;/p&gt;
+&lt;h1 id="teaser-figures-in-the-acl-format"&gt;&lt;a class="toclink" href="#teaser-figures-in-the-acl-format"&gt;Teaser figures in the *ACL format&lt;/a&gt;&lt;a class="header-link" href="#teaser-figures-in-the-acl-format" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;Suppose you want to put a full-width figure at the top of your ACL paper, as seen in this example.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Top of Michael's ACL 2023 paper with a big teaser figure" src="https://gist.github.com/michaelsaxon/21ab96429ffb86fb7691945dfe3f657a/raw/6ec0322422b20f70264faf1211e53138d5409021/0_z_cccl_example.png"/&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;\figure*{}&lt;/code&gt; macro does not work to insert a full-width figure above the abstract in the ACL template for some reason. Thus, we need to hack together a command that does it for us.&lt;/p&gt;
+&lt;p&gt;This command does a few things:
+- Breaks out of the document rendering defined by the ACL template with &lt;code&gt;strip&lt;/code&gt;
+- Manually implements a hacked Figure macro with manually-written "Figure 1:", manual font size setting, etc.
+- Manually sets the figure count variable to not duplicate "Figure 1"&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;%%%%%%%%% in preamble %%%%%%%%%&lt;/span&gt;
+
+&lt;span class="c"&gt;% to make \strip work&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;cuted&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;hyperref&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;% hack commands to create a centered `\incudegraphics`-like macro that &lt;/span&gt;
+&lt;span class="c"&gt;% doesn't cause weird errors&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\adjustimg&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="c"&gt;% Horizontal adjustment of image&lt;/span&gt;
+  &lt;span class="k"&gt;\hspace*&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\dimexpr\evensidemargin&lt;/span&gt;-&lt;span class="k"&gt;\oddsidemargin&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="c"&gt;%&lt;/span&gt;
+&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\centerimg&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[2][width=&lt;span class="k"&gt;\textwidth&lt;/span&gt;]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="c"&gt;% Center an image&lt;/span&gt;
+  &lt;span class="k"&gt;\makebox&lt;/span&gt;&lt;span class="na"&gt;[\textwidth]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\adjustimg\includegraphics&lt;/span&gt;&lt;span class="na"&gt;[#1]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;#2&lt;span class="nb"&gt;}}&lt;/span&gt;&lt;span class="c"&gt;%&lt;/span&gt;
+&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Once we have defined our figure commands in the preamble and imported relevant packages, we insert the figure at the top of our document, before &lt;code&gt;\begin{abstract}&lt;/code&gt; is written.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;%%%%%%%%% in document %%%%%%%%%&lt;/span&gt;
+
+&lt;span class="c"&gt;%%% before abstract %%%&lt;/span&gt;
+
+&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;strip&lt;span class="nb"&gt;}&lt;/span&gt;
+  &lt;span class="c"&gt;% set this to something that looks good.&lt;/span&gt;
+  &lt;span class="k"&gt;\vspace&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;-58pt&lt;span class="nb"&gt;}&lt;/span&gt;
+
+  &lt;span class="c"&gt;% we use the centerimg macro here instead of \includegraphics to make the text &lt;/span&gt;
+  &lt;span class="c"&gt;% on the rest of this fake figure macro correctly render&lt;/span&gt;
+    &lt;span class="k"&gt;\noindent\centerimg&lt;/span&gt;&lt;span class="na"&gt;[width=\linewidth]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;TEASER&lt;span class="nb"&gt;_&lt;/span&gt;FIG&lt;span class="nb"&gt;}&lt;/span&gt;
+
+  &lt;span class="c"&gt;% Note: we need to manually write the text "Figure 1:" here as we aren't actually &lt;/span&gt;
+  &lt;span class="c"&gt;% using the "figure" macro.&lt;/span&gt;
+  &lt;span class="k"&gt;\fontsize&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;10pt&lt;span class="nb"&gt;}{&lt;/span&gt;12pt&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\selectfont&lt;/span&gt;
+    Figure 1: TEASER CAPTION HERE
+  &lt;span class="k"&gt;\label&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;fig:teaser&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;strip&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;% because we manually made a figure without the macro, we need to increment the &lt;/span&gt;
+&lt;span class="c"&gt;% figure counter so that the next one is Figure 2&lt;/span&gt;
+&lt;span class="k"&gt;\setcounter&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;figure&lt;span class="nb"&gt;}{&lt;/span&gt;1&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;%%% start abstract %%%&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Because we didn't produce this inside of the &lt;code&gt;figure&lt;/code&gt; macro, using &lt;code&gt;\ref{}&lt;/code&gt;, &lt;code&gt;\cref{}&lt;/code&gt;, and &lt;code&gt;\autorref&lt;/code&gt; won't work! Instead, we have to use this hack:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;% replacing ref&lt;/span&gt;
+...in Figure &lt;span class="k"&gt;\hyperref&lt;/span&gt;&lt;span class="na"&gt;[fig:teaser]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;1&lt;span class="nb"&gt;}&lt;/span&gt;...
+
+&lt;span class="c"&gt;% replacing autorref&lt;/span&gt;
+...in &lt;span class="k"&gt;\hyperref&lt;/span&gt;&lt;span class="na"&gt;[fig:teaser]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Figure 1&lt;span class="nb"&gt;}&lt;/span&gt;...
+
+etc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id="credit"&gt;&lt;a class="toclink" href="#credit"&gt;Credit&lt;/a&gt;&lt;a class="header-link" href="#credit" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;I worked out how to do most of this hack myself just consulting stackoverflow and documentation of the commands. The one exception was figuring out the &lt;code&gt;\adjustimg&lt;/code&gt; and &lt;code&gt;\centerimg&lt;/code&gt; commands could be used to replace &lt;code&gt;\centering&lt;/code&gt;, which was necessary to avoid this super annoying bug where the text placement doesn't "see" the image and instead they superimpose on each other.&lt;/p&gt;
+&lt;p&gt;I found the exact code I needed for this in an answer provided by
+&lt;a href="https://tex.stackexchange.com/a/39148"&gt;"Werner" on StackOverflow&lt;/a&gt;.
+Thank you Werner, you absolute chad.&lt;/p&gt;
+&lt;h1 id="todo-combining-multiple-images-into-one-image"&gt;&lt;a class="toclink" href="#todo-combining-multiple-images-into-one-image"&gt;TODO Combining multiple images into one image&lt;/a&gt;&lt;a class="header-link" href="#todo-combining-multiple-images-into-one-image" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;I wanted to make a grid of adjacent images in a table.
+I'm gonna be honest, I do not remember how I made this. But it works&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\timg&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\includegraphics&lt;/span&gt;&lt;span class="na"&gt;[width=0.25\linewidth]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;img/storyprop/#1&lt;span class="nb"&gt;}}&lt;/span&gt;
+
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\specialcell&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="c"&gt;%&lt;/span&gt;
+  &lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tabular&lt;span class="nb"&gt;}&lt;/span&gt;[c]&lt;span class="nb"&gt;{&lt;/span&gt;@&lt;span class="nb"&gt;{}&lt;/span&gt;c@&lt;span class="nb"&gt;{}}&lt;/span&gt;#1&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tabular&lt;span class="nb"&gt;}}&lt;/span&gt;
+
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\imgf&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[4]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\specialcell&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\timg&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;#1&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\timg&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;#2&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\vspace&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;-3pt&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\\\timg&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;#3&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\timg&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;#4&lt;span class="nb"&gt;}}&lt;/span&gt;&lt;span class="k"&gt;\hspace&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;-5pt&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id="todo-how-to-use-a-lot-of-various-pretty-things"&gt;&lt;a class="toclink" href="#todo-how-to-use-a-lot-of-various-pretty-things"&gt;TODO: How to use a lot of various pretty things&lt;/a&gt;&lt;a class="header-link" href="#todo-how-to-use-a-lot-of-various-pretty-things" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h1&gt;
+&lt;h3 id="text"&gt;&lt;a class="toclink" href="#text"&gt;Text&lt;/a&gt;&lt;a class="header-link" href="#text" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;resizing text&lt;/li&gt;
+&lt;li&gt;defining and setting special text colors&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;highlighting and colored background for text&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;cite, citet, citep&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;\vig&lt;/code&gt; and making a nice colored box&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;gets you something like &lt;/p&gt;
+&lt;blockquote class="infobox infobox-note"&gt;
+&lt;p&gt;lorem ipsum &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[!IMPORTANT]&lt;/p&gt;
+&lt;p&gt;cool stuff&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="na"&gt;[skins,breakable]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tcolorbox&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;\newtcolorbox&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;boxred&lt;span class="nb"&gt;}{&lt;/span&gt;enhanced,colback=orange!5!white,colframe=orange!75!black,breakable=true&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\newtcolorbox&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;boxblue&lt;span class="nb"&gt;}{&lt;/span&gt;enhanced,colback=blue!5!white,colframe=blue!75!black,breakable=true&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\vig&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[2]&lt;span class="nb"&gt;{&lt;/span&gt;
+&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;boxblue&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\textit&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\color&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;blue!50!black&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;#1&lt;span class="nb"&gt;}}&lt;/span&gt;
+
+&lt;span class="k"&gt;\vspace&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;6pt&lt;span class="nb"&gt;}&lt;/span&gt;#2
+&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;boxblue&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\case&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[2]&lt;span class="nb"&gt;{&lt;/span&gt;
+&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;boxblue&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\textit&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\color&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;blue!50!black&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Case study&lt;span class="nb"&gt;}&lt;/span&gt;: #1&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\\&lt;/span&gt;
+
+#2
+&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;boxblue&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;annoying fancy colored text stuff
+cursor gave me this atrocity
+&lt;code&gt;\newcommand{\methodfancy}{\textbf{\textsc{\textcolor[rgb]{0,0,0}{T}\textcolor[rgb]{0.2,0,0}{h}\textcolor[rgb]{0.4,0,0}{o}\textcolor[rgb]{0.5,0,0}{u}\textcolor[rgb]{0.6,0,0}{g}\textcolor[rgb]{0.7,0,0}{h}\textcolor[rgb]{0.8,0,0}{t}\textcolor[rgb]{0.85,0,0}{T}\textcolor[rgb]{0.9,0,0}{e}\textcolor[rgb]{0.95,0,0}{r}\textcolor[rgb]{1,0,0}{m}\textcolor[rgb]{1,0,0}{i}\textcolor[rgb]{1,0,0}{n}\textcolor[rgb]{1,0,0}{a}\textcolor[rgb]{1,0,0}{t}\textcolor[rgb]{1,0,0}{o}\textcolor[rgb]{1,0,0}{r}}}\xspace}&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\resourcename&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\texttt&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\gradientRGB&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;T2IScoreScore&lt;span class="nb"&gt;}{&lt;/span&gt;68,67,147&lt;span class="nb"&gt;}{&lt;/span&gt;61,130,217&lt;span class="nb"&gt;}}}}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\tscolor&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\texttt&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\gradientRGB&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;TS2&lt;span class="nb"&gt;}{&lt;/span&gt;68,67,147&lt;span class="nb"&gt;}{&lt;/span&gt;61,130,217&lt;span class="nb"&gt;}}}}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\rncolor&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\includegraphics&lt;/span&gt;&lt;span class="na"&gt;[trim=0 0.2ex 0 -1.5ex,height=1.8ex]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;module/T2IScoreScore.pdf&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;annoying inline icons
+&lt;code&gt;\vspace{-3pt}\raisebox{-3pt}{\includegraphics[width=20pt]{pics/terminator_logo.png}}&lt;/code&gt;
+you can just directly use the &lt;code&gt;\includegraphics&lt;/code&gt; command inside of text&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;exotic symbols&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;How I did the playstation icons&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;xcolor&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tikz&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\pssymb&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[2]&lt;span class="nb"&gt;{&lt;/span&gt;
+&lt;span class="k"&gt;\resizebox&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;#1&lt;span class="nb"&gt;}{&lt;/span&gt;!&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tikzpicture&lt;span class="nb"&gt;}&lt;/span&gt;#2&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tikzpicture&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\pscirc&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;
+&lt;span class="k"&gt;\pssymb&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;6pt&lt;span class="nb"&gt;}{&lt;/span&gt;
+    &lt;span class="k"&gt;\draw&lt;/span&gt; (0,0) circle [radius=1.5];
+    &lt;span class="k"&gt;\draw&lt;/span&gt;&lt;span class="na"&gt;[line width=5pt, red]&lt;/span&gt; (0,0) circle [radius=0.8];
+&lt;span class="nb"&gt;}}&lt;/span&gt;
+
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\psx&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;
+&lt;span class="k"&gt;\pssymb&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;6pt&lt;span class="nb"&gt;}{&lt;/span&gt;
+    &lt;span class="k"&gt;\draw&lt;/span&gt; (0,0) circle [radius=1.5];
+    &lt;span class="k"&gt;\draw&lt;/span&gt;&lt;span class="na"&gt;[line width=5pt, blue]&lt;/span&gt; (-0.8,-0.8) -- (0.8,0.8);
+    &lt;span class="k"&gt;\draw&lt;/span&gt;&lt;span class="na"&gt;[line width=5pt, blue]&lt;/span&gt; (0.8,-0.8) -- (-0.8,0.8);
+&lt;span class="nb"&gt;}}&lt;/span&gt;
+
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\pssqu&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;
+&lt;span class="k"&gt;\pssymb&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;6pt&lt;span class="nb"&gt;}{&lt;/span&gt;
+    &lt;span class="k"&gt;\draw&lt;/span&gt; (0,0) circle [radius=1.5];
+    &lt;span class="k"&gt;\draw&lt;/span&gt;&lt;span class="na"&gt;[line width=5pt, magenta]&lt;/span&gt; (-0.8,0.8) -- (0.8,0.8);
+    &lt;span class="k"&gt;\draw&lt;/span&gt;&lt;span class="na"&gt;[line width=5pt, magenta]&lt;/span&gt; (-0.8,0.8) -- (-0.8,-0.8);
+    &lt;span class="k"&gt;\draw&lt;/span&gt;&lt;span class="na"&gt;[line width=5pt, magenta]&lt;/span&gt; (0.8,-0.8) -- (0.8,0.8);
+    &lt;span class="k"&gt;\draw&lt;/span&gt;&lt;span class="na"&gt;[line width=5pt, magenta]&lt;/span&gt; (0.8,-0.8) -- (-0.8,-0.8);
+&lt;span class="nb"&gt;}}&lt;/span&gt;
+
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\pstri&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;
+&lt;span class="k"&gt;\pssymb&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;6pt&lt;span class="nb"&gt;}{&lt;/span&gt;
+    &lt;span class="k"&gt;\draw&lt;/span&gt; (0,0) circle [radius=1.5];
+    &lt;span class="k"&gt;\draw&lt;/span&gt;&lt;span class="na"&gt;[line width=5pt, teal]&lt;/span&gt; (0.8,-0.6) -- (-0.8,-0.6);
+    &lt;span class="k"&gt;\draw&lt;/span&gt;&lt;span class="na"&gt;[line width=5pt, teal]&lt;/span&gt; (0.8,-0.6) -- (0,0.8);
+    &lt;span class="k"&gt;\draw&lt;/span&gt;&lt;span class="na"&gt;[line width=5pt, teal]&lt;/span&gt; (0,0.8) -- (-0.8,-0.6);
+&lt;span class="nb"&gt;}}&lt;/span&gt;
+... in title
+
+&lt;span class="s"&gt;$&lt;/span&gt;&lt;span class="nb"&gt;^&lt;/span&gt;&lt;span class="nv"&gt;\pscirc&lt;/span&gt;&lt;span class="s"&gt;$&lt;/span&gt;, &lt;span class="s"&gt;$&lt;/span&gt;&lt;span class="nb"&gt;^&lt;/span&gt;&lt;span class="nv"&gt;\psx&lt;/span&gt;&lt;span class="s"&gt;$&lt;/span&gt;, &lt;span class="s"&gt;$&lt;/span&gt;&lt;span class="nb"&gt;^&lt;/span&gt;&lt;span class="nv"&gt;\pssqu&lt;/span&gt;&lt;span class="s"&gt;$&lt;/span&gt;, &lt;span class="s"&gt;$&lt;/span&gt;&lt;span class="nb"&gt;^&lt;/span&gt;&lt;span class="nv"&gt;\pstri&lt;/span&gt;&lt;span class="s"&gt;$&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This produces something roughly like:
+Michael Saxon&lt;sup&gt;&lt;img src="https://t2iscorescore.github.io/static/images/psx.svg" width="15pt"/&gt;&lt;img src="https://t2iscorescore.github.io/static/images/psc.svg" width="15pt"/&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;h3 id="tables"&gt;&lt;a class="toclink" href="#tables"&gt;Tables&lt;/a&gt;&lt;a class="header-link" href="#tables" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;colortbl&lt;/li&gt;
+&lt;li&gt;booktabs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;\rowcolor{}&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;In TS2 we also had colored cells&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;rotating&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;%...&lt;/span&gt;
+
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\ty&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[0]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\cellcolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;otheryellow&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\tr&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[0]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\cellcolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;dsgred&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\tb&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[0]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\cellcolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tifablue&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\tg&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[0]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\cellcolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;llmgreen&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;lil commands like
+- samel to more cleanly cross out a bunch of rows with the same value
+&lt;code&gt;\newcommand{\samel}[0]{\multicolumn{1}{l}{\space\hspace{0.5em}\vline}}&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;rotating text&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\myrotcell&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;turn&lt;span class="nb"&gt;}{&lt;/span&gt;75&lt;span class="nb"&gt;}&lt;/span&gt;
+#1
+&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;turn&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\rotninety&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;turn&lt;span class="nb"&gt;}{&lt;/span&gt;90&lt;span class="nb"&gt;}&lt;/span&gt;
+#1
+&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;turn&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="figures"&gt;&lt;a class="toclink" href="#figures"&gt;Figures&lt;/a&gt;&lt;a class="header-link" href="#figures" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="making-subfigures-withwithout-captions"&gt;&lt;a class="toclink" href="#making-subfigures-withwithout-captions"&gt;making subfigures with/without captions&lt;/a&gt;&lt;a class="header-link" href="#making-subfigures-withwithout-captions" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;subfig&lt;/li&gt;
+&lt;li&gt;subcaption&lt;/li&gt;
+&lt;li&gt;minipage&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Generating your figure to be readable in pyplot
+MAKE THE FIGURE SMALL IN GENERATION AS AN SVG THEN IT WILL BE BIG&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;dark art: making a figure oversized relative to the text
+&lt;em&gt;there are legitimate reasons to do this, for example if your figure has whitespace baked in but you want the filled part to be 100%&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;graphicx&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;adjustbox&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\bigln&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[2]&lt;span class="nb"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;adjustbox&lt;span class="nb"&gt;}{&lt;/span&gt;center&lt;span class="nb"&gt;}&lt;/span&gt;
+        &lt;span class="k"&gt;\resizebox&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;#1&lt;span class="k"&gt;\linewidth&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;!&lt;span class="nb"&gt;}{&lt;/span&gt;
+            &lt;span class="k"&gt;\centering&lt;/span&gt;
+            #2
+        &lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;adjustbox&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You wrap the &lt;code&gt;\includegraphics&lt;/code&gt; inside of the &lt;code&gt;\bigln&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id="colors-etc"&gt;&lt;a class="toclink" href="#colors-etc"&gt;Colors etc&lt;/a&gt;&lt;a class="header-link" href="#colors-etc" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;blue!50!black&lt;/li&gt;
+&lt;li&gt;rgb&lt;/li&gt;
+&lt;li&gt;named colors (link)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="todo-overleaf-in-vscode"&gt;&lt;a class="toclink" href="#todo-overleaf-in-vscode"&gt;TODO: Overleaf in VSCode&lt;/a&gt;&lt;a class="header-link" href="#todo-overleaf-in-vscode" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;use latex workshop&lt;/li&gt;
+&lt;li&gt;use overleaf workshop&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;https://github.com/iamhyc/Overleaf-Workshop&lt;/p&gt;
+&lt;p&gt;Install instructions&lt;/p&gt;
+&lt;h1 id="advanced-dark-arts"&gt;&lt;a class="toclink" href="#advanced-dark-arts"&gt;advanced dark arts&lt;/a&gt;&lt;a class="header-link" href="#advanced-dark-arts" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote class="infobox infobox-warning"&gt;
+&lt;p&gt;These incantations will give you dark powers and break you free from the shackles of conference style files. Use wisely.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Some conference submission formats are disgusting, like ECCV.
+I wrote a setup that gives me a flag to swap between that sickening abomination and the NeurIPS format.&lt;/p&gt;
+&lt;p&gt;First, you need both sty files in your project. For me it was &lt;code&gt;eccv.sty&lt;/code&gt; and &lt;code&gt;neurips_2024.sty&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;% set this flag to 0 to use ECCV format, 1 to use neurips format&lt;/span&gt;
+&lt;span class="k"&gt;\def\useformat&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;1&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\if\useformat&lt;/span&gt;0
+    &lt;span class="k"&gt;\documentclass&lt;/span&gt;&lt;span class="na"&gt;[runningheads]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;llncs&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="c"&gt;%%%%%% START ECCV HEADER&lt;/span&gt;
+    &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="na"&gt;[review,year=2024,ID=11071]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;eccv&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="c"&gt;% final submission, options&lt;/span&gt;
+    &lt;span class="c"&gt;%\usepackage{eccv}&lt;/span&gt;
+    &lt;span class="c"&gt;%\usepackage[mobile]{eccv}&lt;/span&gt;
+    &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;eccvabbrv&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="c"&gt;%%%%%% END ECCV HEADER&lt;/span&gt;
+&lt;span class="k"&gt;\else&lt;/span&gt;
+    &lt;span class="c"&gt;%%%%%% NEURIPS HEADER&lt;/span&gt;
+    &lt;span class="k"&gt;\documentclass&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;article&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="c"&gt;% if you need to pass options to natbib, use, e.g.:&lt;/span&gt;
+    &lt;span class="c"&gt;% before loading neurips_2023&lt;/span&gt;
+    &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="na"&gt;[final,nonatbib]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;neurips&lt;span class="nb"&gt;_&lt;/span&gt;2024&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="na"&gt;[sort&amp;amp;compress,numbers]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;natbib&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="c"&gt;%     \usepackage{neurips_2023} % submission anonymized&lt;/span&gt;
+    &lt;span class="c"&gt;%     \usepackage[final]{neurips_2023}&lt;/span&gt;
+    &lt;span class="c"&gt;%%%%% END NEURIPS HEADER&lt;/span&gt;
+    &lt;span class="c"&gt;%%%%%%%%%% MORE ACL STUFF&lt;/span&gt;
+    &lt;span class="c"&gt;% For proper rendering and hyphenation of words containing Latin characters (including in bib files)&lt;/span&gt;
+    &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="na"&gt;[utf8]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;inputenc&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="na"&gt;[T1]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;fontenc&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;microtype&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;inconsolata&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="c"&gt;%%%%% OPTIONS FOR NICER FONTS (MUST COMMENT OUT FOR NEURIPS FINAL VERSION)&lt;/span&gt;
+    &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;times&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;subcaption&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;adjustbox&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\fi&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then throughout the document for select other commands that I wanted to only use with one I would have to add that flag into them. &lt;code&gt;\useformat0&lt;/code&gt; or &lt;code&gt;1&lt;/code&gt; would switch between either ECCV or NeurIPS.&lt;/p&gt;
+</content><category term="Tips"></category><category term="latex"></category></entry></feed>
