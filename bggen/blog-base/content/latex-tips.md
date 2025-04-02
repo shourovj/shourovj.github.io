@@ -1,5 +1,5 @@
 Status: draft
-Title: Michael's LaTeXonomicon (LaTeX tips, tricks, and hacks)
+Title: Michael's TeXronomicon (LaTeX tips, tricks, and hacks)
 Date: 2025-04-02 15:32
 Category: Tips
 Tags: latex
@@ -12,7 +12,7 @@ remove_footnote_section: true
 
 The keys to understanding LaTeX are mastering Knuth-isms and managing your sanity.
 
-# Making commands 
+# 1. Making commands 
 
 You should make commands. At their simplest, they let you reuse text or formatting easily. But they can do much more. First, a little bit about how to make them:
 
@@ -114,7 +114,7 @@ I recently was shown the `\xspace` package, my savior. Just add:
 And your problems are solved.
 
 
-# Doing text right
+# 2. Doing text right
 
 
 
@@ -295,7 +295,7 @@ But if you want a fun window into more Knuth-isms, here's how you manually contr
 See here in [Overleaf's docs](https://www.overleaf.com/learn/latex/Font_sizes%2C_families%2C_and_styles)
 
 
-# Tables
+# 3. Tables
 
 - colortbl
 ### basic booktabs hygiene
@@ -335,7 +335,7 @@ lil commands like
 ```
 
 
-# Figures
+# 4. Figures
 
 ## TODO Combining multiple images into one image
 
@@ -383,7 +383,7 @@ https://github.com/iamhyc/Overleaf-Workshop
 
 Install instructions
 
-# Advanced dark arts
+# 5. The Dark Arts (Advanced)
 
 > [!WARNING]
 > These incantations will give you dark powers and break you free from the shackles of conference style files. Use wisely.
