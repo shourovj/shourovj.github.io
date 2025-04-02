@@ -1,4 +1,5 @@
-Title: The LaTeXonomicon (LaTeX tips, tricks, and hacks)
+Status: draft
+Title: Michael's LaTeXonomicon (LaTeX tips, tricks, and hacks)
 Date: 2025-04-02 15:32
 Category: Tips
 Tags: latex
@@ -9,7 +10,83 @@ remove_footnote_section: true
 
 [TOC]
 
+The keys to understanding LaTeX are mastering Knuth-isms and managing your sanity.
+
 # Making commands 
+
+You should make commands. At their simplest, they let you reuse text or formatting easily. But they can do much more. First, a little bit about how to make them:
+
+I know two ways to make commands, `\newcommand` and `\renewcommand`. 
+If the command already exists, `\renewcommand` will overwrite it (sometimes very useful). For example, I used `\renewcommand` to fix a critical flaw in the COLM format.
+
+Consider this snippet:
+
+```latex
+Inertia is a property of matter \cite{nye1995science}.
+```
+
+It renders as:
+
+> Inertia is a property of matter Nye et al. (1995).
+
+Instead of correctly rendering as:
+
+> Inertia is a property of matter (Nye et al., 1995).
+
+
+In other words, the COLM format was treating `\cite{}` as `\citet{}` rather than `\citep{}`, as it is in all other conference formats.
+
+With `\renewcommand` it's a one line fix:
+
+```latex
+\renewcommand{\cite}{\citep}
+```
+
+Probably the most common use case I see for writing commands is to make named comments in collaborative docs.
+
+
+## Comment commands
+
+The typical way we implement comment commands is something simple like: 
+
+```latex
+\newcommand{\mycomment}[1]{\textcolor{red}{michael: #1}}
+```
+
+This is nice and easy, but it has two issues. First, with more collaborators you have to define it over and over again, which looks gross.
+
+```latex
+\newcommand{\mycomment}[1]{\textcolor{red}{MS: #1}}
+\newcommand{\george}[1]{\textcolor{yellow}{GC: #1}}
+\newcommand{\jerry}[1]{\textcolor{red}{JS: #1}}
+\newcommand{\kramer}[1]{\textcolor{green}{CK: #1}}
+\newcommand{\elaine}[1]{\textcolor{blue}{EB: #1}}
+```
+
+Ew. 
+
+But the more annoying issue is that *inline comments mess up your text length and spacing*. How are you gonna know how many pages you've written, and how well-aligned and spaced your figures and tables are, on the night before the deadline, if your paper is full of comments?
+
+I fix both of these issues by implementing *a base comment command* that I build the other ones on top of, and **adding a variable-based off switch that hides the comments.**
+ 
+```latex
+%%%%%%% COMMENT DEFINITION SECTION %%%%%%%
+\newif\ifcommentsoff
+% uncomment this line to hide inline comments
+% \commentsofftrue
+\newcommand{\mycomment}[3]{
+    \ifcommentsoff\else{
+        {\textcolor{#1}{\textit{\textbf{#2:} #3}}\xspace
+    }\fi}
+}
+\newcommand{\george}[1]{\mycomment{red}{GC}{#1}}
+\newcommand{\jerry}[1]{\mycomment{magenta}{JS}{#1}}
+\newcommand{\kramer}[1]{\mycomment{blue}{CK}{#1}}
+\newcommand{\elaine}[1]{\mycomment{green}{EB}{#1}}
+```
+
+`\newif\ifmyvariable` defines a boolean variable, which is actually named `myvariable`.
+You can control it with `\myvariabletrue` or `\myvariablefalse`. This is weird and Knuth-y.
 
 ## Fixing infuriating spacing issues
 
@@ -36,89 +113,20 @@ I recently was shown the `\xspace` package, my savior. Just add:
 
 And your problems are solved.
 
-## Comment commands
 
-I used to add comment commands really simply into my papers, something like: "`\newcommand{\mycomment}[1]{\textcolor{red}{michael: #1}}`". It's nice and easy.
-
-But it has two issues, first you have to define it over and over again.
-
-```latex
-\newcommand{\mycomment}[1]{\textcolor{red}{MS: #1}}
-\newcommand{\george}[1]{\textcolor{yellow}{GC: #1}}
-\newcommand{\jerry}[1]{\textcolor{red}{JS: #1}}
-\newcommand{\kramer}[1]{\textcolor{green}{CK: #1}}
-\newcommand{\elaine}[1]{\textcolor{blue}{EB: #1}}
-```
-
-Ew.
-
-But the more annoying issue is that the inline comments completely mess up the text length and spacing. How are you gonna know how much you've written, and how well-aligned and spaced your figures and tables are, on the night before the deadline, if your paper is full of comments?
-
-I give my comments an off-switch and avoid repetition by defining a base comment macro.
-
-```latex
-%%%%%%% COMMENT DEFINITION SECTION %%%%%%%
-\newif\ifcommentsoff
-% uncomment this line to hide inline comments
-% \commentsofftrue
-\newcommand{\mycomment}[3]{
-    \ifcommentsoff\else{
-        {\textcolor{#1}{\textit{\textbf{#2:} #3}}\xspace
-    }\fi}
-}
-\newcommand{\george}[1]{\mycomment{red}{GC}{#1}}
-\newcommand{\jerry}[1]{\mycomment{magenta}{JS}{#1}}
-\newcommand{\kramer}[1]{\mycomment{blue}{CK}{#1}}
-\newcommand{\elaine}[1]{\mycomment{green}{EB}{#1}}
-```
-
-# Non-Latin alphabets on arXiv
-
-XeLaTeX is the best way to do this. But arXiv (as of writing) doesn't support it 😭😭😭😭😭
-
-We have to hack it in using various packages depending on language. In my multilingual paper, I *wanted* to include CJK and Hebrew characters, but I just could not figure out Hebrew without XeLaTeX at least for CJK you can use the CJK packages.
-
-I was able to get this working on arXiv:
-
-```latex
-%%% preamble
-\usepackage[utf8]{inputenc}
-\usepackage{CJKutf8}
-
-%%% set the font for each language
-% mincho font for Japanese
-\newcommand{\inlinejp}[1]{\begin{CJK}{UTF8}{min}{#1}\end{CJK}}
-% gbsn font for Chinese
-\newcommand{\inlinezh}[1]{\begin{CJK}{UTF8}{gbsn}{#1}\end{CJK}}
-```
-
-This makes things like `\inlinejp{お前はもう死んでいる}` or `\inlinezh{迈克不喜欢卷}` to render properly.
+# Doing text right
 
 
-# TODO Combining multiple images into one image
 
-I wanted to make a grid of adjacent images in a table.
-I'm gonna be honest, I do not remember how I made this. But it works
-
-```latex
-\newcommand{\timg}[1]{\includegraphics[width=0.25\linewidth]{img/storyprop/#1}}
-
-\newcommand{\specialcell}[1]{%
-  \begin{tabular}[c]{@{}c@{}}#1\end{tabular}}
-
-\newcommand{\imgf}[4]{\specialcell{\timg{#1}\timg{#2}\vspace{-3pt}\\\timg{#3}\timg{#4}}\hspace{-5pt}}
-
-```
-
-# TODO: How to use a lot of various pretty things
-
-## Text
+## citations
 
 - resizing text
 - defining and setting special text colors
 - highlighting and colored background for text
 
 - cite, citet, citep
+
+## colored boxese
 
 - `\vig` and making a nice colored box
 
@@ -153,7 +161,7 @@ gets you something like
 }
 ```
 
-### Annoying fancy colored text
+## Annoying fancy colored text
 cursor gave me this atrocity
 `\newcommand{\methodfancy}{\textbf{\textsc{\textcolor[rgb]{0,0,0}{T}\textcolor[rgb]{0.2,0,0}{h}\textcolor[rgb]{0.4,0,0}{o}\textcolor[rgb]{0.5,0,0}{u}\textcolor[rgb]{0.6,0,0}{g}\textcolor[rgb]{0.7,0,0}{h}\textcolor[rgb]{0.8,0,0}{t}\textcolor[rgb]{0.85,0,0}{T}\textcolor[rgb]{0.9,0,0}{e}\textcolor[rgb]{0.95,0,0}{r}\textcolor[rgb]{1,0,0}{m}\textcolor[rgb]{1,0,0}{i}\textcolor[rgb]{1,0,0}{n}\textcolor[rgb]{1,0,0}{a}\textcolor[rgb]{1,0,0}{t}\textcolor[rgb]{1,0,0}{o}\textcolor[rgb]{1,0,0}{r}}}\xspace}`
 
@@ -163,11 +171,11 @@ cursor gave me this atrocity
 \newcommand{\rncolor}{\includegraphics[trim=0 0.2ex 0 -1.5ex,height=1.8ex]{module/T2IScoreScore.pdf}}
 ```
 
-### annoying inline icons
+## annoying inline icons
 `\vspace{-3pt}\raisebox{-3pt}{\includegraphics[width=20pt]{pics/terminator_logo.png}}`
 you can just directly use the `\includegraphics` command inside of text
 
-### exotic symbols
+## exotic symbols
 
 Egyptian hieroglyphs!
 
@@ -216,7 +224,78 @@ $^\pscirc$, $^\psx$, $^\pssqu$, $^\pstri$
 This produces something roughly like:
 Michael Saxon<sup><img width="15pt" src="https://t2iscorescore.github.io/static/images/psx.svg"/><img width="15pt" src="https://t2iscorescore.github.io/static/images/psc.svg"/></sup>
 
-## Tables
+## Non-Latin alphabets on arXiv
+
+XeLaTeX is the best way to do this. But arXiv (as of writing) doesn't support it 😭😭😭😭😭
+
+We have to hack it in using various packages depending on language. In my multilingual paper, I *wanted* to include CJK and Hebrew characters, but I just could not figure out Hebrew without XeLaTeX at least for CJK you can use the CJK packages.
+
+I was able to get this working on arXiv:
+
+```latex
+%%% preamble
+\usepackage[utf8]{inputenc}
+\usepackage{CJKutf8}
+
+%%% set the font for each language
+% mincho font for Japanese
+\newcommand{\inlinejp}[1]{\begin{CJK}{UTF8}{min}{#1}\end{CJK}}
+% gbsn font for Chinese
+\newcommand{\inlinezh}[1]{\begin{CJK}{UTF8}{gbsn}{#1}\end{CJK}}
+```
+
+This makes things like `\inlinejp{お前はもう死んでいる}` or `\inlinezh{迈克不喜欢卷}` to render properly.
+
+## Learn the weird Knuth-isms
+
+Don Knuth, the creator of TeX (pictured in thumbnail), is a bit of a strange guy.
+If you're experienced with LaTeX you're used to remembering a lot of weird names for things, like `\ell` for the fancy curly "L", `\sim` for the tilde. 
+For most of the things you need, you're gonna have to just look them up yourself, but here's a fun little rant about the most perplexing one to me.
+*The LaTeX commands for sizing things are hilarious.*
+
+First, to size a line of text, you use these (in ascending order of size)
+
+- `\tiny`
+- `\scriptsize`
+- `\footnotesize`
+- `\small`
+- `\normalsize`
+- `\large`
+- `\Large`
+- `\LARGE`
+- `\huge`
+- `\Huge`
+
+If you're just mad, you should say `{\large I am mad}` but if you're REALLY angry you can give a `{\LARGE I AM FURIOUS}`.
+
+Ok, I can wrap my head around that setup. Of course "large" is bigger than "small." Why can't you make text `\big`?
+
+Well, `\big` is a command, but it means something completely different from `\large`. It controls symbols...
+
+The purpose of big is to make something like `(\sum_{i=0}^n i)` not look like garbage[^2].
+
+[^2]: This post has been edited to remove foul language.
+
+will look like shit, because the parentheses are too small. 
+The correct way to fix this is to use the `\left` and `\right` commands to automatically size the brackets based on their contents.
+
+```latex
+\left(\sum_{i=0}^n i\right)
+```
+
+But if you want a fun window into more Knuth-isms, here's how you manually control bracket size (in ascending order):
+
+- `\big`
+- `\Big`
+- `\bigg`
+- `\Bigg`
+
+
+
+See here in [Overleaf's docs](https://www.overleaf.com/learn/latex/Font_sizes%2C_families%2C_and_styles)
+
+
+# Tables
 
 - colortbl
 ### basic booktabs hygiene
@@ -256,23 +335,40 @@ lil commands like
 ```
 
 
-## Figures
+# Figures
 
-### making subfigures with/without captions
+## TODO Combining multiple images into one image
 
-#### subfig
+I wanted to make a grid of adjacent images in a table.
+I'm gonna be honest, I do not remember how I made this. But it works
 
-#### subcaption
+```latex
+\newcommand{\timg}[1]{\includegraphics[width=0.25\linewidth]{img/storyprop/#1}}
 
-#### minipage
+\newcommand{\specialcell}[1]{%
+  \begin{tabular}[c]{@{}c@{}}#1\end{tabular}}
 
-### How to do pyplot and make it readable
+\newcommand{\imgf}[4]{\specialcell{\timg{#1}\timg{#2}\vspace{-3pt}\\\timg{#3}\timg{#4}}\hspace{-5pt}}
+
+```
+
+
+
+## making subfigures with/without captions
+
+### subfig
+
+### subcaption
+
+### minipage
+
+## How to do pyplot and make it readable
 
 Generating your figure to be readable in pyplot
 MAKE THE FIGURE SMALL IN GENERATION AS AN SVG THEN IT WILL BE BIG
 
 
-### Colors etc
+## Colors etc
 
 - blue!50!black
 - rgb
@@ -287,7 +383,7 @@ https://github.com/iamhyc/Overleaf-Workshop
 
 Install instructions
 
-# advanced dark arts
+# Advanced dark arts
 
 > [!WARNING]
 > These incantations will give you dark powers and break you free from the shackles of conference style files. Use wisely.

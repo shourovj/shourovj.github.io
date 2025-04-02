@@ -1800,7 +1800,10 @@ p code {
 .toc {
     margin-bottom: 1em;
     margin-top: 2em;
-    font-size: 0.95em;
+    font-size: 0.9rem;
+    border: 1px solid var(--brand-main);
+    border-radius: 6px;
+    padding: 0.8em;
 }
 
 .toc ul {
@@ -1810,19 +1813,19 @@ p code {
 }
 
 .toc > ul {
-    margin-left: 1em;
+    margin-left: 0.8em;
     margin-top: 1em;  /* Space between title and first items */
 }
 
 .toc ul ul {
-    padding-left: 1.2em;
+    padding-left: 1em;  /* Slightly reduced nesting indent */
 }
 
 .toc li {
     position: relative;
     padding-left: 1.2em;
     margin: 0;
-    line-height: 1.6;
+    line-height: 1.4;  /* Tighter line height */
 }
 
 /* Vertical lines using pseudo-element */
@@ -1866,11 +1869,31 @@ p code {
 
 /* Title styling */
 .toc-title {
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: 600;
-    color: var(--text-body);  /* Change to standard text color */
+    color: var(--text-body);
     padding-bottom: 0;
-    border-bottom: 2px solid var(--brand-main);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5em;
+}
+
+/* Collapse indicator */
+.toc-title::before {
+    content: '▼';
+    font-size: 0.8em;
+    margin-right: 0.5em;
+    transition: transform 0.3s ease;
+}
+
+.toc.collapsed .toc-title::before {
+    transform: rotate(-90deg);
+}
+
+.toc.collapsed > ul {
+    display: none;
 }
 
 /* Heading permalink styling */

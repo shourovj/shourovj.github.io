@@ -6,9 +6,12 @@ Authors: Michael Saxon
 Summary: Preprinting and promoting one's work online is one of the most impactful and accessible career advancement methods for early-career researchers. Policies that hinder this process are thus disproportionately harmful to early career scientists, relative to their senior peers. As online promotion is more accessible than traditional routes of namebuilding, we contend that depriving "low-prestige institution"-affiliated early-career researchers of this avenue for self-advancement futher disproportionately harms them relative to their "high-prestige" peers. Finally, a broad culture of posting quality preprints has community-level and scientific benefits. We contend that the ACL anonymity policy is harmful for the ways in which it forces early-career researchers (ECRs) to choose between participating in ACL or doing what's best for their careers.
 Image: https://upload.wikimedia.org/wikipedia/commons/0/0c/Gaspar_de_Crayer_-_The_judgement_of_Solomon.jpg
 
+> [!WARNING]
+> This post is outdated. The ACL Anonymity Embargo Period has been repealed.
 
 In case you're unfamiliar, the Association for Computational Linguistics (ACL), the premier venue for natural language processing (NLP) research, has an extremely strict "anonymity embargo policy," restricting the ability of researchers to publicly share or discuss their latest work online within a time window starting 1 month prior to a given conference's submission deadline, through the date when acceptance decisions are conveyed (about a four month period). **The ACL Executive committe is currently considering abolishing this policy, and I strongly believe removing it is the right thing for both our science and community, and in particular I think removing it will, on the balance, have inclusionary outcomes for early-career researchers.**
 
+[TOC]
 
 This essay is my attempt at laying bare the harms this policy visits on early career researchers as an inclusion-oriented argument for its removal. In particular, I will argue:
 
