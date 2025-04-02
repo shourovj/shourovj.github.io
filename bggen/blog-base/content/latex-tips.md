@@ -95,7 +95,270 @@ I was able to get this working on arXiv:
 This makes things like `\inlinejp{お前はもう死んでいる}` or `\inlinezh{迈克不喜欢卷}` to render properly.
 
 
-# Teaser figures in the *ACL format
+# TODO Combining multiple images into one image
+
+I wanted to make a grid of adjacent images in a table.
+I'm gonna be honest, I do not remember how I made this. But it works
+
+```latex
+\newcommand{\timg}[1]{\includegraphics[width=0.25\linewidth]{img/storyprop/#1}}
+
+\newcommand{\specialcell}[1]{%
+  \begin{tabular}[c]{@{}c@{}}#1\end{tabular}}
+
+\newcommand{\imgf}[4]{\specialcell{\timg{#1}\timg{#2}\vspace{-3pt}\\\timg{#3}\timg{#4}}\hspace{-5pt}}
+
+```
+
+# TODO: How to use a lot of various pretty things
+
+## Text
+
+- resizing text
+- defining and setting special text colors
+- highlighting and colored background for text
+
+- cite, citet, citep
+
+- `\vig` and making a nice colored box
+
+gets you something like 
+
+> [!NOTE]
+> lorem ipsum 
+
+> [!IMPORTANT]
+> cool stuff
+
+```latex
+\usepackage[skins,breakable]{tcolorbox}
+
+\newtcolorbox{boxred}{enhanced,colback=orange!5!white,colframe=orange!75!black,breakable=true}
+\newtcolorbox{boxblue}{enhanced,colback=blue!5!white,colframe=blue!75!black,breakable=true}
+
+\newcommand{\vig}[2]{
+\begin{boxblue}
+\textit{\color{blue!50!black}\textbf{#1}}
+
+\vspace{6pt}#2
+\end{boxblue}
+}
+
+\newcommand{\case}[2]{
+\begin{boxblue}
+\textit{\color{blue!50!black}\textbf{Case study}: #1}\\
+
+#2
+\end{boxblue}
+}
+```
+
+### Annoying fancy colored text
+cursor gave me this atrocity
+`\newcommand{\methodfancy}{\textbf{\textsc{\textcolor[rgb]{0,0,0}{T}\textcolor[rgb]{0.2,0,0}{h}\textcolor[rgb]{0.4,0,0}{o}\textcolor[rgb]{0.5,0,0}{u}\textcolor[rgb]{0.6,0,0}{g}\textcolor[rgb]{0.7,0,0}{h}\textcolor[rgb]{0.8,0,0}{t}\textcolor[rgb]{0.85,0,0}{T}\textcolor[rgb]{0.9,0,0}{e}\textcolor[rgb]{0.95,0,0}{r}\textcolor[rgb]{1,0,0}{m}\textcolor[rgb]{1,0,0}{i}\textcolor[rgb]{1,0,0}{n}\textcolor[rgb]{1,0,0}{a}\textcolor[rgb]{1,0,0}{t}\textcolor[rgb]{1,0,0}{o}\textcolor[rgb]{1,0,0}{r}}}\xspace}`
+
+```latex
+\newcommand{\resourcename}{\texttt{\textbf{\gradientRGB{T2IScoreScore}{68,67,147}{61,130,217}}}}
+\newcommand{\tscolor}{\texttt{\textbf{\gradientRGB{TS2}{68,67,147}{61,130,217}}}}
+\newcommand{\rncolor}{\includegraphics[trim=0 0.2ex 0 -1.5ex,height=1.8ex]{module/T2IScoreScore.pdf}}
+```
+
+### annoying inline icons
+`\vspace{-3pt}\raisebox{-3pt}{\includegraphics[width=20pt]{pics/terminator_logo.png}}`
+you can just directly use the `\includegraphics` command inside of text
+
+### exotic symbols
+
+Egyptian hieroglyphs!
+
+How I did the playstation icons
+```latex
+\usepackage{xcolor}
+\usepackage{tikz}
+
+\newcommand{\pssymb}[2]{
+\resizebox{#1}{!}{\begin{tikzpicture}#2\end{tikzpicture}}
+}
+
+\newcommand{\pscirc}{
+\pssymb{6pt}{
+    \draw (0,0) circle [radius=1.5];
+    \draw[line width=5pt, red] (0,0) circle [radius=0.8];
+}}
+
+\newcommand{\psx}{
+\pssymb{6pt}{
+    \draw (0,0) circle [radius=1.5];
+    \draw[line width=5pt, blue] (-0.8,-0.8) -- (0.8,0.8);
+    \draw[line width=5pt, blue] (0.8,-0.8) -- (-0.8,0.8);
+}}
+
+\newcommand{\pssqu}{
+\pssymb{6pt}{
+    \draw (0,0) circle [radius=1.5];
+    \draw[line width=5pt, magenta] (-0.8,0.8) -- (0.8,0.8);
+    \draw[line width=5pt, magenta] (-0.8,0.8) -- (-0.8,-0.8);
+    \draw[line width=5pt, magenta] (0.8,-0.8) -- (0.8,0.8);
+    \draw[line width=5pt, magenta] (0.8,-0.8) -- (-0.8,-0.8);
+}}
+
+\newcommand{\pstri}{
+\pssymb{6pt}{
+    \draw (0,0) circle [radius=1.5];
+    \draw[line width=5pt, teal] (0.8,-0.6) -- (-0.8,-0.6);
+    \draw[line width=5pt, teal] (0.8,-0.6) -- (0,0.8);
+    \draw[line width=5pt, teal] (0,0.8) -- (-0.8,-0.6);
+}}
+... in title
+
+$^\pscirc$, $^\psx$, $^\pssqu$, $^\pstri$
+```
+This produces something roughly like:
+Michael Saxon<sup><img width="15pt" src="https://t2iscorescore.github.io/static/images/psx.svg"/><img width="15pt" src="https://t2iscorescore.github.io/static/images/psc.svg"/></sup>
+
+## Tables
+
+- colortbl
+### basic booktabs hygiene
+
+
+### coloring the inside of your table
+`\rowcolor{}`
+
+In TS2 we also had colored cells
+```latex
+\usepackage{rotating}
+
+%...
+
+\newcommand{\ty}[0]{\cellcolor{otheryellow}}
+\newcommand{\tr}[0]{\cellcolor{dsgred}}
+\newcommand{\tb}[0]{\cellcolor{tifablue}}
+\newcommand{\tg}[0]{\cellcolor{llmgreen}}
+```
+
+### special table symbols
+lil commands like
+- samel to more cleanly cross out a bunch of rows with the same value
+`\newcommand{\samel}[0]{\multicolumn{1}{l}{\space\hspace{0.5em}\vline}}`
+
+### rotating text for compactness
+- rotating text
+```latex
+\newcommand{\myrotcell}[1]{\begin{turn}{75}
+#1
+\end{turn}
+}
+\newcommand{\rotninety}[1]{\begin{turn}{90}
+#1
+\end{turn}
+}
+```
+
+
+## Figures
+
+### making subfigures with/without captions
+
+#### subfig
+
+#### subcaption
+
+#### minipage
+
+### How to do pyplot and make it readable
+
+Generating your figure to be readable in pyplot
+MAKE THE FIGURE SMALL IN GENERATION AS AN SVG THEN IT WILL BE BIG
+
+
+### Colors etc
+
+- blue!50!black
+- rgb
+- named colors (link)
+
+# TODO: Overleaf in VSCode
+
+- use latex workshop
+- use overleaf workshop
+
+https://github.com/iamhyc/Overleaf-Workshop
+
+Install instructions
+
+# advanced dark arts
+
+> [!WARNING]
+> These incantations will give you dark powers and break you free from the shackles of conference style files. Use wisely.
+
+## Switching between conference formats
+
+Some conference submission formats are disgusting, like ECCV.
+I wrote a setup that gives me a flag to swap between that sickening abomination and the NeurIPS format.
+
+First, you need both sty files in your project. For me it was `eccv.sty` and `neurips_2024.sty`.
+
+```latex
+% set this flag to 0 to use ECCV format, 1 to use neurips format
+\def\useformat{1}
+\if\useformat0
+    \documentclass[runningheads]{llncs}
+    %%%%%% START ECCV HEADER
+    \usepackage[review,year=2024,ID=11071]{eccv}
+    % final submission, options
+    %\usepackage{eccv}
+    %\usepackage[mobile]{eccv}
+    \usepackage{eccvabbrv}
+    %%%%%% END ECCV HEADER
+\else
+    %%%%%% NEURIPS HEADER
+    \documentclass{article}
+    % if you need to pass options to natbib, use, e.g.:
+    % before loading neurips_2023
+    \usepackage[final,nonatbib]{neurips_2024}
+    \usepackage[sort&compress,numbers]{natbib}
+    %     \usepackage{neurips_2023} % submission anonymized
+    %     \usepackage[final]{neurips_2023}
+    %%%%% END NEURIPS HEADER
+    %%%%%%%%%% MORE ACL STUFF
+    % For proper rendering and hyphenation of words containing Latin characters (including in bib files)
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage{microtype}
+    \usepackage{inconsolata}
+    %%%%% OPTIONS FOR NICER FONTS (MUST COMMENT OUT FOR NEURIPS FINAL VERSION)
+    \usepackage{times}
+    \usepackage{subcaption}
+    \usepackage{adjustbox}
+\fi
+```
+
+Then throughout the document for select other commands that I wanted to only use with one I would have to add that flag into them. `\useformat0` or `1` would switch between either ECCV or NeurIPS.
+
+
+## breaking a figure out of the text width
+
+- dark art: making a figure oversized relative to the text
+*there are legitimate reasons to do this, for example if your figure has whitespace baked in but you want the filled part to be 100%*
+
+```latex
+\usepackage{graphicx}
+\usepackage{adjustbox}
+
+\newcommand{\bigln}[2]{
+    \begin{adjustbox}{center}
+        \resizebox{#1\linewidth}{!}{
+            \centering
+            #2
+        }
+    \end{adjustbox}
+}
+```
+
+You wrap the `\includegraphics` inside of the `\bigln`
+
+## Teaser figures in the *ACL format
 
 Suppose you want to put a full-width figure at the top of your ACL paper, as seen in this example.
 
@@ -177,249 +440,3 @@ I found the exact code I needed for this in an answer provided by
 ["Werner" on StackOverflow](https://tex.stackexchange.com/a/39148).
 Thank you Werner, you absolute chad.
 
-# TODO Combining multiple images into one image
-
-I wanted to make a grid of adjacent images in a table.
-I'm gonna be honest, I do not remember how I made this. But it works
-
-```latex
-\newcommand{\timg}[1]{\includegraphics[width=0.25\linewidth]{img/storyprop/#1}}
-
-\newcommand{\specialcell}[1]{%
-  \begin{tabular}[c]{@{}c@{}}#1\end{tabular}}
-
-\newcommand{\imgf}[4]{\specialcell{\timg{#1}\timg{#2}\vspace{-3pt}\\\timg{#3}\timg{#4}}\hspace{-5pt}}
-
-```
-
-# TODO: How to use a lot of various pretty things
-
-### Text
-
-- resizing text
-- defining and setting special text colors
-- highlighting and colored background for text
-
-- cite, citet, citep
-
-- `\vig` and making a nice colored box
-
-gets you something like 
-
-> [!NOTE]
-> lorem ipsum 
-
-> [!IMPORTANT]
-> cool stuff
-
-```latex
-\usepackage[skins,breakable]{tcolorbox}
-
-\newtcolorbox{boxred}{enhanced,colback=orange!5!white,colframe=orange!75!black,breakable=true}
-\newtcolorbox{boxblue}{enhanced,colback=blue!5!white,colframe=blue!75!black,breakable=true}
-
-\newcommand{\vig}[2]{
-\begin{boxblue}
-\textit{\color{blue!50!black}\textbf{#1}}
-
-\vspace{6pt}#2
-\end{boxblue}
-}
-
-\newcommand{\case}[2]{
-\begin{boxblue}
-\textit{\color{blue!50!black}\textbf{Case study}: #1}\\
-
-#2
-\end{boxblue}
-}
-```
-
-- annoying fancy colored text stuff
-cursor gave me this atrocity
-`\newcommand{\methodfancy}{\textbf{\textsc{\textcolor[rgb]{0,0,0}{T}\textcolor[rgb]{0.2,0,0}{h}\textcolor[rgb]{0.4,0,0}{o}\textcolor[rgb]{0.5,0,0}{u}\textcolor[rgb]{0.6,0,0}{g}\textcolor[rgb]{0.7,0,0}{h}\textcolor[rgb]{0.8,0,0}{t}\textcolor[rgb]{0.85,0,0}{T}\textcolor[rgb]{0.9,0,0}{e}\textcolor[rgb]{0.95,0,0}{r}\textcolor[rgb]{1,0,0}{m}\textcolor[rgb]{1,0,0}{i}\textcolor[rgb]{1,0,0}{n}\textcolor[rgb]{1,0,0}{a}\textcolor[rgb]{1,0,0}{t}\textcolor[rgb]{1,0,0}{o}\textcolor[rgb]{1,0,0}{r}}}\xspace}`
-
-```latex
-\newcommand{\resourcename}{\texttt{\textbf{\gradientRGB{T2IScoreScore}{68,67,147}{61,130,217}}}}
-\newcommand{\tscolor}{\texttt{\textbf{\gradientRGB{TS2}{68,67,147}{61,130,217}}}}
-\newcommand{\rncolor}{\includegraphics[trim=0 0.2ex 0 -1.5ex,height=1.8ex]{module/T2IScoreScore.pdf}}
-```
-
-- annoying inline icons
-`\vspace{-3pt}\raisebox{-3pt}{\includegraphics[width=20pt]{pics/terminator_logo.png}}`
-you can just directly use the `\includegraphics` command inside of text
-
-- exotic symbols
-
-How I did the playstation icons
-```latex
-\usepackage{xcolor}
-\usepackage{tikz}
-
-\newcommand{\pssymb}[2]{
-\resizebox{#1}{!}{\begin{tikzpicture}#2\end{tikzpicture}}
-}
-
-\newcommand{\pscirc}{
-\pssymb{6pt}{
-    \draw (0,0) circle [radius=1.5];
-    \draw[line width=5pt, red] (0,0) circle [radius=0.8];
-}}
-
-\newcommand{\psx}{
-\pssymb{6pt}{
-    \draw (0,0) circle [radius=1.5];
-    \draw[line width=5pt, blue] (-0.8,-0.8) -- (0.8,0.8);
-    \draw[line width=5pt, blue] (0.8,-0.8) -- (-0.8,0.8);
-}}
-
-\newcommand{\pssqu}{
-\pssymb{6pt}{
-    \draw (0,0) circle [radius=1.5];
-    \draw[line width=5pt, magenta] (-0.8,0.8) -- (0.8,0.8);
-    \draw[line width=5pt, magenta] (-0.8,0.8) -- (-0.8,-0.8);
-    \draw[line width=5pt, magenta] (0.8,-0.8) -- (0.8,0.8);
-    \draw[line width=5pt, magenta] (0.8,-0.8) -- (-0.8,-0.8);
-}}
-
-\newcommand{\pstri}{
-\pssymb{6pt}{
-    \draw (0,0) circle [radius=1.5];
-    \draw[line width=5pt, teal] (0.8,-0.6) -- (-0.8,-0.6);
-    \draw[line width=5pt, teal] (0.8,-0.6) -- (0,0.8);
-    \draw[line width=5pt, teal] (0,0.8) -- (-0.8,-0.6);
-}}
-... in title
-
-$^\pscirc$, $^\psx$, $^\pssqu$, $^\pstri$
-```
-This produces something roughly like:
-Michael Saxon<sup><img width="15pt" src="https://t2iscorescore.github.io/static/images/psx.svg"/><img width="15pt" src="https://t2iscorescore.github.io/static/images/psc.svg"/></sup>
-
-### Tables
-
-- colortbl
-- booktabs
-
-`\rowcolor{}`
-
-In TS2 we also had colored cells
-```latex
-\usepackage{rotating}
-
-%...
-
-\newcommand{\ty}[0]{\cellcolor{otheryellow}}
-\newcommand{\tr}[0]{\cellcolor{dsgred}}
-\newcommand{\tb}[0]{\cellcolor{tifablue}}
-\newcommand{\tg}[0]{\cellcolor{llmgreen}}
-```
-
-lil commands like
-- samel to more cleanly cross out a bunch of rows with the same value
-`\newcommand{\samel}[0]{\multicolumn{1}{l}{\space\hspace{0.5em}\vline}}`
-
-- rotating text
-```latex
-\newcommand{\myrotcell}[1]{\begin{turn}{75}
-#1
-\end{turn}
-}
-\newcommand{\rotninety}[1]{\begin{turn}{90}
-#1
-\end{turn}
-}
-```
-
-
-### Figures
-
-#### making subfigures with/without captions
-
-- subfig
-- subcaption
-- minipage
-
-Generating your figure to be readable in pyplot
-MAKE THE FIGURE SMALL IN GENERATION AS AN SVG THEN IT WILL BE BIG
-
-- dark art: making a figure oversized relative to the text
-*there are legitimate reasons to do this, for example if your figure has whitespace baked in but you want the filled part to be 100%*
-
-```latex
-\usepackage{graphicx}
-\usepackage{adjustbox}
-
-\newcommand{\bigln}[2]{
-    \begin{adjustbox}{center}
-        \resizebox{#1\linewidth}{!}{
-            \centering
-            #2
-        }
-    \end{adjustbox}
-}
-```
-
-You wrap the `\includegraphics` inside of the `\bigln`
-
-### Colors etc
-
-- blue!50!black
-- rgb
-- named colors (link)
-
-# TODO: Overleaf in VSCode
-
-- use latex workshop
-- use overleaf workshop
-
-https://github.com/iamhyc/Overleaf-Workshop
-
-Install instructions
-
-# advanced dark arts
-
-> [!WARNING]
-> These incantations will give you dark powers and break you free from the shackles of conference style files. Use wisely.
-
-Some conference submission formats are disgusting, like ECCV.
-I wrote a setup that gives me a flag to swap between that sickening abomination and the NeurIPS format.
-
-First, you need both sty files in your project. For me it was `eccv.sty` and `neurips_2024.sty`.
-
-```latex
-% set this flag to 0 to use ECCV format, 1 to use neurips format
-\def\useformat{1}
-\if\useformat0
-    \documentclass[runningheads]{llncs}
-    %%%%%% START ECCV HEADER
-    \usepackage[review,year=2024,ID=11071]{eccv}
-    % final submission, options
-    %\usepackage{eccv}
-    %\usepackage[mobile]{eccv}
-    \usepackage{eccvabbrv}
-    %%%%%% END ECCV HEADER
-\else
-    %%%%%% NEURIPS HEADER
-    \documentclass{article}
-    % if you need to pass options to natbib, use, e.g.:
-    % before loading neurips_2023
-    \usepackage[final,nonatbib]{neurips_2024}
-    \usepackage[sort&compress,numbers]{natbib}
-    %     \usepackage{neurips_2023} % submission anonymized
-    %     \usepackage[final]{neurips_2023}
-    %%%%% END NEURIPS HEADER
-    %%%%%%%%%% MORE ACL STUFF
-    % For proper rendering and hyphenation of words containing Latin characters (including in bib files)
-    \usepackage[utf8]{inputenc}
-    \usepackage[T1]{fontenc}
-    \usepackage{microtype}
-    \usepackage{inconsolata}
-    %%%%% OPTIONS FOR NICER FONTS (MUST COMMENT OUT FOR NEURIPS FINAL VERSION)
-    \usepackage{times}
-    \usepackage{subcaption}
-    \usepackage{adjustbox}
-\fi
-```
-
-Then throughout the document for select other commands that I wanted to only use with one I would have to add that flag into them. `\useformat0` or `1` would switch between either ECCV or NeurIPS.
