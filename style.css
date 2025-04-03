@@ -1135,19 +1135,18 @@ sup[id^="fnref"]:hover .footnote-popup {
   background-size: cover;
   background-position: center;
   position: relative;
+  mask-image: linear-gradient(to left, transparent, black 20%);
+  -webkit-mask-image: linear-gradient(to left, transparent, black 20%);
 }
 
-/*
-.preview-image::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 40px;
-  background: linear-gradient(to right, transparent, white);
+@media (max-width: 600px) {
+    .preview-image {
+        width: 100%;
+        height: 200px;
+        mask-image: linear-gradient(to top, transparent, black 20%);
+        -webkit-mask-image: linear-gradient(to top, transparent, black 20%);
+    }
 }
-*/
 
 .preview-content {
   padding: 1.5rem;
@@ -1384,7 +1383,7 @@ sup[id^="fnref"]:hover .footnote-popup {
 }
 
 /* Responsive design */
-@media (max-width: 600px) {
+@media (max-width: 599px) {
   .article-preview {
       flex-direction: column;
       margin: 1rem;

@@ -23,11 +23,15 @@ AUTHOR_FEED_RSS = 'feeds/{slug}.rss.xml'
 
 DEFAULT_PAGINATION = 10
 
-
-
 # Add the plugin path
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ["pelican_katex", "footnote_popups", "infobox", "shorten_filter"]
+PLUGINS = [
+    "pelican_katex",
+    "footnote_popups",
+    "infobox",
+    "shorten_filter",
+    "image_processor",
+]
 
 SLUGIFY_SOURCE = 'basename'
 
@@ -39,9 +43,6 @@ PAGE_SAVE_AS = '{slug}/index.html'
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
-
-# Add to your existing config
-STATIC_PATHS = ['images', 'js', 'css', 'fonts']  # Add any other static paths you need
 
 # Add these settings
 USE_FOLDER_AS_CATEGORY = False
@@ -75,3 +76,9 @@ MARKDOWN = {
     },
     'output_format': 'html5',
 }
+
+
+# Add to your existing config
+STATIC_PATHS = ['js', 'css', 'fonts', 'images']
+
+READERS = {'jpg': None}

@@ -1,7 +1,7 @@
 Title: About
 Date: 2025-03-19 19:35
 Summary: Dumb dumb
-Image: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/John_Constable_023.jpg/1021px-John_Constable_023.jpg
+Image: ../https:/upload.wikimedia.org/wikipedia/commons/thumb/c/c8/John_Constable_023.jpg/1021px-John_Constable_023.jpg
 save_as: test_index.html
 
 

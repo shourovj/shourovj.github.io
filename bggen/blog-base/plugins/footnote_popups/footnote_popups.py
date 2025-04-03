@@ -7,8 +7,8 @@ import os
 logger = logging.getLogger(__name__)
 
 def process_footnotes(content):
-    if not hasattr(content, '_content'):
-        logger.info(f"Content object has no _content attribute: {type(content)}")
+    if not hasattr(content, '_content') or not content.source_path.endswith('.md'):
+        logger.info(f"Skipping non-markdown content: {getattr(content, 'source_path', 'unknown')}")
         return
 
     logger.info(f"Processing content: {getattr(content, 'source_path', 'unknown')}")

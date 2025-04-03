@@ -4,13 +4,15 @@ Category: About
 Tags: About
 Authors: Michael Saxon
 Summary: To test that my blog implementation works, I'll share my pytorchlightning-based replication of dataset cartography!
-Image: https://images.rove.me/w_1920,q_85/mqmkudxwery6sdg2kvqv/florida-kennedy-space-center-rocket-launch.jpg
+Image: images/softlaunch.jpg
 
 ### About my blog
 
 I have thoughts I'd like to share from time-to-time. I have been testing my Pelican-based blog generator for a while and got it working, but a lack of fully-formed blogpost ideas to upload has consequently kept me from updating my website for months. This has become a problem for me as news and results have accumulated. Thus at this point, I have no choice but to push a placeholder blogpost such as this. Looking forward to making a more substantial post soon 🫡
 
 ### Implemented in PL
+
+![hate this](images/softlaunch.jpg)
 
 Check out this code! You can pass in any `Callback` object from pytorch lightning, to track the training process of a model in pytorch lightning. This automatically collects the training dynamics statistics and writes them to a given output csv file for future processing and analysis!
 

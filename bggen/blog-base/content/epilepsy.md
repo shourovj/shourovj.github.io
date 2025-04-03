@@ -4,7 +4,7 @@ Category: Personal
 Tags: health, grad student life
 Authors: Michael Saxon
 Summary: Meditations and reflections of a (former?) epileptic in recovery
-Image: https://healthmatters.nyp.org/wp-content/uploads/2021/11/epilepsy-hero.jpg
+Image: images/epilepsy.jpg
 remove_footnote_section: true
 
 > [!NOTE]

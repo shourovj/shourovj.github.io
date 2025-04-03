@@ -5,7 +5,7 @@ Category: Tips
 Tags: latex
 Authors: Michael Saxon
 Summary: Various tricks and lessons I've learned from messing around in LaTex. Adapted and extended from a gist by [me](https://gist.github.com/michaelsaxon).
-Image: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.proceso.com.mx%2Fu%2Ffotografias%2Ffotosnoticias%2F2022%2F10%2F9%2F162629.jpg&f=1&nofb=1&ipt=c4ac0da6ced33fff2f955f0c231b98522dd003d3b00215f38f4e1b73fcae4b91&ipo=images
+Image: images/latex-tips.jpg
 remove_footnote_section: true
 
 [TOC]

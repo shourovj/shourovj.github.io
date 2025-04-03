@@ -28,13 +28,13 @@
 <meta content="https://saxon.me/" property="og:url"/>
 <meta content="Michael's TeXronomicon (LaTeX tips, tricks, and hacks)" property="og:title"/>
 <meta content="Various tricks and lessons I've learned from messing around in LaTex. Adapted and extended from a gist by [me](https://gist.github.com/michaelsaxon)." property="og:description"/>
-<meta content="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.proceso.com.mx%2Fu%2Ffotografias%2Ffotosnoticias%2F2022%2F10%2F9%2F162629.jpg&amp;f=1&amp;nofb=1&amp;ipt=c4ac0da6ced33fff2f955f0c231b98522dd003d3b00215f38f4e1b73fcae4b91&amp;ipo=images" property="og:image"/>
+<meta content="images/latex-tips.jpg" property="og:image"/>
 <meta content="summary_large_image" property="twitter:card"/>
 <meta content="https://saxon.me/" property="twitter:site"/>
 <meta content="@m2saxon" property="twitter:creator"/>
 <meta content="Michael's TeXronomicon (LaTeX tips, tricks, and hacks)" property="twitter:title"/>
 <meta content="Various tricks and lessons I've learned from messing around in LaTex. Adapted and extended from a gist by [me](https://gist.github.com/michaelsaxon)." property="twitter:description"/>
-<meta content="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.proceso.com.mx%2Fu%2Ffotografias%2Ffotosnoticias%2F2022%2F10%2F9%2F162629.jpg&amp;f=1&amp;nofb=1&amp;ipt=c4ac0da6ced33fff2f955f0c231b98522dd003d3b00215f38f4e1b73fcae4b91&amp;ipo=images" property="twitter:image"/>
+<meta content="images/latex-tips.jpg" property="twitter:image"/>
 </meta></link></link></head>
 <body>
 <header class="site-header">
@@ -78,7 +78,7 @@
 <div class="page" style="word-spacing: 0.09em;">
 <article>
 <header class="post-header">
-<div class="post-hero" style="background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.proceso.com.mx%2Fu%2Ffotografias%2Ffotosnoticias%2F2022%2F10%2F9%2F162629.jpg&amp;f=1&amp;nofb=1&amp;ipt=c4ac0da6ced33fff2f955f0c231b98522dd003d3b00215f38f4e1b73fcae4b91&amp;ipo=images)"></div>
+<div class="post-hero" style="background-image: url('../images/latex-tips.jpg')"></div>
 <div class="post-content-wrapper">
 <h1 class="post-title">
 <a href="../drafts/latex-tips.html" rel="bookmark" title="Permalink to Michael's TeXronomicon (LaTeX tips, tricks, and hacks)">Michael's TeXronomicon (LaTeX tips, tricks, and hacks)</a>
@@ -143,7 +143,7 @@
 </ul>
 </div>
 <p>The keys to understanding LaTeX are mastering Knuth-isms and managing your sanity.</p>
-<h1 id="1-making-commands">1. Making commands<a class="header-link" href="#1-making-commands" title="Permalink to this section">¶</a></h1>
+<h1 id="1-making-commands"><a class="toclink" href="#1-making-commands">1. Making commands</a><a class="header-link" href="#1-making-commands" title="Permalink to this section">¶</a></h1>
 <p>You should make commands. At their simplest, they let you reuse text or formatting easily. But they can do much more. First, a little bit about how to make them:</p>
 <p>I know two ways to make commands, <code>\newcommand</code> and <code>\renewcommand</code>. 
 If the command already exists, <code>\renewcommand</code> will overwrite it (sometimes very useful). For example, I used <code>\renewcommand</code> to fix a critical flaw in the COLM format.</p>
@@ -163,7 +163,7 @@ If the command already exists, <code>\renewcommand</code> will overwrite it (som
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\cite</span><span class="nb">}{</span><span class="k">\citep</span><span class="nb">}</span>
 </code></pre></div></td></tr></table></div>
 <p>Probably the most common use case I see for writing commands is to make named comments in collaborative docs.</p>
-<h2 id="comment-commands">Comment commands<a class="header-link" href="#comment-commands" title="Permalink to this section">¶</a></h2>
+<h2 id="comment-commands"><a class="toclink" href="#comment-commands">Comment commands</a><a class="header-link" href="#comment-commands" title="Permalink to this section">¶</a></h2>
 <p>The typical way we implement comment commands is something simple like: </p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\mycomment</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\textcolor</span><span class="nb">{</span>red<span class="nb">}{</span>michael: #1<span class="nb">}}</span>
 </code></pre></div></td></tr></table></div>
@@ -209,7 +209,7 @@ If the command already exists, <code>\renewcommand</code> will overwrite it (som
 </code></pre></div></td></tr></table></div>
 <p><code>\newif\ifmyvariable</code> defines a boolean variable, which is actually named <code>myvariable</code>.
 You can control it with <code>\myvariabletrue</code> or <code>\myvariablefalse</code>. This is weird and Knuth-y.</p>
-<h2 id="fixing-infuriating-spacing-issues">Fixing infuriating spacing issues<a class="header-link" href="#fixing-infuriating-spacing-issues" title="Permalink to this section">¶</a></h2>
+<h2 id="fixing-infuriating-spacing-issues"><a class="toclink" href="#fixing-infuriating-spacing-issues">Fixing infuriating spacing issues</a><a class="header-link" href="#fixing-infuriating-spacing-issues" title="Permalink to this section">¶</a></h2>
 <p>Often you want to define a command as a simple macro for some name you're using throughout the paper. Something like</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\method</span><span class="nb">}{</span><span class="k">\textsc</span><span class="nb">{</span>BiG-BiRd<span class="nb">}}</span>
 </code></pre></div></td></tr></table></div>
@@ -230,8 +230,8 @@ You can control it with <code>\myvariabletrue</code> or <code>\myvariablefalse</
 <span class="k">\newcommand</span><span class="nb">{</span><span class="k">\method</span><span class="nb">}{</span><span class="k">\textsc</span><span class="nb">{</span>BiG-BiRd<span class="nb">}</span><span class="k">\xspace</span><span class="nb">}</span>
 </code></pre></div></td></tr></table></div>
 <p>And your problems are solved.</p>
-<h1 id="2-doing-text-right">2. Doing text right<a class="header-link" href="#2-doing-text-right" title="Permalink to this section">¶</a></h1>
-<h2 id="citations">citations<a class="header-link" href="#citations" title="Permalink to this section">¶</a></h2>
+<h1 id="2-doing-text-right"><a class="toclink" href="#2-doing-text-right">2. Doing text right</a><a class="header-link" href="#2-doing-text-right" title="Permalink to this section">¶</a></h1>
+<h2 id="citations"><a class="toclink" href="#citations">citations</a><a class="header-link" href="#citations" title="Permalink to this section">¶</a></h2>
 <ul>
 <li>resizing text</li>
 <li>defining and setting special text colors</li>
@@ -242,7 +242,7 @@ You can control it with <code>\myvariabletrue</code> or <code>\myvariablefalse</
 <p>cite, citet, citep</p>
 </li>
 </ul>
-<h2 id="colored-boxese">colored boxese<a class="header-link" href="#colored-boxese" title="Permalink to this section">¶</a></h2>
+<h2 id="colored-boxese"><a class="toclink" href="#colored-boxese">colored boxese</a><a class="header-link" href="#colored-boxese" title="Permalink to this section">¶</a></h2>
 <ul>
 <li><code>\vig</code> and making a nice colored box</li>
 </ul>
@@ -294,7 +294,7 @@ You can control it with <code>\myvariabletrue</code> or <code>\myvariablefalse</
 <span class="k">\end</span><span class="nb">{</span>boxblue<span class="nb">}</span>
 <span class="nb">}</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="annoying-fancy-colored-text">Annoying fancy colored text<a class="header-link" href="#annoying-fancy-colored-text" title="Permalink to this section">¶</a></h2>
+<h2 id="annoying-fancy-colored-text"><a class="toclink" href="#annoying-fancy-colored-text">Annoying fancy colored text</a><a class="header-link" href="#annoying-fancy-colored-text" title="Permalink to this section">¶</a></h2>
 <p>cursor gave me this atrocity
 <code>\newcommand{\methodfancy}{\textbf{\textsc{\textcolor[rgb]{0,0,0}{T}\textcolor[rgb]{0.2,0,0}{h}\textcolor[rgb]{0.4,0,0}{o}\textcolor[rgb]{0.5,0,0}{u}\textcolor[rgb]{0.6,0,0}{g}\textcolor[rgb]{0.7,0,0}{h}\textcolor[rgb]{0.8,0,0}{t}\textcolor[rgb]{0.85,0,0}{T}\textcolor[rgb]{0.9,0,0}{e}\textcolor[rgb]{0.95,0,0}{r}\textcolor[rgb]{1,0,0}{m}\textcolor[rgb]{1,0,0}{i}\textcolor[rgb]{1,0,0}{n}\textcolor[rgb]{1,0,0}{a}\textcolor[rgb]{1,0,0}{t}\textcolor[rgb]{1,0,0}{o}\textcolor[rgb]{1,0,0}{r}}}\xspace}</code></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
@@ -303,10 +303,10 @@ You can control it with <code>\myvariabletrue</code> or <code>\myvariablefalse</
 <span class="k">\newcommand</span><span class="nb">{</span><span class="k">\tscolor</span><span class="nb">}{</span><span class="k">\texttt</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span><span class="k">\gradientRGB</span><span class="nb">{</span>TS2<span class="nb">}{</span>68,67,147<span class="nb">}{</span>61,130,217<span class="nb">}}}}</span>
 <span class="k">\newcommand</span><span class="nb">{</span><span class="k">\rncolor</span><span class="nb">}{</span><span class="k">\includegraphics</span><span class="na">[trim=0 0.2ex 0 -1.5ex,height=1.8ex]</span><span class="nb">{</span>module/T2IScoreScore.pdf<span class="nb">}}</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="annoying-inline-icons">annoying inline icons<a class="header-link" href="#annoying-inline-icons" title="Permalink to this section">¶</a></h2>
+<h2 id="annoying-inline-icons"><a class="toclink" href="#annoying-inline-icons">annoying inline icons</a><a class="header-link" href="#annoying-inline-icons" title="Permalink to this section">¶</a></h2>
 <p><code>\vspace{-3pt}\raisebox{-3pt}{\includegraphics[width=20pt]{pics/terminator_logo.png}}</code>
 you can just directly use the <code>\includegraphics</code> command inside of text</p>
-<h2 id="exotic-symbols">exotic symbols<a class="header-link" href="#exotic-symbols" title="Permalink to this section">¶</a></h2>
+<h2 id="exotic-symbols"><a class="toclink" href="#exotic-symbols">exotic symbols</a><a class="header-link" href="#exotic-symbols" title="Permalink to this section">¶</a></h2>
 <p>Egyptian hieroglyphs!</p>
 <p>How I did the playstation icons</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
@@ -389,7 +389,7 @@ you can just directly use the <code>\includegraphics</code> command inside of te
 </code></pre></div></td></tr></table></div>
 <p>This produces something roughly like:
 Michael Saxon<sup><img src="https://t2iscorescore.github.io/static/images/psx.svg" width="15pt"/><img src="https://t2iscorescore.github.io/static/images/psc.svg" width="15pt"/></sup></p>
-<h2 id="non-latin-cjk-alphabets-on-arxiv">Non-Latin (CJK) alphabets on arXiv<a class="header-link" href="#non-latin-cjk-alphabets-on-arxiv" title="Permalink to this section">¶</a></h2>
+<h2 id="non-latin-cjk-alphabets-on-arxiv"><a class="toclink" href="#non-latin-cjk-alphabets-on-arxiv">Non-Latin (CJK) alphabets on arXiv</a><a class="header-link" href="#non-latin-cjk-alphabets-on-arxiv" title="Permalink to this section">¶</a></h2>
 <p>XeLaTeX is the best way to do this, with native unicode support, and a much more comprehensive distribution of multilingual fonts and modules. 
 But arXiv (as of writing) doesn't support it 😭😭😭😭😭</p>
 <p>So we need to figure out how to do it with pdfLaTeX.</p>
@@ -421,7 +421,7 @@ But arXiv (as of writing) doesn't support it 😭😭😭😭😭</p>
 <span class="k">\inlinejp</span><span class="nb">{</span>お前はもう死んでいる<span class="nb">}</span>
 <span class="k">\inlinezh</span><span class="nb">{</span>迈克不喜欢卷<span class="nb">}</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="learn-the-weird-knuth-isms">Learn the weird Knuth-isms<a class="header-link" href="#learn-the-weird-knuth-isms" title="Permalink to this section">¶</a></h2>
+<h2 id="learn-the-weird-knuth-isms"><a class="toclink" href="#learn-the-weird-knuth-isms">Learn the weird Knuth-isms</a><a class="header-link" href="#learn-the-weird-knuth-isms" title="Permalink to this section">¶</a></h2>
 <p>Don Knuth, the creator of TeX (pictured in thumbnail), is a bit of a strange guy.
 If you're experienced with LaTeX you're used to remembering a lot of weird names for things, like <code>\ell</code> for the fancy curly "L", <code>\sim</code> for the tilde. 
 For most of the things you need, you're gonna have to just look them up yourself, but here's a fun little rant about the most perplexing one to me.
@@ -460,12 +460,12 @@ The correct way to fix this is to use the <code>\left</code> and <code>\right</c
 <li><code>\Bigg</code></li>
 </ul>
 <p>See here in <a href="https://www.overleaf.com/learn/latex/Font_sizes%2C_families%2C_and_styles">Overleaf's docs</a></p>
-<h1 id="3-tables">3. Tables<a class="header-link" href="#3-tables" title="Permalink to this section">¶</a></h1>
+<h1 id="3-tables"><a class="toclink" href="#3-tables">3. Tables</a><a class="header-link" href="#3-tables" title="Permalink to this section">¶</a></h1>
 <ul>
 <li>colortbl</li>
 </ul>
-<h3 id="basic-booktabs-hygiene">basic booktabs hygiene<a class="header-link" href="#basic-booktabs-hygiene" title="Permalink to this section">¶</a></h3>
-<h3 id="coloring-the-inside-of-your-table">coloring the inside of your table<a class="header-link" href="#coloring-the-inside-of-your-table" title="Permalink to this section">¶</a></h3>
+<h3 id="basic-booktabs-hygiene"><a class="toclink" href="#basic-booktabs-hygiene">basic booktabs hygiene</a><a class="header-link" href="#basic-booktabs-hygiene" title="Permalink to this section">¶</a></h3>
+<h3 id="coloring-the-inside-of-your-table"><a class="toclink" href="#coloring-the-inside-of-your-table">coloring the inside of your table</a><a class="header-link" href="#coloring-the-inside-of-your-table" title="Permalink to this section">¶</a></h3>
 <p><code>\rowcolor{}</code></p>
 <p>In TS2 we also had colored cells</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
@@ -484,11 +484,11 @@ The correct way to fix this is to use the <code>\left</code> and <code>\right</c
 <span class="k">\newcommand</span><span class="nb">{</span><span class="k">\tb</span><span class="nb">}</span>[0]<span class="nb">{</span><span class="k">\cellcolor</span><span class="nb">{</span>tifablue<span class="nb">}}</span>
 <span class="k">\newcommand</span><span class="nb">{</span><span class="k">\tg</span><span class="nb">}</span>[0]<span class="nb">{</span><span class="k">\cellcolor</span><span class="nb">{</span>llmgreen<span class="nb">}}</span>
 </code></pre></div></td></tr></table></div>
-<h3 id="special-table-symbols">special table symbols<a class="header-link" href="#special-table-symbols" title="Permalink to this section">¶</a></h3>
+<h3 id="special-table-symbols"><a class="toclink" href="#special-table-symbols">special table symbols</a><a class="header-link" href="#special-table-symbols" title="Permalink to this section">¶</a></h3>
 <p>lil commands like
 - samel to more cleanly cross out a bunch of rows with the same value
 <code>\newcommand{\samel}[0]{\multicolumn{1}{l}{\space\hspace{0.5em}\vline}}</code></p>
-<h3 id="rotating-text-for-compactness">rotating text for compactness<a class="header-link" href="#rotating-text-for-compactness" title="Permalink to this section">¶</a></h3>
+<h3 id="rotating-text-for-compactness"><a class="toclink" href="#rotating-text-for-compactness">rotating text for compactness</a><a class="header-link" href="#rotating-text-for-compactness" title="Permalink to this section">¶</a></h3>
 <ul>
 <li>rotating text</li>
 </ul>
@@ -508,8 +508,8 @@ The correct way to fix this is to use the <code>\left</code> and <code>\right</c
 <span class="k">\end</span><span class="nb">{</span>turn<span class="nb">}</span>
 <span class="nb">}</span>
 </code></pre></div></td></tr></table></div>
-<h1 id="4-figures">4. Figures<a class="header-link" href="#4-figures" title="Permalink to this section">¶</a></h1>
-<h2 id="todo-combining-multiple-images-into-one-image">TODO Combining multiple images into one image<a class="header-link" href="#todo-combining-multiple-images-into-one-image" title="Permalink to this section">¶</a></h2>
+<h1 id="4-figures"><a class="toclink" href="#4-figures">4. Figures</a><a class="header-link" href="#4-figures" title="Permalink to this section">¶</a></h1>
+<h2 id="todo-combining-multiple-images-into-one-image"><a class="toclink" href="#todo-combining-multiple-images-into-one-image">TODO Combining multiple images into one image</a><a class="header-link" href="#todo-combining-multiple-images-into-one-image" title="Permalink to this section">¶</a></h2>
 <p>I wanted to make a grid of adjacent images in a table.
 I'm gonna be honest, I do not remember how I made this. But it works</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
@@ -524,31 +524,31 @@ I'm gonna be honest, I do not remember how I made this. But it works</p>
 
 <span class="k">\newcommand</span><span class="nb">{</span><span class="k">\imgf</span><span class="nb">}</span>[4]<span class="nb">{</span><span class="k">\specialcell</span><span class="nb">{</span><span class="k">\timg</span><span class="nb">{</span>#1<span class="nb">}</span><span class="k">\timg</span><span class="nb">{</span>#2<span class="nb">}</span><span class="k">\vspace</span><span class="nb">{</span>-3pt<span class="nb">}</span><span class="k">\\\timg</span><span class="nb">{</span>#3<span class="nb">}</span><span class="k">\timg</span><span class="nb">{</span>#4<span class="nb">}}</span><span class="k">\hspace</span><span class="nb">{</span>-5pt<span class="nb">}}</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="making-subfigures-withwithout-captions">making subfigures with/without captions<a class="header-link" href="#making-subfigures-withwithout-captions" title="Permalink to this section">¶</a></h2>
-<h3 id="subfig">subfig<a class="header-link" href="#subfig" title="Permalink to this section">¶</a></h3>
-<h3 id="subcaption">subcaption<a class="header-link" href="#subcaption" title="Permalink to this section">¶</a></h3>
-<h3 id="minipage">minipage<a class="header-link" href="#minipage" title="Permalink to this section">¶</a></h3>
-<h2 id="how-to-do-pyplot-and-make-it-readable">How to do pyplot and make it readable<a class="header-link" href="#how-to-do-pyplot-and-make-it-readable" title="Permalink to this section">¶</a></h2>
+<h2 id="making-subfigures-withwithout-captions"><a class="toclink" href="#making-subfigures-withwithout-captions">making subfigures with/without captions</a><a class="header-link" href="#making-subfigures-withwithout-captions" title="Permalink to this section">¶</a></h2>
+<h3 id="subfig"><a class="toclink" href="#subfig">subfig</a><a class="header-link" href="#subfig" title="Permalink to this section">¶</a></h3>
+<h3 id="subcaption"><a class="toclink" href="#subcaption">subcaption</a><a class="header-link" href="#subcaption" title="Permalink to this section">¶</a></h3>
+<h3 id="minipage"><a class="toclink" href="#minipage">minipage</a><a class="header-link" href="#minipage" title="Permalink to this section">¶</a></h3>
+<h2 id="how-to-do-pyplot-and-make-it-readable"><a class="toclink" href="#how-to-do-pyplot-and-make-it-readable">How to do pyplot and make it readable</a><a class="header-link" href="#how-to-do-pyplot-and-make-it-readable" title="Permalink to this section">¶</a></h2>
 <p>Generating your figure to be readable in pyplot
 MAKE THE FIGURE SMALL IN GENERATION AS AN SVG THEN IT WILL BE BIG</p>
-<h2 id="colors-etc">Colors etc<a class="header-link" href="#colors-etc" title="Permalink to this section">¶</a></h2>
+<h2 id="colors-etc"><a class="toclink" href="#colors-etc">Colors etc</a><a class="header-link" href="#colors-etc" title="Permalink to this section">¶</a></h2>
 <ul>
 <li>blue!50!black</li>
 <li>rgb</li>
 <li>named colors (link)</li>
 </ul>
-<h1 id="5-todo-overleaf-in-vscode">5. TODO: Overleaf in VSCode<a class="header-link" href="#5-todo-overleaf-in-vscode" title="Permalink to this section">¶</a></h1>
+<h1 id="5-todo-overleaf-in-vscode"><a class="toclink" href="#5-todo-overleaf-in-vscode">5. TODO: Overleaf in VSCode</a><a class="header-link" href="#5-todo-overleaf-in-vscode" title="Permalink to this section">¶</a></h1>
 <ul>
 <li>use latex workshop</li>
 <li>use overleaf workshop</li>
 </ul>
 <p>https://github.com/iamhyc/Overleaf-Workshop</p>
 <p>Install instructions</p>
-<h1 id="6-the-dark-arts-advanced">6. The Dark Arts (Advanced)<a class="header-link" href="#6-the-dark-arts-advanced" title="Permalink to this section">¶</a></h1>
+<h1 id="6-the-dark-arts-advanced"><a class="toclink" href="#6-the-dark-arts-advanced">6. The Dark Arts (Advanced)</a><a class="header-link" href="#6-the-dark-arts-advanced" title="Permalink to this section">¶</a></h1>
 <blockquote class="infobox infobox-warning">
 <p>These incantations will give you dark powers and break you free from the shackles of conference style files. Use wisely.</p>
 </blockquote>
-<h2 id="switching-between-conference-formats">Switching between conference formats<a class="header-link" href="#switching-between-conference-formats" title="Permalink to this section">¶</a></h2>
+<h2 id="switching-between-conference-formats"><a class="toclink" href="#switching-between-conference-formats">Switching between conference formats</a><a class="header-link" href="#switching-between-conference-formats" title="Permalink to this section">¶</a></h2>
 <p>Some conference submission formats are disgusting, like ECCV.
 I wrote a setup that gives me a flag to swap between that sickening abomination and the NeurIPS format.</p>
 <p>First, you need both sty files in your project. For me it was <code>eccv.sty</code> and <code>neurips_2024.sty</code>.</p>
@@ -617,7 +617,7 @@ I wrote a setup that gives me a flag to swap between that sickening abomination 
 <span class="k">\fi</span>
 </code></pre></div></td></tr></table></div>
 <p>Then throughout the document for select other commands that I wanted to only use with one I would have to add that flag into them. <code>\useformat0</code> or <code>1</code> would switch between either ECCV or NeurIPS.</p>
-<h2 id="breaking-a-figure-out-of-the-text-width">breaking a figure out of the text width<a class="header-link" href="#breaking-a-figure-out-of-the-text-width" title="Permalink to this section">¶</a></h2>
+<h2 id="breaking-a-figure-out-of-the-text-width"><a class="toclink" href="#breaking-a-figure-out-of-the-text-width">breaking a figure out of the text width</a><a class="header-link" href="#breaking-a-figure-out-of-the-text-width" title="Permalink to this section">¶</a></h2>
 <ul>
 <li>dark art: making a figure oversized relative to the text
 <em>there are legitimate reasons to do this, for example if your figure has whitespace baked in but you want the filled part to be 100%</em></li>
@@ -645,7 +645,7 @@ I wrote a setup that gives me a flag to swap between that sickening abomination 
 <span class="nb">}</span>
 </code></pre></div></td></tr></table></div>
 <p>You wrap the <code>\includegraphics</code> inside of the <code>\bigln</code></p>
-<h2 id="teaser-figures-in-the-acl-format">Teaser figures in the *ACL format<a class="header-link" href="#teaser-figures-in-the-acl-format" title="Permalink to this section">¶</a></h2>
+<h2 id="teaser-figures-in-the-acl-format"><a class="toclink" href="#teaser-figures-in-the-acl-format">Teaser figures in the *ACL format</a><a class="header-link" href="#teaser-figures-in-the-acl-format" title="Permalink to this section">¶</a></h2>
 <p>Suppose you want to put a full-width figure at the top of your ACL paper, as seen in this example.</p>
 <p><img alt="Top of Michael's ACL 2023 paper with a big teaser figure" src="https://gist.github.com/michaelsaxon/21ab96429ffb86fb7691945dfe3f657a/raw/6ec0322422b20f70264faf1211e53138d5409021/0_z_cccl_example.png"/></p>
 <p>The <code>\figure*{}</code> macro does not work to insert a full-width figure above the abstract in the ACL template for some reason. Thus, we need to hack together a command that does it for us.</p>
@@ -747,7 +747,7 @@ I wrote a setup that gives me a flag to swap between that sickening abomination 
 
 etc
 </code></pre></div></td></tr></table></div>
-<h4 id="credit">Credit<a class="header-link" href="#credit" title="Permalink to this section">¶</a></h4>
+<h4 id="credit"><a class="toclink" href="#credit">Credit</a><a class="header-link" href="#credit" title="Permalink to this section">¶</a></h4>
 <p>I worked out how to do most of this hack myself just consulting stackoverflow and documentation of the commands. The one exception was figuring out the <code>\adjustimg</code> and <code>\centerimg</code> commands could be used to replace <code>\centering</code>, which was necessary to avoid this super annoying bug where the text placement doesn't "see" the image and instead they superimpose on each other.</p>
 <p>I found the exact code I needed for this in an answer provided by
 <a href="https://tex.stackexchange.com/a/39148">"Werner" on StackOverflow</a>.
