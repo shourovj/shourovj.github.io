@@ -32,20 +32,34 @@
                 <span>{{ pubdict['authors'] }}</span><br>
                 <span>
                     {% if pubdict['venue_abbrev'] %}
-                        {{ pubdict['venue_abbrev'] }}
+                        <span class="pub-badge {{ pubdict['venue_badge_class'] }}">{{ pubdict['venue_abbrev'] }}</span>
                         {% if pubdict['additional_info'] %}
-                            <span class="venue-separator">·</span> <span class="additional-info">{{ pubdict['additional_info'] }}</span>
+                            <span class="venue-separator">·</span>
+                            {% if pubdict['info_badge_class'] %}
+                                <span class="pub-badge {{ pubdict['info_badge_class'] }}">{{ pubdict['additional_info'] }}</span>
+                            {% else %}
+                                <span class="additional-info">{{ pubdict['additional_info'] }}</span>
+                            {% endif %}
                         {% endif %}
                     {% else %}
-                        {% if pubdict['journal'] %}
+                        {% if 'arxiv.org' in pubdict.get('url_official', '') %}
+                            <span class="pub-badge arxiv-badge">Preprint</span>
+                        {% elif pubdict['journal'] %}
                             {{ pubdict['journal'] }}
                         {% elif pubdict['booktitle'] %}
                             {{ pubdict['booktitle'] }}
                         {% endif %}
                         {% if pubdict['additional_info'] %}
-                            <span class="venue-separator">·</span> <span class="additional-info">{{ pubdict['additional_info'] }}</span>
+                            <span class="venue-separator">·</span>
+                            {% if pubdict['info_badge_class'] %}
+                                <span class="pub-badge {{ pubdict['info_badge_class'] }}">{{ pubdict['additional_info'] }}</span>
+                            {% else %}
+                                <span class="additional-info">{{ pubdict['additional_info'] }}</span>
+                            {% endif %}
                         {% endif %}
-                        , {{ pubdict['year'] }}
+                        {% if not 'arxiv.org' in pubdict.get('url_official', '') %}
+                            , {{ pubdict['year'] }}
+                        {% endif %}
                     {% endif %}
                 </span>
             </div>

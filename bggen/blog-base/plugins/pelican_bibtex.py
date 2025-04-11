@@ -81,6 +81,42 @@ def determine_badge_info(pubdict):
         badge_text = f"Presentation ({platform.capitalize()})"
         return badge_text, 'video-badge'
 
+def determine_venue_badge(pubdict):
+    """
+    Determines the badge class for venue and additional info.
+    Returns a tuple of (venue_badge_class, additional_info_badge_class)
+    """
+    venue_abbrev = pubdict.get('venue_abbrev', '').lower()
+    additional_info = pubdict.get('additional_info', '').lower()
+    
+    # Determine venue badge class
+    venue_badges = {
+        'acl': 'acl-badge',
+        'naacl': 'acl-badge',
+        'eacl': 'acl-badge',
+        'aacl': 'acl-badge',
+        'iclr': 'iclr-badge',
+        'colm': 'colm-badge',
+        'neurips': 'neurips-badge',
+        'emnlp': 'emnlp-badge'
+    }
+    
+    # Handle arXiv preprints
+    if 'arxiv.org' in pubdict.get('url_official', ''):
+        venue_badge_class = 'arxiv-badge'
+    else:
+        venue_badge_class = venue_badges.get(venue_abbrev, 'link-badge')
+    
+    # Determine additional info badge class
+    if 'oral' in additional_info:
+        info_badge_class = 'oral-badge'
+    elif 'spotlight' in additional_info:
+        info_badge_class = 'spotlight-badge'
+    else:
+        info_badge_class = None
+        
+    return venue_badge_class, info_badge_class
+
 def clean_bibtex(bibtex_str, entry_dict):
     """
     Clean the BibTeX string by:
@@ -98,7 +134,9 @@ def clean_bibtex(bibtex_str, entry_dict):
         'additional_info',
         'demo',
         'routing',
-        'video_link'
+        'video_link',
+        'github',
+        'huggingface'
     ]
 
     # Split into lines for processing
@@ -299,6 +337,18 @@ def add_publications(generator):
     generator.context['publications'] = publications
     generator.context['workshop_publications'] = workshop_publications
 
+    for pub_list in [publications, workshop_publications]:
+        for entry_dict in pub_list:
+            # Add badge classes to the entry dict
+            venue_badge_class, info_badge_class = determine_venue_badge(entry_dict)
+            entry_dict['venue_badge_class'] = venue_badge_class
+            entry_dict['info_badge_class'] = info_badge_class
+
+            # Keep any existing badge processing for PDF/arXiv links
+            badge_text, badge_class = determine_badge_info(entry_dict)
+            if badge_text:
+                entry_dict['badge_text'] = badge_text
+                entry_dict['badge_class'] = badge_class
 
 def register():
     signals.generator_init.connect(add_publications)

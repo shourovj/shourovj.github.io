@@ -273,3 +273,82 @@
     margin-right: 0.5rem;
     display: inline-block;
 }
+
+/* Conference Badge Styles */
+.acl-badge, .naacl-badge, .eacl-badge, .aacl-badge {
+    background-color: var(--kanagawa-dark-red);
+    border-color: var(--kanagawa-dark-red);
+    color: var(--bg-main);
+}
+.acl-badge:hover, .naacl-badge:hover, .eacl-badge:hover, .aacl-badge:hover {
+    background-color: var(--kanagawa-medium-red);
+    border-color: var(--kanagawa-medium-red);
+    color: var(--bg-main);
+}
+
+.iclr-badge {
+    background-color: var(--kanagawa-dark-cyan);
+    border-color: var(--kanagawa-dark-cyan);
+    color: var(--bg-main);
+}
+.iclr-badge:hover {
+    background-color: var(--kanagawa-medium-cyan);
+    border-color: var(--kanagawa-medium-cyan);
+    color: var(--bg-main);
+}
+
+.colm-badge {
+    background-color: var(--kanagawa-dark-black);
+    border-color: var(--kanagawa-dark-black);
+    color: var(--bg-main);
+}
+.colm-badge:hover {
+    background-color: var(--kanagawa-light-black);
+    border-color: var(--kanagawa-light-black);
+    color: var(--bg-main);
+}
+
+.neurips-badge {
+    background-color: var(--kanagawa-dark-magenta);
+    border-color: var(--kanagawa-dark-magenta);
+    color: var(--bg-main);
+}
+.neurips-badge:hover {
+    background-color: var(--kanagawa-medium-magenta);
+    border-color: var(--kanagawa-medium-magenta);
+    color: var(--bg-main);
+}
+
+.emnlp-badge {
+    background-color: var(--kanagawa-dark-green);
+    border-color: var(--kanagawa-dark-green);
+    color: var(--bg-main);
+}
+.emnlp-badge:hover {
+    background-color: var(--kanagawa-medium-green);
+    border-color: var(--kanagawa-medium-green);
+    color: var(--bg-main);
+}
+
+/* Presentation Type Badge Styles */
+.oral-badge {
+    background-color: var(--kanagawa-dark-yellow);
+    border-color: var(--kanagawa-dark-yellow);
+    color: var(--bg-main);
+}
+.oral-badge:hover {
+    background-color: var(--kanagawa-medium-yellow);
+    border-color: var(--kanagawa-medium-yellow);
+    color: var(--bg-main);
+}
+
+.spotlight-badge {
+    background-color: var(--kanagawa-dark-blue);
+    border-color: var(--kanagawa-dark-blue);
+    color: var(--bg-main);
+}
+.spotlight-badge:hover {
+    background-color: var(--kanagawa-light-blue);
+    border-color: var(--kanagawa-light-blue);
+    color: var(--bg-main);
+}
