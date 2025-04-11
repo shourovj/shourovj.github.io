@@ -90,5 +90,5 @@ READERS = {'jpg': None}
 
 
 # DEFAULT_PAGINATION = 10
-#PAGINATED_TEMPLATES = ['index','archives']
+#PAGINATED_TEMPLATES = {'index': 10, 'archives': 10}
 PAGINATED_DIRECT_TEMPLATES = ['index','archives']
