@@ -1045,10 +1045,10 @@ sup[id^="fnref"] {
   position: relative;
   display: inline;
   z-index: 1;
-  font-size: 0.7rem;
+  font-size: 0.7em;
   vertical-align: baseline;
   position: relative;
-  top: -0.6rem;
+  top: -0.6em;
   line-height: 0;
 }
 
@@ -1061,24 +1061,24 @@ sup[id^="fnref"] {
   align-items: center;
   justify-content: center;
   font-family: monospace;
-  width: 1rem;
-  height: 1rem;
+  width: 1em;
+  height: 1em;
   border: 1px solid var(--link-color);
   border-radius: 50%;
   position: relative;
   transition: background-color 0.2s;
   line-height: 1;     /* Ensure vertical centering */
-  font-size: 0.85rem;  /* Slightly smaller for the plus sign */
+  font-size: 0.85em;  /* Slightly smaller for the plus sign */
 }
 
 /* Create larger invisible hit area */
 .footnote-ref::before {
   content: '';
   position: absolute;
-  top: -0.5rem;
-  right: -0.5rem;
-  bottom: -0.5rem;
-  left: -0.5rem;
+  top: -0.5em;
+  right: -0.5em;
+  bottom: -0.5em;
+  left: -0.5em;
   z-index: -1;
 }
 
@@ -1094,17 +1094,17 @@ sup[id^="fnref"] {
   position: absolute;
   width: min(600px, calc(var(--page-width) - 40px));
   background: var(--bg-main);
-  padding: 1.5rem;
+  padding: 1.5em;
   border-radius: 4px;
   font-size: var(--base-size);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   z-index: 9999;
   bottom: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 1em;
   opacity: 0;
   transition: opacity 0.2s, visibility 0.2s;
   text-align: left;
-  line-height: 1.4;
+  line-height: 1.4em;
   white-space: normal;
   pointer-events: none;
   color: var(--text-black);
@@ -1487,16 +1487,16 @@ sup[id^="fnref"]:hover .footnote-popup {
 .footnote-icon {
     display: block;
     transition: transform 0.3s ease;
-    width: 1.2rem;  /* Match the container size */
-    height: 1.2rem;
+    width: 1.2em;  /* Match the container size */
+    height: 1.2em;
 }
 
 .footnote-ref {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 1.2rem;
-    height: 1.2rem;
+    width: 1.2em;
+    height: 1.2em;
     padding: 0;
 }
 

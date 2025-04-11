@@ -38,7 +38,7 @@ In the COLM format, this snippet:
 Inertia is a property of matter \cite{nye1995science}.
 ```
 
-would wrongly render as:
+renders as:
 
 > Inertia is a property of matter Nye et al. (1995).
 
@@ -47,7 +47,7 @@ Instead of correctly rendering as:
 > Inertia is a property of matter (Nye et al., 1995).
 
 
-In other words, the COLM format was treating `\cite{}` as `\citet{}` rather than `\citep{}`, as it is in all other conference formats.
+In other words, the COLM format was treating `\cite{}` as `\citet{}` rather than `\citep{}`[^5], as it is in all other conference formats.
 
 With `\renewcommand` it's a one line fix:
 
@@ -55,10 +55,12 @@ With `\renewcommand` it's a one line fix:
 \renewcommand{\cite}{\citep}
 ```
 
+[^5]: more on `citet` and `citep` below.
+
 ## Comment commands
 
-The command definition you have almost certainly used before is **comment commands**.
-But have you made them hideable? Modular? Here's how I built up a more powerful comment command that I always drop in. 
+Almost everyone has used `\newcommand` for defining **comment macros**.
+But are your comments hideable? Modular? Here's how I built up a more powerful drop-in comment command. 
 
 A typical, simple comment command is something like:
 
@@ -99,8 +101,7 @@ I fix both of these issues by implementing *a base comment command* that I build
 ```
 
 `\newif\ifmyvariable` defines a boolean variable, which is actually named `myvariable`.
-You can control it with `\myvariabletrue` or `\myvariablefalse`. This is weird and Knuth-y.
-
+You can control it with `\myvariabletrue` or `\myvariablefalse`.
 
 Now, all I have to do to periodically check how the spacing and length of the paper is with a bunch of inline comments present is to make `\commentsofftrue`.
 
@@ -113,11 +114,11 @@ Often you want to define a command as a simple macro for some name you're using 
 ```
 
 This has the benefit of letting you change it if you aren't sure what your final method is.
-Also if you want to do obnoxious extra formatting like a weird font or color[^1], it's easier to reuse this way.
+Also if you want to use fancy coloring or fonts in your method name[^1], putting it in a comment is a must.
 
 [^1]: As I often do...
 
-Unfortunately, text in LaTeX commands have infuriating spacing behavior. If you put the command as is, it will *ignore* following spaces,  so "`\methodname is great`" renders as "BiG-BiRdis great".
+Unfortunately, text in LaTeX commands have infuriating spacing behavior. If you put the command as is, it will *ignore* trailing whitespace,  so "`\methodname is great`" renders as "BiG-BiRdis great".
 
 The `\xspace` package makes spacing work right:
 
@@ -135,7 +136,7 @@ With our new understanding of commands, we can turn to discussing best practices
 
 Additionally, we will talk about how navigate the various quirky "Knuth-isms"[^3] that pervade LaTeX to make your text look right.
 
-[^3]: My term for the peculiar ways some commands in TeX are written, which I believe come from the particularly detail-obsessed mind of its creator Don Knuth (pictured in the thumbnail)
+[^3]: My tongue-in-cheek name for the many peculiar ways commands in TeX are written, often to enable extreme precision, whose existence make complete sense coming from the particularly detail-obsessed mind of its creator Don Knuth, pictured in the thumbnail (his typographical perfectionism drove the invention of TeX after all)
 
 ## Citations
 
@@ -194,8 +195,7 @@ Within those definitions you can define whatever behavior you want. You can make
 
 ## Quotation marks
 
-One of the most infuriating Knuthisms in LaTeX is the way quotation marks are handled. 
-
+Here's a great Knuthism:
 The characters `'` and `"`, in most fonts, **specifically refer to backwards marks**. So
 
 ```latex
@@ -344,7 +344,7 @@ If a single xcolor isn't enough to make your methodname look good (it wasn't eno
 \newcommand{\resourcename}{\texttt{\textbf{\gradientRGB{T2IScoreScore}{68,67,147}{61,130,217}}}}
 ```
 
-`\gradientRGB` colors all *n* letters in the first argument text with *n* intermediate colors it calculates which interpolate between the colors in arguments 2 and 3.
+`\gradientRGB` colors all *n* letters in the first argument text with *n* intermediate colors which interpolate between the colors in arguments 2 and 3.
 
 ### Inline icons
 
@@ -420,9 +420,10 @@ But arXiv (as of writing) doesn't support it 😭😭😭😭😭
 
 So we need to figure out how to do it with pdfLaTeX.
 
-We have to hack it in using various packages depending on language. In my multilingual paper, I *wanted* to include CJK and Hebrew characters, but I just could not figure out Hebrew without XeLaTeX at least for CJK you can use the CJK packages.
+We have to hack it in using language-specific packages and fonts.
+In my [multilingual conceptual coverage](https://aclanthology.org/2023.acl-long.266/) paper, I *wanted* to include both CJK and Hebrew text, but I just could not get a working solution that allowed me to render all scripts without version clashes.
 
-I was able to get this working on arXiv:
+At least there is a `CJKutf8` package in pdfLaTeX that lets you pick CJK fonts inside of spans. I don't remember what these font names mean, but this is a working snippet I was able to cobble together to get arXiv-rendering CJK text.
 
 ```latex
 %%% preamble
@@ -466,7 +467,7 @@ A & B & C \\
 
 > <table style="border-top: 2px solid black; border-bottom: 2px solid black; padding: 1px;"><tr><td style="border-bottom: 1px solid black; margin:0; width: 100pt; border-right: 1px solid black;">Thing 1</td><td style="border-bottom: 1px solid black; margin:0; padding-right 5pt; width: 100pt; text-align:center;">Thing 2</td><td style="border-bottom: 1px solid black; margin:0; width: 100pt;text-align:right;">Thing 3</td></tr><tr style="border:0;"><td style="border-right: 1px solid black;">A</td><td style="text-align:center;">B</td><td style="text-align:right;">C</td></tr></table>
 
-Please use `|` tastefully. Resist the impulse to do `\tabular{|c|c|c|}`, because this is harder to scan over and read:
+Please use `|` tastefully. (Really, a good table doesn't need any vertical lines, and one of the drawbacks of booktabs is that the cleanly separated horizontals make vertical lines look worse) Resist the impulse to do `\tabular{|c|c|c|}`, because this is harder to scan over and read:
 
 > [!WARNING]
 > <table style="border-top: 2px solid black; border-bottom: 2px solid black; padding: 1px;"><tr><td style="border-bottom: 1px solid black; margin:0; width: 100pt; border-right: 1px solid black; text-align:center;border-left: 1px solid black; ">Thing 1</td><td style="border-bottom: 1px solid black; margin:0; padding-right 5pt; width: 100pt; text-align:center; border-right: 1px solid black; ">Thing 2</td><td style="border-bottom: 1px solid black; margin:0; width: 100pt;text-align:center;border-right: 1px solid black; ">Thing 3</td></tr><tr style="border:0;"><td style="border-right: 1px solid black; border-left: 1px solid black; text-align:center;">A</td><td style="border-right: 1px solid black; text-align:center;">B</td><td style="border-right: 1px solid black; text-align:center;">C</td></tr></table>
@@ -694,8 +695,12 @@ Then throughout the document for select other commands that I wanted to only use
 
 ## Making a centered figure wider than `\pagewidth`
 
-- dark art: making a figure oversized relative to the text
-*there are legitimate reasons to do this, for example if your figure has whitespace baked in but you want the filled part to be 100%*
+On paper, doing this is a clear violation of pretty much all conference style guides, but it's still worth knowing!
+
+First, you may want to do this on a preprint-only work. 
+
+Second, there are completely legitimate reasons to use this in archival manuscripts.
+For example, if you are using a graphic which has baked-in whitespace, you may want to compensate, and make the non-empty parts of the figure take up the pagewidth, rather than including that wasted whitespace.
 
 ```latex
 \usepackage{graphicx}
@@ -709,9 +714,17 @@ Then throughout the document for select other commands that I wanted to only use
         }
     \end{adjustbox}
 }
+
+...
+
+\begin{figure}
+% normally, you'd have \includegraphics on its own
+\bigln{1.3}{\includegraphics{mypicture.svg}}
+...
+\end{figure}
 ```
 
-You wrap the `\includegraphics` inside of the `\bigln`
+Just wrap the `\includegraphics` command inside of `\bigln`, and pass the desired image size (as a multiple of page width) as the first argument.
 
 ## Teaser figures in the *ACL format
 

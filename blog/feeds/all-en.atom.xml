@@ -66,7 +66,7 @@ If a command already exists, and you want to override its behavior, use &lt;code
 &lt;p&gt;In the COLM format, this snippet:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Inertia is a property of matter &lt;span class="k"&gt;\cite&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;nye1995science&lt;span class="nb"&gt;}&lt;/span&gt;.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;p&gt;would wrongly render as:&lt;/p&gt;
+&lt;p&gt;renders as:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Inertia is a property of matter Nye et al. (1995).&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -74,13 +74,18 @@ If a command already exists, and you want to override its behavior, use &lt;code
 &lt;blockquote&gt;
 &lt;p&gt;Inertia is a property of matter (Nye et al., 1995).&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;In other words, the COLM format was treating &lt;code&gt;\cite{}&lt;/code&gt; as &lt;code&gt;\citet{}&lt;/code&gt; rather than &lt;code&gt;\citep{}&lt;/code&gt;, as it is in all other conference formats.&lt;/p&gt;
+&lt;p&gt;In other words, the COLM format was treating &lt;code&gt;\cite{}&lt;/code&gt; as &lt;code&gt;\citet{}&lt;/code&gt; rather than &lt;code&gt;\citep{}&lt;/code&gt;&lt;sup id="fnref:5"&gt;&lt;a class="footnote-ref footnote-toggle" href="javascript:void(0)"&gt;&lt;svg class="footnote-icon" viewbox="0 0 24 24"&gt;
+&lt;g class="icon-group" stroke="currentColor" stroke-linecap="round" stroke-width="3"&gt;
+&lt;line x1="7" x2="17" y1="12" y2="12"&gt;&lt;/line&gt;
+&lt;line x1="12" x2="12" y1="7" y2="17"&gt;&lt;/line&gt;
+&lt;/g&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;span class="footnote-popup"&gt;I know, I'm obnoxious &amp;lt;a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 1 in the text"&amp;gt;↩&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;/sup&gt;, as it is in all other conference formats.&lt;/p&gt;
 &lt;p&gt;With &lt;code&gt;\renewcommand&lt;/code&gt; it's a one line fix:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\renewcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\cite&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\citep&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
 &lt;h2 id="comment-commands"&gt;&lt;a class="toclink" href="#comment-commands"&gt;Comment commands&lt;/a&gt;&lt;a class="header-link" href="#comment-commands" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;The command definition you have almost certainly used before is &lt;strong&gt;comment commands&lt;/strong&gt;.
-But have you made them hideable? Modular? Here's how I built up a more powerful comment command that I always drop in. &lt;/p&gt;
+&lt;p&gt;Almost everyone has used &lt;code&gt;\newcommand&lt;/code&gt; for defining &lt;strong&gt;comment macros&lt;/strong&gt;.
+But are your comments hideable? Modular? Here's how I built up a more powerful drop-in comment command. &lt;/p&gt;
 &lt;p&gt;A typical, simple comment command is something like:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\mycomment&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textcolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;red&lt;span class="nb"&gt;}{&lt;/span&gt;michael: #1&lt;span class="nb"&gt;}}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
@@ -125,20 +130,20 @@ But have you made them hideable? Modular? Here's how I built up a more powerful 
 &lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\elaine&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\mycomment&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;green&lt;span class="nb"&gt;}{&lt;/span&gt;EB&lt;span class="nb"&gt;}{&lt;/span&gt;#1&lt;span class="nb"&gt;}}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
 &lt;p&gt;&lt;code&gt;\newif\ifmyvariable&lt;/code&gt; defines a boolean variable, which is actually named &lt;code&gt;myvariable&lt;/code&gt;.
-You can control it with &lt;code&gt;\myvariabletrue&lt;/code&gt; or &lt;code&gt;\myvariablefalse&lt;/code&gt;. This is weird and Knuth-y.&lt;/p&gt;
+You can control it with &lt;code&gt;\myvariabletrue&lt;/code&gt; or &lt;code&gt;\myvariablefalse&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Now, all I have to do to periodically check how the spacing and length of the paper is with a bunch of inline comments present is to make &lt;code&gt;\commentsofftrue&lt;/code&gt;.&lt;/p&gt;
 &lt;h2 id="fixing-infuriating-spacing-issues"&gt;&lt;a class="toclink" href="#fixing-infuriating-spacing-issues"&gt;Fixing infuriating spacing issues&lt;/a&gt;&lt;a class="header-link" href="#fixing-infuriating-spacing-issues" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Often you want to define a command as a simple macro for some name you're using throughout the paper, say, for a contrived backronym method name. Something like:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\methodname&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\textsc&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;BiG-BiRd&lt;span class="nb"&gt;}}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
 &lt;p&gt;This has the benefit of letting you change it if you aren't sure what your final method is.
-Also if you want to do obnoxious extra formatting like a weird font or color&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref footnote-toggle" href="javascript:void(0)"&gt;&lt;svg class="footnote-icon" viewbox="0 0 24 24"&gt;
+Also if you want to use fancy coloring or fonts in your method name&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref footnote-toggle" href="javascript:void(0)"&gt;&lt;svg class="footnote-icon" viewbox="0 0 24 24"&gt;
 &lt;g class="icon-group" stroke="currentColor" stroke-linecap="round" stroke-width="3"&gt;
 &lt;line x1="7" x2="17" y1="12" y2="12"&gt;&lt;/line&gt;
 &lt;line x1="12" x2="12" y1="7" y2="17"&gt;&lt;/line&gt;
 &lt;/g&gt;
-&lt;/svg&gt;&lt;/a&gt;&lt;span class="footnote-popup"&gt;As I often do...&lt;/span&gt;&lt;/sup&gt;, it's easier to reuse this way.&lt;/p&gt;
-&lt;p&gt;Unfortunately, text in LaTeX commands have infuriating spacing behavior. If you put the command as is, it will &lt;em&gt;ignore&lt;/em&gt; following spaces,  so "&lt;code&gt;\methodname is great&lt;/code&gt;" renders as "BiG-BiRdis great".&lt;/p&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;span class="footnote-popup"&gt;As I often do...&lt;/span&gt;&lt;/sup&gt;, putting it in a comment is a must.&lt;/p&gt;
+&lt;p&gt;Unfortunately, text in LaTeX commands have infuriating spacing behavior. If you put the command as is, it will &lt;em&gt;ignore&lt;/em&gt; trailing whitespace,  so "&lt;code&gt;\methodname is great&lt;/code&gt;" renders as "BiG-BiRdis great".&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;\xspace&lt;/code&gt; package makes spacing work right:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
 &lt;span class="normal"&gt;2&lt;/span&gt;
@@ -155,7 +160,7 @@ Also if you want to do obnoxious extra formatting like a weird font or color&lt;
 &lt;line x1="7" x2="17" y1="12" y2="12"&gt;&lt;/line&gt;
 &lt;line x1="12" x2="12" y1="7" y2="17"&gt;&lt;/line&gt;
 &lt;/g&gt;
-&lt;/svg&gt;&lt;/a&gt;&lt;span class="footnote-popup"&gt;My term for the peculiar ways some commands in TeX are written, which I believe come from the particularly detail-obsessed mind of its creator Don Knuth (pictured in the thumbnail)&lt;/span&gt;&lt;/sup&gt; that pervade LaTeX to make your text look right.&lt;/p&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;span class="footnote-popup"&gt;My tongue-in-cheek name for the many peculiar ways commands in TeX are written, often to enable extreme precision, whose existence make complete sense coming from the particularly detail-obsessed mind of its creator Don Knuth, pictured in the thumbnail (his typographical perfectionism drove the invention of TeX after all)&lt;/span&gt;&lt;/sup&gt; that pervade LaTeX to make your text look right.&lt;/p&gt;
 &lt;h2 id="citations"&gt;&lt;a class="toclink" href="#citations"&gt;Citations&lt;/a&gt;&lt;a class="header-link" href="#citations" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Two different styles of inline citation are invoked with &lt;code&gt;\citet&lt;/code&gt;, and &lt;code&gt;\citep&lt;/code&gt;.
 In parenthetical citation styles (such as *ACL or COLM) these mean &lt;em&gt;text-inline&lt;/em&gt; (&lt;code&gt;\citet&lt;/code&gt; for &lt;em&gt;t&lt;/em&gt;ext) and &lt;em&gt;inside the parentheses&lt;/em&gt; (&lt;code&gt;\citep&lt;/code&gt;).&lt;/p&gt;
@@ -206,8 +211,8 @@ The turbo encabulator (&lt;span class="k"&gt;\cref&lt;/span&gt;&lt;span class="n
 &lt;/blockquote&gt;
 &lt;p&gt;Within those definitions you can define whatever behavior you want. You can make it say "Section 2.3.1" instead of "subsubsection 2.3.1", enforce capitalization in all places, etc.&lt;/p&gt;
 &lt;h2 id="quotation-marks"&gt;&lt;a class="toclink" href="#quotation-marks"&gt;Quotation marks&lt;/a&gt;&lt;a class="header-link" href="#quotation-marks" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;One of the most infuriating Knuthisms in LaTeX is the way quotation marks are handled. &lt;/p&gt;
-&lt;p&gt;The characters &lt;code&gt;'&lt;/code&gt; and &lt;code&gt;"&lt;/code&gt;, in most fonts, &lt;strong&gt;specifically refer to backwards marks&lt;/strong&gt;. So&lt;/p&gt;
+&lt;p&gt;Here's a great Knuthism:
+The characters &lt;code&gt;'&lt;/code&gt; and &lt;code&gt;"&lt;/code&gt;, in most fonts, &lt;strong&gt;specifically refer to backwards marks&lt;/strong&gt;. So&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;In the turbo encabulator power is generated by "capacitive diractance" and 'magneto reluctance.'
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
 &lt;blockquote&gt;
@@ -326,7 +331,7 @@ The &lt;code&gt;breakable&lt;/code&gt; option allows us to let the colorbox brea
 
 &lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\resourcename&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\texttt&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\gradientRGB&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;T2IScoreScore&lt;span class="nb"&gt;}{&lt;/span&gt;68,67,147&lt;span class="nb"&gt;}{&lt;/span&gt;61,130,217&lt;span class="nb"&gt;}}}}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code&gt;\gradientRGB&lt;/code&gt; colors all &lt;em&gt;n&lt;/em&gt; letters in the first argument text with &lt;em&gt;n&lt;/em&gt; intermediate colors it calculates which interpolate between the colors in arguments 2 and 3.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;\gradientRGB&lt;/code&gt; colors all &lt;em&gt;n&lt;/em&gt; letters in the first argument text with &lt;em&gt;n&lt;/em&gt; intermediate colors which interpolate between the colors in arguments 2 and 3.&lt;/p&gt;
 &lt;h3 id="inline-icons"&gt;&lt;a class="toclink" href="#inline-icons"&gt;Inline icons&lt;/a&gt;&lt;a class="header-link" href="#inline-icons" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Say you want to put a cute image or icon in the title of your paper, like the &lt;a href="https://upload.wikimedia.org/wikipedia/commons/f/f2/On_the_Dangers_of_Stochastic_Parrots_Can_Language_Models_Be_Too_Big.pdf"&gt;Stochastic Parrots&lt;/a&gt; paper did.&lt;/p&gt;
 &lt;p&gt;You can just&lt;sup id="fnref:4"&gt;&lt;a class="footnote-ref footnote-toggle" href="javascript:void(0)"&gt;&lt;svg class="footnote-icon" viewbox="0 0 24 24"&gt;
@@ -342,12 +347,7 @@ The &lt;code&gt;breakable&lt;/code&gt; option allows us to let the colorbox brea
 &lt;p&gt;To counteract this, I have to both manipulate its sizing and positioning.
 Through manual experimentation I found that setting the width to 20pt roughly sized it according to my desires. However, the spacing was off. The image was too far above the line and making the line itself taller. To fix this, I had to use negative &lt;code&gt;\vspace{}&lt;/code&gt; to keep the line positioning in subsequent lines from being impacted by the symbol, and negative &lt;code&gt;\raisebox{}&lt;/code&gt; to slightly push the bottom of the image under the line.&lt;/p&gt;
 &lt;h3 id="exotic-symbols-eg-as-author-affiliation-marks"&gt;&lt;a class="toclink" href="#exotic-symbols-eg-as-author-affiliation-marks"&gt;Exotic symbols (eg., as author affiliation marks)&lt;/a&gt;&lt;a class="header-link" href="#exotic-symbols-eg-as-author-affiliation-marks" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;I used to really dislike the trend of quirky affiliation marks in author lists, and was basically doing them ironically&lt;sup id="fnref:5"&gt;&lt;a class="footnote-ref footnote-toggle" href="javascript:void(0)"&gt;&lt;svg class="footnote-icon" viewbox="0 0 24 24"&gt;
-&lt;g class="icon-group" stroke="currentColor" stroke-linecap="round" stroke-width="3"&gt;
-&lt;line x1="7" x2="17" y1="12" y2="12"&gt;&lt;/line&gt;
-&lt;line x1="12" x2="12" y1="7" y2="17"&gt;&lt;/line&gt;
-&lt;/g&gt;
-&lt;/svg&gt;&lt;/a&gt;&lt;span class="footnote-popup"&gt;I know, I'm obnoxious&lt;/span&gt;&lt;/sup&gt; until I came to love them. Here are some ways I got them.&lt;/p&gt;
+&lt;p&gt;I used to really dislike the trend of quirky affiliation marks in author lists, and was basically doing them ironically&lt;sup id="fnref2:5"&gt;&lt;a class="footnote-ref" href="#fn:5"&gt;1&lt;/a&gt;&lt;/sup&gt; until I came to love them. Here are some ways I got them.&lt;/p&gt;
 &lt;p&gt;In my &lt;a href="https://arxiv.org/abs/2403.11092"&gt;NAACL paper&lt;/a&gt; last year I used Egyptian hieroglyphs as affiliation marks.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
 &lt;span class="normal"&gt;2&lt;/span&gt;
@@ -413,8 +413,9 @@ I love Egypt! &lt;span class="k"&gt;\textpmhg&lt;/span&gt;&lt;span class="nb"&gt
 &lt;p&gt;XeLaTeX is the best way to do this, with native unicode support, and a much more comprehensive distribution of multilingual fonts and modules. 
 But arXiv (as of writing) doesn't support it 😭😭😭😭😭&lt;/p&gt;
 &lt;p&gt;So we need to figure out how to do it with pdfLaTeX.&lt;/p&gt;
-&lt;p&gt;We have to hack it in using various packages depending on language. In my multilingual paper, I &lt;em&gt;wanted&lt;/em&gt; to include CJK and Hebrew characters, but I just could not figure out Hebrew without XeLaTeX at least for CJK you can use the CJK packages.&lt;/p&gt;
-&lt;p&gt;I was able to get this working on arXiv:&lt;/p&gt;
+&lt;p&gt;We have to hack it in using language-specific packages and fonts.
+In my &lt;a href="https://aclanthology.org/2023.acl-long.266/"&gt;multilingual conceptual coverage&lt;/a&gt; paper, I &lt;em&gt;wanted&lt;/em&gt; to include both CJK and Hebrew text, but I just could not get a working solution that allowed me to render all scripts without version clashes.&lt;/p&gt;
+&lt;p&gt;At least there is a &lt;code&gt;CJKutf8&lt;/code&gt; package in pdfLaTeX that lets you pick CJK fonts inside of spans. I don't remember what these font names mean, but this is a working snippet I was able to cobble together to get arXiv-rendering CJK text.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
 &lt;span class="normal"&gt; 2&lt;/span&gt;
 &lt;span class="normal"&gt; 3&lt;/span&gt;
@@ -471,7 +472,7 @@ A &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; B &lt;span class="nb"&gt;&amp;am
 &lt;blockquote&gt;
 &lt;p&gt;&lt;table style="border-top: 2px solid black; border-bottom: 2px solid black; padding: 1px;"&gt;&lt;tr&gt;&lt;td style="border-bottom: 1px solid black; margin:0; width: 100pt; border-right: 1px solid black;"&gt;Thing 1&lt;/td&gt;&lt;td style="border-bottom: 1px solid black; margin:0; padding-right 5pt; width: 100pt; text-align:center;"&gt;Thing 2&lt;/td&gt;&lt;td style="border-bottom: 1px solid black; margin:0; width: 100pt;text-align:right;"&gt;Thing 3&lt;/td&gt;&lt;/tr&gt;&lt;tr style="border:0;"&gt;&lt;td style="border-right: 1px solid black;"&gt;A&lt;/td&gt;&lt;td style="text-align:center;"&gt;B&lt;/td&gt;&lt;td style="text-align:right;"&gt;C&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Please use &lt;code&gt;|&lt;/code&gt; tastefully. Resist the impulse to do &lt;code&gt;\tabular{|c|c|c|}&lt;/code&gt;, because this is harder to scan over and read:&lt;/p&gt;
+&lt;p&gt;Please use &lt;code&gt;|&lt;/code&gt; tastefully. (Really, a good table doesn't need any vertical lines, and one of the drawbacks of booktabs is that the cleanly separated horizontals make vertical lines look worse) Resist the impulse to do &lt;code&gt;\tabular{|c|c|c|}&lt;/code&gt;, because this is harder to scan over and read:&lt;/p&gt;
 &lt;blockquote class="infobox infobox-warning"&gt;
 &lt;p&gt;&lt;table style="border-top: 2px solid black; border-bottom: 2px solid black; padding: 1px;"&gt;&lt;tr&gt;&lt;td style="border-bottom: 1px solid black; margin:0; width: 100pt; border-right: 1px solid black; text-align:center;border-left: 1px solid black; "&gt;Thing 1&lt;/td&gt;&lt;td style="border-bottom: 1px solid black; margin:0; padding-right 5pt; width: 100pt; text-align:center; border-right: 1px solid black; "&gt;Thing 2&lt;/td&gt;&lt;td style="border-bottom: 1px solid black; margin:0; width: 100pt;text-align:center;border-right: 1px solid black; "&gt;Thing 3&lt;/td&gt;&lt;/tr&gt;&lt;tr style="border:0;"&gt;&lt;td style="border-right: 1px solid black; border-left: 1px solid black; text-align:center;"&gt;A&lt;/td&gt;&lt;td style="border-right: 1px solid black; text-align:center;"&gt;B&lt;/td&gt;&lt;td style="border-right: 1px solid black; text-align:center;"&gt;C&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -733,10 +734,10 @@ I wrote a setup that gives me a flag to swap between that sickening abomination 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
 &lt;p&gt;Then throughout the document for select other commands that I wanted to only use with one I would have to add that flag into them. &lt;code&gt;\useformat0&lt;/code&gt; or &lt;code&gt;1&lt;/code&gt; would switch between either ECCV or NeurIPS.&lt;/p&gt;
 &lt;h2 id="making-a-centered-figure-wider-than-pagewidth"&gt;&lt;a class="toclink" href="#making-a-centered-figure-wider-than-pagewidth"&gt;Making a centered figure wider than &lt;code&gt;\pagewidth&lt;/code&gt;&lt;/a&gt;&lt;a class="header-link" href="#making-a-centered-figure-wider-than-pagewidth" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;dark art: making a figure oversized relative to the text
-&lt;em&gt;there are legitimate reasons to do this, for example if your figure has whitespace baked in but you want the filled part to be 100%&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;On paper, doing this is a clear violation of pretty much all conference style guides, but it's still worth knowing!&lt;/p&gt;
+&lt;p&gt;First, you may want to do this on a preprint-only work. &lt;/p&gt;
+&lt;p&gt;Second, there are completely legitimate reasons to use this in archival manuscripts.
+For example, if you are using a graphic which has baked-in whitespace, you may want to compensate, and make the non-empty parts of the figure take up the pagewidth, rather than including that wasted whitespace.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
 &lt;span class="normal"&gt; 2&lt;/span&gt;
 &lt;span class="normal"&gt; 3&lt;/span&gt;
@@ -747,7 +748,15 @@ I wrote a setup that gives me a flag to swap between that sickening abomination 
 &lt;span class="normal"&gt; 8&lt;/span&gt;
 &lt;span class="normal"&gt; 9&lt;/span&gt;
 &lt;span class="normal"&gt;10&lt;/span&gt;
-&lt;span class="normal"&gt;11&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;graphicx&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;
+&lt;span class="normal"&gt;14&lt;/span&gt;
+&lt;span class="normal"&gt;15&lt;/span&gt;
+&lt;span class="normal"&gt;16&lt;/span&gt;
+&lt;span class="normal"&gt;17&lt;/span&gt;
+&lt;span class="normal"&gt;18&lt;/span&gt;
+&lt;span class="normal"&gt;19&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;graphicx&lt;span class="nb"&gt;}&lt;/span&gt;
 &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;adjustbox&lt;span class="nb"&gt;}&lt;/span&gt;
 
 &lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\bigln&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[2]&lt;span class="nb"&gt;{&lt;/span&gt;
@@ -758,8 +767,16 @@ I wrote a setup that gives me a flag to swap between that sickening abomination 
         &lt;span class="nb"&gt;}&lt;/span&gt;
     &lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;adjustbox&lt;span class="nb"&gt;}&lt;/span&gt;
 &lt;span class="nb"&gt;}&lt;/span&gt;
+
+...
+
+&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;figure&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="c"&gt;% normally, you'd have \includegraphics on its own&lt;/span&gt;
+&lt;span class="k"&gt;\bigln&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;1.3&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\includegraphics&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;mypicture.svg&lt;span class="nb"&gt;}}&lt;/span&gt;
+...
+&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;figure&lt;span class="nb"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
-&lt;p&gt;You wrap the &lt;code&gt;\includegraphics&lt;/code&gt; inside of the &lt;code&gt;\bigln&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Just wrap the &lt;code&gt;\includegraphics&lt;/code&gt; command inside of &lt;code&gt;\bigln&lt;/code&gt;, and pass the desired image size (as a multiple of page width) as the first argument.&lt;/p&gt;
 &lt;h2 id="teaser-figures-in-the-acl-format"&gt;&lt;a class="toclink" href="#teaser-figures-in-the-acl-format"&gt;Teaser figures in the *ACL format&lt;/a&gt;&lt;a class="header-link" href="#teaser-figures-in-the-acl-format" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Suppose you want to put a full-width figure at the top of your ACL paper, as seen in this example.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Top of Michael's ACL 2023 paper with a big teaser figure" src="https://gist.github.com/michaelsaxon/21ab96429ffb86fb7691945dfe3f657a/raw/6ec0322422b20f70264faf1211e53138d5409021/0_z_cccl_example.png"/&gt;&lt;/p&gt;

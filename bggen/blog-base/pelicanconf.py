@@ -21,8 +21,6 @@ FEED_ALL_RSS = 'feeds/all.rss.xml'
 CATEGORY_FEED_RSS = 'feeds/{slug}.rss.xml'
 AUTHOR_FEED_RSS = 'feeds/{slug}.rss.xml'
 
-DEFAULT_PAGINATION = 10
-
 # Add the plugin path
 PLUGIN_PATHS = ['plugins']
 PLUGINS = [
@@ -43,8 +41,11 @@ ARTICLE_SAVE_AS = '{date:%Y}/{slug}/index.html'
 PAGE_URL = '{slug}/'
 PAGE_SAVE_AS = '{slug}/index.html'
 
+#BLOG_INDEX_SAVE_AS = 'blog.html'
+
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
+
 
 # Add these settings
 USE_FOLDER_AS_CATEGORY = False
@@ -57,7 +58,7 @@ ARTICLE_EXCLUDES = ['pages']
 
 PUBLICATIONS_SRC = 'content/pubs.bib'
 
-DIRECT_TEMPLATES = ['publications','index']
+DIRECT_TEMPLATES = ['publications','index','archives']
 
 MARKDOWN = {
     'extension_configs': {
@@ -86,3 +87,7 @@ MARKDOWN = {
 STATIC_PATHS = ['js', 'css', 'fonts', 'images']
 
 READERS = {'jpg': None}
+
+
+# DEFAULT_PAGINATION = 10
+PAGINATED_DIRECT_TEMPLATES = ['index','archives']

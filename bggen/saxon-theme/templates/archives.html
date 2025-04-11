@@ -1,17 +1,17 @@
 {% extends "base.html" %}
-
-{% block title %}{{ SITENAME }} - Archives{% endblock %}
-
 {% block content %}
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 thumb">
-    <h3>Archives for {{ SITENAME }}</h3>
-    <hr>
+{% for article in articles_page.object_list %}
+<div class="article-preview">
+    <a href="{{ SITEURL }}/{{ article.url }}" class="article-preview-link"></a>
+    <div class="preview-image" style="background-image: url('{{ article.image }}')"></div>
+    <div class="preview-content">
+        <div>
+            <h3 class="preview-title">{{ article.title }}</h3>
+            <div class="preview-meta">{{ article.locale_date }}{% if article.ert %} <span style="margin-right: 0.5em; margin-left: 0.5em;">•</span> {{ article.ert }}{% endif %}</div>
+            <p class="preview-description">{{ article.summary|shorten(30) }}</p>
+        </div>
+    </div>
 </div>
-
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 thumb">
-    {% for article in dates %}
-        <h5><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h5>
-        <span>{{ article.locale_date }}</span>
-    {% endfor %}
-</div>
-{% endblock %}
+{% endfor %}
+{% include 'pagination.html' %}
+{% endblock content %}
