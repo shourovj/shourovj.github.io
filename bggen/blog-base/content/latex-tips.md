@@ -16,9 +16,10 @@ To briefly explain the structure, I will discuss:
 1. How commands work, how to make them, and **the right way to do comment commands**.
 2. *Text* styling, including coloring, highlighting, citation styles, exotic symbols, non-Latin alphabets, and inline graphics/icons.
 3. *Table* styling and formatting, which packages you should use, special symbols to make tables more readable, and making text compact.
+4. **The dark arts**, how you can break free from the bounds of conference `.sty` files.
+
 <!-- 4. *Figure* making and styling, including composite figures, table-based figures, the various subfigure packages, and how to *generate* good, readable figures from matplotlib easily.
 5. How to set up *Overleaf with VSCode*, a gamechanger I was recently shown. -->
-4. **The dark arts**, how you can break free from the bounds of conference `.sty` files.
 
 I might write more about within-document compound figure making and best-practices for generating readable plots in a follow-up post if there's interest.
 
