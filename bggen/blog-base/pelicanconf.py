@@ -12,12 +12,12 @@ DEFAULT_DATE_FORMAT= '%B %-d, %Y'
 DEFAULT_LANG = 'en'
 
 # Feed generation is usually not desired when developing
-# FEED_ALL_ATOM = "feeds/all.atom.xml"
-# CATEGORY_FEED_ATOM = "feeds/{slug}.atom.xml"
-# AUTHOR_FEED_ATOM = "feeds/{slug}.atom.xml"
-# FEED_ALL_RSS = 'feeds/all.rss.xml'
-# CATEGORY_FEED_RSS = 'feeds/{slug}.rss.xml'
-# AUTHOR_FEED_RSS = 'feeds/{slug}.rss.xml'
+FEED_ALL_ATOM = "feeds/all.atom.xml"
+CATEGORY_FEED_ATOM = "feeds/{slug}.atom.xml"
+AUTHOR_FEED_ATOM = ""
+FEED_ALL_RSS = 'feeds/all.rss.xml'
+CATEGORY_FEED_RSS = 'feeds/{slug}.rss.xml'
+AUTHOR_FEED_RSS = ''
 
 # Add the plugin path
 PLUGIN_PATHS = ['plugins']
@@ -44,8 +44,7 @@ PUBLICATIONS_SAVE_AS = 'publications/index.html'
 #BLOG_INDEX_SAVE_AS = 'blog.html'
 
 # Uncomment following line if you want document-relative URLs when developing
-RELATIVE_URLS = True
-
+# RELATIVE_URLS = True
 
 # Add these settings
 USE_FOLDER_AS_CATEGORY = False
