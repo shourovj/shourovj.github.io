@@ -216,32 +216,32 @@
 
 @font-face {
   font-family: Univers;
-  src: url('https://saxon.me/font/UniversLTStd.woff2');
+  src: url('https://saxon.me/theme/font/UniversLTStd.woff2');
 }
 @font-face {
   font-family: Univers;
-  src: url('https://saxon.me/font/UniversLTStd-Bold.woff2');
+  src: url('https://saxon.me/theme/font/UniversLTStd-Bold.woff2');
   font-weight: 700;
 }
 @font-face {
   font-family: Univers;
-  src: url('https://saxon.me/font/UniversLTStd-BoldObl.woff2');
+  src: url('https://saxon.me/theme/font/UniversLTStd-BoldObl.woff2');
   font-weight: 700;
   font-style: italic;
 }
 @font-face {
   font-family: Univers;
-  src: url('https://saxon.me/font/UniversLTStd-Obl.woff2');
+  src: url('https://saxon.me/theme/font/UniversLTStd-Obl.woff2');
   font-style: italic;
 }
 @font-face {
   font-family: Univers;
-  src: url('https://saxon.me/font/UniversLTStd-XBlack.woff2');
+  src: url('https://saxon.me/theme/font/UniversLTStd-XBlack.woff2');
   font-weight: 900;
 }
 @font-face {
   font-family: Univers;
-  src: url('https://saxon.me/font/UniversLTStd-XBlackObl.woff2');
+  src: url('https://saxon.me/theme/font/UniversLTStd-XBlackObl.woff2');
   font-weight: 900;
   font-style: italic;
 }
