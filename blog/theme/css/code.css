@@ -10,7 +10,7 @@
     max-width: 100%;
     
     /* Add some padding for better readability */
-    padding: 1em;
+    padding: 1rem;
     
     /* Optional: add a subtle border */
     border-radius: 4px;
@@ -21,7 +21,7 @@
 
 .highlight pre {
     /* Reduce font size */
-    font-size: 0.8em;
+    font-size: 0.8rem;
     
     /* Ensure proper line height */
     line-height: 1.4;
