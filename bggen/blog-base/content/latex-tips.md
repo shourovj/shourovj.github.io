@@ -1,5 +1,5 @@
 Title: Michael's TeXronomicon (LaTeX tips, tricks, and hacks)
-Date: 2025-04-02 15:32
+Date: 2025-04-10 19:00
 Category: Tips
 Tags: latex
 Authors: Michael Saxon
