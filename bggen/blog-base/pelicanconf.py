@@ -3,7 +3,7 @@
 
 AUTHOR = 'Michael Saxon'
 SITENAME = 'Michael Saxon'
-SITEURL = 'https://saxon.me/blog'
+SITEURL = 'https://saxon.me/'
 
 PATH = 'content'
 
