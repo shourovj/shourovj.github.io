@@ -1,8 +1,16 @@
 Title: About
-Date: 2025-03-19 19:35
-Summary: Dumb dumb
-Image: ../https:/upload.wikimedia.org/wikipedia/commons/thumb/c/c8/John_Constable_023.jpg/1021px-John_Constable_023.jpg
-save_as: test_index.html
+save_as: index.html
 Template: about
-about_description_1: I study generative AI artifacts like LLMs and text-to-image models. I make meaningful evaluations of new capabilities that are difficult to measure to improve them.
-about_description_2: I am a [fifth-year Ph.D. student](lol) at the University of California, Santa Barbara, advised by Prof. William Yang Wang. I am a NSF Graduate Research Fellow, a Center for Responsible ML Fellow, and a 2024 Rising Star in Generative AI and have interned at AMD Research, Meta AI, and Amazon Alexa.
+remove_footnote_section: true
+my_title: Ph.D. Candidate
+my_affiliation: University of California, Santa Barbara
+
+I have broad interests in generative AI, NLP, and multimodal systems. In particular, I'm interested in:
+
+1. Rigorous evaluation of **difficult-to-measure capabilities** in language models and generative image systems. ([COLM 2024](https://arxiv.org/abs/2407.16711)[^1], [NeurIPS 2024 Spotlight](https://arxiv.org/abs/2404.04251)[^2])
+2. Building **multilingual and culturally competent** generative AI systems, addressing *performance disparities, bias, and unique knowledge possession*. ([ACL 2023](https://aclanthology.org/2023.acl-long.266/), [FAccT 2023 Oral](https://www.youtube.com/watch?v=tBYJFLaM71U), [NAACL 2024](https://aclanthology.org/2024.naacl-short.48/))
+3. Advancing multimodal (primarily vision & language) generative AI systems, in particular with respect to deep semantic understanding. ([EMNLP 2024](https://aclanthology.org/2024.findings-emnlp.312/), [Tech Crunch coverage](https://techcrunch.com/2024/06/29/geminis-data-analyzing-abilities-arent-as-good-as-google-claims/))
+
+[^1]: In our work "Benchmarks as Microscopes: A call for Model Metrology" we lay out an agenda for building a science of evaluation.
+[^2]: ![example image](https://t2iscorescore.github.io/static/images/ts2teaser.svg)<br>We introduced T2IScoreScore, a meta-evaluation of text-to-image faithfulness metrics that uses "semantic error graphs" to evaluate how well metrics can rank closely related images with objective error counts.
+

@@ -1,4 +1,4 @@
 #!/bin/bash
 
-pelican content -t ../saxon-theme -o ../../blog -vd
+pelican content -t ../saxon-theme -o ../.. -vd
 

@@ -3,7 +3,7 @@
 {% for article in articles_page.object_list %}
 <div class="article-preview">
     <a href="{{ SITEURL }}/{{ article.url }}" class="article-preview-link"></a>
-    <div class="preview-image" style="background-image: url('{{ article.image }}')"></div>
+    <div class="preview-image" style="background-image: url('{{ SITEURL }}/{{ article.image }}')"></div>
     <div class="preview-content">
         <div>
             <h3 class="preview-title">{{ article.title }}</h3>
