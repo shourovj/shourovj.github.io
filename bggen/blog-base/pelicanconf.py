@@ -3,11 +3,11 @@
 
 AUTHOR = 'Michael Saxon'
 SITENAME = 'Michael Saxon'
-SITEURL = 'saxon.me/blog'
+SITEURL = 'https://saxon.me/blog'
 
 PATH = 'content'
 
-RELATIVE_URLS = True
+RELATIVE_URLS = False
 
 TIMEZONE = 'US/Pacific'
 DEFAULT_DATE_FORMAT= '%B %-d, %Y'
