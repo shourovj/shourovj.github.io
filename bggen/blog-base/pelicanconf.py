@@ -7,8 +7,6 @@ SITEURL = 'https://saxon.me/blog'
 
 PATH = 'content'
 
-RELATIVE_URLS = False
-
 TIMEZONE = 'US/Pacific'
 DEFAULT_DATE_FORMAT= '%B %-d, %Y'
 DEFAULT_LANG = 'en'
@@ -44,7 +42,7 @@ PAGE_SAVE_AS = '{slug}/index.html'
 #BLOG_INDEX_SAVE_AS = 'blog.html'
 
 # Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+# RELATIVE_URLS = True
 
 
 # Add these settings
@@ -89,6 +87,9 @@ STATIC_PATHS = ['js', 'css', 'fonts', 'images']
 READERS = {'jpg': None}
 
 
-# DEFAULT_PAGINATION = 10
+DEFAULT_PAGINATION = 10
 #PAGINATED_TEMPLATES = {'index': 10, 'archives': 10}
+#PAGINATED_TEMPLATES = ['index','archives']
 PAGINATED_DIRECT_TEMPLATES = ['index','archives']
+
+ARCHIVES_SAVE_AS = 'test.html'

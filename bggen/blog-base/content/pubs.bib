@@ -166,10 +166,13 @@
   booktitle={Proceedings of the 17th Conference of the European Chapter of the Association for Computational Linguistics},
   pages={3061--3074},
   year={2023},
-  abstract={},
-  url_official={},
-  url_pdf={},
-  venue_abbrev={EACL 2023}
+  abstract={Building natural language inference (NLI) benchmarks that are both challenging for modern techniques, and free from shortcut biases is difficult. Chief among these biases is “single sentence label leakage,” where annotator-introduced spurious correlations yield datasets where the logical relation between (premise, hypothesis) pairs can be accurately predicted from only a single sentence, something that should in principle be impossible. We demonstrate that despite efforts to reduce this leakage, it persists in modern datasets that have been introduced since its 2018 discovery. To enable future amelioration efforts, introduce a novel model-driven technique, the progressive evaluation of cluster outliers (PECO) which enables both the objective measurement of leakage, and the automated detection of subpopulations in the data which maximally exhibit it.
+},
+  url_official={https://aclanthology.org/2023.eacl-main.223/},
+  url_pdf={https://aclanthology.org/2023.eacl-main.223.pdf},
+  venue_abbrev={EACL 2023},
+  video_link={https://www.youtube.com/watch?v=nwB35LocgCs},
+  yindex={2}
 }
 
 @inproceedings{wang2023causal,
@@ -178,10 +181,12 @@
   booktitle={The Eleventh International Conference on Learning Representations},
   pages={https--openreview},
   year={2023},
-  abstract={},
-  url_official={},
-  url_pdf={},
-  venue_abbrev={ICLR 2023}
+  abstract={While machine learning models rapidly advance the state-of-the-art on various real-world tasks, out-of-domain (OOD) generalization remains a challenging problem given the vulnerability of these models to spurious correlations. We propose a balanced mini-batch sampling strategy to transform a biased data distribution into a spurious-free balanced distribution, based on the invariance of the underlying causal mechanisms for the data generation process. We argue that the Bayes optimal classifiers trained on such balanced distribution are minimax optimal across a diverse enough environment space. We also provide an identifiability guarantee of the latent variable model of the proposed data generation process, when utilizing enough train environments. Experiments are conducted on DomainBed, demonstrating empirically that our method obtains the best performance across 20 baselines reported on the benchmark.
+},
+  url_official={https://openreview.net/forum?id=F91SROvVJ_6},
+  url_pdf={https://openreview.net/pdf?id=F91SROvVJ_6},
+  venue_abbrev={ICLR 2023},
+  yindex={0}
 }
 
 @inproceedings{xu2022not,
@@ -201,10 +206,13 @@
   author={Ho, Matthew and Sharma, Aditya and Chang, Justin and Saxon, Michael and Levy, Sharon and Lu, Yujie and Wang, William Yang},
   booktitle={The Eleventh International Conference on Learning Representations},
   year={2023},
-  abstract={},
+  abstract={As large language models (LLMs) grow larger and more sophisticated, assessing their "reasoning" capabilities in natural language grows more challenging. Recent question answering (QA) benchmarks that attempt to assess reasoning are often limited by a narrow scope of covered situations and subject matters. We introduce WikiWhy, a QA dataset built around a novel auxiliary task: explaining why an answer is true in natural language. WikiWhy contains over 9,000 "why" question-answer-rationale triples, grounded on Wikipedia facts across a diverse set of topics. Each rationale is a set of supporting statements connecting the question to the answer. WikiWhy serves as a benchmark for the reasoning capabilities of LLMs because it demands rigorous explicit rationales for each answer to demonstrate the acquisition of implicit commonsense knowledge, which is unlikely to be easily memorized. GPT-3 baselines achieve only 38.7% human-evaluated correctness in the end-to-end answer & explain condition, leaving significant room for future improvements.
+},
   url_official={https://openreview.net/forum?id=vaxnu-Ut},
-  url_pdf={},
-  venue_abbrev={ICLR 2023}
+  url_pdf={https://openreview.net/pdf?id=vaxnu-Ut},
+  venue_abbrev={ICLR 2023},
+  yindex={1},
+  additional_info={Conference Oral}
 }
 
 @inproceedings{saxon2023multilingual,
@@ -213,10 +221,12 @@
   booktitle={Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
   pages={4831--4848},
   year={2023},
-  abstract={},
+  abstract={We propose "Conceptual Coverage Across Languages" (CoCo-CroLa), a technique for benchmarking the degree to which any generative text-to-image system provides multilingual parity to its training language in terms of tangible nouns. For each model we can assess "conceptual coverage" of a given target language relative to a source language by comparing the population of images generated for a series of tangible nouns in the source language to the population of images generated for each noun under translation in the target language. This technique allows us to estimate how well-suited a model is to a target language as well as identify model-specific weaknesses, spurious correlations, and biases without a-priori assumptions. We demonstrate how it can be used to benchmark T2I models in terms of multilinguality, and how despite its simplicity it is a good proxy for impressive generalization.
+},
   url_official={https://aclanthology.org/2023.acl-long.266/},
   url_pdf={https://aclanthology.org/2023.acl-long.266.pdf},
-  venue_abbrev={ACL 2023}
+  venue_abbrev={ACL 2023},
+  yindex={6}
 }
 
 @article{mei2023users,
@@ -227,6 +237,7 @@
   abstract={},
   url_official={https://arxiv.org/abs/2303.05500},
   url_pdf={https://arxiv.org/pdf/2303.05500},
+  yindex={3}
 }
 
 @article{rose2023visual,
@@ -237,18 +248,20 @@
   abstract={},
   url_official={https://arxiv.org/abs/2305.02317},
   url_pdf={https://arxiv.org/pdf/2305.02317},
+  yindex={4}
 }
 
 @inproceedings{tanna2023data,
   title={Data Augmentation for Diverse Voice Conversion in Noisy Environments},
   author={Tanna, Avani and Saxon, Michael and Abbadi, Amr El and Wang, William Yang},
-  booktitle={Proc. INTERSPEECH 2023},
+  booktitle={Interspeech 2023 Demos},
   pages={2024--2025},
   year={2023},
   abstract={},
   url_official={},
   url_pdf={},
-  venue_abbrev={INTERSPEECH 2023}
+  venue_abbrev={INTERSPEECH 2023},
+  routing={workshop},
 }
 
 @article{wang2023large,
@@ -258,10 +271,13 @@
   volume={36},
   pages={15614--15638},
   year={2023},
-  abstract={},
-  url_official={},
-  url_pdf={},
-  venue_abbrev={NeurIPS 2023}
+  abstract={In recent years, pre-trained large language models (LLMs) have demonstrated remarkable efficiency in achieving an inference-time few-shot learning capability known as in-context learning. However, existing literature has highlighted the sensitivity of this capability to the selection of few-shot demonstrations. Current understandings of the underlying mechanisms by which this capability arises from regular language model pretraining objectives remain disconnected from the real-world LLMs. This study aims to examine the in-context learning phenomenon through a Bayesian lens, viewing real-world LLMs as latent variable models. On this premise, we propose an algorithm to select optimal demonstrations from a set of annotated data with a small LM, and then directly generalize the selected demonstrations to larger LMs. We demonstrate significant improvement over baselines, averaged over eight GPT models on eight real-world text classification datasets. We also demonstrate the real-world usefulness of our algorithm on GSM8K, a math word problem dataset. Our empirical findings support our hypothesis that LLMs implicitly infer a latent variable containing task information.
+
+},
+    url_official={https://proceedings.neurips.cc/paper_files/paper/2023/hash/3255a7554605a88800f4e120b3a929e1-Abstract-Conference.html},
+  url_pdf={https://proceedings.neurips.cc/paper_files/paper/2023/file/3255a7554605a88800f4e120b3a929e1-Paper-Conference.pdf},
+  venue_abbrev={NeurIPS 2023},
+  yindex={7}
 }
 
 @inproceedings{himakunthala2023let,
@@ -272,7 +288,8 @@
   abstract={},
   url_official={https://arxiv.org/abs/2305.13903},
   url_pdf={https://arxiv.org/pdf/2305.13903},
-  venue_abbrev={EMNLP 2023}
+  venue_abbrev={EMNLP 2023},
+  yindex={8}  
 }
 
 @inproceedings{saxon2023disparities,
@@ -301,7 +318,8 @@
   url_pdf={https://aclanthology.org/2024.naacl-short.48.pdf},
   yindex={3},
   venue_abbrev={NAACL 2024},
-  additional_info={Conference Oral}
+  additional_info={Conference Oral},
+  video_link={https://www.youtube.com/watch?v=zzW2HRYod2o}
 }
 
 @inproceedings{saxon2024evaluates,
@@ -390,5 +408,6 @@
   abstract={},
   url_official={},
   url_pdf={},
-  venue_abbrev={ACL 2023}
+  venue_abbrev={ACL 2023},
+  yindex={5}
 }
