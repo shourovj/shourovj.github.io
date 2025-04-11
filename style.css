@@ -379,8 +379,8 @@ ul.menu li a {
     display: block;
     color: var(--text-black);
     text-align: center;
-    padding-right: 0.5em;
-    padding-left: 0.5em;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
     text-decoration: none;
     /*color: var(--light-header);*/
 
@@ -660,7 +660,7 @@ ul, ol {
 
 /* Inner scrollable container */
 .news-box {
-    height: 30em;
+    height: 30rem;
     width: auto;
     overflow: auto;
     padding: 0;
@@ -740,8 +740,8 @@ ul, ol {
   max-width: var(--page-width);
   margin-right: auto;
   margin-left: auto;
-  padding-right: 1em;
-  padding-left: 1em;
+  padding-right: 1rem;
+  padding-left: 1rem;
   position: relative;
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
@@ -1045,10 +1045,10 @@ sup[id^="fnref"] {
   position: relative;
   display: inline;
   z-index: 1;
-  font-size: 0.7em;
+  font-size: 0.7rem;
   vertical-align: baseline;
   position: relative;
-  top: -0.6em;
+  top: -0.6rem;
   line-height: 0;
 }
 
@@ -1061,24 +1061,24 @@ sup[id^="fnref"] {
   align-items: center;
   justify-content: center;
   font-family: monospace;
-  width: 1em;
-  height: 1em;
+  width: 1rem;
+  height: 1rem;
   border: 1px solid var(--link-color);
   border-radius: 50%;
   position: relative;
   transition: background-color 0.2s;
   line-height: 1;     /* Ensure vertical centering */
-  font-size: 0.85em;  /* Slightly smaller for the plus sign */
+  font-size: 0.85rem;  /* Slightly smaller for the plus sign */
 }
 
 /* Create larger invisible hit area */
 .footnote-ref::before {
   content: '';
   position: absolute;
-  top: -0.5em;
-  right: -0.5em;
-  bottom: -0.5em;
-  left: -0.5em;
+  top: -0.5rem;
+  right: -0.5rem;
+  bottom: -0.5rem;
+  left: -0.5rem;
   z-index: -1;
 }
 
@@ -1418,8 +1418,8 @@ sup[id^="fnref"]:hover .footnote-popup {
     stroke-width: 2;
     stroke-linecap: round;
     transition: transform 0.5s;
-    width: 1em;
-    height: 1em;
+    width: 1rem;
+    height: 1rem;
 }
 
 .sun {
@@ -1466,8 +1466,8 @@ sup[id^="fnref"]:hover .footnote-popup {
     }
 
     .sun-and-moon {
-        width: 1.2em;    /* Slightly larger in mobile menu */
-        height: 1.2em;
+        width: 1.2rem;    /* Slightly larger in mobile menu */
+        height: 1.2rem;
     }
 }
 
@@ -1480,23 +1480,23 @@ sup[id^="fnref"]:hover .footnote-popup {
 /* Specific styling for plus sign */
 .footnote-toggle.footnote-ref {
     font-weight: bold;
-    padding-bottom: 0.1em;  /* Optical centering for the plus */
+    padding-bottom: 0.1rem;  /* Optical centering for the plus */
 }
 
 /* SVG icon styles */
 .footnote-icon {
     display: block;
     transition: transform 0.3s ease;
-    width: 1.2em;  /* Match the container size */
-    height: 1.2em;
+    width: 1.2rem;  /* Match the container size */
+    height: 1.2rem;
 }
 
 .footnote-ref {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 1.2em;
-    height: 1.2em;
+    width: 1.2rem;
+    height: 1.2rem;
     padding: 0;
 }
 
@@ -1524,7 +1524,7 @@ sup[id^="fnref"]:hover .footnote-popup {
     
     /* Container styling */
     max-width: 100%;
-    padding: 1.2em;
+    padding: 1.2rem;
     margin: 1em 0;
     border-radius: 6px;
     border: 1px solid var(--brand-main);
@@ -1536,7 +1536,7 @@ sup[id^="fnref"]:hover .footnote-popup {
 
 .highlight pre {
     /* Code content */
-    font-size: 0.9em;
+    font-size: 0.9rem;
     line-height: 1.4;
     margin: 0;
     font-family: 'Ubuntu Mono', monospace;
@@ -1596,11 +1596,11 @@ sup[id^="fnref"]:hover .footnote-popup {
 
 .theme-logo {
     /* Base size and display */
-    height: 1.2em;
+    height: 1.2rem;
     width: auto;
     display: inline-block;
     vertical-align: middle;
-    margin: 0 0.3em;
+    margin: 0 0.3rem;
     
     /* Apply theme color using filters */
     filter: var(--text-filter);
@@ -1622,14 +1622,14 @@ sup[id^="fnref"]:hover .footnote-popup {
 .experience-block {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 2em;
+    margin-bottom: 2rem;
     position: relative;
     padding: 0;
     border-left: 1px solid color-mix(in srgb, 
       var(--experience-color, var(--brand-main)) 70%,
       var(--text-body) 30%
     );
-    padding-left: 1em;
+    padding-left: 1rem;
 }
 
 .experience-content {
@@ -1637,33 +1637,33 @@ sup[id^="fnref"]:hover .footnote-popup {
 }
 
 .experience-title {
-    font-size: 1em;
+    font-size: 1rem;
     font-weight: 600;
     /* Blend experience color with text color */
     /* color: color-mix(in srgb, 
         var(--experience-color, var(--brand-main)) 70%,
         var(--text-body) 30%
     ); */
-    margin-bottom: 0.3em;
+    margin-bottom: 0.3rem;
     line-height: 1.4;
 }
 
 .experience-subtitle {
     color: var(--text-muted);
-    font-size: 1em;
-    margin-bottom: 0.5em;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .experience-details {
-    margin-top: 0.4em;
+    margin-top: 0.4rem;
     line-height: 1.6;
 }
 
 .experience-logo {
     width: 6rem;
     height: 6rem;
-    margin-right: 1.5em;
-    margin-left: 1em;
+    margin-right: 1.5rem;
+    margin-left: 1rem;
     filter: var(--logo-filter);
 }
 
@@ -1693,7 +1693,7 @@ sup[id^="fnref"]:hover .footnote-popup {
 
 /* Ensure proper spacing between blocks */
 .experience-block + .experience-block {
-    margin-top: 1.5em;
+    margin-top: 1.5rem;
 }
 
 /* Add hover effect for links in title */
@@ -1713,11 +1713,11 @@ sup[id^="fnref"]:hover .footnote-popup {
 /* Copy button styling */
 .copy-button {
     position: absolute;
-    top: 0.3em;
-    right: 0.8em;
-    width: 1em;
-    height: 1em;
-    padding: 0.2em;
+    top: 0.3rem;
+    right: 0.8rem;
+    width: 1rem;
+    height: 1rem;
+    padding: 0.2rem;
     background: none;
     border: none;
     border-radius: 4px;
@@ -1791,8 +1791,8 @@ p code {
     color: var(--brand-main);
     font-weight: 600;
     font-family: 'Ubuntu Mono', monospace;
-    font-size: 0.95em;
-    padding: 0.1em 0.2em;
+    font-size: 0.95rem;
+    padding: 0.1em 0.2rem;
 }
 
 /* Ensure code blocks aren't affected */
@@ -1804,12 +1804,12 @@ p code {
 
 /* Table of Contents styling */
 .toc {
-    margin-bottom: 1em;
-    margin-top: 2em;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
     font-size: 0.9rem;
     border: 1px solid var(--brand-main);
     border-radius: 6px;
-    padding: 0.8em;
+    padding: 0.8rem;
 }
 
 .toc ul {
@@ -1819,17 +1819,17 @@ p code {
 }
 
 .toc > ul {
-    margin-left: 0.8em;
-    margin-top: 1em;  /* Space between title and first items */
+    margin-left: 0.8rem;
+    margin-top: 1rem;  /* Space between title and first items */
 }
 
 .toc ul ul {
-    padding-left: 1em;  /* Slightly reduced nesting indent */
+    padding-left: 1rem;  /* Slightly reduced nesting indent */
 }
 
 .toc li {
     position: relative;
-    padding-left: 1.2em;
+    padding-left: 1.2rem;
     margin: 0;
     line-height: 1.4;  /* Tighter line height */
 }
@@ -1840,7 +1840,7 @@ p code {
     position: absolute;
     left: 0;
     top: 0;
-    height: 0.8em;
+    height: 0.8rem;
     border-left: 2px solid var(--brand-main);  /* Thicker line */
 }
 
@@ -1854,8 +1854,8 @@ p code {
     content: '';
     position: absolute;
     left: 0;
-    top: 0.8em;
-    width: 0.8em;
+    top: 0.8rem;
+    width: 0.8rem;
     border-bottom: 2px solid var(--brand-main);  /* Thicker line */
 }
 
@@ -1865,7 +1865,7 @@ p code {
     text-decoration: none;
     font-weight: 600;
     display: block;
-    padding-bottom: 0.4em;
+    padding-bottom: 0.4rem;
 }
 
 .toc a:hover {
@@ -1875,7 +1875,7 @@ p code {
 
 /* Title styling */
 .toc-title {
-    font-size: 1.1em;
+    font-size: 1.1rem;
     font-weight: 600;
     color: var(--text-body);
     padding-bottom: 0;
@@ -1883,14 +1883,14 @@ p code {
     user-select: none;
     display: flex;
     align-items: center;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.5rem;
 }
 
 /* Collapse indicator */
 .toc-title::before {
     content: '▼';
-    font-size: 0.8em;
-    margin-right: 0.5em;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
     transition: transform 0.3s ease;
 }
 
@@ -1906,8 +1906,8 @@ p code {
 .header-link {
     opacity: 0.8;
     font-size: 0;  /* Hide the ¶ character */
-    padding-left: 0.4em;
-    margin-right: 0.4em;
+    padding-left: 0.4rem;
+    margin-right: 0.4rem;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
@@ -1928,14 +1928,14 @@ h6 .toclink:hover ~ .header-link::after,
 .header-link::after {
     content: '';
     display: inline-block;
-    width: 1.2em;
-    height: 1.2em;
+    width: 1.2rem;
+    height: 1.2rem;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71'%3E%3C/path%3E%3Cpath d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71'%3E%3C/path%3E%3C/svg%3E");
     background-size: contain;
     background-repeat: no-repeat;
     font-size: initial;
-    margin-top: -1.1em;
-    margin-left: 0.2em;
+    margin-top: -1.1rem;
+    margin-left: 0.2rem;
     filter: var(--icon-filter);  /* Use the same filter as social icons */
 }
 
@@ -1943,8 +1943,8 @@ h6 .toclink:hover ~ .header-link::after,
 .toclink {
     color: var(--text-body);
     text-decoration: none;
-    padding-right: 0.4em;
-    padding-left: 0.4em;
+    padding-right: 0.4rem;
+    padding-left: 0.4rem;
 }
 
 /* Remove any inherited link styles */
@@ -1964,11 +1964,11 @@ h6 .toclink:hover ~ .header-link::after,
 }
 
 .highlighttable td.linenos {
-    min-width: 1em;
+    min-width: 1rem;
     text-align: right;
-    padding-right: 0.8em;
+    padding-right: 0.8rem;
     user-select: none;
-    height: 0.8em;
+    height: 0.8rem;
     color: var(--brand-main);
     opacity: 0.5;
 }
@@ -2023,8 +2023,8 @@ h6 .toclink:hover ~ .header-link::after,
 .icon-next::before {
   content: '';
   display: inline-block;
-  width: 1em;
-  height: 1em;
+  width: 1rem;
+  height: 1rem;
   background-size: contain;
   background-repeat: no-repeat;
   filter: var(--icon-filter);
