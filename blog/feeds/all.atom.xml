@@ -1,5 +1,870 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Michael Saxon</title><link href="saxon.me/blog/" rel="alternate"></link><link href="saxon.me/blog/feeds/all.atom.xml" rel="self"></link><id>saxon.me/blog/</id><updated>2025-01-07T19:35:00-08:00</updated><entry><title>A seizure-free year for Michael!</title><link href="saxon.me/blog/2025/epilepsy/" rel="alternate"></link><published>2025-01-07T19:35:00-08:00</published><updated>2025-01-07T19:35:00-08:00</updated><author><name>Michael Saxon</name></author><id>tag:None,2025-01-07:saxon.me/blog/2025/epilepsy/</id><summary type="html">Meditations and reflections of a (former?) epileptic in recovery</summary><content type="html">&lt;blockquote class="infobox infobox-note"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Michael Saxon</title><link href="saxon.me/blog/" rel="alternate"></link><link href="saxon.me/blog/feeds/all.atom.xml" rel="self"></link><id>saxon.me/blog/</id><updated>2025-04-02T15:32:00-07:00</updated><entry><title>Michael's TeXronomicon (LaTeX tips, tricks, and hacks)</title><link href="saxon.me/blog/2025/latex-tips/" rel="alternate"></link><published>2025-04-02T15:32:00-07:00</published><updated>2025-04-02T15:32:00-07:00</updated><author><name>Michael Saxon</name></author><id>tag:None,2025-04-02:saxon.me/blog/2025/latex-tips/</id><summary type="html">Various snippets, tricks, and lessons I've developed and learned from messing around in LaTeX and scrutinizing source files on arXiv.</summary><content type="html">&lt;p&gt;Between my mild presentational OCD and a desire to understand how various cool figures, tables, and styles have been implemented in other groups' papers, I have accumulated quite a few LaTeX snippets that I pass around with my friends. I figured I should put them all in one place along with some explanations, so (if you're interested) you can learn to make your own.&lt;/p&gt;
+&lt;p&gt;You should probably check out the TOC to decide which parts you want to read.
+There will probably be parts you already know; I am covering basics here so I can give this to a new author.
+To briefly explain the structure, I will discuss:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;How commands work, how to make them, and &lt;strong&gt;the right way to do comment commands&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Text&lt;/em&gt; styling, including coloring, highlighting, citation styles, exotic symbols, non-Latin alphabets, and inline graphics/icons.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Table&lt;/em&gt; styling and formatting, which packages you should use, special symbols to make tables more readable, and making text compact.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;!-- 4. *Figure* making and styling, including composite figures, table-based figures, the various subfigure packages, and how to *generate* good, readable figures from matplotlib easily.
+5. How to set up *Overleaf with VSCode*, a gamechanger I was recently shown. --&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;The dark arts&lt;/strong&gt;, how you can break free from the bounds of conference &lt;code&gt;.sty&lt;/code&gt; files.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I might write more about within-document compound figure making and best-practices for generating readable plots in a follow-up post if there's interest.&lt;/p&gt;
+&lt;div class="toc"&gt;&lt;span class="toc-title"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#1-making-commands"&gt;1. Making commands&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#comment-commands"&gt;Comment commands&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#fixing-infuriating-spacing-issues"&gt;Fixing infuriating spacing issues&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#2-doing-text-right"&gt;2. Doing text right&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#citations"&gt;Citations&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ref-autoref-and-cleveref"&gt;ref, autoref, and cleveref&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#quotation-marks"&gt;Quotation marks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#resizing-and-transforming-text"&gt;Resizing and transforming text&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#defining-colors-and-coloring-text"&gt;Defining colors and coloring text&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#custom-colored-highlighting"&gt;Custom-colored highlighting&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#size-units-for-spacing-em-ex-pt-etc"&gt;Size units for spacing: em, ex, pt, etc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#annoying-extra-formatting-which-i-sometimes-use"&gt;Annoying extra formatting (which I sometimes use)&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#big-colored-text-boxes"&gt;Big colored text boxes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#fancy-colored-gradients-inline"&gt;Fancy colored gradients inline&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#inline-icons"&gt;Inline icons&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#exotic-symbols-eg-as-author-affiliation-marks"&gt;Exotic symbols (eg., as author affiliation marks)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#non-latin-cjk-alphabets-on-arxiv"&gt;Non-Latin (CJK) alphabets on arXiv&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#3-turning-the-tables"&gt;3. Turning the Tables&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#basic-table-hygiene-with-booktabs"&gt;Basic table hygiene with booktabs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#multirow-and-multicolumn"&gt;multirow and multicolumn&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#cmidrule-to-partially-underline-a-row"&gt;cmidrule to partially underline a row&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#fancy-stuff"&gt;Fancy stuff&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#coloring-table-cells"&gt;Coloring table cells&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#special-table-symbols"&gt;Special table symbols&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#rotating-the-text-inside-a-cell"&gt;Rotating the text inside a cell&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#putting-it-together"&gt;Putting it together&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#4-the-dark-arts-advanced"&gt;4. The Dark Arts (Advanced)&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#switching-between-conference-formats"&gt;Switching between conference formats&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#making-a-centered-figure-wider-than-pagewidth"&gt;Making a centered figure wider than \pagewidth&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#teaser-figures-in-the-acl-format"&gt;Teaser figures in the *ACL format&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;h1 id="1-making-commands"&gt;&lt;a class="toclink" href="#1-making-commands"&gt;1. Making commands&lt;/a&gt;&lt;a class="header-link" href="#1-making-commands" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;You should probably be making more commands than you currently are&lt;/strong&gt;. At their simplest, commands can let you reuse text or formatting easily, but they can do much more. First, a little bit about how to make them:&lt;/p&gt;
+&lt;p&gt;The two main command-making macros are &lt;code&gt;\newcommand&lt;/code&gt; and &lt;code&gt;\renewcommand&lt;/code&gt;. 
+If a command already exists, and you want to override its behavior, use &lt;code&gt;\renewcommand&lt;/code&gt;. For example, I used &lt;code&gt;\renewcommand&lt;/code&gt; to fix a critical flaw in the COLM format.&lt;/p&gt;
+&lt;p&gt;In the COLM format, this snippet:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Inertia is a property of matter &lt;span class="k"&gt;\cite&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;nye1995science&lt;span class="nb"&gt;}&lt;/span&gt;.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;would wrongly render as:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Inertia is a property of matter Nye et al. (1995).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Instead of correctly rendering as:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Inertia is a property of matter (Nye et al., 1995).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In other words, the COLM format was treating &lt;code&gt;\cite{}&lt;/code&gt; as &lt;code&gt;\citet{}&lt;/code&gt; rather than &lt;code&gt;\citep{}&lt;/code&gt;, as it is in all other conference formats.&lt;/p&gt;
+&lt;p&gt;With &lt;code&gt;\renewcommand&lt;/code&gt; it's a one line fix:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\renewcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\cite&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\citep&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;h2 id="comment-commands"&gt;&lt;a class="toclink" href="#comment-commands"&gt;Comment commands&lt;/a&gt;&lt;a class="header-link" href="#comment-commands" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The command definition you have almost certainly used before is &lt;strong&gt;comment commands&lt;/strong&gt;.
+But have you made them hideable? Modular? Here's how I built up a more powerful comment command that I always drop in. &lt;/p&gt;
+&lt;p&gt;A typical, simple comment command is something like:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\mycomment&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textcolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;red&lt;span class="nb"&gt;}{&lt;/span&gt;michael: #1&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;This is nice and easy, but it has two issues. First, with more collaborators you have to define it over and over again, which looks gross.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;
+&lt;span class="normal"&gt;3&lt;/span&gt;
+&lt;span class="normal"&gt;4&lt;/span&gt;
+&lt;span class="normal"&gt;5&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\mycomment&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textcolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;red&lt;span class="nb"&gt;}{&lt;/span&gt;MS: #1&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\george&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textcolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;yellow&lt;span class="nb"&gt;}{&lt;/span&gt;GC: #1&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\jerry&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textcolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;red&lt;span class="nb"&gt;}{&lt;/span&gt;JS: #1&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\kramer&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textcolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;green&lt;span class="nb"&gt;}{&lt;/span&gt;CK: #1&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\elaine&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textcolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;blue&lt;span class="nb"&gt;}{&lt;/span&gt;EB: #1&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;Ew. &lt;/p&gt;
+&lt;p&gt;But the more annoying issue is that &lt;em&gt;inline comments mess up your text length and spacing&lt;/em&gt;. How are you gonna know how many pages you've written, and how well-aligned and spaced your figures and tables are, on the night before the deadline, if your paper is full of comments?&lt;/p&gt;
+&lt;p&gt;I fix both of these issues by implementing &lt;em&gt;a base comment command&lt;/em&gt; that I build the other ones on top of, and &lt;strong&gt;adding a variable-based off switch that hides the comments.&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;%%%%%%% COMMENT DEFINITION SECTION %%%%%%%&lt;/span&gt;
+&lt;span class="k"&gt;\newif\ifcommentsoff&lt;/span&gt;
+&lt;span class="c"&gt;% uncomment this line to hide inline comments&lt;/span&gt;
+&lt;span class="c"&gt;% \commentsofftrue&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\mycomment&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[3]&lt;span class="nb"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;\ifcommentsoff\else&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;
+        &lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textcolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;#1&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\textit&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;#2:&lt;span class="nb"&gt;}&lt;/span&gt; #3&lt;span class="nb"&gt;}}&lt;/span&gt;&lt;span class="k"&gt;\xspace&lt;/span&gt;
+    &lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\fi&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\george&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\mycomment&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;red&lt;span class="nb"&gt;}{&lt;/span&gt;GC&lt;span class="nb"&gt;}{&lt;/span&gt;#1&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\jerry&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\mycomment&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;magenta&lt;span class="nb"&gt;}{&lt;/span&gt;JS&lt;span class="nb"&gt;}{&lt;/span&gt;#1&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\kramer&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\mycomment&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;blue&lt;span class="nb"&gt;}{&lt;/span&gt;CK&lt;span class="nb"&gt;}{&lt;/span&gt;#1&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\elaine&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\mycomment&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;green&lt;span class="nb"&gt;}{&lt;/span&gt;EB&lt;span class="nb"&gt;}{&lt;/span&gt;#1&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;\newif\ifmyvariable&lt;/code&gt; defines a boolean variable, which is actually named &lt;code&gt;myvariable&lt;/code&gt;.
+You can control it with &lt;code&gt;\myvariabletrue&lt;/code&gt; or &lt;code&gt;\myvariablefalse&lt;/code&gt;. This is weird and Knuth-y.&lt;/p&gt;
+&lt;p&gt;Now, all I have to do to periodically check how the spacing and length of the paper is with a bunch of inline comments present is to make &lt;code&gt;\commentsofftrue&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id="fixing-infuriating-spacing-issues"&gt;&lt;a class="toclink" href="#fixing-infuriating-spacing-issues"&gt;Fixing infuriating spacing issues&lt;/a&gt;&lt;a class="header-link" href="#fixing-infuriating-spacing-issues" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Often you want to define a command as a simple macro for some name you're using throughout the paper, say, for a contrived backronym method name. Something like:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\methodname&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\textsc&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;BiG-BiRd&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;This has the benefit of letting you change it if you aren't sure what your final method is.
+Also if you want to do obnoxious extra formatting like a weird font or color&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref footnote-toggle" href="javascript:void(0)"&gt;&lt;svg class="footnote-icon" viewbox="0 0 24 24"&gt;
+&lt;g class="icon-group" stroke="currentColor" stroke-linecap="round" stroke-width="3"&gt;
+&lt;line x1="7" x2="17" y1="12" y2="12"&gt;&lt;/line&gt;
+&lt;line x1="12" x2="12" y1="7" y2="17"&gt;&lt;/line&gt;
+&lt;/g&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;span class="footnote-popup"&gt;As I often do...&lt;/span&gt;&lt;/sup&gt;, it's easier to reuse this way.&lt;/p&gt;
+&lt;p&gt;Unfortunately, text in LaTeX commands have infuriating spacing behavior. If you put the command as is, it will &lt;em&gt;ignore&lt;/em&gt; following spaces,  so "&lt;code&gt;\methodname is great&lt;/code&gt;" renders as "BiG-BiRdis great".&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;\xspace&lt;/code&gt; package makes spacing work right:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;
+&lt;span class="normal"&gt;3&lt;/span&gt;
+&lt;span class="normal"&gt;4&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;% in preamble&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;xspace&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\methodname&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\textsc&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;BiG-BiRd&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\xspace&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;h1 id="2-doing-text-right"&gt;&lt;a class="toclink" href="#2-doing-text-right"&gt;2. Doing text right&lt;/a&gt;&lt;a class="header-link" href="#2-doing-text-right" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;With our new understanding of commands, we can turn to discussing best practices for working with existing commands and creating new commands to make your text look beautiful.&lt;/p&gt;
+&lt;p&gt;Additionally, we will talk about how navigate the various quirky "Knuth-isms"&lt;sup id="fnref:3"&gt;&lt;a class="footnote-ref footnote-toggle" href="javascript:void(0)"&gt;&lt;svg class="footnote-icon" viewbox="0 0 24 24"&gt;
+&lt;g class="icon-group" stroke="currentColor" stroke-linecap="round" stroke-width="3"&gt;
+&lt;line x1="7" x2="17" y1="12" y2="12"&gt;&lt;/line&gt;
+&lt;line x1="12" x2="12" y1="7" y2="17"&gt;&lt;/line&gt;
+&lt;/g&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;span class="footnote-popup"&gt;My term for the peculiar ways some commands in TeX are written, which I believe come from the particularly detail-obsessed mind of its creator Don Knuth (pictured in the thumbnail)&lt;/span&gt;&lt;/sup&gt; that pervade LaTeX to make your text look right.&lt;/p&gt;
+&lt;h2 id="citations"&gt;&lt;a class="toclink" href="#citations"&gt;Citations&lt;/a&gt;&lt;a class="header-link" href="#citations" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Two different styles of inline citation are invoked with &lt;code&gt;\citet&lt;/code&gt;, and &lt;code&gt;\citep&lt;/code&gt;.
+In parenthetical citation styles (such as *ACL or COLM) these mean &lt;em&gt;text-inline&lt;/em&gt; (&lt;code&gt;\citet&lt;/code&gt; for &lt;em&gt;t&lt;/em&gt;ext) and &lt;em&gt;inside the parentheses&lt;/em&gt; (&lt;code&gt;\citep&lt;/code&gt;).&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Saxon et al. (2024) vs (Saxon et al. 2024)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;One is used just as a source for a claim, the other is to write a sentence that the authors say X or authors do X.&lt;/p&gt;
+&lt;p&gt;Usually, &lt;code&gt;\cite&lt;/code&gt; and &lt;code&gt;\citep&lt;/code&gt; do the same thing. If they don't, I usually newcommand or renewcommand &lt;code&gt;\cite&lt;/code&gt; to get this behavior.&lt;/p&gt;
+&lt;h2 id="ref-autoref-and-cleveref"&gt;&lt;a class="toclink" href="#ref-autoref-and-cleveref"&gt;&lt;code&gt;ref&lt;/code&gt;, &lt;code&gt;autoref&lt;/code&gt;, and &lt;code&gt;cleveref&lt;/code&gt;&lt;/a&gt;&lt;a class="header-link" href="#ref-autoref-and-cleveref" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;When you want to reference a figure or table by number you can use &lt;code&gt;\ref{fig:figurename}&lt;/code&gt; to generate the figure number in a link like:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;In figure &lt;span class="k"&gt;\ref&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;fig:figurename&lt;span class="nb"&gt;}&lt;/span&gt; we learn X.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;generates&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In figure &lt;a href=""&gt;1&lt;/a&gt; we learn X.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;But what if you want the "figure" text to be part of the link? And what if you're sick of typing "figure" or "table" each time? There are two solutions, &lt;code&gt;autoref&lt;/code&gt; and &lt;code&gt;cleveref&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;\autoref&lt;/code&gt; is the simpler command.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;
+&lt;span class="normal"&gt;3&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;autoref&lt;span class="nb"&gt;}&lt;/span&gt;
+
+In &lt;span class="k"&gt;\autoref&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;fig:figurename&lt;span class="nb"&gt;}&lt;/span&gt; we learn X. &lt;span class="k"&gt;\autoref&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;fig:otherfigure&lt;span class="nb"&gt;}&lt;/span&gt; shows Y.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In &lt;a href=""&gt;figure 1&lt;/a&gt; we learn X. &lt;a href=""&gt;Figure 2&lt;/a&gt; shows Y&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Autoref works for figures, tables, sections, subsections, subsubsections, etc.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In subsubsection 2.3.1... Section 3 shows... See table 2...&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Note that the first "figure" isn't capitalized, while the second is. "subsubsection" isn't capitalized but "Section" is. &lt;code&gt;autoref&lt;/code&gt; automates all of this based on position in a sentence.&lt;/p&gt;
+&lt;p&gt;What if you want a more compact style of these automatic citations? What if you want to change this behavior? That's where &lt;code&gt;cleveref&lt;/code&gt; can come in handy.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;
+&lt;span class="normal"&gt;3&lt;/span&gt;
+&lt;span class="normal"&gt;4&lt;/span&gt;
+&lt;span class="normal"&gt;5&lt;/span&gt;
+&lt;span class="normal"&gt;6&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;cleveref&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\crefformat&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;section&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\S&lt;/span&gt;#2#1#3&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\crefformat&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;subsection&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\S&lt;/span&gt;#2#1#3&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\crefformat&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;subsubsection&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\S&lt;/span&gt;#2#1#3&lt;span class="nb"&gt;}&lt;/span&gt;
+
+The turbo encabulator (&lt;span class="k"&gt;\cref&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;subsec:encabulator&lt;span class="nb"&gt;}&lt;/span&gt;) also leverages inverse reactive current in unilateral phase detractors
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The turbo encabulator (§2.3.1) also leverages inverse reactive current in unilateral phase detractors&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Within those definitions you can define whatever behavior you want. You can make it say "Section 2.3.1" instead of "subsubsection 2.3.1", enforce capitalization in all places, etc.&lt;/p&gt;
+&lt;h2 id="quotation-marks"&gt;&lt;a class="toclink" href="#quotation-marks"&gt;Quotation marks&lt;/a&gt;&lt;a class="header-link" href="#quotation-marks" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;One of the most infuriating Knuthisms in LaTeX is the way quotation marks are handled. &lt;/p&gt;
+&lt;p&gt;The characters &lt;code&gt;'&lt;/code&gt; and &lt;code&gt;"&lt;/code&gt;, in most fonts, &lt;strong&gt;specifically refer to backwards marks&lt;/strong&gt;. So&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;In the turbo encabulator power is generated by "capacitive diractance" and 'magneto reluctance.'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In the turbo encabulator power is generated by ”capacitive diractance” and ’magneto reluctance.’&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Note the opening quotation marks are backwards. (This looks worse in the serif fonts most LaTeX documents use than it looks here.)
+To fix this, &lt;strong&gt;you need to use the tick mark `, not the apostrophe ', to open quotes.&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;In the turbo encabulator power is generated by ``capacitive diractance'' and `magneto reluctance.'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In the turbo encabulator power is generated by “capacitive diractance” and ‘magneto reluctance.’&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="resizing-and-transforming-text"&gt;&lt;a class="toclink" href="#resizing-and-transforming-text"&gt;Resizing and transforming text&lt;/a&gt;&lt;a class="header-link" href="#resizing-and-transforming-text" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;There are various useful reasons you may want to resize text.
+Maybe to shrink an equation so it fits on a line, or to do some customization inside a figure or to shrink text in a table cell.&lt;/p&gt;
+&lt;p&gt;Text sizing is a site of many hilarious Knuthisms.
+First, to size a line of text, you use these (in ascending order of size)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;\tiny&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\scriptsize&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\footnotesize&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\small&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\normalsize&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\large&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\Large&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\LARGE&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\huge&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\Huge&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you're just mad, you should say &lt;code&gt;{\large I am mad}&lt;/code&gt; but if you're REALLY angry you can give a &lt;code&gt;{\LARGE I AM FURIOUS}&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;See more in &lt;a href="https://www.overleaf.com/learn/latex/Font_sizes%2C_families%2C_and_styles"&gt;Overleaf's docs&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="defining-colors-and-coloring-text"&gt;&lt;a class="toclink" href="#defining-colors-and-coloring-text"&gt;Defining colors and coloring text&lt;/a&gt;&lt;a class="header-link" href="#defining-colors-and-coloring-text" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;By default, LaTeX has colors like "red", "green", "blue", and "magenta" (as I used above in my comment commands).&lt;/p&gt;
+&lt;p&gt;However, the &lt;code&gt;xcolor&lt;/code&gt; package is pretty much a must-use even with those colors defined.
+I'm pretty sure it is what gives the &lt;code&gt;\color{green}&lt;/code&gt; macro its power, even if the color green already exists.&lt;/p&gt;
+&lt;p&gt;To color a bit of text, you wrap all the text you want &lt;em&gt;inside brackets, with the color macro&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;This text is black and &lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\color&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;green&lt;span class="nb"&gt;}&lt;/span&gt; this text is green&lt;span class="nb"&gt;}&lt;/span&gt;.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;Additionally, it gives access to more elaborate colors depending on how you import. For example, &lt;code&gt;\usepackage[dvipsnames]{xcolor}&lt;/code&gt; gives you access to more colors like "aquamarine," "skyblue", "navyblue", etc.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="The how boys see colors vs how girls see colors meme except for base latex vs dvips colors" src="saxon.me/blog/2025/latex-tips/images/xcolor-meme.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;Additionally, we can use xcolor to define our own colors.
+The precise way is with an RGB code.
+For example, &lt;code&gt;\definecolor{tifablue}{RGB}{226, 232, 248}&lt;/code&gt; defines the exact color we used in Table 2 of our &lt;a href="https://arxiv.org/pdf/2404.04251"&gt;TS2 paper&lt;/a&gt; to define the highlight color of TIFA-related runs. Once defined, one of these colors can be invoked with &lt;code&gt;\color{tifablue}&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;If you just need a one-off hacky new color though, getting RGB may be too much.
+Here you can use this fractional combination-based technique I don't fully understand. 
+&lt;code&gt;\color{blue!50!black}&lt;/code&gt; is the mix of 50% pure blue (&lt;code&gt;#0000FF&lt;/code&gt;) and 100% pure black (&lt;code&gt;#000000&lt;/code&gt;). The practical use of this color notation is that it can be directly used inline, inside the &lt;code&gt;color&lt;/code&gt; command, rather than requiring a color definition.&lt;/p&gt;
+&lt;p&gt;Other color models you can use include cmyk, HTML, and wavelength of the color in nanometers. 
+More explanation of colors with the predefined names are given &lt;a href="https://latex-tutorial.com/color-latex/"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id="custom-colored-highlighting"&gt;&lt;a class="toclink" href="#custom-colored-highlighting"&gt;Custom-colored highlighting&lt;/a&gt;&lt;a class="header-link" href="#custom-colored-highlighting" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The &lt;code&gt;soul&lt;/code&gt; package provides useful macros for custom highlighting and background coloring for text.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;
+&lt;span class="normal"&gt;3&lt;/span&gt;
+&lt;span class="normal"&gt;4&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;soul&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;\sethlcolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;green&lt;span class="nb"&gt;}&lt;/span&gt;
+This is &lt;span class="k"&gt;\hl&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;cool&lt;span class="nb"&gt;}&lt;/span&gt; stuff!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This is &lt;span style="background-color: #0F0;"&gt;cool&lt;/span&gt; stuff!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The purpose of this &lt;code&gt;soul&lt;/code&gt;-based solution for coloring text rather than &lt;code&gt;colorbox&lt;/code&gt; is that soul properly breaks lines, while colorbox doesn't.&lt;/p&gt;
+&lt;h2 id="size-units-for-spacing-em-ex-pt-etc"&gt;&lt;a class="toclink" href="#size-units-for-spacing-em-ex-pt-etc"&gt;Size units for spacing: em, ex, pt, etc&lt;/a&gt;&lt;a class="header-link" href="#size-units-for-spacing-em-ex-pt-etc" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;When we want to define the size or spacing of an object, we have a few choices of unit which have different uses in different settings.&lt;/p&gt;
+&lt;p&gt;You probably already know &lt;code&gt;pt&lt;/code&gt;, or typographical point. I usually use this to size inline components (see &lt;strong&gt;Inline icons&lt;/strong&gt; below). Depending on the document, 10, 11, or 12 pt will usually give you an element equal in size to the height of a tall letter in the main text.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;em&lt;/code&gt; and &lt;code&gt;ex&lt;/code&gt; come from CSS, and are &lt;strong&gt;useful size units defined relative to the font size.&lt;/strong&gt;
+&lt;code&gt;1em&lt;/code&gt; is equivalent to the current font size. &lt;code&gt;1ex&lt;/code&gt; is equivalent to the height of the letter "x" in the current font size, roughly 50% of &lt;code&gt;1em&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;These units are very useful for quickly iterating on heights and widths that are large relative to the whole document (for example, setting negative vspace in the &lt;strong&gt;Dark arts&lt;/strong&gt; section)&lt;/p&gt;
+&lt;p&gt;Finally, if you wish, you can use &lt;code&gt;cm&lt;/code&gt;, &lt;code&gt;mm&lt;/code&gt;, and &lt;code&gt;in&lt;/code&gt; for sizing. Self-explanatory, they are relative to the current document. I prefer not to use them.&lt;/p&gt;
+&lt;h2 id="annoying-extra-formatting-which-i-sometimes-use"&gt;&lt;a class="toclink" href="#annoying-extra-formatting-which-i-sometimes-use"&gt;Annoying extra formatting (which I sometimes use)&lt;/a&gt;&lt;a class="header-link" href="#annoying-extra-formatting-which-i-sometimes-use" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;If you really want to go the extra mile to make your paper pop, you can do things like making your method name colorful every time it shows up, or use exotic symbols for author affiliation marks rather than numbers, playing card suits, or crosses.&lt;/p&gt;
+&lt;p&gt;Also, you can decorate quotations with big colored boxes!&lt;/p&gt;
+&lt;h3 id="big-colored-text-boxes"&gt;&lt;a class="toclink" href="#big-colored-text-boxes"&gt;Big colored text boxes&lt;/a&gt;&lt;a class="header-link" href="#big-colored-text-boxes" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;In our COLM paper from last year, we wanted to insert cute little vignettes from the real sciences relating to our position on AI science.&lt;/p&gt;
+&lt;p&gt;To do this I wrote a &lt;code&gt;\vig&lt;/code&gt; command to make a nice colored box, something like the warning boxes I implemented for this website!&lt;/p&gt;
+&lt;blockquote class="infobox infobox-note"&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Example colorbox!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Text of the box!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We did this using the &lt;code&gt;tcolorbox&lt;/code&gt; package.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="na"&gt;[skins,breakable]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tcolorbox&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;\newtcolorbox&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;boxblue&lt;span class="nb"&gt;}{&lt;/span&gt;enhanced,colback=blue!5!white,colframe=blue!75!black,breakable=true&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\vig&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[2]&lt;span class="nb"&gt;{&lt;/span&gt;
+&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;boxblue&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\textit&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\color&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;blue!50!black&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;#1&lt;span class="nb"&gt;}}&lt;/span&gt;
+
+&lt;span class="k"&gt;\vspace&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;6pt&lt;span class="nb"&gt;}&lt;/span&gt;#2
+&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;boxblue&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;\vig&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Example colorbox!&lt;span class="nb"&gt;}{&lt;/span&gt;Text of the box!&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;Here you can see I used the fractional color models discussed above. The options &lt;code&gt;skins&lt;/code&gt; enables a subpackage which provides a LOT of different options for themeing colorboxes beyond the simple one we used (full documentation &lt;a href="https://texdoc.org/serve/tcolorbox.pdf/"&gt;here&lt;/a&gt;). This allowed us to set the frame color and background color.
+The &lt;code&gt;breakable&lt;/code&gt; option allows us to let the colorbox break across pages rather than being forced to the top of a following page and adding a bunch of whitespace like a forced inline figure would.&lt;/p&gt;
+&lt;h3 id="fancy-colored-gradients-inline"&gt;&lt;a class="toclink" href="#fancy-colored-gradients-inline"&gt;Fancy colored gradients inline&lt;/a&gt;&lt;a class="header-link" href="#fancy-colored-gradients-inline" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;If a single xcolor isn't enough to make your methodname look good (it wasn't enough in &lt;a href="https://arxiv.org/pdf/2404.04251"&gt;TS2&lt;/a&gt;) you can use the &lt;code&gt;gradient-text&lt;/code&gt; package to achieve this.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;
+&lt;span class="normal"&gt;3&lt;/span&gt;
+&lt;span class="normal"&gt;4&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="na"&gt;[dvipsnames]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;xcolor&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;gradient-text&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\resourcename&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\texttt&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\gradientRGB&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;T2IScoreScore&lt;span class="nb"&gt;}{&lt;/span&gt;68,67,147&lt;span class="nb"&gt;}{&lt;/span&gt;61,130,217&lt;span class="nb"&gt;}}}}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;\gradientRGB&lt;/code&gt; colors all &lt;em&gt;n&lt;/em&gt; letters in the first argument text with &lt;em&gt;n&lt;/em&gt; intermediate colors it calculates which interpolate between the colors in arguments 2 and 3.&lt;/p&gt;
+&lt;h3 id="inline-icons"&gt;&lt;a class="toclink" href="#inline-icons"&gt;Inline icons&lt;/a&gt;&lt;a class="header-link" href="#inline-icons" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Say you want to put a cute image or icon in the title of your paper, like the &lt;a href="https://upload.wikimedia.org/wikipedia/commons/f/f2/On_the_Dangers_of_Stochastic_Parrots_Can_Language_Models_Be_Too_Big.pdf"&gt;Stochastic Parrots&lt;/a&gt; paper did.&lt;/p&gt;
+&lt;p&gt;You can just&lt;sup id="fnref:4"&gt;&lt;a class="footnote-ref footnote-toggle" href="javascript:void(0)"&gt;&lt;svg class="footnote-icon" viewbox="0 0 24 24"&gt;
+&lt;g class="icon-group" stroke="currentColor" stroke-linecap="round" stroke-width="3"&gt;
+&lt;line x1="7" x2="17" y1="12" y2="12"&gt;&lt;/line&gt;
+&lt;line x1="12" x2="12" y1="7" y2="17"&gt;&lt;/line&gt;
+&lt;/g&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;span class="footnote-popup"&gt;do things&lt;/span&gt;&lt;/sup&gt; put &lt;code&gt;\includegraphics&lt;/code&gt; macros inline with text.&lt;/p&gt;
+&lt;p&gt;For example, I put a logo for an upcoming preprint in our title like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\vspace&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;-3pt&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\raisebox&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;-3pt&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\includegraphics&lt;/span&gt;&lt;span class="na"&gt;[width=20pt]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;pics/logo.png&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;Basically, here's what's going on here. The icon image itself is very big, much bigger than a line of text. If you just put &lt;code&gt;\includegraphics&lt;/code&gt; inline without anything around it, the image will scale to its natural size.&lt;/p&gt;
+&lt;p&gt;To counteract this, I have to both manipulate its sizing and positioning.
+Through manual experimentation I found that setting the width to 20pt roughly sized it according to my desires. However, the spacing was off. The image was too far above the line and making the line itself taller. To fix this, I had to use negative &lt;code&gt;\vspace{}&lt;/code&gt; to keep the line positioning in subsequent lines from being impacted by the symbol, and negative &lt;code&gt;\raisebox{}&lt;/code&gt; to slightly push the bottom of the image under the line.&lt;/p&gt;
+&lt;h3 id="exotic-symbols-eg-as-author-affiliation-marks"&gt;&lt;a class="toclink" href="#exotic-symbols-eg-as-author-affiliation-marks"&gt;Exotic symbols (eg., as author affiliation marks)&lt;/a&gt;&lt;a class="header-link" href="#exotic-symbols-eg-as-author-affiliation-marks" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;I used to really dislike the trend of quirky affiliation marks in author lists, and was basically doing them ironically&lt;sup id="fnref:5"&gt;&lt;a class="footnote-ref footnote-toggle" href="javascript:void(0)"&gt;&lt;svg class="footnote-icon" viewbox="0 0 24 24"&gt;
+&lt;g class="icon-group" stroke="currentColor" stroke-linecap="round" stroke-width="3"&gt;
+&lt;line x1="7" x2="17" y1="12" y2="12"&gt;&lt;/line&gt;
+&lt;line x1="12" x2="12" y1="7" y2="17"&gt;&lt;/line&gt;
+&lt;/g&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;span class="footnote-popup"&gt;I know, I'm obnoxious&lt;/span&gt;&lt;/sup&gt; until I came to love them. Here are some ways I got them.&lt;/p&gt;
+&lt;p&gt;In my &lt;a href="https://arxiv.org/abs/2403.11092"&gt;NAACL paper&lt;/a&gt; last year I used Egyptian hieroglyphs as affiliation marks.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;
+&lt;span class="normal"&gt;3&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;hieroglf&lt;span class="nb"&gt;}&lt;/span&gt;
+
+I love Egypt! &lt;span class="k"&gt;\textpmhg&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;eFR&lt;span class="k"&gt;\Hibl&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I love Egypt! 𓁹𓆛𓅃𓅠&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In our TS2 paper, I wanted to have PlayStation button symbols as author affiliation marks. I drew these using custom tikz:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;
+&lt;span class="normal"&gt;14&lt;/span&gt;
+&lt;span class="normal"&gt;15&lt;/span&gt;
+&lt;span class="normal"&gt;16&lt;/span&gt;
+&lt;span class="normal"&gt;17&lt;/span&gt;
+&lt;span class="normal"&gt;18&lt;/span&gt;
+&lt;span class="normal"&gt;19&lt;/span&gt;
+&lt;span class="normal"&gt;20&lt;/span&gt;
+&lt;span class="normal"&gt;21&lt;/span&gt;
+&lt;span class="normal"&gt;22&lt;/span&gt;
+&lt;span class="normal"&gt;23&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;xcolor&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tikz&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\pssymb&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[2]&lt;span class="nb"&gt;{&lt;/span&gt;
+&lt;span class="k"&gt;\resizebox&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;#1&lt;span class="nb"&gt;}{&lt;/span&gt;!&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tikzpicture&lt;span class="nb"&gt;}&lt;/span&gt;#2&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tikzpicture&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\pscirc&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;
+&lt;span class="k"&gt;\pssymb&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;6pt&lt;span class="nb"&gt;}{&lt;/span&gt;
+    &lt;span class="k"&gt;\draw&lt;/span&gt; (0,0) circle [radius=1.5];
+    &lt;span class="k"&gt;\draw&lt;/span&gt;&lt;span class="na"&gt;[line width=5pt, red]&lt;/span&gt; (0,0) circle [radius=0.8];
+&lt;span class="nb"&gt;}}&lt;/span&gt;
+
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\psx&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;
+&lt;span class="k"&gt;\pssymb&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;6pt&lt;span class="nb"&gt;}{&lt;/span&gt;
+    &lt;span class="k"&gt;\draw&lt;/span&gt; (0,0) circle [radius=1.5];
+    &lt;span class="k"&gt;\draw&lt;/span&gt;&lt;span class="na"&gt;[line width=5pt, blue]&lt;/span&gt; (-0.8,-0.8) -- (0.8,0.8);
+    &lt;span class="k"&gt;\draw&lt;/span&gt;&lt;span class="na"&gt;[line width=5pt, blue]&lt;/span&gt; (0.8,-0.8) -- (-0.8,0.8);
+&lt;span class="nb"&gt;}}&lt;/span&gt;
+
+...
+
+&lt;span class="k"&gt;\author&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Michael Saxon&lt;span class="s"&gt;$&lt;/span&gt;&lt;span class="nb"&gt;^{&lt;/span&gt;&lt;span class="nv"&gt;\psx\pscirc&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="s"&gt;$&lt;/span&gt;...&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Michael Saxon&lt;sup&gt;&lt;img src="https://t2iscorescore.github.io/static/images/psx.svg" style="width:12pt;border:0;"/&gt;&lt;img src="https://t2iscorescore.github.io/static/images/psc.svg" style="width:12pt;border:0;"/&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Providing a tikz tutorial is out of scope here. Look it up yourself ;)&lt;/p&gt;
+&lt;h2 id="non-latin-cjk-alphabets-on-arxiv"&gt;&lt;a class="toclink" href="#non-latin-cjk-alphabets-on-arxiv"&gt;Non-Latin (CJK) alphabets on arXiv&lt;/a&gt;&lt;a class="header-link" href="#non-latin-cjk-alphabets-on-arxiv" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;XeLaTeX is the best way to do this, with native unicode support, and a much more comprehensive distribution of multilingual fonts and modules. 
+But arXiv (as of writing) doesn't support it 😭😭😭😭😭&lt;/p&gt;
+&lt;p&gt;So we need to figure out how to do it with pdfLaTeX.&lt;/p&gt;
+&lt;p&gt;We have to hack it in using various packages depending on language. In my multilingual paper, I &lt;em&gt;wanted&lt;/em&gt; to include CJK and Hebrew characters, but I just could not figure out Hebrew without XeLaTeX at least for CJK you can use the CJK packages.&lt;/p&gt;
+&lt;p&gt;I was able to get this working on arXiv:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;%%% preamble&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="na"&gt;[utf8]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;inputenc&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;CJKutf8&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;%%% set the font for each language&lt;/span&gt;
+&lt;span class="c"&gt;% mincho font for Japanese&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\inlinejp&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;CJK&lt;span class="nb"&gt;}{&lt;/span&gt;UTF8&lt;span class="nb"&gt;}{&lt;/span&gt;min&lt;span class="nb"&gt;}{&lt;/span&gt;#1&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;CJK&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;span class="c"&gt;% gbsn font for Chinese&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\inlinezh&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;CJK&lt;span class="nb"&gt;}{&lt;/span&gt;UTF8&lt;span class="nb"&gt;}{&lt;/span&gt;gbsn&lt;span class="nb"&gt;}{&lt;/span&gt;#1&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;CJK&lt;span class="nb"&gt;}}&lt;/span&gt;
+
+&lt;span class="c"&gt;%%% in document&lt;/span&gt;
+&lt;span class="k"&gt;\inlinejp&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;お前はもう死んでいる&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\inlinezh&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;迈克不喜欢卷&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;h1 id="3-turning-the-tables"&gt;&lt;a class="toclink" href="#3-turning-the-tables"&gt;3. Turning the Tables&lt;/a&gt;&lt;a class="header-link" href="#3-turning-the-tables" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;Default LaTeX tables aren't very appealing. Use &lt;code&gt;booktabs.&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id="basic-table-hygiene-with-booktabs"&gt;&lt;a class="toclink" href="#basic-table-hygiene-with-booktabs"&gt;Basic table hygiene with &lt;code&gt;booktabs&lt;/code&gt;&lt;/a&gt;&lt;a class="header-link" href="#basic-table-hygiene-with-booktabs" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Within the &lt;code&gt;tabular&lt;/code&gt; environment, &lt;code&gt;booktabs&lt;/code&gt; gives you macros like &lt;code&gt;\toprule&lt;/code&gt;, &lt;code&gt;\bottomrule&lt;/code&gt;, and &lt;code&gt;\midrule&lt;/code&gt;, which give you lines of different thickness, width, and spacing which look nicer than the default table lines.&lt;/p&gt;
+&lt;p&gt;When you define the columns of your table in the &lt;code&gt;tabular&lt;/code&gt; environment, (&lt;code&gt;|&lt;/code&gt;) puts a pipe between lines. The cells can be defined with left, center, or right alignment with &lt;code&gt;l&lt;/code&gt;, &lt;code&gt;c&lt;/code&gt;, and &lt;code&gt;r&lt;/code&gt;. For example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;booktabs&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;table&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\centering&lt;/span&gt;
+&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tabular&lt;span class="nb"&gt;}{&lt;/span&gt;l|cr&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\toprule&lt;/span&gt;
+Thing 1 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; Thing 2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; Thing 3 &lt;span class="k"&gt;\\&lt;/span&gt;
+&lt;span class="k"&gt;\midrule&lt;/span&gt;
+A &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; B &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; C &lt;span class="k"&gt;\\&lt;/span&gt;
+&lt;span class="k"&gt;\bottomrule&lt;/span&gt;
+&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tabular&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;table&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;table style="border-top: 2px solid black; border-bottom: 2px solid black; padding: 1px;"&gt;&lt;tr&gt;&lt;td style="border-bottom: 1px solid black; margin:0; width: 100pt; border-right: 1px solid black;"&gt;Thing 1&lt;/td&gt;&lt;td style="border-bottom: 1px solid black; margin:0; padding-right 5pt; width: 100pt; text-align:center;"&gt;Thing 2&lt;/td&gt;&lt;td style="border-bottom: 1px solid black; margin:0; width: 100pt;text-align:right;"&gt;Thing 3&lt;/td&gt;&lt;/tr&gt;&lt;tr style="border:0;"&gt;&lt;td style="border-right: 1px solid black;"&gt;A&lt;/td&gt;&lt;td style="text-align:center;"&gt;B&lt;/td&gt;&lt;td style="text-align:right;"&gt;C&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Please use &lt;code&gt;|&lt;/code&gt; tastefully. Resist the impulse to do &lt;code&gt;\tabular{|c|c|c|}&lt;/code&gt;, because this is harder to scan over and read:&lt;/p&gt;
+&lt;blockquote class="infobox infobox-warning"&gt;
+&lt;p&gt;&lt;table style="border-top: 2px solid black; border-bottom: 2px solid black; padding: 1px;"&gt;&lt;tr&gt;&lt;td style="border-bottom: 1px solid black; margin:0; width: 100pt; border-right: 1px solid black; text-align:center;border-left: 1px solid black; "&gt;Thing 1&lt;/td&gt;&lt;td style="border-bottom: 1px solid black; margin:0; padding-right 5pt; width: 100pt; text-align:center; border-right: 1px solid black; "&gt;Thing 2&lt;/td&gt;&lt;td style="border-bottom: 1px solid black; margin:0; width: 100pt;text-align:center;border-right: 1px solid black; "&gt;Thing 3&lt;/td&gt;&lt;/tr&gt;&lt;tr style="border:0;"&gt;&lt;td style="border-right: 1px solid black; border-left: 1px solid black; text-align:center;"&gt;A&lt;/td&gt;&lt;td style="border-right: 1px solid black; text-align:center;"&gt;B&lt;/td&gt;&lt;td style="border-right: 1px solid black; text-align:center;"&gt;C&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="multirow-and-multicolumn"&gt;&lt;a class="toclink" href="#multirow-and-multicolumn"&gt;&lt;code&gt;multirow&lt;/code&gt; and &lt;code&gt;multicolumn&lt;/code&gt;&lt;/a&gt;&lt;a class="header-link" href="#multirow-and-multicolumn" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;You can define multi-row and multi-column cells using these environments.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\multirow&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;NUM&lt;span class="nb"&gt;_&lt;/span&gt;ROWS&lt;span class="nb"&gt;}{&lt;/span&gt;ALIGNMENT&lt;span class="nb"&gt;}{&lt;/span&gt;Text&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\multicolumn&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;NUM&lt;span class="nb"&gt;_&lt;/span&gt;COLUMNS&lt;span class="nb"&gt;}{&lt;/span&gt;ALIGNMENT&lt;span class="nb"&gt;}{&lt;/span&gt;Text&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;NUM_ROWS&lt;/code&gt; and &lt;code&gt;NUM_COLUMNS&lt;/code&gt; should be self-explanatory. For &lt;code&gt;ALIGNMENT&lt;/code&gt; you can use &lt;code&gt;l&lt;/code&gt;, &lt;code&gt;r&lt;/code&gt;, &lt;code&gt;c&lt;/code&gt; as in tabular for multicolumn. For multirow, you should usually use &lt;code&gt;*&lt;/code&gt; for vertical centering.&lt;/p&gt;
+&lt;h2 id="cmidrule-to-partially-underline-a-row"&gt;&lt;a class="toclink" href="#cmidrule-to-partially-underline-a-row"&gt;&lt;code&gt;cmidrule&lt;/code&gt; to partially underline a row&lt;/a&gt;&lt;a class="header-link" href="#cmidrule-to-partially-underline-a-row" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Sometimes you want to only underline some of the cells in a row (for example, you want to underline a multicolumn cell in the row above.) &lt;code&gt;cmidrule&lt;/code&gt; does this with arguments for edges to thin and cell numbers.
+For example, &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;booktabs&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;table&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\centering&lt;/span&gt;
+&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tabular&lt;span class="nb"&gt;}{&lt;/span&gt;l|cr&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\toprule&lt;/span&gt;
+Thing 1 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; Thing 2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; Thing 3 &lt;span class="k"&gt;\\&lt;/span&gt;
+&lt;span class="k"&gt;\cmidrule&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;2-3&lt;span class="nb"&gt;}&lt;/span&gt;
+A &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; B &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; C &lt;span class="k"&gt;\\&lt;/span&gt;
+&lt;span class="k"&gt;\bottomrule&lt;/span&gt;
+&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tabular&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;table&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;table style="border-top: 2px solid black; border-bottom: 2px solid black; padding: 1px;"&gt;&lt;tr&gt;&lt;td style="margin:0; width: 100pt; border-right: 1px solid black;"&gt;Thing 1&lt;/td&gt;&lt;td style="border-bottom: 1px solid black; margin:0; padding-right 5pt; width: 100pt; text-align:center;"&gt;Thing 2&lt;/td&gt;&lt;td style="border-bottom: 1px solid black; margin:0; width: 100pt;text-align:right;"&gt;Thing 3&lt;/td&gt;&lt;/tr&gt;&lt;tr style="border:0;"&gt;&lt;td style="border-right: 1px solid black;"&gt;A&lt;/td&gt;&lt;td style="text-align:center;"&gt;B&lt;/td&gt;&lt;td style="text-align:right;"&gt;C&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Usually, if you have multiple &lt;code&gt;cmidrule&lt;/code&gt; side-by-side, you want to "chop off" parts on the left and right sides so they don't connect, providing some visually pleasing separation. To do this, you can include &lt;code&gt;(lr)&lt;/code&gt; like:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\cmidrule&lt;/span&gt;(lr)&lt;span class="nb"&gt;{&lt;/span&gt;2-3&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\cmidrule&lt;/span&gt;(lr)&lt;span class="nb"&gt;{&lt;/span&gt;4-5&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;To provide multiple partial midrules that are adjacent but not connected.&lt;/p&gt;
+&lt;h2 id="fancy-stuff"&gt;&lt;a class="toclink" href="#fancy-stuff"&gt;Fancy stuff&lt;/a&gt;&lt;a class="header-link" href="#fancy-stuff" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Now for some more advanced beautification techniques for your tables.&lt;/p&gt;
+&lt;h3 id="coloring-table-cells"&gt;&lt;a class="toclink" href="#coloring-table-cells"&gt;Coloring table cells&lt;/a&gt;&lt;a class="header-link" href="#coloring-table-cells" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The &lt;code&gt;colortbl&lt;/code&gt; package provides a simple interface to coloring cells, using colors we defined above. &lt;code&gt;\cellcolor{COLOR}&lt;/code&gt; will color the background of the cell it's in.&lt;/p&gt;
+&lt;h3 id="special-table-symbols"&gt;&lt;a class="toclink" href="#special-table-symbols"&gt;Special table symbols&lt;/a&gt;&lt;a class="header-link" href="#special-table-symbols" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;For my CoCo-CroLa paper I wanted an efficient way to mark equivalence between cells in a column, rather than repeat the same value several times.
+I wanted something very easy to skim with minimum visual noise, and came up with:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Vertical line through duplicate cells" src="saxon.me/blog/2025/latex-tips/images/cccltable.png"/&gt;&lt;/p&gt;
+&lt;p&gt;I called this "same line" command &lt;code&gt;\samel&lt;/code&gt;, defined with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\samel&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[0]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\multicolumn&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;1&lt;span class="nb"&gt;}{&lt;/span&gt;l&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\space\hspace&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;0.5em&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\vline&lt;/span&gt;&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;Inside of a environment of a single multicolumn we can use a &lt;code&gt;\vline&lt;/code&gt; (equivalent to putting &lt;code&gt;|&lt;/code&gt; in the tabular environment definition), which would normally be to the far left side of the cell. We then push it rightward by &lt;code&gt;0.5em&lt;/code&gt;, or half the vertical height of the text.&lt;/p&gt;
+&lt;h3 id="rotating-the-text-inside-a-cell"&gt;&lt;a class="toclink" href="#rotating-the-text-inside-a-cell"&gt;Rotating the text inside a cell&lt;/a&gt;&lt;a class="header-link" href="#rotating-the-text-inside-a-cell" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Often, plots can make axis labels more compact by rotating their text.
+I wanted to replicate this in a table I made last year and was able to pretty easily using the &lt;code&gt;rotating&lt;/code&gt; package.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;
+&lt;span class="normal"&gt;3&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;rotating&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\myrotcell&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;turn&lt;span class="nb"&gt;}{&lt;/span&gt;75&lt;span class="nb"&gt;}&lt;/span&gt;#1&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;turn&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;\myrotcel&lt;/code&gt; basically behaves exactly as I wanted inside of a table, turning the rotated text into an element with the proper width and height for positioning elements around it without overlapping or other weird clipping behavior.&lt;/p&gt;
+&lt;h2 id="putting-it-together"&gt;&lt;a class="toclink" href="#putting-it-together"&gt;Putting it together&lt;/a&gt;&lt;a class="header-link" href="#putting-it-together" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Using all of the above components we've discussed, including the &lt;code&gt;booktabs&lt;/code&gt; line rules and &lt;code&gt;cmidrule&lt;/code&gt;, the text cell rotation command &lt;code&gt;\myrotcel&lt;/code&gt; we made, cell coloring and rotated &lt;code&gt;multicolumn&lt;/code&gt;, we can generate this table from the TS2 paper:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Table from the TS2 paper using all of these tricks." src="saxon.me/blog/2025/latex-tips/images/ts2table.png"/&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;
+&lt;span class="normal"&gt;14&lt;/span&gt;
+&lt;span class="normal"&gt;15&lt;/span&gt;
+&lt;span class="normal"&gt;16&lt;/span&gt;
+&lt;span class="normal"&gt;17&lt;/span&gt;
+&lt;span class="normal"&gt;18&lt;/span&gt;
+&lt;span class="normal"&gt;19&lt;/span&gt;
+&lt;span class="normal"&gt;20&lt;/span&gt;
+&lt;span class="normal"&gt;21&lt;/span&gt;
+&lt;span class="normal"&gt;22&lt;/span&gt;
+&lt;span class="normal"&gt;23&lt;/span&gt;
+&lt;span class="normal"&gt;24&lt;/span&gt;
+&lt;span class="normal"&gt;25&lt;/span&gt;
+&lt;span class="normal"&gt;26&lt;/span&gt;
+&lt;span class="normal"&gt;27&lt;/span&gt;
+&lt;span class="normal"&gt;28&lt;/span&gt;
+&lt;span class="normal"&gt;29&lt;/span&gt;
+&lt;span class="normal"&gt;30&lt;/span&gt;
+&lt;span class="normal"&gt;31&lt;/span&gt;
+&lt;span class="normal"&gt;32&lt;/span&gt;
+&lt;span class="normal"&gt;33&lt;/span&gt;
+&lt;span class="normal"&gt;34&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\ty&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[0]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\cellcolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;otheryellow&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\tr&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[0]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\cellcolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;dsgred&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\tb&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[0]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\cellcolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tifablue&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\tg&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[0]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\cellcolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;llmgreen&lt;span class="nb"&gt;}}&lt;/span&gt;
+
+
+&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;table*&lt;span class="nb"&gt;}&lt;/span&gt;[t!]
+&lt;span class="k"&gt;\centering&lt;/span&gt;
+&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tabular&lt;span class="nb"&gt;}{&lt;/span&gt;llb&lt;span class="nb"&gt;{&lt;/span&gt;15pt&lt;span class="nb"&gt;}&lt;/span&gt;b&lt;span class="nb"&gt;{&lt;/span&gt;15pt&lt;span class="nb"&gt;}&lt;/span&gt;b&lt;span class="nb"&gt;{&lt;/span&gt;15pt&lt;span class="nb"&gt;}&lt;/span&gt;b&lt;span class="nb"&gt;{&lt;/span&gt;15pt&lt;span class="nb"&gt;}&lt;/span&gt;b&lt;span class="nb"&gt;{&lt;/span&gt;15pt&lt;span class="nb"&gt;}&lt;/span&gt;b&lt;span class="nb"&gt;{&lt;/span&gt;15pt&lt;span class="nb"&gt;}&lt;/span&gt;b&lt;span class="nb"&gt;{&lt;/span&gt;15pt&lt;span class="nb"&gt;}&lt;/span&gt;b&lt;span class="nb"&gt;{&lt;/span&gt;15pt&lt;span class="nb"&gt;}&lt;/span&gt;b&lt;span class="nb"&gt;{&lt;/span&gt;15pt&lt;span class="nb"&gt;}&lt;/span&gt;b&lt;span class="nb"&gt;{&lt;/span&gt;15pt&lt;span class="nb"&gt;}&lt;/span&gt;b&lt;span class="nb"&gt;{&lt;/span&gt;15pt&lt;span class="nb"&gt;}&lt;/span&gt;b&lt;span class="nb"&gt;{&lt;/span&gt;15pt&lt;span class="nb"&gt;}&lt;/span&gt;b&lt;span class="nb"&gt;{&lt;/span&gt;15pt&lt;span class="nb"&gt;}&lt;/span&gt;b&lt;span class="nb"&gt;{&lt;/span&gt;15pt&lt;span class="nb"&gt;}&lt;/span&gt;b&lt;span class="nb"&gt;{&lt;/span&gt;15pt&lt;span class="nb"&gt;}&lt;/span&gt;b&lt;span class="nb"&gt;{&lt;/span&gt;15pt&lt;span class="nb"&gt;}&lt;/span&gt;b&lt;span class="nb"&gt;{&lt;/span&gt;15pt&lt;span class="nb"&gt;}&lt;/span&gt;b&lt;span class="nb"&gt;{&lt;/span&gt;15pt&lt;span class="nb"&gt;}&lt;/span&gt;b&lt;span class="nb"&gt;{&lt;/span&gt;15pt&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;span class="k"&gt;\toprule&lt;/span&gt;
+&lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\myrotcell&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;CLIPScore&lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\myrotcell&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;ALIGNScore&lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\myrotcell&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;mPLUG&lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\myrotcell&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;LLaVA 1.5&lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\myrotcell&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;LLaVA 1.5 (alt)&lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\myrotcell&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;InstructBLIP&lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\myrotcell&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;BLIP1&lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\myrotcell&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Fuyu&lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\myrotcell&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;GPT4-V&lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\myrotcell&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;mPLUG&lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\myrotcell&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;LLaVA 1.5&lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\myrotcell&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;LLaVA 1.5 (alt)&lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\myrotcell&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;InstructBLIP&lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\myrotcell&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;BLIP1&lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\myrotcell&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Fuyu&lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\myrotcell&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;GPT4-V&lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\myrotcell&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;LLMScore EC&lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\myrotcell&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;LLMScore Over&lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\myrotcell&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;VIEScore&lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="k"&gt;\\&lt;/span&gt;
+&lt;span class="k"&gt;\cmidrule&lt;/span&gt;(l&lt;span class="nb"&gt;{&lt;/span&gt;5pt&lt;span class="nb"&gt;}&lt;/span&gt;r&lt;span class="nb"&gt;{&lt;/span&gt;5pt&lt;span class="nb"&gt;}&lt;/span&gt;)&lt;span class="nb"&gt;{&lt;/span&gt;3-4&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="k"&gt;\cmidrule&lt;/span&gt;(l&lt;span class="nb"&gt;{&lt;/span&gt;5pt&lt;span class="nb"&gt;}&lt;/span&gt;r&lt;span class="nb"&gt;{&lt;/span&gt;5pt&lt;span class="nb"&gt;}&lt;/span&gt;)&lt;span class="nb"&gt;{&lt;/span&gt;5-11&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="k"&gt;\cmidrule&lt;/span&gt;(l&lt;span class="nb"&gt;{&lt;/span&gt;5pt&lt;span class="nb"&gt;}&lt;/span&gt;r&lt;span class="nb"&gt;{&lt;/span&gt;5pt&lt;span class="nb"&gt;}&lt;/span&gt;)&lt;span class="nb"&gt;{&lt;/span&gt;12-18&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="k"&gt;\cmidrule&lt;/span&gt;(l&lt;span class="nb"&gt;{&lt;/span&gt;5pt&lt;span class="nb"&gt;}&lt;/span&gt;r&lt;span class="nb"&gt;{&lt;/span&gt;5pt&lt;span class="nb"&gt;}&lt;/span&gt;)&lt;span class="nb"&gt;{&lt;/span&gt;19-21&lt;span class="nb"&gt;}&lt;/span&gt; 
+&lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\multicolumn&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;2&lt;span class="nb"&gt;}{&lt;/span&gt;c&lt;span class="nb"&gt;}{&lt;/span&gt; &lt;span class="k"&gt;\footnotesize&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Emb-based&lt;span class="nb"&gt;}}&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\multicolumn&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;7&lt;span class="nb"&gt;}{&lt;/span&gt;c&lt;span class="nb"&gt;}{&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;TIFA&lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\multicolumn&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;7&lt;span class="nb"&gt;}{&lt;/span&gt;c&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;DSG&lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt;  &lt;span class="k"&gt;\multicolumn&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;3&lt;span class="nb"&gt;}{&lt;/span&gt;c&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\footnotesize&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Caption-based&lt;span class="nb"&gt;}}&lt;/span&gt;  &lt;span class="k"&gt;\\&lt;/span&gt;
+&lt;span class="k"&gt;\midrule&lt;/span&gt;
+&lt;span class="k"&gt;\multirow&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;4&lt;span class="nb"&gt;}{&lt;/span&gt;*&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\rotninety&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="s"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;\mathtt&lt;/span&gt;&lt;span class="nb"&gt;{rank}_m&lt;/span&gt;&lt;span class="s"&gt;$&lt;/span&gt;&lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Avg&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt;  71.4 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 73.9 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 71.0 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 74.5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 74.4 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tb&lt;/span&gt; 76.5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 73.8 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 38.7 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tb&lt;/span&gt; 77.9 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 70.4 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 76.2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 75.0 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; &lt;span class="k"&gt;\textul&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;79.0&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 76.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 29.5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;79.6&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 48.8 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 57.7 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 37.8 &lt;span class="k"&gt;\\&lt;/span&gt;
+&lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Synth&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 75.0 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 77.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 72.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 79.2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 79.2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 80.2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 78.8 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 44.5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tb&lt;/span&gt; 83.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 74.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 80.1 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; 81.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;85.1&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 81.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 35.4 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; 82.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 50.2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 61.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 42.5 &lt;span class="k"&gt;\\&lt;/span&gt;
+&lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Nat&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 58.0 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\ty&lt;/span&gt; 70.2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 66.9 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 62.8 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 64.0 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 65.1 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 62.2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 23.5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 61.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 65.3 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 65.9 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 68.8 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; &lt;span class="k"&gt;\textul&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;70.7&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; &lt;span class="k"&gt;\textul&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;71.6&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 20.5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;73.7&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 36.2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 44.4 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 22.4 &lt;span class="k"&gt;\\&lt;/span&gt;
+&lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Real&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\ty&lt;/span&gt; 69.3 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 62.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tb&lt;/span&gt; 68.2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 66.7 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 64.5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 71.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 64.0 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 29.7 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tb&lt;/span&gt; 69.5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 58.4 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 70.0 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 54.2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 62.0 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 61.2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 14.2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;73.0&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 54.4 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 54.1 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 33.2 &lt;span class="k"&gt;\\&lt;/span&gt;
+&lt;span class="k"&gt;\midrule&lt;/span&gt;
+&lt;span class="k"&gt;\multirow&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;4&lt;span class="nb"&gt;}{&lt;/span&gt;*&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\rotninety&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="s"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;\mathtt&lt;/span&gt;&lt;span class="nb"&gt;{sep}_m&lt;/span&gt;&lt;span class="s"&gt;$&lt;/span&gt;&lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Avg&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt;  &lt;span class="k"&gt;\ty&lt;/span&gt; 90.7 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\ty&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;92.8&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 80.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 82.5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 81.9 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tb&lt;/span&gt; 85.0 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 81.8 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 67.2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 83.2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 78.4 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 83.1 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 80.3 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 84.2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 80.8 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 63.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; 84.2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 73.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 73.5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 51.8 &lt;span class="k"&gt;\\&lt;/span&gt;
+&lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Synth&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\ty&lt;/span&gt; 90.5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\ty\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;94.1&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 80.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 85.5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 85.2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tb&lt;/span&gt; 86.7 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 84.1 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 67.3 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 86.2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 80.9 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 85.7 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 83.9 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; 87.8 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 84.9 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 65.8 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; 86.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 71.1 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 72.8 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 53.7 &lt;span class="k"&gt;\\&lt;/span&gt;
+&lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Nat&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\ty&lt;/span&gt; 91.5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\ty&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;92.6&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 84.2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 75.1 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 75.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 82.8 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 77.9 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 75.7 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 80.5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 71.2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 80.9 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 76.7 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 81.8 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 73.3 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 68.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 81.7 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 80.5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 76.7 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 44.5 &lt;span class="k"&gt;\\&lt;/span&gt;
+&lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Real&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\ty&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;90.3&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\ty&lt;/span&gt; 87.9 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tb&lt;/span&gt; 77.4 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 76.8 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 74.4 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 80.5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 76.4 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 59.3 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 73.7 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 75.1 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 74.5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 69.4 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 71.9 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 70.8 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 50.3 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 76.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tg&lt;/span&gt; 77.3 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 73.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 50.7 &lt;span class="k"&gt;\\&lt;/span&gt;
+&lt;span class="k"&gt;\midrule&lt;/span&gt;
+&lt;span class="k"&gt;\multirow&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;4&lt;span class="nb"&gt;}{&lt;/span&gt;*&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\rotninety&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="s"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;\mathtt&lt;/span&gt;&lt;span class="nb"&gt;{delta}_m&lt;/span&gt;&lt;span class="s"&gt;$&lt;/span&gt;&lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Avg&lt;span class="nb"&gt;}&lt;/span&gt;  &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 89.7 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 95.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 92.4 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 97.5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 97.1 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 99.8 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 94.0 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 43.9 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 92.3 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 94.2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; 104.7 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt;  102.0 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;110.6&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; 103.7 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 37.7 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; 110.2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 66.9 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 56.3 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 45.9 &lt;span class="k"&gt;\\&lt;/span&gt;
+&lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Synth&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 89.9 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 95.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 92.5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 97.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 97.3 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 99.9 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 93.9 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 44.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 92.5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 94.4 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; 104.7 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt;  102.1 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;110.7&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; 103.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 37.8 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; 110.1 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 67.2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 56.7 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 46.7 &lt;span class="k"&gt;\\&lt;/span&gt;
+&lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Nat&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 92.5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 98.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 94.4 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 98.7 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 98.8 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 101.1 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 95.5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 46.1 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 93.9 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 96.0 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; 105.5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 103.0 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;111.6&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; 104.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 39.3 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; 111.5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 66.2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 56.4 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 46.6 &lt;span class="k"&gt;\\&lt;/span&gt;
+&lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Real&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 95.1 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 100.8 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 96.0 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 100.5 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 100.4 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 102.6 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 96.9 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 46.9 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 95.9 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 97.3 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; 106.8 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 104.2 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;113.0&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; 105.9 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 39.4 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tr&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;113.0&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 65.0 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 56.0 &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 46.3 &lt;span class="k"&gt;\\&lt;/span&gt;
+&lt;span class="k"&gt;\midrule&lt;/span&gt;
+&lt;span class="k"&gt;\multicolumn&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;2&lt;span class="nb"&gt;}{&lt;/span&gt;c&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;FLOP/run&lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\ty&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;604M&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\ty&lt;/span&gt; 688M &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 224T &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 224T &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 224T &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 224T &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 224T &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 224T &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 1.66P &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 140T &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 140T &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 140T &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 140T &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 140T &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 140T &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; 860T &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tg&lt;/span&gt; 7.01T &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tg&lt;/span&gt; 7.01T &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;\tg&lt;/span&gt; 2.6T  &lt;span class="k"&gt;\\&lt;/span&gt;
+&lt;span class="k"&gt;\bottomrule&lt;/span&gt;
+&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tabular&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;table*&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;!-- # 4. Figures
+
+## TODO Combining multiple images into one image
+
+I wanted to make a grid of adjacent images in a table.
+I'm gonna be honest, I do not remember how I made this. But it works
+
+
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;
+&lt;span class="normal"&gt;3&lt;/span&gt;
+&lt;span class="normal"&gt;4&lt;/span&gt;
+&lt;span class="normal"&gt;5&lt;/span&gt;
+&lt;span class="normal"&gt;6&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\timg&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\includegraphics&lt;/span&gt;&lt;span class="na"&gt;[width=0.25\linewidth]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;img/storyprop/#1&lt;span class="nb"&gt;}}&lt;/span&gt;
+
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\specialcell&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[1]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="c"&gt;%&lt;/span&gt;
+  &lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tabular&lt;span class="nb"&gt;}&lt;/span&gt;[c]&lt;span class="nb"&gt;{&lt;/span&gt;@&lt;span class="nb"&gt;{}&lt;/span&gt;c@&lt;span class="nb"&gt;{}}&lt;/span&gt;#1&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tabular&lt;span class="nb"&gt;}}&lt;/span&gt;
+
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\imgf&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[4]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\specialcell&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\timg&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;#1&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\timg&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;#2&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\vspace&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;-3pt&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\\\timg&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;#3&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\timg&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;#4&lt;span class="nb"&gt;}}&lt;/span&gt;&lt;span class="k"&gt;\hspace&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;-5pt&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+
+
+
+
+
+## making subfigures with/without captions
+
+### subfig
+
+### subcaption
+
+### minipage
+
+## How to do pyplot and make it readable
+
+Generating your figure to be readable in pyplot
+MAKE THE FIGURE SMALL IN GENERATION AS AN SVG THEN IT WILL BE BIG
+
+
+## Colors etc
+
+- blue!50!black
+- rgb
+- named colors (link) --&gt;
+&lt;!-- # 5. TODO: Overleaf in VSCode
+
+- use latex workshop
+- use overleaf workshop
+
+https://github.com/iamhyc/Overleaf-Workshop
+
+Install instructions --&gt;
+&lt;h1 id="4-the-dark-arts-advanced"&gt;&lt;a class="toclink" href="#4-the-dark-arts-advanced"&gt;4. The Dark Arts (Advanced)&lt;/a&gt;&lt;a class="header-link" href="#4-the-dark-arts-advanced" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote class="infobox infobox-warning"&gt;
+&lt;p&gt;These incantations will give you dark powers and break you free from the shackles of conference style files. Use wisely.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="switching-between-conference-formats"&gt;&lt;a class="toclink" href="#switching-between-conference-formats"&gt;Switching between conference formats&lt;/a&gt;&lt;a class="header-link" href="#switching-between-conference-formats" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Some conference submission formats are disgusting, like ECCV.
+I wrote a setup that gives me a flag to swap between that sickening abomination and the NeurIPS format.&lt;/p&gt;
+&lt;p&gt;First, you need both sty files in your project. For me it was &lt;code&gt;eccv.sty&lt;/code&gt; and &lt;code&gt;neurips_2024.sty&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;
+&lt;span class="normal"&gt;14&lt;/span&gt;
+&lt;span class="normal"&gt;15&lt;/span&gt;
+&lt;span class="normal"&gt;16&lt;/span&gt;
+&lt;span class="normal"&gt;17&lt;/span&gt;
+&lt;span class="normal"&gt;18&lt;/span&gt;
+&lt;span class="normal"&gt;19&lt;/span&gt;
+&lt;span class="normal"&gt;20&lt;/span&gt;
+&lt;span class="normal"&gt;21&lt;/span&gt;
+&lt;span class="normal"&gt;22&lt;/span&gt;
+&lt;span class="normal"&gt;23&lt;/span&gt;
+&lt;span class="normal"&gt;24&lt;/span&gt;
+&lt;span class="normal"&gt;25&lt;/span&gt;
+&lt;span class="normal"&gt;26&lt;/span&gt;
+&lt;span class="normal"&gt;27&lt;/span&gt;
+&lt;span class="normal"&gt;28&lt;/span&gt;
+&lt;span class="normal"&gt;29&lt;/span&gt;
+&lt;span class="normal"&gt;30&lt;/span&gt;
+&lt;span class="normal"&gt;31&lt;/span&gt;
+&lt;span class="normal"&gt;32&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;% set this flag to 0 to use ECCV format, 1 to use neurips format&lt;/span&gt;
+&lt;span class="k"&gt;\def\useformat&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;1&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\if\useformat&lt;/span&gt;0
+    &lt;span class="k"&gt;\documentclass&lt;/span&gt;&lt;span class="na"&gt;[runningheads]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;llncs&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="c"&gt;%%%%%% START ECCV HEADER&lt;/span&gt;
+    &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="na"&gt;[review,year=2024,ID=11071]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;eccv&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="c"&gt;% final submission, options&lt;/span&gt;
+    &lt;span class="c"&gt;%\usepackage{eccv}&lt;/span&gt;
+    &lt;span class="c"&gt;%\usepackage[mobile]{eccv}&lt;/span&gt;
+    &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;eccvabbrv&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="c"&gt;%%%%%% END ECCV HEADER&lt;/span&gt;
+&lt;span class="k"&gt;\else&lt;/span&gt;
+    &lt;span class="c"&gt;%%%%%% NEURIPS HEADER&lt;/span&gt;
+    &lt;span class="k"&gt;\documentclass&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;article&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="c"&gt;% if you need to pass options to natbib, use, e.g.:&lt;/span&gt;
+    &lt;span class="c"&gt;% before loading neurips_2023&lt;/span&gt;
+    &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="na"&gt;[final,nonatbib]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;neurips&lt;span class="nb"&gt;_&lt;/span&gt;2024&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="na"&gt;[sort&amp;amp;compress,numbers]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;natbib&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="c"&gt;%     \usepackage{neurips_2023} % submission anonymized&lt;/span&gt;
+    &lt;span class="c"&gt;%     \usepackage[final]{neurips_2023}&lt;/span&gt;
+    &lt;span class="c"&gt;%%%%% END NEURIPS HEADER&lt;/span&gt;
+    &lt;span class="c"&gt;%%%%%%%%%% MORE ACL STUFF&lt;/span&gt;
+    &lt;span class="c"&gt;% For proper rendering and hyphenation of words containing Latin characters (including in bib files)&lt;/span&gt;
+    &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="na"&gt;[utf8]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;inputenc&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="na"&gt;[T1]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;fontenc&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;microtype&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;inconsolata&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="c"&gt;%%%%% OPTIONS FOR NICER FONTS (MUST COMMENT OUT FOR NEURIPS FINAL VERSION)&lt;/span&gt;
+    &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;times&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;subcaption&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;adjustbox&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\fi&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;Then throughout the document for select other commands that I wanted to only use with one I would have to add that flag into them. &lt;code&gt;\useformat0&lt;/code&gt; or &lt;code&gt;1&lt;/code&gt; would switch between either ECCV or NeurIPS.&lt;/p&gt;
+&lt;h2 id="making-a-centered-figure-wider-than-pagewidth"&gt;&lt;a class="toclink" href="#making-a-centered-figure-wider-than-pagewidth"&gt;Making a centered figure wider than &lt;code&gt;\pagewidth&lt;/code&gt;&lt;/a&gt;&lt;a class="header-link" href="#making-a-centered-figure-wider-than-pagewidth" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;dark art: making a figure oversized relative to the text
+&lt;em&gt;there are legitimate reasons to do this, for example if your figure has whitespace baked in but you want the filled part to be 100%&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;graphicx&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;adjustbox&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\bigln&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[2]&lt;span class="nb"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;adjustbox&lt;span class="nb"&gt;}{&lt;/span&gt;center&lt;span class="nb"&gt;}&lt;/span&gt;
+        &lt;span class="k"&gt;\resizebox&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;#1&lt;span class="k"&gt;\linewidth&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;!&lt;span class="nb"&gt;}{&lt;/span&gt;
+            &lt;span class="k"&gt;\centering&lt;/span&gt;
+            #2
+        &lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;adjustbox&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;You wrap the &lt;code&gt;\includegraphics&lt;/code&gt; inside of the &lt;code&gt;\bigln&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id="teaser-figures-in-the-acl-format"&gt;&lt;a class="toclink" href="#teaser-figures-in-the-acl-format"&gt;Teaser figures in the *ACL format&lt;/a&gt;&lt;a class="header-link" href="#teaser-figures-in-the-acl-format" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Suppose you want to put a full-width figure at the top of your ACL paper, as seen in this example.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Top of Michael's ACL 2023 paper with a big teaser figure" src="https://gist.github.com/michaelsaxon/21ab96429ffb86fb7691945dfe3f657a/raw/6ec0322422b20f70264faf1211e53138d5409021/0_z_cccl_example.png"/&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;\figure*{}&lt;/code&gt; macro does not work to insert a full-width figure above the abstract in the ACL template for some reason. Thus, we need to hack together a command that does it for us.&lt;/p&gt;
+&lt;p&gt;This command does a few things:
+- Breaks out of the document rendering defined by the ACL template with &lt;code&gt;strip&lt;/code&gt;
+- Manually implements a hacked Figure macro with manually-written "Figure 1:", manual font size setting, etc.
+- Manually sets the figure count variable to not duplicate "Figure 1"&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;
+&lt;span class="normal"&gt;14&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;%%%%%%%%% in preamble %%%%%%%%%&lt;/span&gt;
+
+&lt;span class="c"&gt;% to make \strip work&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;cuted&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;hyperref&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;% hack commands to create a centered `\incudegraphics`-like macro that &lt;/span&gt;
+&lt;span class="c"&gt;% doesn't cause weird errors&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\adjustimg&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="c"&gt;% Horizontal adjustment of image&lt;/span&gt;
+  &lt;span class="k"&gt;\hspace*&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\dimexpr\evensidemargin&lt;/span&gt;-&lt;span class="k"&gt;\oddsidemargin&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="c"&gt;%&lt;/span&gt;
+&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\centerimg&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;[2][width=&lt;span class="k"&gt;\textwidth&lt;/span&gt;]&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="c"&gt;% Center an image&lt;/span&gt;
+  &lt;span class="k"&gt;\makebox&lt;/span&gt;&lt;span class="na"&gt;[\textwidth]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\adjustimg\includegraphics&lt;/span&gt;&lt;span class="na"&gt;[#1]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;#2&lt;span class="nb"&gt;}}&lt;/span&gt;&lt;span class="c"&gt;%&lt;/span&gt;
+&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;Once we have defined our figure commands in the preamble and imported relevant packages, we insert the figure at the top of our document, before &lt;code&gt;\begin{abstract}&lt;/code&gt; is written.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;
+&lt;span class="normal"&gt;14&lt;/span&gt;
+&lt;span class="normal"&gt;15&lt;/span&gt;
+&lt;span class="normal"&gt;16&lt;/span&gt;
+&lt;span class="normal"&gt;17&lt;/span&gt;
+&lt;span class="normal"&gt;18&lt;/span&gt;
+&lt;span class="normal"&gt;19&lt;/span&gt;
+&lt;span class="normal"&gt;20&lt;/span&gt;
+&lt;span class="normal"&gt;21&lt;/span&gt;
+&lt;span class="normal"&gt;22&lt;/span&gt;
+&lt;span class="normal"&gt;23&lt;/span&gt;
+&lt;span class="normal"&gt;24&lt;/span&gt;
+&lt;span class="normal"&gt;25&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;%%%%%%%%% in document %%%%%%%%%&lt;/span&gt;
+
+&lt;span class="c"&gt;%%% before abstract %%%&lt;/span&gt;
+
+&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;strip&lt;span class="nb"&gt;}&lt;/span&gt;
+  &lt;span class="c"&gt;% set this to something that looks good.&lt;/span&gt;
+  &lt;span class="k"&gt;\vspace&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;-58pt&lt;span class="nb"&gt;}&lt;/span&gt;
+
+  &lt;span class="c"&gt;% we use the centerimg macro here instead of \includegraphics to make the text &lt;/span&gt;
+  &lt;span class="c"&gt;% on the rest of this fake figure macro correctly render&lt;/span&gt;
+    &lt;span class="k"&gt;\noindent\centerimg&lt;/span&gt;&lt;span class="na"&gt;[width=\linewidth]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;TEASER&lt;span class="nb"&gt;_&lt;/span&gt;FIG&lt;span class="nb"&gt;}&lt;/span&gt;
+
+  &lt;span class="c"&gt;% Note: we need to manually write the text "Figure 1:" here as we aren't actually &lt;/span&gt;
+  &lt;span class="c"&gt;% using the "figure" macro.&lt;/span&gt;
+  &lt;span class="k"&gt;\fontsize&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;10pt&lt;span class="nb"&gt;}{&lt;/span&gt;12pt&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\selectfont&lt;/span&gt;
+    Figure 1: TEASER CAPTION HERE
+  &lt;span class="k"&gt;\label&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;fig:teaser&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;strip&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;% because we manually made a figure without the macro, we need to increment the &lt;/span&gt;
+&lt;span class="c"&gt;% figure counter so that the next one is Figure 2&lt;/span&gt;
+&lt;span class="k"&gt;\setcounter&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;figure&lt;span class="nb"&gt;}{&lt;/span&gt;1&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;%%% start abstract %%%&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;Because we didn't produce this inside of the &lt;code&gt;figure&lt;/code&gt; macro, using &lt;code&gt;\ref{}&lt;/code&gt;, &lt;code&gt;\cref{}&lt;/code&gt;, and &lt;code&gt;\autorref&lt;/code&gt; won't work! Instead, we have to use this hack:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;
+&lt;span class="normal"&gt;3&lt;/span&gt;
+&lt;span class="normal"&gt;4&lt;/span&gt;
+&lt;span class="normal"&gt;5&lt;/span&gt;
+&lt;span class="normal"&gt;6&lt;/span&gt;
+&lt;span class="normal"&gt;7&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;% replacing ref&lt;/span&gt;
+...in Figure &lt;span class="k"&gt;\hyperref&lt;/span&gt;&lt;span class="na"&gt;[fig:teaser]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;1&lt;span class="nb"&gt;}&lt;/span&gt;...
+
+&lt;span class="c"&gt;% replacing autorref&lt;/span&gt;
+...in &lt;span class="k"&gt;\hyperref&lt;/span&gt;&lt;span class="na"&gt;[fig:teaser]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Figure 1&lt;span class="nb"&gt;}&lt;/span&gt;...
+
+etc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+</content><category term="Tips"></category><category term="latex"></category></entry><entry><title>A seizure-free year for Michael!</title><link href="saxon.me/blog/2025/epilepsy/" rel="alternate"></link><published>2025-01-07T19:35:00-08:00</published><updated>2025-01-07T19:35:00-08:00</updated><author><name>Michael Saxon</name></author><id>tag:None,2025-01-07:saxon.me/blog/2025/epilepsy/</id><summary type="html">Meditations and reflections of a (former?) epileptic in recovery</summary><content type="html">&lt;blockquote class="infobox infobox-note"&gt;
 &lt;p&gt;&lt;em&gt;My New Year's resolution is to blog regularly, even if it means writing random nonsense that has little to do with research. To start, I wanted to tell the story of my health for my research career. This is not a pity party but a documentary effort. Now that I think I have (fingers crossed) closed this chapter of my life, I feel ready to write a bit about it. A lot of this story is about me being stupid. Don't be stupid like me.&lt;/em&gt; &lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id="beginnings"&gt;&lt;a class="toclink" href="#beginnings"&gt;Beginnings&lt;/a&gt;&lt;a class="header-link" href="#beginnings" title="Permalink to this section"&gt;¶&lt;/a&gt;&lt;/h3&gt;

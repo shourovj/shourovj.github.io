@@ -1,0 +1,275 @@
+/* Publication styles */
+.publication {
+    margin-bottom: 1rem;  /* slightly reduced space between publications */
+    padding: 1rem;
+    border-radius: 8px;
+    background: var(--brand-light);
+    line-height: 1.4;  /* tighter overall line height */
+}
+
+.publication .title {
+    font-size: 1.1rem;  /* slightly larger than default */
+    font-weight: bold;
+    margin-bottom: 0.3rem;  /* space after title */
+    line-height: 1.3;  /* tighter line height for title */
+}
+
+.publication .authors {
+    font-style: italic;
+    margin-bottom: 0.25rem;  /* subtle space after authors */
+    color: var(--text-muted);
+}
+
+.publication .venue {
+    margin-bottom: 0.25rem;  /* subtle space after venue */
+}
+
+.pub-link {
+    display: inline-block;
+    margin-right: 1rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    background: var(--accent-color);
+    color: var(--bg-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.pub-link:hover {
+    background: var(--accent-color-hover);
+}
+
+.pub-year-group {
+    margin-bottom: 3rem;
+}
+
+.pub-main-info {
+    margin-bottom: 1rem; /* Space between main info and badges */
+}
+
+.pub-title-link {
+    color: inherit; /* Keep title color */
+    text-decoration: none;
+}
+.pub-title-link:hover {
+    text-decoration: underline;
+    color: var(--brand-main); /* Use brand-main for hover highlight */
+}
+
+.pub-badges {
+    display: flex;
+    flex-wrap: wrap; /* Allow badges to wrap on smaller screens */
+    gap: 0.5rem; /* Space between badges */
+    /* Space below badges before potential content */
+    /* margin-bottom: 0.5rem;  */
+}
+
+.pub-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid var(--brand-main);
+    transition: background-color 0.2s, color 0.2s;
+    white-space: nowrap; /* Prevent text wrapping within badge */
+}
+
+.link-badge {
+    background: var(--brand-main); 
+    color: var(--bg-main);         
+    border-color: var(--brand-main); 
+}
+
+.link-badge:hover {
+    background: var(--brand-dark); 
+    color: var(--bg-main);
+    border-color: var(--brand-dark);
+}
+
+/* arXiv Badge Style */
+.arxiv-badge {
+    background-color: var(--kanagawa-dark-red); /* Use a distinct color */
+    border-color: var(--kanagawa-dark-red);
+    color: var(--bg-main); /* Ensure text contrast */
+}
+.arxiv-badge:hover {
+    background-color: var(--kanagawa-medium-red); /* Slightly lighter red on hover */
+    border-color: var(--kanagawa-medium-red);
+    color: var(--bg-main);
+}
+
+/* ACL Anthology Badge Style */
+.acl-badge {
+    background-color: var(--kanagawa-dark-red); /* Use a distinct blue */
+    border-color: var(--kanagawa-dark-red);
+    color: var(--bg-main);
+}
+.acl-badge:hover {
+    background-color: var(--kanagawa-light-red); /* Lighter blue on hover */
+    border-color: var(--kanagawa-light-red);
+    color: var(--bg-main);
+}
+
+/* Conference Badge Style (for OpenReview links) */
+.conf-badge {
+    /* Let's use the default link-badge style for now */
+    /* You could make this distinct if desired, e.g.: */
+    /* background-color: var(--kanagawa-dark-green); */
+    /* border-color: var(--kanagawa-dark-green); */
+    /* color: var(--bg-main); */
+}
+/* Add hover if you make it distinct */
+/* .conf-badge:hover { ... } */
+
+.toggle-badge {
+    background: var(--bg-main);
+    color: var(--text-muted);
+}
+
+.toggle-badge:hover {
+    background: var(--brand-light);
+    color: var(--text-body);
+    border-color: var(--brand-main);
+}
+
+.toggle-badge[aria-expanded="true"] {
+    background: var(--brand-main);
+    color: var(--bg-main);
+    border-color: var(--brand-main);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Common styles for expandable content containers (Abstract and BibTeX) */
+.expandable-content {
+    margin: 0;
+    margin-top: 1rem;
+    border-radius: 8px; /* Apply radius to both */
+    border: 1px solid var(--brand-main); /* Apply consistent border */
+    padding: 0.5em 1.2em; /* Apply compact padding to both */
+    background: var(--quote-bg); /* Consistent background */
+}
+
+/* Style for the abstract content div specifically */
+.expandable-content .abstract {
+     /* Abstract specific styles */
+    font-size: 0.9rem; /* Smaller font size */
+    line-height: 1.4; /* Adjust line height for smaller font */
+    color: var(--text-body);
+}
+
+.expandable-content .abstract strong { /* Style the "Abstract:" label */
+    color: var(--text-dark); /* Make label slightly darker/bolder */
+    display: block; /* Put label on its own line */
+}
+
+/* Ensure paragraphs inside abstract don't add extra margin */
+.expandable-content .abstract p {
+    margin: 0;
+}
+
+/* Specific overrides for BibTeX highlight block */
+.highlight.bibtex-highlight {
+    /* Inherits border, radius from .expandable-content now */
+    /* Needs specific background if different from abstract */
+    background: var(--code-bg); /* Use code background for BibTeX */
+
+    /* --- Existing Overrides --- */
+    overflow-x: hidden;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: var(--text-body);
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 0.9rem; /* Ensure font size consistency */
+    line-height: 1.4;
+
+    /* Padding is inherited from .expandable-content */
+    /* Margin is inherited from .expandable-content */
+}
+
+/* Reset default margins on the pre tag inside BibTeX block */
+.highlight.bibtex-highlight pre {
+    margin: 0;
+    padding: 0;
+}
+
+/* Ensure code tag inside BibTeX block wraps */
+.highlight.bibtex-highlight code {
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    display: block;
+    padding: 0;
+}
+
+/* Ensure copy button (which uses position:absolute) works */
+/* .highlight already has position:relative from style.css */
+
+.pub-links {
+    margin: 0.8rem 0;
+}
+
+.pub-link {
+    display: inline-block;
+    margin-right: 0.8rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    background: var(--accent-color);
+    color: var(--bg-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.pub-link:hover {
+    background: var(--accent-color-hover);
+}
+
+.expand-toggle {
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    cursor: pointer;
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.expand-icon {
+    display: inline-block;
+    margin-right: 0.5rem;
+    transition: transform 0.2s;
+}
+
+.expand-toggle[aria-expanded="true"] .expand-icon {
+    transform: rotate(90deg);
+}
+
+.expandable {
+    border-radius: 8px;
+    background: var(--code-bg);
+}
+
+.me {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Adjust spacing for the buttons container */
+.publication .buttons {
+    /* slightly more space before buttons */
+    /* margin-top: 0.4rem; */
+}
+
+.video-badge {
+    background-color: #ffcc00;  /* Example color, adjust as needed */
+    color: #333;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.3rem;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+    display: inline-block;
+}

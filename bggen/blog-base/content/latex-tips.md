@@ -1,31 +1,43 @@
-Status: draft
 Title: Michael's TeXronomicon (LaTeX tips, tricks, and hacks)
 Date: 2025-04-02 15:32
 Category: Tips
 Tags: latex
 Authors: Michael Saxon
-Summary: Various tricks and lessons I've learned from messing around in LaTex. Adapted and extended from a gist by [me](https://gist.github.com/michaelsaxon).
+Summary: Various snippets, tricks, and lessons I've developed and learned from messing around in LaTeX and scrutinizing source files on arXiv.
 Image: images/latex-tips.jpg
 remove_footnote_section: true
 
-[TOC]
+Between my mild presentational OCD and a desire to understand how various cool figures, tables, and styles have been implemented in other groups' papers, I have accumulated quite a few LaTeX snippets that I pass around with my friends. I figured I should put them all in one place along with some explanations, so (if you're interested) you can learn to make your own.
 
-The keys to understanding LaTeX are mastering Knuth-isms and managing your sanity.
+You should probably check out the TOC to decide which parts you want to read.
+There will probably be parts you already know; I am covering basics here so I can give this to a new author.
+To briefly explain the structure, I will discuss:
+
+1. How commands work, how to make them, and **the right way to do comment commands**.
+2. *Text* styling, including coloring, highlighting, citation styles, exotic symbols, non-Latin alphabets, and inline graphics/icons.
+3. *Table* styling and formatting, which packages you should use, special symbols to make tables more readable, and making text compact.
+<!-- 4. *Figure* making and styling, including composite figures, table-based figures, the various subfigure packages, and how to *generate* good, readable figures from matplotlib easily.
+5. How to set up *Overleaf with VSCode*, a gamechanger I was recently shown. -->
+4. **The dark arts**, how you can break free from the bounds of conference `.sty` files.
+
+I might write more about within-document compound figure making and best-practices for generating readable plots in a follow-up post if there's interest.
+
+[TOC]
 
 # 1. Making commands 
 
-You should make commands. At their simplest, they let you reuse text or formatting easily. But they can do much more. First, a little bit about how to make them:
+**You should probably be making more commands than you currently are**. At their simplest, commands can let you reuse text or formatting easily, but they can do much more. First, a little bit about how to make them:
 
-I know two ways to make commands, `\newcommand` and `\renewcommand`. 
-If the command already exists, `\renewcommand` will overwrite it (sometimes very useful). For example, I used `\renewcommand` to fix a critical flaw in the COLM format.
+The two main command-making macros are `\newcommand` and `\renewcommand`. 
+If a command already exists, and you want to override its behavior, use `\renewcommand`. For example, I used `\renewcommand` to fix a critical flaw in the COLM format.
 
-Consider this snippet:
+In the COLM format, this snippet:
 
 ```latex
 Inertia is a property of matter \cite{nye1995science}.
 ```
 
-It renders as:
+would wrongly render as:
 
 > Inertia is a property of matter Nye et al. (1995).
 
@@ -42,12 +54,12 @@ With `\renewcommand` it's a one line fix:
 \renewcommand{\cite}{\citep}
 ```
 
-Probably the most common use case I see for writing commands is to make named comments in collaborative docs.
-
-
 ## Comment commands
 
-The typical way we implement comment commands is something simple like: 
+The command definition you have almost certainly used before is **comment commands**.
+But have you made them hideable? Modular? Here's how I built up a more powerful comment command that I always drop in. 
+
+A typical, simple comment command is something like:
 
 ```latex
 \newcommand{\mycomment}[1]{\textcolor{red}{michael: #1}}
@@ -88,60 +100,222 @@ I fix both of these issues by implementing *a base comment command* that I build
 `\newif\ifmyvariable` defines a boolean variable, which is actually named `myvariable`.
 You can control it with `\myvariabletrue` or `\myvariablefalse`. This is weird and Knuth-y.
 
+
+Now, all I have to do to periodically check how the spacing and length of the paper is with a bunch of inline comments present is to make `\commentsofftrue`.
+
 ## Fixing infuriating spacing issues
 
-Often you want to define a command as a simple macro for some name you're using throughout the paper. Something like
+Often you want to define a command as a simple macro for some name you're using throughout the paper, say, for a contrived backronym method name. Something like:
 
 ```latex
-\newcommand{\method}{\textsc{BiG-BiRd}}
+\newcommand{\methodname}{\textsc{BiG-BiRd}}
 ```
 
-This has the benefit of letting you change it if you aren't sure what your method is. Also if you want to do obnoxious extra formatting like a weird font or color[^1], it's easy to reuse.
+This has the benefit of letting you change it if you aren't sure what your final method is.
+Also if you want to do obnoxious extra formatting like a weird font or color[^1], it's easier to reuse this way.
 
 [^1]: As I often do...
 
-But as I'm sure you know, this method has an infuriating spacing behavior, where if you add a space *in* the command it's always there, even before a period. If you don't add a space it will *ignore* spaces behind the command, so "`\method is great`" renders as "BiG-BiRdis great". Unless you do some hack every time you want a space like "`\method~ is great`".
+Unfortunately, text in LaTeX commands have infuriating spacing behavior. If you put the command as is, it will *ignore* following spaces,  so "`\methodname is great`" renders as "BiG-BiRdis great".
 
-I recently was shown the `\xspace` package, my savior. Just add:
+The `\xspace` package makes spacing work right:
 
 ```latex
 % in preamble
 \usepackage{xspace}
 
-\newcommand{\method}{\textsc{BiG-BiRd}\xspace}
+\newcommand{\methodname}{\textsc{BiG-BiRd}\xspace}
 ```
-
-And your problems are solved.
 
 
 # 2. Doing text right
 
+With our new understanding of commands, we can turn to discussing best practices for working with existing commands and creating new commands to make your text look beautiful.
+
+Additionally, we will talk about how navigate the various quirky "Knuth-isms"[^3] that pervade LaTeX to make your text look right.
+
+[^3]: My term for the peculiar ways some commands in TeX are written, which I believe come from the particularly detail-obsessed mind of its creator Don Knuth (pictured in the thumbnail)
+
+## Citations
+
+Two different styles of inline citation are invoked with `\citet`, and `\citep`.
+In parenthetical citation styles (such as \*ACL or COLM) these mean *text-inline* (`\citet` for *t*ext) and *inside the parentheses* (`\citep`).
+
+>  Saxon et al. (2024) vs (Saxon et al. 2024)
+
+One is used just as a source for a claim, the other is to write a sentence that the authors say X or authors do X.
+
+Usually, `\cite` and `\citep` do the same thing. If they don't, I usually newcommand or renewcommand `\cite` to get this behavior.
+
+## `ref`, `autoref`, and `cleveref`
+
+When you want to reference a figure or table by number you can use `\ref{fig:figurename}` to generate the figure number in a link like:
+
+```latex
+In figure \ref{fig:figurename} we learn X.
+```
+
+generates
+
+> In figure [1]() we learn X.
+
+But what if you want the "figure" text to be part of the link? And what if you're sick of typing "figure" or "table" each time? There are two solutions, `autoref` and `cleveref`.
+
+`\autoref` is the simpler command.
+
+```latex
+\usepackage{autoref}
+
+In \autoref{fig:figurename} we learn X. \autoref{fig:otherfigure} shows Y.
+```
+
+> In [figure 1]() we learn X. [Figure 2]() shows Y
+
+Autoref works for figures, tables, sections, subsections, subsubsections, etc.
+
+> In subsubsection 2.3.1... Section 3 shows... See table 2...
+
+Note that the first "figure" isn't capitalized, while the second is. "subsubsection" isn't capitalized but "Section" is. `autoref` automates all of this based on position in a sentence.
+
+What if you want a more compact style of these automatic citations? What if you want to change this behavior? That's where `cleveref` can come in handy.
+
+```latex
+\usepackage{cleveref}
+\crefformat{section}{\S#2#1#3}
+\crefformat{subsection}{\S#2#1#3}
+\crefformat{subsubsection}{\S#2#1#3}
+
+The turbo encabulator (\cref{subsec:encabulator}) also leverages inverse reactive current in unilateral phase detractors
+```
+> The turbo encabulator (§2.3.1) also leverages inverse reactive current in unilateral phase detractors
+ 
+Within those definitions you can define whatever behavior you want. You can make it say "Section 2.3.1" instead of "subsubsection 2.3.1", enforce capitalization in all places, etc.
+
+## Quotation marks
+
+One of the most infuriating Knuthisms in LaTeX is the way quotation marks are handled. 
+
+The characters `'` and `"`, in most fonts, **specifically refer to backwards marks**. So
+
+```latex
+In the turbo encabulator power is generated by "capacitive diractance" and 'magneto reluctance.'
+```
+
+> In the turbo encabulator power is generated by ”capacitive diractance” and ’magneto reluctance.’
+
+Note the opening quotation marks are backwards. (This looks worse in the serif fonts most LaTeX documents use than it looks here.)
+To fix this, **you need to use the tick mark `, not the apostrophe ', to open quotes.**
+
+```latex
+In the turbo encabulator power is generated by ``capacitive diractance'' and `magneto reluctance.'
+```
+
+> In the turbo encabulator power is generated by “capacitive diractance” and ‘magneto reluctance.’
 
 
-## citations
 
-- resizing text
-- defining and setting special text colors
-- highlighting and colored background for text
+## Resizing and transforming text
 
-- cite, citet, citep
+There are various useful reasons you may want to resize text.
+Maybe to shrink an equation so it fits on a line, or to do some customization inside a figure or to shrink text in a table cell.
 
-## colored boxese
+Text sizing is a site of many hilarious Knuthisms.
+First, to size a line of text, you use these (in ascending order of size)
 
-- `\vig` and making a nice colored box
+- `\tiny`
+- `\scriptsize`
+- `\footnotesize`
+- `\small`
+- `\normalsize`
+- `\large`
+- `\Large`
+- `\LARGE`
+- `\huge`
+- `\Huge`
 
-gets you something like 
+If you're just mad, you should say `{\large I am mad}` but if you're REALLY angry you can give a `{\LARGE I AM FURIOUS}`.
+
+See more in [Overleaf's docs](https://www.overleaf.com/learn/latex/Font_sizes%2C_families%2C_and_styles)
+
+
+## Defining colors and coloring text
+
+By default, LaTeX has colors like "red", "green", "blue", and "magenta" (as I used above in my comment commands).
+
+However, the `xcolor` package is pretty much a must-use even with those colors defined.
+I'm pretty sure it is what gives the `\color{green}` macro its power, even if the color green already exists.
+
+To color a bit of text, you wrap all the text you want *inside brackets, with the color macro*.
+
+```latex
+This text is black and {\color{green} this text is green}.
+```
+
+Additionally, it gives access to more elaborate colors depending on how you import. For example, `\usepackage[dvipsnames]{xcolor}` gives you access to more colors like "aquamarine," "skyblue", "navyblue", etc.
+
+![The how boys see colors vs how girls see colors meme except for base latex vs dvips colors]({attach}images/xcolor-meme.jpg)
+
+Additionally, we can use xcolor to define our own colors.
+The precise way is with an RGB code.
+For example, `\definecolor{tifablue}{RGB}{226, 232, 248}` defines the exact color we used in Table 2 of our [TS2 paper](https://arxiv.org/pdf/2404.04251) to define the highlight color of TIFA-related runs. Once defined, one of these colors can be invoked with `\color{tifablue}`.
+
+If you just need a one-off hacky new color though, getting RGB may be too much.
+Here you can use this fractional combination-based technique I don't fully understand. 
+`\color{blue!50!black}` is the mix of 50% pure blue (`#0000FF`) and 100% pure black (`#000000`). The practical use of this color notation is that it can be directly used inline, inside the `color` command, rather than requiring a color definition.
+
+Other color models you can use include cmyk, HTML, and wavelength of the color in nanometers. 
+More explanation of colors with the predefined names are given [here](https://latex-tutorial.com/color-latex/).
+
+### Custom-colored highlighting
+
+The `soul` package provides useful macros for custom highlighting and background coloring for text.
+
+```latex
+\usepackage{soul}
+
+\sethlcolor{green}
+This is \hl{cool} stuff!
+```
+
+> This is <span style="background-color: #0F0;">cool</span> stuff!
+
+The purpose of this `soul`-based solution for coloring text rather than `colorbox` is that soul properly breaks lines, while colorbox doesn't.
+
+## Size units for spacing: em, ex, pt, etc
+
+When we want to define the size or spacing of an object, we have a few choices of unit which have different uses in different settings.
+
+You probably already know `pt`, or typographical point. I usually use this to size inline components (see **Inline icons** below). Depending on the document, 10, 11, or 12 pt will usually give you an element equal in size to the height of a tall letter in the main text.
+
+`em` and `ex` come from CSS, and are **useful size units defined relative to the font size.**
+`1em` is equivalent to the current font size. `1ex` is equivalent to the height of the letter "x" in the current font size, roughly 50% of `1em`.
+
+These units are very useful for quickly iterating on heights and widths that are large relative to the whole document (for example, setting negative vspace in the **Dark arts** section)
+
+Finally, if you wish, you can use `cm`, `mm`, and `in` for sizing. Self-explanatory, they are relative to the current document. I prefer not to use them.
+
+## Annoying extra formatting (which I sometimes use)
+
+If you really want to go the extra mile to make your paper pop, you can do things like making your method name colorful every time it shows up, or use exotic symbols for author affiliation marks rather than numbers, playing card suits, or crosses.
+
+Also, you can decorate quotations with big colored boxes!
+
+### Big colored text boxes
+
+In our COLM paper from last year, we wanted to insert cute little vignettes from the real sciences relating to our position on AI science.
+
+To do this I wrote a `\vig` command to make a nice colored box, something like the warning boxes I implemented for this website!
 
 > [!NOTE]
-> lorem ipsum 
+> ***Example colorbox!***
+> 
+> Text of the box!
 
-> [!IMPORTANT]
-> cool stuff
+We did this using the `tcolorbox` package.
 
 ```latex
 \usepackage[skins,breakable]{tcolorbox}
 
-\newtcolorbox{boxred}{enhanced,colback=orange!5!white,colframe=orange!75!black,breakable=true}
 \newtcolorbox{boxblue}{enhanced,colback=blue!5!white,colframe=blue!75!black,breakable=true}
 
 \newcommand{\vig}[2]{
@@ -152,34 +326,63 @@ gets you something like
 \end{boxblue}
 }
 
-\newcommand{\case}[2]{
-\begin{boxblue}
-\textit{\color{blue!50!black}\textbf{Case study}: #1}\\
-
-#2
-\end{boxblue}
-}
+\vig{Example colorbox!}{Text of the box!}
 ```
 
-## Annoying fancy colored text
-cursor gave me this atrocity
-`\newcommand{\methodfancy}{\textbf{\textsc{\textcolor[rgb]{0,0,0}{T}\textcolor[rgb]{0.2,0,0}{h}\textcolor[rgb]{0.4,0,0}{o}\textcolor[rgb]{0.5,0,0}{u}\textcolor[rgb]{0.6,0,0}{g}\textcolor[rgb]{0.7,0,0}{h}\textcolor[rgb]{0.8,0,0}{t}\textcolor[rgb]{0.85,0,0}{T}\textcolor[rgb]{0.9,0,0}{e}\textcolor[rgb]{0.95,0,0}{r}\textcolor[rgb]{1,0,0}{m}\textcolor[rgb]{1,0,0}{i}\textcolor[rgb]{1,0,0}{n}\textcolor[rgb]{1,0,0}{a}\textcolor[rgb]{1,0,0}{t}\textcolor[rgb]{1,0,0}{o}\textcolor[rgb]{1,0,0}{r}}}\xspace}`
+Here you can see I used the fractional color models discussed above. The options `skins` enables a subpackage which provides a LOT of different options for themeing colorboxes beyond the simple one we used (full documentation [here](https://texdoc.org/serve/tcolorbox.pdf/)). This allowed us to set the frame color and background color.
+The `breakable` option allows us to let the colorbox break across pages rather than being forced to the top of a following page and adding a bunch of whitespace like a forced inline figure would.
+
+### Fancy colored gradients inline
+
+If a single xcolor isn't enough to make your methodname look good (it wasn't enough in [TS2](https://arxiv.org/pdf/2404.04251)) you can use the `gradient-text` package to achieve this.
 
 ```latex
+\usepackage[dvipsnames]{xcolor}
+\usepackage{gradient-text}
+
 \newcommand{\resourcename}{\texttt{\textbf{\gradientRGB{T2IScoreScore}{68,67,147}{61,130,217}}}}
-\newcommand{\tscolor}{\texttt{\textbf{\gradientRGB{TS2}{68,67,147}{61,130,217}}}}
-\newcommand{\rncolor}{\includegraphics[trim=0 0.2ex 0 -1.5ex,height=1.8ex]{module/T2IScoreScore.pdf}}
 ```
 
-## annoying inline icons
-`\vspace{-3pt}\raisebox{-3pt}{\includegraphics[width=20pt]{pics/terminator_logo.png}}`
-you can just directly use the `\includegraphics` command inside of text
+`\gradientRGB` colors all *n* letters in the first argument text with *n* intermediate colors it calculates which interpolate between the colors in arguments 2 and 3.
 
-## exotic symbols
+### Inline icons
 
-Egyptian hieroglyphs!
+Say you want to put a cute image or icon in the title of your paper, like the [Stochastic Parrots](https://upload.wikimedia.org/wikipedia/commons/f/f2/On_the_Dangers_of_Stochastic_Parrots_Can_Language_Models_Be_Too_Big.pdf) paper did.
 
-How I did the playstation icons
+You can just[^4] put `\includegraphics` macros inline with text.
+
+[^4]: do things
+
+For example, I put a logo for an upcoming preprint in our title like this:
+
+```latex
+\vspace{-3pt}\raisebox{-3pt}{\includegraphics[width=20pt]{pics/logo.png}}
+```
+
+Basically, here's what's going on here. The icon image itself is very big, much bigger than a line of text. If you just put `\includegraphics` inline without anything around it, the image will scale to its natural size.
+
+To counteract this, I have to both manipulate its sizing and positioning.
+Through manual experimentation I found that setting the width to 20pt roughly sized it according to my desires. However, the spacing was off. The image was too far above the line and making the line itself taller. To fix this, I had to use negative `\vspace{}` to keep the line positioning in subsequent lines from being impacted by the symbol, and negative `\raisebox{}` to slightly push the bottom of the image under the line.
+
+### Exotic symbols (eg., as author affiliation marks)
+
+I used to really dislike the trend of quirky affiliation marks in author lists, and was basically doing them ironically[^5] until I came to love them. Here are some ways I got them.
+
+[^5]: I know, I'm obnoxious
+
+In my [NAACL paper](https://arxiv.org/abs/2403.11092) last year I used Egyptian hieroglyphs as affiliation marks.
+
+```latex
+
+\usepackage{hieroglf}
+
+I love Egypt! \textpmhg{eFR\Hibl}
+```
+
+> I love Egypt! 𓁹𓆛𓅃𓅠
+
+In our TS2 paper, I wanted to have PlayStation button symbols as author affiliation marks. I drew these using custom tikz:
+
 ```latex
 \usepackage{xcolor}
 \usepackage{tikz}
@@ -201,28 +404,13 @@ How I did the playstation icons
     \draw[line width=5pt, blue] (0.8,-0.8) -- (-0.8,0.8);
 }}
 
-\newcommand{\pssqu}{
-\pssymb{6pt}{
-    \draw (0,0) circle [radius=1.5];
-    \draw[line width=5pt, magenta] (-0.8,0.8) -- (0.8,0.8);
-    \draw[line width=5pt, magenta] (-0.8,0.8) -- (-0.8,-0.8);
-    \draw[line width=5pt, magenta] (0.8,-0.8) -- (0.8,0.8);
-    \draw[line width=5pt, magenta] (0.8,-0.8) -- (-0.8,-0.8);
-}}
+...
 
-\newcommand{\pstri}{
-\pssymb{6pt}{
-    \draw (0,0) circle [radius=1.5];
-    \draw[line width=5pt, teal] (0.8,-0.6) -- (-0.8,-0.6);
-    \draw[line width=5pt, teal] (0.8,-0.6) -- (0,0.8);
-    \draw[line width=5pt, teal] (0,0.8) -- (-0.8,-0.6);
-}}
-... in title
-
-$^\pscirc$, $^\psx$, $^\pssqu$, $^\pstri$
+\author{Michael Saxon$^{\psx\pscirc}$...}
 ```
-This produces something roughly like:
-Michael Saxon<sup><img width="15pt" src="https://t2iscorescore.github.io/static/images/psx.svg"/><img width="15pt" src="https://t2iscorescore.github.io/static/images/psc.svg"/></sup>
+> Michael Saxon<sup><img style="width:12pt;border:0;" src="https://t2iscorescore.github.io/static/images/psx.svg"/><img style="width:12pt;border:0;" src="https://t2iscorescore.github.io/static/images/psc.svg"/></sup>
+
+Providing a tikz tutorial is out of scope here. Look it up yourself ;)
 
 ## Non-Latin (CJK) alphabets on arXiv
 
@@ -251,96 +439,161 @@ I was able to get this working on arXiv:
 \inlinezh{迈克不喜欢卷}
 ```
 
-## Learn the weird Knuth-isms
+# 3. Turning the Tables
 
-Don Knuth, the creator of TeX (pictured in thumbnail), is a bit of a strange guy.
-If you're experienced with LaTeX you're used to remembering a lot of weird names for things, like `\ell` for the fancy curly "L", `\sim` for the tilde. 
-For most of the things you need, you're gonna have to just look them up yourself, but here's a fun little rant about the most perplexing one to me.
-*The LaTeX commands for sizing things are hilarious.*
+Default LaTeX tables aren't very appealing. Use `booktabs.`
 
-First, to size a line of text, you use these (in ascending order of size)
+## Basic table hygiene with `booktabs`
 
-- `\tiny`
-- `\scriptsize`
-- `\footnotesize`
-- `\small`
-- `\normalsize`
-- `\large`
-- `\Large`
-- `\LARGE`
-- `\huge`
-- `\Huge`
+Within the `tabular` environment, `booktabs` gives you macros like `\toprule`, `\bottomrule`, and `\midrule`, which give you lines of different thickness, width, and spacing which look nicer than the default table lines.
 
-If you're just mad, you should say `{\large I am mad}` but if you're REALLY angry you can give a `{\LARGE I AM FURIOUS}`.
-
-Ok, I can wrap my head around that setup. Of course "large" is bigger than "small." Why can't you make text `\big`?
-
-Well, `\big` is a command, but it means something completely different from `\large`. It controls symbols...
-
-The purpose of big is to make something like `(\sum_{i=0}^n i)` not look like garbage[^2].
-
-[^2]: This post has been edited to remove foul language.
-
-will look like shit, because the parentheses are too small. 
-The correct way to fix this is to use the `\left` and `\right` commands to automatically size the brackets based on their contents.
+When you define the columns of your table in the `tabular` environment, (`|`) puts a pipe between lines. The cells can be defined with left, center, or right alignment with `l`, `c`, and `r`. For example:
 
 ```latex
-\left(\sum_{i=0}^n i\right)
+\usepackage{booktabs}
+
+\begin{table}\centering
+\begin{tabular}{l|cr}
+\toprule
+Thing 1 & Thing 2 & Thing 3 \\
+\midrule
+A & B & C \\
+\bottomrule
+\end{tabular}
+\end{table}
 ```
 
-But if you want a fun window into more Knuth-isms, here's how you manually control bracket size (in ascending order):
+> <table style="border-top: 2px solid black; border-bottom: 2px solid black; padding: 1px;"><tr><td style="border-bottom: 1px solid black; margin:0; width: 100pt; border-right: 1px solid black;">Thing 1</td><td style="border-bottom: 1px solid black; margin:0; padding-right 5pt; width: 100pt; text-align:center;">Thing 2</td><td style="border-bottom: 1px solid black; margin:0; width: 100pt;text-align:right;">Thing 3</td></tr><tr style="border:0;"><td style="border-right: 1px solid black;">A</td><td style="text-align:center;">B</td><td style="text-align:right;">C</td></tr></table>
 
-- `\big`
-- `\Big`
-- `\bigg`
-- `\Bigg`
+Please use `|` tastefully. Resist the impulse to do `\tabular{|c|c|c|}`, because this is harder to scan over and read:
 
-
-
-See here in [Overleaf's docs](https://www.overleaf.com/learn/latex/Font_sizes%2C_families%2C_and_styles)
+> [!WARNING]
+> <table style="border-top: 2px solid black; border-bottom: 2px solid black; padding: 1px;"><tr><td style="border-bottom: 1px solid black; margin:0; width: 100pt; border-right: 1px solid black; text-align:center;border-left: 1px solid black; ">Thing 1</td><td style="border-bottom: 1px solid black; margin:0; padding-right 5pt; width: 100pt; text-align:center; border-right: 1px solid black; ">Thing 2</td><td style="border-bottom: 1px solid black; margin:0; width: 100pt;text-align:center;border-right: 1px solid black; ">Thing 3</td></tr><tr style="border:0;"><td style="border-right: 1px solid black; border-left: 1px solid black; text-align:center;">A</td><td style="border-right: 1px solid black; text-align:center;">B</td><td style="border-right: 1px solid black; text-align:center;">C</td></tr></table>
 
 
-# 3. Tables
+## `multirow` and `multicolumn`
 
-- colortbl
-### basic booktabs hygiene
+You can define multi-row and multi-column cells using these environments.
+
+```latex
+\multirow{NUM_ROWS}{ALIGNMENT}{Text}
+\multicolumn{NUM_COLUMNS}{ALIGNMENT}{Text}
+```
+
+`NUM_ROWS` and `NUM_COLUMNS` should be self-explanatory. For `ALIGNMENT` you can use `l`, `r`, `c` as in tabular for multicolumn. For multirow, you should usually use `*` for vertical centering.
+
+## `cmidrule` to partially underline a row
+
+Sometimes you want to only underline some of the cells in a row (for example, you want to underline a multicolumn cell in the row above.) `cmidrule` does this with arguments for edges to thin and cell numbers.
+For example, 
+
+```latex
+\usepackage{booktabs}
+
+\begin{table}\centering
+\begin{tabular}{l|cr}
+\toprule
+Thing 1 & Thing 2 & Thing 3 \\
+\cmidrule{2-3}
+A & B & C \\
+\bottomrule
+\end{tabular}
+\end{table}
+```
+
+> <table style="border-top: 2px solid black; border-bottom: 2px solid black; padding: 1px;"><tr><td style="margin:0; width: 100pt; border-right: 1px solid black;">Thing 1</td><td style="border-bottom: 1px solid black; margin:0; padding-right 5pt; width: 100pt; text-align:center;">Thing 2</td><td style="border-bottom: 1px solid black; margin:0; width: 100pt;text-align:right;">Thing 3</td></tr><tr style="border:0;"><td style="border-right: 1px solid black;">A</td><td style="text-align:center;">B</td><td style="text-align:right;">C</td></tr></table>
+
+Usually, if you have multiple `cmidrule` side-by-side, you want to "chop off" parts on the left and right sides so they don't connect, providing some visually pleasing separation. To do this, you can include `(lr)` like:
+
+```latex
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+```
+
+To provide multiple partial midrules that are adjacent but not connected.
+
+## Fancy stuff
+
+Now for some more advanced beautification techniques for your tables.
+
+### Coloring table cells
+
+The `colortbl` package provides a simple interface to coloring cells, using colors we defined above. `\cellcolor{COLOR}` will color the background of the cell it's in.
 
 
-### coloring the inside of your table
-`\rowcolor{}`
+### Special table symbols
 
-In TS2 we also had colored cells
+For my CoCo-CroLa paper I wanted an efficient way to mark equivalence between cells in a column, rather than repeat the same value several times.
+I wanted something very easy to skim with minimum visual noise, and came up with:
+
+![Vertical line through duplicate cells]({attach}images/cccltable.png)
+
+I called this "same line" command `\samel`, defined with:
+
+```latex
+\newcommand{\samel}[0]{\multicolumn{1}{l}{\space\hspace{0.5em}\vline}}
+```
+
+Inside of a environment of a single multicolumn we can use a `\vline` (equivalent to putting `|` in the tabular environment definition), which would normally be to the far left side of the cell. We then push it rightward by `0.5em`, or half the vertical height of the text.
+
+### Rotating the text inside a cell
+
+Often, plots can make axis labels more compact by rotating their text.
+I wanted to replicate this in a table I made last year and was able to pretty easily using the `rotating` package.
+
 ```latex
 \usepackage{rotating}
 
-%...
+\newcommand{\myrotcell}[1]{\begin{turn}{75}#1\end{turn}}
+```
 
+`\myrotcel` basically behaves exactly as I wanted inside of a table, turning the rotated text into an element with the proper width and height for positioning elements around it without overlapping or other weird clipping behavior.
+
+## Putting it together
+
+Using all of the above components we've discussed, including the `booktabs` line rules and `cmidrule`, the text cell rotation command `\myrotcel` we made, cell coloring and rotated `multicolumn`, we can generate this table from the TS2 paper:
+
+![Table from the TS2 paper using all of these tricks.]({attach}images/ts2table.png)
+
+```latex
 \newcommand{\ty}[0]{\cellcolor{otheryellow}}
 \newcommand{\tr}[0]{\cellcolor{dsgred}}
 \newcommand{\tb}[0]{\cellcolor{tifablue}}
 \newcommand{\tg}[0]{\cellcolor{llmgreen}}
+
+
+\begin{table*}[t!]
+\centering
+\begin{tabular}{llb{15pt}b{15pt}b{15pt}b{15pt}b{15pt}b{15pt}b{15pt}b{15pt}b{15pt}b{15pt}b{15pt}b{15pt}b{15pt}b{15pt}b{15pt}b{15pt}b{15pt}b{15pt}b{15pt}}
+\toprule
+& & \myrotcell{\textbf{CLIPScore}} & \myrotcell{\textbf{ALIGNScore}} & \myrotcell{\textbf{mPLUG}} & \myrotcell{\textbf{LLaVA 1.5}} & \myrotcell{\textbf{LLaVA 1.5 (alt)}} & \myrotcell{\textbf{InstructBLIP}} & \myrotcell{\textbf{BLIP1}} & \myrotcell{\textbf{Fuyu}} & \myrotcell{\textbf{GPT4-V}} & \myrotcell{\textbf{mPLUG}} & \myrotcell{\textbf{LLaVA 1.5}} & \myrotcell{\textbf{LLaVA 1.5 (alt)}} & \myrotcell{\textbf{InstructBLIP}} & \myrotcell{\textbf{BLIP1}} & \myrotcell{\textbf{Fuyu}} & \myrotcell{\textbf{GPT4-V}} & \myrotcell{\textbf{LLMScore EC}} & \myrotcell{\textbf{LLMScore Over}} & \myrotcell{\textbf{VIEScore}} \\
+\cmidrule(l{5pt}r{5pt}){3-4} \cmidrule(l{5pt}r{5pt}){5-11} \cmidrule(l{5pt}r{5pt}){12-18} \cmidrule(l{5pt}r{5pt}){19-21} 
+& & \multicolumn{2}{c}{ \footnotesize \textbf{Emb-based}}& \multicolumn{7}{c}{ \textbf{TIFA}} & \multicolumn{7}{c}{\textbf{DSG}} &  \multicolumn{3}{c}{\footnotesize \textbf{Caption-based}}  \\
+\midrule
+\multirow{4}{*}{\rotninety{$\mathtt{rank}_m$}} & \textbf{Avg} &  71.4 & 73.9 & 71.0 & 74.5 & 74.4 & \tb 76.5 & 73.8 & 38.7 & \tb 77.9 & 70.4 & 76.2 & 75.0 & \tr \textul{79.0} & 76.6 & 29.5 & \tr \textbf{79.6} & 48.8 & 57.7 & 37.8 \\
+& \textbf{Synth} & 75.0 & 77.6 & 72.6 & 79.2 & 79.2 & 80.2 & 78.8 & 44.5 & \tb 83.6 & 74.6 & 80.1 & \tr 81.6 & \tr \textbf{85.1} & 81.6 & 35.4 & \tr 82.6 & 50.2 & 61.6 & 42.5 \\
+& \textbf{Nat} & 58.0 & \ty 70.2 & 66.9 & 62.8 & 64.0 & 65.1 & 62.2 & 23.5 & 61.6 & 65.3 & 65.9 & 68.8 & \tr \textul{70.7} & \tr \textul{71.6} & 20.5 & \tr \textbf{73.7} & 36.2 & 44.4 & 22.4 \\
+& \textbf{Real} & \ty 69.3 & 62.6 & \tb 68.2 & 66.7 & 64.5 & 71.6 & 64.0 & 29.7 & \tb 69.5 & 58.4 & 70.0 & 54.2 & 62.0 & 61.2 & 14.2 & \tr \textbf{73.0} & 54.4 & 54.1 & 33.2 \\
+\midrule
+\multirow{4}{*}{\rotninety{$\mathtt{sep}_m$}} & \textbf{Avg} &  \ty 90.7 & \ty \textbf{92.8} & 80.6 & 82.5 & 81.9 & \tb 85.0 & 81.8 & 67.2 & 83.2 & 78.4 & 83.1 & 80.3 & 84.2 & 80.8 & 63.6 & \tr 84.2 & 73.6 & 73.5 & 51.8 \\
+& \textbf{Synth} & \ty 90.5 & \ty\textbf{94.1} & 80.6 & 85.5 & 85.2 & \tb 86.7 & 84.1 & 67.3 & 86.2 & 80.9 & 85.7 & 83.9 & \tr 87.8 & 84.9 & 65.8 & \tr 86.6 & 71.1 & 72.8 & 53.7 \\
+& \textbf{Nat} & \ty 91.5 & \ty \textbf{92.6} & 84.2 & 75.1 & 75.6 & 82.8 & 77.9 & 75.7 & 80.5 & 71.2 & 80.9 & 76.7 & 81.8 & 73.3 & 68.6 & 81.7 & 80.5 & 76.7 & 44.5 \\
+& \textbf{Real} & \ty \textbf{90.3} & \ty 87.9 & \tb 77.4 & 76.8 & 74.4 & 80.5 & 76.4 & 59.3 & 73.7 & 75.1 & 74.5 & 69.4 & 71.9 & 70.8 & 50.3 & 76.6 & \tg 77.3 & 73.6 & 50.7 \\
+\midrule
+\multirow{4}{*}{\rotninety{$\mathtt{delta}_m$}} & \textbf{Avg}  & 89.7 & 95.6 & 92.4 & 97.5 & 97.1 & 99.8 & 94.0 & 43.9 & 92.3 & 94.2 & \tr 104.7 &  102.0 & \tr\textbf{110.6} & \tr 103.7 & 37.7 & \tr 110.2 & 66.9 & 56.3 & 45.9 \\
+& \textbf{Synth} & 89.9 & 95.6 & 92.5 & 97.6 & 97.3 & 99.9 & 93.9 & 44.6 & 92.5 & 94.4 & \tr 104.7 &  102.1 & \tr \textbf{110.7} & \tr 103.6 & 37.8 & \tr 110.1 & 67.2 & 56.7 & 46.7 \\
+& \textbf{Nat} & 92.5 & 98.6 & 94.4 & 98.7 & 98.8 & 101.1 & 95.5 & 46.1 & 93.9 & 96.0 & \tr 105.5 & 103.0 & \tr \textbf{111.6} & \tr 104.6 & 39.3 & \tr 111.5 & 66.2 & 56.4 & 46.6 \\
+& \textbf{Real} & 95.1 & 100.8 & 96.0 & 100.5 & 100.4 & 102.6 & 96.9 & 46.9 & 95.9 & 97.3 & \tr 106.8 & 104.2 & \tr \textbf{113.0} & \tr 105.9 & 39.4 & \tr \textbf{113.0} & 65.0 & 56.0 & 46.3 \\
+\midrule
+\multicolumn{2}{c}{\textbf{FLOP/run}} & \ty \textbf{604M} & \ty 688M & 224T & 224T & 224T & 224T & 224T & 224T & 1.66P & 140T & 140T & 140T & 140T & 140T & 140T & 860T & \tg 7.01T & \tg 7.01T & \tg 2.6T  \\
+\bottomrule
+\end{tabular}
+}
+\end{table*}
+
 ```
 
-### special table symbols
-lil commands like
-- samel to more cleanly cross out a bunch of rows with the same value
-`\newcommand{\samel}[0]{\multicolumn{1}{l}{\space\hspace{0.5em}\vline}}`
 
-### rotating text for compactness
-- rotating text
-```latex
-\newcommand{\myrotcell}[1]{\begin{turn}{75}
-#1
-\end{turn}
-}
-\newcommand{\rotninety}[1]{\begin{turn}{90}
-#1
-\end{turn}
-}
-```
-
-
-# 4. Figures
+<!-- # 4. Figures
 
 ## TODO Combining multiple images into one image
 
@@ -377,18 +630,18 @@ MAKE THE FIGURE SMALL IN GENERATION AS AN SVG THEN IT WILL BE BIG
 
 - blue!50!black
 - rgb
-- named colors (link)
+- named colors (link) -->
 
-# 5. TODO: Overleaf in VSCode
+<!-- # 5. TODO: Overleaf in VSCode
 
 - use latex workshop
 - use overleaf workshop
 
 https://github.com/iamhyc/Overleaf-Workshop
 
-Install instructions
+Install instructions -->
 
-# 6. The Dark Arts (Advanced)
+# 4. The Dark Arts (Advanced)
 
 > [!WARNING]
 > These incantations will give you dark powers and break you free from the shackles of conference style files. Use wisely.
@@ -438,7 +691,7 @@ First, you need both sty files in your project. For me it was `eccv.sty` and `ne
 Then throughout the document for select other commands that I wanted to only use with one I would have to add that flag into them. `\useformat0` or `1` would switch between either ECCV or NeurIPS.
 
 
-## breaking a figure out of the text width
+## Making a centered figure wider than `\pagewidth`
 
 - dark art: making a figure oversized relative to the text
 *there are legitimate reasons to do this, for example if your figure has whitespace baked in but you want the filled part to be 100%*
@@ -532,12 +785,3 @@ Because we didn't produce this inside of the `figure` macro, using `\ref{}`, `\c
 
 etc
 ```
-
-#### Credit
-
-I worked out how to do most of this hack myself just consulting stackoverflow and documentation of the commands. The one exception was figuring out the `\adjustimg` and `\centerimg` commands could be used to replace `\centering`, which was necessary to avoid this super annoying bug where the text placement doesn't "see" the image and instead they superimpose on each other.
-
-I found the exact code I needed for this in an answer provided by
-["Werner" on StackOverflow](https://tex.stackexchange.com/a/39148).
-Thank you Werner, you absolute chad.
-

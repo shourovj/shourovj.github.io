@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+{% block content %}
+
+<header class="about-header">
+    <div class="about-image" style="background-image: url('./img/michael_twotone.jpg')"></div>
+    <div class="about-content">
+        <div>
+            <h3 class="about-title">Michael Saxon</h3>
+            <p class="about-subtitle">Ph.D. Candidate<br>University of California, Santa Barbara</p>
+            <ul class="header-icons">
+                <li><a href="https://www.semanticscholar.org/author/Michael-Stephen-Saxon/48227633"><img src="img/ico/svg/semantic-scholar.svg"></a></li>
+                <li><a href="https://scholar.google.com/citations?user=pAlwjdgAAAAJ&hl=en"><img src="img/ico/svg/google-scholar.svg"></a></li>
+                <li><a href="https://www.researchgate.net/profile/Michael_Saxon"><img src="img/ico/svg/researchgate.svg"></a></li>
+                <li><a href="mailto:saxon@ucsb.edu"><img src="img/ico/svg/envelope.svg"></a></li>
+                <li><a href="https://github.com/michaelsaxon"><img src="img/ico/svg/github-alt.svg"></a></li>
+                <li><a href="https://www.youtube.com/@mssaxonUCSB"><img src="img/ico/svg/youtube.svg"></a></li>
+                <li><a href="https://www.linkedin.com/in/mssaxon/"><img src="img/ico/svg/linkedin-in.svg"></a></li>
+                <li><a href="https://bsky.app/profile/saxon.me"><img src="img/ico/svg/cloud.svg"></a></li>
+                <li><a rel="me" href="https://sigmoid.social/@saxon"><img src="img/ico/svg/mastodon.svg"></a></li>
+                <li><a href="https://twitter.com/m2saxon"><img src="img/ico/svg/twitter.svg"></a></li>
+            </ul>
+            {% if page.about_description_1 %}
+            <p class="about-description">{{ page.about_description_1 }}</p>
+            {% endif %}
+            {% if page.about_description_2 %}
+            <p class="about-description">{{ page.about_description_2 }}</p>
+            {% endif %}
+            {% if page.about_description_3 %}
+            <p class="about-description">{{ page.about_description_3 }}</p>
+            {% endif %}
+            {% if page.about_description_4 %}
+            <p class="about-description">{{ page.about_description_4 }}</p>
+            {% endif %}
+        </div>
+    </div>
+  </header>
+
+<h3>Research Interests</h3>
+
+<p style="padding-bottom: 0">
+  I have broad interests in generative AI, natural language processing, and multimodal systems. In particular, I am interested in: 
+</p>
+<ol style="margin-top: 0.5ex;">
+  <li style="padding-top: 1x">Rigorous evaluation of <b>difficult-to-measure capabilities</b> in <u>language models and generative image systems</u>. (<a href="https://arxiv.org/abs/2407.16711">COLM 2024</a>, <a href="https://arxiv.org/abs/2404.04251">NeurIPS 2024 Spotlight</a>)</li>
+  <li style="padding-top: 1ex">Building <b>multilingual and culturally competent generative AI systems</b>, addressing <u>performance disparities, bias, and unique knowledge possession</u>. (<a href="https://aclanthology.org/2023.acl-long.266/">ACL 2023</a>, <a href="https://www.youtube.com/watch?v=tBYJFLaM71U">FAccT 2023 Oral</a>, <a href="https://aclanthology.org/2024.naacl-short.48/">NAACL 2024</a>)</li>
+  <li style="padding-top: 1ex">Advancing <b>multimodal (primarily vision & language) generative AI systems</b>, in particular with respect to deep semantic understanding. (<a href="https://aclanthology.org/2024.findings-emnlp.312/">EMNLP 2024</a>)</li>
+</ol>
+
+
+
+<h3>Experience</h3>
+
+
+<h4>Academic</h4>
+
+<!-- <div class="experience-block" style="--experience-color: var(--kanagawa-dark-magenta);">
+<div class="experience-content">
+    <div class="experience-title">
+        <a href="https://washington.edu/">University of Washington</a>
+    </div>
+    <div class="experience-subtitle">
+        Postdoctoral Scholar, <a href="https://techpolicylab.uw.edu/">Tech Policy Lab</a> (2025&ndash;)
+    </div>
+    <div class="experience-details">
+      Advised by <a href="https://faculty.washington.edu/aylin/index.html/">Aylin Caliskan</a>
+    </div>
+</div>
+<img src="img/uw-seal-resized.png" alt="University of Washington logo" class="experience-logo">
+</div> -->
+
+<div class="experience-block" style="--experience-color: var(--kanagawa-dark-blue);">
+  <div class="experience-content">
+      <div class="experience-title"><a href="https://www.ucsb.edu/">University of California, Santa Barbara</a></div>
+      <div class="experience-subtitle">PhD student, <a href="http://nlp.cs.ucsb.edu/">NLP Lab</a>, <a href="https://cs.ucsb.edu/">Computer Science</a> (2020&ndash;2025)</div>
+      <div class="experience-details">
+          Advised by <a href="https://sites.cs.ucsb.edu/~william/">William Yang Wang</a><br>
+          Recipient, <a href="https://www.nsfgrfp.org/">NSF Graduate Research Fellowship</a> (2020)
+      </div>
+  </div>
+  <img src="img/ucsb-seal-cropped-resized.png" alt="UCSB Seal" class="experience-logo">
+</div>
+
+<div class="experience-block" style="--experience-color: var(--kanagawa-dark-red);">
+  <div class="experience-content">
+      <div class="experience-title"><a href="https://www.asu.edu/">Arizona State University</a></div>
+      <div class="experience-subtitle">MS Computer Engineering (2018&ndash;2020)</div>
+      <div class="experience-details">
+          Advised by <a href="https://www.public.asu.edu/~visar/index.html">Visar Berisha</a> &amp; 
+          <a href="https://cubic.asu.edu/people">Sethuraman Panchanathan</a>
+      </div>
+  </div>
+  <img src="img/asu-seal-cropped-resized.png" alt="ASU Seal" class="experience-logo">
+</div>
+
+<div class="experience-block" style="--experience-color: var(--kanagawa-dark-red);">
+  <div class="experience-content">
+      <div class="experience-title"><a href="https://www.asu.edu/">Arizona State University</a></div>
+      <div class="experience-subtitle">BSE Electrical Engineering (2014&ndash;2018)</div>
+      <div class="experience-details">
+          <a href="https://barretthonors.asu.edu/">Barrett, the Honors College</a>, Presidential Scholar (Full tuition)
+      </div>
+  </div>
+  <img src="img/asu-seal-cropped-resized.png" alt="ASU Seal" class="experience-logo">
+</div>
+
+<h4>Industry</h4>
+
+<div class="experience-block" style="--experience-color: var(--kanagawa-dark-cyan);">
+  <div class="experience-content">
+      <div class="experience-title"><a href="https://www.amd.com/en/corporate/research.html">AMD Research</a></div>
+      <div class="experience-subtitle">Research Intern, Open GenAI (2024)</div>
+      <div class="experience-details">
+          Working on open source generative AI initiatives
+      </div>
+  </div>
+  <img src="img/amd-logo-cropped-resized.png" alt="AMD Logo" class="experience-logo logo-small">
+</div>
+
+<div class="experience-block" style="--experience-color: var(--kanagawa-light-blue);">
+  <div class="experience-content">
+      <div class="experience-title"><a href="https://ai.facebook.com/">Meta AI</a></div>
+      <div class="experience-subtitle">Research Intern, Cognitive AI/Conversational AI Research (2022)</div>
+      <div class="experience-details">
+          Developed novel evaluation methods for large language models
+      </div>
+  </div>
+  <img src="img/meta-logo-cropped-resized.png" alt="Meta Logo" class="experience-logo logo-medium">
+</div>
+
+<div class="experience-block" style="--experience-color: var(--kanagawa-dark-yellow);">
+  <div class="experience-content">
+      <div class="experience-title"><a href="https://www.amazon.science/publications">Amazon Alexa AI</a></div>
+      <div class="experience-subtitle">Applied Scientist Intern (2019&ndash;2021)</div>
+      <div class="experience-details">
+          Web-based QA (2021)<br>
+          Hybrid Science (2019, 2020)
+      </div>
+  </div>
+  <img src="img/amazon-logo-cropped-resized.png" alt="Amazon Logo" class="experience-logo logo-medium">
+</div>
+  
+<div class="news-section">
+<h3>News</h3>
+<div class="news-box">
+  <!-- News content -->
+  <!-- <p><b>4/5/2025</b> I will be joining the <a href="https://techpolicylab.uw.edu/">University of Washington Tech Policy Lab</a> as a postdoctoral scholar starting in the fall! </p> -->
+
+  <p><b>12/13/2024</b> Presented our work on meta-evaluation of text-to-image metrics at NeurIPS! <a href="https://arxiv.org/abs/2404.04251">[paper]</a> </p>
+
+  <p><b>11/13/2024</b> Presented our work on long-context capabilities in VLMs at EMNLP! <a href="https://aclanthology.org/2024.findings-emnlp.312/">[paper]</a> </p>
+
+  <p><b>10/7/2024</b> Presented our work on Model Metrology at COLM 2024! <a href="https://openreview.net/forum?id=bttKwCZDkm">[paper]</a> </p>
+
+  <p><b>9/25/2024</b> Recognized as a <a href="https://genai-workshop.cs.umass.edu/"></a>Rising Star in Generative AI!</a> </p>
+
+  <p><b>8/1/2024</b> Invited talk on multilinguality in text-to-image models to the SALT group at Stanford </p>
+
+  <p><b>6/29/2024</b> <a href="https://techcrunch.com/2024/06/29/geminis-data-analyzing-abilities-arent-as-good-as-google-claims/">Interviewed in TechCrunch</a> on the problems with claiming long-context capabilities of VLMs, based on our LoCoVQA preprint! <a href="https://arxiv.org/abs/2406.16851">[arXiv:2406.16851]</a></p>
+
+  <p><b>6/22/2024</b> Gave an Oral presentation at NAACL 2024 on our work on translation errors in multilingual benchmarking. See the recording! <a href="https://www.youtube.com/watch?v=zzW2HRYod2o">[YouTube]</a></p>
+
+  <p><b>5/4/2024</b> Had a great week visiting UMBC, Georgetown, UMD, and Johns Hopkins to present my work on rigorous measurement for text-to-image models. Check out the talk recording! <a href="https://www.youtube.com/watch?v=j0s0NB0b6wo">[YouTube]</a></p>
+
+  <p><b>4/8/2024</b> We were suprised to find that fancy VLM-based text-to-image faithfulness metrics don't actually outperform simple correlation-based ones using our new meta-evaluation T2IScoreScore! Check out our <a href="https://t2iscorescore.github.io/">interactive leaderboard</a>! <a href="https://arxiv.org/abs/2404.04251">[arXiv:2404.04251]</a></p>
+
+  <p><b>3/18/2024</b> Excited about our work diving deeper on characterizing failure cases in translation for text-to-image model testing! <a href="https://arxiv.org/abs/2403.11092">[arXiv:2403.11092]</a></p>
+
+  <p><b>12/10/2023</b> Wanrong presented our (mostly Xinyi's) work analyzing how in-context learning works for LLMs at NeurIPS 2023! Check out the paper: <a href="https://arxiv.org/abs/2301.11916/">[arXiv:2301.11916]</a></p>
+
+  <p><b>11/16/2023</b> Gave an invited talk on my recent work on assessing and improving multilingual knowledge and capabilities in T2I models at USC ISI! Video link: <a href="https://www.youtube.com/watch?v=nlu57ZSKbi0">[YouTube]</a></p>
+
+  <p><b>11/3/2023</b> Our dataset/paper proposing the task of "video infilling and prediction" for assessing reasoning capabilities of VLMs has been accepted to EMNLP! Link: <a href="https://arxiv.org/abs/2305.13903/">[arXiv:2305.13903]</a></p>
+
+  <p><b>8/6/2023</b> Our survey paper on self-correcting and automated correction methods for LLM workflows, "Automatically Correcting Large Language Models: Surveying the landscape of diverse self-correction strategies" is up on arXiv! Link: <a href="https://arxiv.org/abs/2308.03188/">[arXiv:2308.03188]</a></p>
+
+  <p><b>7/13/2023</b> Presented <b>CoCo-CroLa</b> in the paper "Multilingual Conceptual Coverage in Text-to-Image Models" at ACL 2023! See the benchmark demo <a href="coco-crola/">[demo link]</a> and paper in ACL Anthology: <a href="https://aclanthology.org/2023.acl-long.266/">[ACL Anthology]</a></p>
+
+  <p><b>6/20/2023</b> Gave a talk at FAccT 2023 on <b>CoCo-CroLa</b> and our initial findings of interesting cross-lingual biases. Watch the talk! <a href="https://www.youtube.com/watch?v=tBYJFLaM71U">[YouTube]</a></p>
+
+  <p><b>5/8/2023</b> Presenting at ICLR 2023 was a blast! Check out the new dataset we presented in an oral, <b>WikiWhy</b>: <a href="https://arxiv.org/abs/arXiv:2210.12152">[arXiv:2210.12152]</a></p>
+
+  <p><b>3/9/2023</b> Check out me and Alex's position paper, "Users are the North Star for AI Transparency," written in collaboration with our advisor William, and profs Shiyu Chang and Zack Lipton! You'll probably like it more than the IJCAI reviewers did 😉 Preprint: <a href="https://arxiv.org/abs/arXiv:2303.05500">[arXiv:2303.05500]</a></p>
+
+  <p><b>1/23/2023</b> 2 of my papers were accepted to ICLR 2023 and one to EACL 2023! In particular I'm happy to share that <b class="tomato">WikiWhy</b>, a new benchmark for analyzing reasoning in LMs using QA got accepted as an oral presentation! Super proud of my undergrad group to get such an honor at ICLR for their first paper! Preprint here: <a href="https://arxiv.org/abs/arXiv:2210.12152">[arXiv:2210.12152]</a></p>
+
+  <p><b>12/20/2022</b> Check out my preprint "Multilingual Conceptual Coverage in Text-to-Image Models" on OpenReview! We quantify the degree to which T2I models including DALL-E and StableDiffusion contain representations of ~200 tangible concepts across EN, ES, DE, ZH, JA, HE, and ID. Preprint here: <a href="https://openreview.net/forum?id=5H2m3tCEaQ">[OpenReview:5H2m3tCEaQ]</a> <b>Demo available here: <a href="coco-crola/">[demo link]</a></b></p>
+
+  <p><b>11/18/2022</b> The 2022 Southern California NLP Symposium (SoCalNLP22) was a massive success! Co-chairing the program committee and participating in event organization was a great privilege and it was wonderful meeting everybody. Please check out our full event livestream <a href="https://www.youtube.com/watch?v=hwXA7x5KoCo">[YouTube Link]</a> and some event photos <a href="https://twitter.com/m2saxon/status/1594144831047016450">[Twitter:@m2saxon]</a> <a href="https://twitter.com/ucsbNLP/status/1594152788757344257">[Twitter:@ucsbNLP]</a>!</p>
+
+  <p><b>10/24/2022</b> Our general-purpose text-reference comparison metric that simulates human preferences for translation and summarization, <b class="tomato">SEScore</b>, is now available on <a href="https://huggingface.co/spaces/xu1998hz/sescore">HuggingFace spaces</a>!</b> Preprint here: <a href="https://arxiv.org/abs/arXiv:2210.05035">[arXiv:2210.05035]</a></p>
+
+  <p><b>10/12/2022</b> Our work "Not All Errors are Equal: Learning Text Generation Metrics using Stratified Error Synthesis" will appear in Findings of EMNLP 2022! Preprint here: <a href="https://arxiv.org/abs/2210.05035">[arXiv:2210.05035]</a></p>
+
+  <p><b>10/12/2022</b> Check out the latest preprint of my work "PECO: Examining Single Sentence Label Leakage in Natural Language Inference Datasets through Progressive Evaluation of Cluster Outliers" on arXiv! We demonstrated automated detection of spurious, annotator-driven correlations that lead to cheating features in NLI. Preprint here: <a href="https://arxiv.org/abs/2112.09237">[arXiv:2112.09237]</a></p>
+
+
+  <p><b>6/6/2022</b> Excited to start my 2022 AI Research Scientist Internship at Meta in Menlo Park!</p>
+
+
+  <p><b>12/3/2021</b> Our work "Self-Supervised Knowledge Assimilation for Expert-Layman Text Style Transfer" will appear at <b class="tomato">AAAI 2022</b>!</b> Preprint here: <a href="https://arxiv.org/abs/2110.02950">[arXiv:2110.02950]</a></p>
+
+  <p><b>11/8/2021</b> Had a great time presenting our <b class="tomato">Disclosive Transparency</b> work at <b class="tomato">EMNLP 2021</b>!</b> Our work was even highlighted in an <a href="https://www.innovation-nation.it/how-can-nlp-help-to-shape-reality-on-language-models-stereotypes-and-biases-mitigation-at-360/">EMNLP overview article</a>! Oral presentation prerecording:  <a href="https://www.youtube.com/watch?v=3fvcEdgI57I">[YouTube]</a></p>
+
+  <p><b>10/1/2021</b> Our work "Counterfactual Maximum Likelihood Estimation for Training Deep Networks" will appear at <b class="tomato">NeurIPS 2021</b>!</b> Preprint here: <a href="https://arxiv.org/abs/2106.03831">[arXiv:2106.03831]</a></p>
+
+  <p><b>9/23/2021</b> Our work "Modeling Disclosive Transparency in NLP Application Descriptions" will appear at <b class="tomato">EMNLP 2021</b> as an <b>oral presentation!</b> Preprint here: <a href="https://arxiv.org/abs/2101.00433">[arXiv:2101.00433]</a></p>
+
+  <p><b>9/13/2021</b> I was profiled on the <b class="tomato">Amazon Science Blog</b> about my experience doing multiple applied science internships with the company! Article here: <a href="https://www.amazon.science/working-at-amazon/alexa-how-do-you-know-everything">[amazon.science]</a></p>
+</div>
+</div>
+</article>
+
+
+{% endblock %}

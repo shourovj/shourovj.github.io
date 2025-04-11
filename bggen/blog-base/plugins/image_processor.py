@@ -150,6 +150,7 @@ def process_markdown_file(filepath):
                 # Make path relative without leading slash
                 rel_path = cached_path  # Just use the relative path as-is
                 new_lines.append(f'Image: {rel_path}')
+                new_lines.append(f'Image_old: {url}')
                 modified = True
                 if DRY_RUN:
                     print(f"[DRY RUN] Would update {url} -> {rel_path}")

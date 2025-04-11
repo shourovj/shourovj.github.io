@@ -7,7 +7,7 @@
     <div class="preview-content">
         <div>
             <h3 class="preview-title">{{ article.title }}</h3>
-            <div class="preview-meta">{{ article.locale_date }}</div>
+            <div class="preview-meta">{{ article.locale_date }}{% if article.ert %} <span style="margin-right: 0.5em; margin-left: 0.5em;">•</span> {{ article.ert }}{% endif %}</div>
             <p class="preview-description">{{ article.summary|shorten(30) }}</p>
         </div>
     </div>

@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+
+{% block title %}Publications{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h1>Publications</h1>
+    
+    {# Main Publications Section #}
+    {% set ns = namespace(current_year=None) %}
+    {% for pubdict in publications %}
+        {% if pubdict['year']|int != ns.current_year %}
+            {% if ns.current_year is not none %}
+                </div>  <!-- Close previous year group -->
+            {% endif %}
+            
+            {% set ns.current_year = pubdict['year']|int %}
+            <h2>{{ ns.current_year }}</h2>
+            <div class="pub-year-group">
+        {% endif %}
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                {% if pubdict['url_official'] %}
+                    <a href="{{ pubdict['url_official'] }}" class="pub-title-link">
+                        <strong>{{ pubdict['title'] }}</strong>
+                    </a>
+                {% else %}
+                    <strong>{{ pubdict['title'] }}</strong>
+                {% endif %}
+                <br>
+                <span>{{ pubdict['authors'] }}</span><br>
+                <span>
+                    {% if pubdict['venue_abbrev'] %}
+                        {{ pubdict['venue_abbrev'] }}
+                        {% if pubdict['additional_info'] %}
+                            <span class="venue-separator">·</span> <span class="additional-info">{{ pubdict['additional_info'] }}</span>
+                        {% endif %}
+                    {% else %}
+                        {% if pubdict['journal'] %}
+                            {{ pubdict['journal'] }}
+                        {% elif pubdict['booktitle'] %}
+                            {{ pubdict['booktitle'] }}
+                        {% endif %}
+                        {% if pubdict['additional_info'] %}
+                            <span class="venue-separator">·</span> <span class="additional-info">{{ pubdict['additional_info'] }}</span>
+                        {% endif %}
+                        , {{ pubdict['year'] }}
+                    {% endif %}
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                {% if pubdict.badge_text and pubdict.badge_class %}
+                    <a href="{{ pubdict.get('url_official', '#') }}" class="pub-badge {{ pubdict.badge_class }}">{{ pubdict.badge_text }}</a>
+                {% endif %}
+                {% if pubdict['url_pdf'] %}
+                    <a href="{{ pubdict['url_pdf'] }}" class="pub-badge link-badge">PDF</a>
+                {% endif %}
+                {% if pubdict['abstract'] %}
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'abstract-{{ loop.index }}')" aria-expanded="false">Abstract</button>
+                {% endif %}
+                {% if pubdict['bibtex'] %}
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-{{ loop.index }}')" aria-expanded="false">BibTeX</button>
+                {% endif %}
+                {% if pubdict['video_link'] %}
+                    <a href="{{ pubdict['video_link'] }}" class="pub-badge video-badge">Presentation</a>
+                {% endif %}
+            </div>
+            
+            {% if pubdict['abstract'] %}
+            <div id="abstract-{{ loop.index }}" class="expandable-content hidden">
+                <div class="abstract">
+                    <strong>Abstract:</strong> {{ pubdict['abstract'] }}
+                </div>
+            </div>
+            {% endif %}
+            {% if pubdict['bibtex'] %}
+            <div id="bibtex-{{ loop.index }}" class="highlight bibtex-highlight expandable-content hidden"><code>{{- pubdict['bibtex'] -}}</code></div>
+            {% endif %}
+        </div>
+    {% endfor %}
+    
+    {% if ns.current_year is not none %}
+        </div>  <!-- Close the last year group -->
+    {% endif %}
+
+    {# Non-archival  Section #}
+    {% if workshop_publications %}
+        <h2>Non-archival Presenations and Workshop Papers</h2>
+        
+        {% set ns = namespace(current_year=None) %}
+        {% for pubdict in workshop_publications %}
+            {% if pubdict['year']|int != ns.current_year %}
+                {% if ns.current_year is not none %}
+                    </div>  <!-- Close previous year group -->
+                {% endif %}
+                
+                {% set ns.current_year = pubdict['year']|int %}
+                <h3>{{ ns.current_year }}</h3>
+                <div class="pub-year-group">
+            {% endif %}
+            
+            <div class="publication workshop-publication">
+                <div class="pub-main-info">
+                    {% if pubdict['url_official'] %}
+                        <a href="{{ pubdict['url_official'] }}" class="pub-title-link">
+                            <strong>{{ pubdict['title'] }}</strong>
+                        </a>
+                    {% else %}
+                        <strong>{{ pubdict['title'] }}</strong>
+                    {% endif %}
+                    <br>
+                    <span>{{ pubdict['authors'] }}</span><br>
+                    <span>
+                        {% if pubdict['venue_abbrev'] %}
+                            {{ pubdict['venue_abbrev'] }}
+                        {% else %}
+                            {% if pubdict['journal'] %}
+                                {{ pubdict['journal'] }}
+                            {% elif pubdict['booktitle'] %}
+                                {{ pubdict['booktitle'] }}
+                            {% endif %}
+                            , {{ pubdict['year'] }}
+                        {% endif %}
+                    </span>
+                </div>
+                
+                <div class="pub-badges">
+                    {% if pubdict.badge_text and pubdict.badge_class %}
+                        <a href="{{ pubdict.get('url_official', '#') }}" class="pub-badge {{ pubdict.badge_class }}">{{ pubdict.badge_text }}</a>
+                    {% endif %}
+                    {% if pubdict['url_pdf'] %}
+                        <a href="{{ pubdict['url_pdf'] }}" class="pub-badge link-badge">PDF</a>
+                    {% endif %}
+                    {% if pubdict['abstract'] %}
+                        <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'abstract-{{ loop.index }}')" aria-expanded="false">Abstract</button>
+                    {% endif %}
+                    {% if pubdict['bibtex'] %}
+                        <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-{{ loop.index }}')" aria-expanded="false">BibTeX</button>
+                    {% endif %}
+                    {% if pubdict['video_link'] %}
+                        <a href="{{ pubdict['video_link'] }}" class="pub-badge video-badge">Presentation</a>
+                    {% endif %}
+                </div>
+                
+                {% if pubdict['abstract'] %}
+                <div id="abstract-{{ loop.index }}" class="expandable-content hidden">
+                    <div class="abstract">
+                        <strong>Abstract:</strong> {{ pubdict['abstract'] }}
+                    </div>
+                </div>
+                {% endif %}
+                {% if pubdict['bibtex'] %}
+                <div id="bibtex-{{ loop.index }}" class="highlight bibtex-highlight expandable-content hidden"><code>{{- pubdict['bibtex'] -}}</code></div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        
+        {% if ns.current_year is not none %}
+            </div>  <!-- Close the last year group -->
+        {% endif %}
+    {% endif %}
+</div>
+
+<script>
+function toggleContent(button, targetId) {
+    const content = document.getElementById(targetId);
+    if (!content) return; // Exit if target not found
+
+    const isExpanded = content.classList.contains('hidden');
+    content.classList.toggle('hidden');
+    button.setAttribute('aria-expanded', isExpanded);
+}
+</script>
+
+<style>
+.venue-separator {
+    margin: 0 0.5em;
+    opacity: 0.7;
+}
+
+.workshop-publication {
+    /* Optional: style workshop publications differently */
+    opacity: 0.9;
+}
+
+.additional-info {
+    font-style: italic;
+}
+</style>
+{% endblock %}

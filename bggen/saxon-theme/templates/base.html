@@ -19,6 +19,7 @@
     <link href="https://fonts.googleapis.com/css?family=PT+Serif&Merriweather&Oswald&Ubuntu+Mono&Arimo:ital,wght@0,400..700;1,400..700" rel="stylesheet">
     <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
     <link rel="stylesheet" href="{{ SITEURL }}/theme/css/code.css">
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pubs.css">
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
           crossorigin="anonymous">
@@ -41,13 +42,13 @@
     <meta property="og:url" content="https://saxon.me/" />
     <meta property="og:title" content="{{ self.title() }}" />
     <meta property="og:description" content="{{ self.description() }}" />
-    <meta property="og:image" content="{% block imgurl %}https://saxon.me/img/bg-sba.jpg {% endblock %}" />
+    <meta property="og:image" content="{{ SITEURL }}/{% block imgurl %}img/bg-sba.jpg {% endblock %}" />
    <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:site" content="https://saxon.me/" />
     <meta property="twitter:creator" content="@m2saxon" />
     <meta property="twitter:title" content="{{ self.title() }}" />
     <meta property="twitter:description" content="{{ self.description() }}" />
-    <meta property="twitter:image" content="{{ self.imgurl() }}" />
+    <meta property="twitter:image" content="{{ SITEURL }}/{{ self.imgurl() }}" />
 </head>
 <body>
 

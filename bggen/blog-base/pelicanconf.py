@@ -31,6 +31,8 @@ PLUGINS = [
     "infobox",
     "shorten_filter",
     "image_processor",
+    "ert",
+    'pelican_bibtex',
 ]
 
 SLUGIFY_SOURCE = 'basename'
@@ -54,6 +56,8 @@ ARTICLE_PATHS = ['']    # Look for articles in content root
 ARTICLE_EXCLUDES = ['pages']
 
 PUBLICATIONS_SRC = 'content/pubs.bib'
+
+DIRECT_TEMPLATES = ['publications','index']
 
 MARKDOWN = {
     'extension_configs': {

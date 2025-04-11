@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<script>
+      // Check and apply theme immediately
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+      }
+  </script>
+<script src="../../../static/js/theme.js"></script>
+<script src="../../../static/js/copy-code.js"></script>
+<script src="../../../static/js/toc.js"></script>
+<link href="../../../style.css" rel="stylesheet"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://fonts.googleapis.com/css?family=PT+Serif&amp;Merriweather&amp;Oswald&amp;Ubuntu+Mono&amp;Arimo:ital,wght@0,400..700;1,400..700" rel="stylesheet"/>
+<title>Michael's TeXronomicon (LaTeX tips, tricks, and hacks)</title>
+<link href="../../theme/css/code.css" rel="stylesheet"/>
+<link href="../../theme/css/pubs.css" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css" rel="stylesheet"/>
+<link href="feeds/all.atom.xml" rel="alternate" title="Michael Saxon Full Atom Feed" type="application/atom+xml">
+<link href="feeds/all.rss.xml" rel="alternate" title="Michael Saxon Full RSS Feed" type="application/rss+xml">
+<meta content="Michael's TeXronomicon (LaTeX tips, tricks, and hacks)" name="title">
+<meta content="Various snippets, tricks, and lessons I've developed and learned from messing around in LaTeX and scrutinizing source files on arXiv." name="description"/>
+<meta content="article" property="og:type"/>
+<meta content="https://saxon.me/" property="og:url"/>
+<meta content="Michael's TeXronomicon (LaTeX tips, tricks, and hacks)" property="og:title"/>
+<meta content="Various snippets, tricks, and lessons I've developed and learned from messing around in LaTeX and scrutinizing source files on arXiv." property="og:description"/>
+<meta content="../../images/latex-tips.jpg" property="og:image"/>
+<meta content="summary_large_image" property="twitter:card"/>
+<meta content="https://saxon.me/" property="twitter:site"/>
+<meta content="@m2saxon" property="twitter:creator"/>
+<meta content="Michael's TeXronomicon (LaTeX tips, tricks, and hacks)" property="twitter:title"/>
+<meta content="Various snippets, tricks, and lessons I've developed and learned from messing around in LaTeX and scrutinizing source files on arXiv." property="twitter:description"/>
+<meta content="../../images/latex-tips.jpg" property="twitter:image"/>
+</meta></link></link></head>
+<body>
+<header class="site-header">
+<div class="top-nav">
+<div style="margin-right: auto;">
+<h1><a href="../../../">Michael Saxon</a></h1>
+</div>
+<input id="menu-toggle" type="checkbox"/>
+<label class="menu-button-container" for="menu-toggle">
+<div class="menu-button"></div>
+</label>
+<ul class="menu">
+<li><a href="../../../research">Publications</a></li>
+<li><a href="../../../doc/cv_saxon.pdf">CV</a></li>
+<li><a href="../..">Blog</a></li>
+<li>
+<a aria-label="Toggle dark mode" href="#" id="theme-toggle">
+<svg aria-hidden="true" class="sun-and-moon" height="24" viewbox="0 0 24 24" width="24">
+<!-- Moon shape -->
+<path class="moon" d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z" fill="currentColor"></path>
+<!-- Sun shape (initially hidden) -->
+<g class="sun" opacity="0">
+<circle cx="12" cy="12" fill="currentColor" r="6"></circle>
+<g class="sun-beams">
+<line x1="12" x2="12" y1="1" y2="3"></line>
+<line x1="12" x2="12" y1="21" y2="23"></line>
+<line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line>
+<line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line>
+<line x1="1" x2="3" y1="12" y2="12"></line>
+<line x1="21" x2="23" y1="12" y2="12"></line>
+<line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line>
+<line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line>
+</g>
+</g>
+</svg>
+</a>
+</li>
+</ul>
+</div>
+</header>
+<div class="page" style="word-spacing: 0.09em;">
+<article class="post">
+<header class="post-header">
+<div class="post-hero" style="background-image: url('../../images/latex-tips.jpg')"></div>
+<div class="post-content-wrapper">
+<h1 class="post-title">
+<a href="../../2025/latex-tips/" rel="bookmark" title="Permalink to Michael's TeXronomicon (LaTeX tips, tricks, and hacks)">Michael's TeXronomicon (LaTeX tips, tricks, and hacks)</a>
+</h1>
+<div class="post-meta">
+<time>April 2, 2025</time>
+<span>•</span>
+<span>24 min read</span>
+<span>•</span>
+<span><a href="../../category/tips.html">Tips</a></span>
+<!-- <span>•</span>
+                <span><a href="../../tag/latex.html">latex</a></span> -->
+</div>
+<div class="post-description">
+                Various snippets, tricks, and lessons I've developed and learned from messing around in LaTeX and scrutinizing source files on arXiv.
+            </div>
+</div>
+</header>
+<p>Between my mild presentational OCD and a desire to understand how various cool figures, tables, and styles have been implemented in other groups' papers, I have accumulated quite a few LaTeX snippets that I pass around with my friends. I figured I should put them all in one place along with some explanations, so (if you're interested) you can learn to make your own.</p>
+<p>You should probably check out the TOC to decide which parts you want to read.
+There will probably be parts you already know; I am covering basics here so I can give this to a new author.
+To briefly explain the structure, I will discuss:</p>
+<ol>
+<li>How commands work, how to make them, and <strong>the right way to do comment commands</strong>.</li>
+<li><em>Text</em> styling, including coloring, highlighting, citation styles, exotic symbols, non-Latin alphabets, and inline graphics/icons.</li>
+<li><em>Table</em> styling and formatting, which packages you should use, special symbols to make tables more readable, and making text compact.</li>
+</ol>
+<!-- 4. *Figure* making and styling, including composite figures, table-based figures, the various subfigure packages, and how to *generate* good, readable figures from matplotlib easily.
+5. How to set up *Overleaf with VSCode*, a gamechanger I was recently shown. -->
+<ol>
+<li><strong>The dark arts</strong>, how you can break free from the bounds of conference <code>.sty</code> files.</li>
+</ol>
+<p>I might write more about within-document compound figure making and best-practices for generating readable plots in a follow-up post if there's interest.</p>
+<div class="toc"><span class="toc-title">Table of Contents</span><ul>
+<li><a href="#1-making-commands">1. Making commands</a><ul>
+<li><a href="#comment-commands">Comment commands</a></li>
+<li><a href="#fixing-infuriating-spacing-issues">Fixing infuriating spacing issues</a></li>
+</ul>
+</li>
+<li><a href="#2-doing-text-right">2. Doing text right</a><ul>
+<li><a href="#citations">Citations</a></li>
+<li><a href="#ref-autoref-and-cleveref">ref, autoref, and cleveref</a></li>
+<li><a href="#quotation-marks">Quotation marks</a></li>
+<li><a href="#resizing-and-transforming-text">Resizing and transforming text</a></li>
+<li><a href="#defining-colors-and-coloring-text">Defining colors and coloring text</a><ul>
+<li><a href="#custom-colored-highlighting">Custom-colored highlighting</a></li>
+</ul>
+</li>
+<li><a href="#size-units-for-spacing-em-ex-pt-etc">Size units for spacing: em, ex, pt, etc</a></li>
+<li><a href="#annoying-extra-formatting-which-i-sometimes-use">Annoying extra formatting (which I sometimes use)</a><ul>
+<li><a href="#big-colored-text-boxes">Big colored text boxes</a></li>
+<li><a href="#fancy-colored-gradients-inline">Fancy colored gradients inline</a></li>
+<li><a href="#inline-icons">Inline icons</a></li>
+<li><a href="#exotic-symbols-eg-as-author-affiliation-marks">Exotic symbols (eg., as author affiliation marks)</a></li>
+</ul>
+</li>
+<li><a href="#non-latin-cjk-alphabets-on-arxiv">Non-Latin (CJK) alphabets on arXiv</a></li>
+</ul>
+</li>
+<li><a href="#3-turning-the-tables">3. Turning the Tables</a><ul>
+<li><a href="#basic-table-hygiene-with-booktabs">Basic table hygiene with booktabs</a></li>
+<li><a href="#multirow-and-multicolumn">multirow and multicolumn</a></li>
+<li><a href="#cmidrule-to-partially-underline-a-row">cmidrule to partially underline a row</a></li>
+<li><a href="#fancy-stuff">Fancy stuff</a><ul>
+<li><a href="#coloring-table-cells">Coloring table cells</a></li>
+<li><a href="#special-table-symbols">Special table symbols</a></li>
+<li><a href="#rotating-the-text-inside-a-cell">Rotating the text inside a cell</a></li>
+</ul>
+</li>
+<li><a href="#putting-it-together">Putting it together</a></li>
+</ul>
+</li>
+<li><a href="#4-the-dark-arts-advanced">4. The Dark Arts (Advanced)</a><ul>
+<li><a href="#switching-between-conference-formats">Switching between conference formats</a></li>
+<li><a href="#making-a-centered-figure-wider-than-pagewidth">Making a centered figure wider than \pagewidth</a></li>
+<li><a href="#teaser-figures-in-the-acl-format">Teaser figures in the *ACL format</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="1-making-commands"><a class="toclink" href="#1-making-commands">1. Making commands</a><a class="header-link" href="#1-making-commands" title="Permalink to this section">¶</a></h1>
+<p><strong>You should probably be making more commands than you currently are</strong>. At their simplest, commands can let you reuse text or formatting easily, but they can do much more. First, a little bit about how to make them:</p>
+<p>The two main command-making macros are <code>\newcommand</code> and <code>\renewcommand</code>. 
+If a command already exists, and you want to override its behavior, use <code>\renewcommand</code>. For example, I used <code>\renewcommand</code> to fix a critical flaw in the COLM format.</p>
+<p>In the COLM format, this snippet:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Inertia is a property of matter <span class="k">\cite</span><span class="nb">{</span>nye1995science<span class="nb">}</span>.
+</code></pre></div></td></tr></table></div>
+<p>would wrongly render as:</p>
+<blockquote>
+<p>Inertia is a property of matter Nye et al. (1995).</p>
+</blockquote>
+<p>Instead of correctly rendering as:</p>
+<blockquote>
+<p>Inertia is a property of matter (Nye et al., 1995).</p>
+</blockquote>
+<p>In other words, the COLM format was treating <code>\cite{}</code> as <code>\citet{}</code> rather than <code>\citep{}</code>, as it is in all other conference formats.</p>
+<p>With <code>\renewcommand</code> it's a one line fix:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\cite</span><span class="nb">}{</span><span class="k">\citep</span><span class="nb">}</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="comment-commands"><a class="toclink" href="#comment-commands">Comment commands</a><a class="header-link" href="#comment-commands" title="Permalink to this section">¶</a></h2>
+<p>The command definition you have almost certainly used before is <strong>comment commands</strong>.
+But have you made them hideable? Modular? Here's how I built up a more powerful comment command that I always drop in. </p>
+<p>A typical, simple comment command is something like:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\mycomment</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\textcolor</span><span class="nb">{</span>red<span class="nb">}{</span>michael: #1<span class="nb">}}</span>
+</code></pre></div></td></tr></table></div>
+<p>This is nice and easy, but it has two issues. First, with more collaborators you have to define it over and over again, which looks gross.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\mycomment</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\textcolor</span><span class="nb">{</span>red<span class="nb">}{</span>MS: #1<span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\george</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\textcolor</span><span class="nb">{</span>yellow<span class="nb">}{</span>GC: #1<span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\jerry</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\textcolor</span><span class="nb">{</span>red<span class="nb">}{</span>JS: #1<span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\kramer</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\textcolor</span><span class="nb">{</span>green<span class="nb">}{</span>CK: #1<span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\elaine</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\textcolor</span><span class="nb">{</span>blue<span class="nb">}{</span>EB: #1<span class="nb">}}</span>
+</code></pre></div></td></tr></table></div>
+<p>Ew. </p>
+<p>But the more annoying issue is that <em>inline comments mess up your text length and spacing</em>. How are you gonna know how many pages you've written, and how well-aligned and spaced your figures and tables are, on the night before the deadline, if your paper is full of comments?</p>
+<p>I fix both of these issues by implementing <em>a base comment command</em> that I build the other ones on top of, and <strong>adding a variable-based off switch that hides the comments.</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c">%%%%%%% COMMENT DEFINITION SECTION %%%%%%%</span>
+<span class="k">\newif\ifcommentsoff</span>
+<span class="c">% uncomment this line to hide inline comments</span>
+<span class="c">% \commentsofftrue</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\mycomment</span><span class="nb">}</span>[3]<span class="nb">{</span>
+    <span class="k">\ifcommentsoff\else</span><span class="nb">{</span>
+        <span class="nb">{</span><span class="k">\textcolor</span><span class="nb">{</span>#1<span class="nb">}{</span><span class="k">\textit</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span>#2:<span class="nb">}</span> #3<span class="nb">}}</span><span class="k">\xspace</span>
+    <span class="nb">}</span><span class="k">\fi</span><span class="nb">}</span>
+<span class="nb">}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\george</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\mycomment</span><span class="nb">{</span>red<span class="nb">}{</span>GC<span class="nb">}{</span>#1<span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\jerry</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\mycomment</span><span class="nb">{</span>magenta<span class="nb">}{</span>JS<span class="nb">}{</span>#1<span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\kramer</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\mycomment</span><span class="nb">{</span>blue<span class="nb">}{</span>CK<span class="nb">}{</span>#1<span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\elaine</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\mycomment</span><span class="nb">{</span>green<span class="nb">}{</span>EB<span class="nb">}{</span>#1<span class="nb">}}</span>
+</code></pre></div></td></tr></table></div>
+<p><code>\newif\ifmyvariable</code> defines a boolean variable, which is actually named <code>myvariable</code>.
+You can control it with <code>\myvariabletrue</code> or <code>\myvariablefalse</code>. This is weird and Knuth-y.</p>
+<p>Now, all I have to do to periodically check how the spacing and length of the paper is with a bunch of inline comments present is to make <code>\commentsofftrue</code>.</p>
+<h2 id="fixing-infuriating-spacing-issues"><a class="toclink" href="#fixing-infuriating-spacing-issues">Fixing infuriating spacing issues</a><a class="header-link" href="#fixing-infuriating-spacing-issues" title="Permalink to this section">¶</a></h2>
+<p>Often you want to define a command as a simple macro for some name you're using throughout the paper, say, for a contrived backronym method name. Something like:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\methodname</span><span class="nb">}{</span><span class="k">\textsc</span><span class="nb">{</span>BiG-BiRd<span class="nb">}}</span>
+</code></pre></div></td></tr></table></div>
+<p>This has the benefit of letting you change it if you aren't sure what your final method is.
+Also if you want to do obnoxious extra formatting like a weird font or color<sup id="fnref:1"><a class="footnote-ref footnote-toggle" href="javascript:void(0)"><svg class="footnote-icon" viewbox="0 0 24 24">
+<g class="icon-group" stroke="currentColor" stroke-linecap="round" stroke-width="3">
+<line x1="7" x2="17" y1="12" y2="12"></line>
+<line x1="12" x2="12" y1="7" y2="17"></line>
+</g>
+</svg></a><span class="footnote-popup">As I often do...</span></sup>, it's easier to reuse this way.</p>
+<p>Unfortunately, text in LaTeX commands have infuriating spacing behavior. If you put the command as is, it will <em>ignore</em> following spaces,  so "<code>\methodname is great</code>" renders as "BiG-BiRdis great".</p>
+<p>The <code>\xspace</code> package makes spacing work right:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c">% in preamble</span>
+<span class="k">\usepackage</span><span class="nb">{</span>xspace<span class="nb">}</span>
+
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\methodname</span><span class="nb">}{</span><span class="k">\textsc</span><span class="nb">{</span>BiG-BiRd<span class="nb">}</span><span class="k">\xspace</span><span class="nb">}</span>
+</code></pre></div></td></tr></table></div>
+<h1 id="2-doing-text-right"><a class="toclink" href="#2-doing-text-right">2. Doing text right</a><a class="header-link" href="#2-doing-text-right" title="Permalink to this section">¶</a></h1>
+<p>With our new understanding of commands, we can turn to discussing best practices for working with existing commands and creating new commands to make your text look beautiful.</p>
+<p>Additionally, we will talk about how navigate the various quirky "Knuth-isms"<sup id="fnref:3"><a class="footnote-ref footnote-toggle" href="javascript:void(0)"><svg class="footnote-icon" viewbox="0 0 24 24">
+<g class="icon-group" stroke="currentColor" stroke-linecap="round" stroke-width="3">
+<line x1="7" x2="17" y1="12" y2="12"></line>
+<line x1="12" x2="12" y1="7" y2="17"></line>
+</g>
+</svg></a><span class="footnote-popup">My term for the peculiar ways some commands in TeX are written, which I believe come from the particularly detail-obsessed mind of its creator Don Knuth (pictured in the thumbnail)</span></sup> that pervade LaTeX to make your text look right.</p>
+<h2 id="citations"><a class="toclink" href="#citations">Citations</a><a class="header-link" href="#citations" title="Permalink to this section">¶</a></h2>
+<p>Two different styles of inline citation are invoked with <code>\citet</code>, and <code>\citep</code>.
+In parenthetical citation styles (such as *ACL or COLM) these mean <em>text-inline</em> (<code>\citet</code> for <em>t</em>ext) and <em>inside the parentheses</em> (<code>\citep</code>).</p>
+<blockquote>
+<p>Saxon et al. (2024) vs (Saxon et al. 2024)</p>
+</blockquote>
+<p>One is used just as a source for a claim, the other is to write a sentence that the authors say X or authors do X.</p>
+<p>Usually, <code>\cite</code> and <code>\citep</code> do the same thing. If they don't, I usually newcommand or renewcommand <code>\cite</code> to get this behavior.</p>
+<h2 id="ref-autoref-and-cleveref"><a class="toclink" href="#ref-autoref-and-cleveref"><code>ref</code>, <code>autoref</code>, and <code>cleveref</code></a><a class="header-link" href="#ref-autoref-and-cleveref" title="Permalink to this section">¶</a></h2>
+<p>When you want to reference a figure or table by number you can use <code>\ref{fig:figurename}</code> to generate the figure number in a link like:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>In figure <span class="k">\ref</span><span class="nb">{</span>fig:figurename<span class="nb">}</span> we learn X.
+</code></pre></div></td></tr></table></div>
+<p>generates</p>
+<blockquote>
+<p>In figure <a href="">1</a> we learn X.</p>
+</blockquote>
+<p>But what if you want the "figure" text to be part of the link? And what if you're sick of typing "figure" or "table" each time? There are two solutions, <code>autoref</code> and <code>cleveref</code>.</p>
+<p><code>\autoref</code> is the simpler command.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\usepackage</span><span class="nb">{</span>autoref<span class="nb">}</span>
+
+In <span class="k">\autoref</span><span class="nb">{</span>fig:figurename<span class="nb">}</span> we learn X. <span class="k">\autoref</span><span class="nb">{</span>fig:otherfigure<span class="nb">}</span> shows Y.
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p>In <a href="">figure 1</a> we learn X. <a href="">Figure 2</a> shows Y</p>
+</blockquote>
+<p>Autoref works for figures, tables, sections, subsections, subsubsections, etc.</p>
+<blockquote>
+<p>In subsubsection 2.3.1... Section 3 shows... See table 2...</p>
+</blockquote>
+<p>Note that the first "figure" isn't capitalized, while the second is. "subsubsection" isn't capitalized but "Section" is. <code>autoref</code> automates all of this based on position in a sentence.</p>
+<p>What if you want a more compact style of these automatic citations? What if you want to change this behavior? That's where <code>cleveref</code> can come in handy.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\usepackage</span><span class="nb">{</span>cleveref<span class="nb">}</span>
+<span class="k">\crefformat</span><span class="nb">{</span>section<span class="nb">}{</span><span class="k">\S</span>#2#1#3<span class="nb">}</span>
+<span class="k">\crefformat</span><span class="nb">{</span>subsection<span class="nb">}{</span><span class="k">\S</span>#2#1#3<span class="nb">}</span>
+<span class="k">\crefformat</span><span class="nb">{</span>subsubsection<span class="nb">}{</span><span class="k">\S</span>#2#1#3<span class="nb">}</span>
+
+The turbo encabulator (<span class="k">\cref</span><span class="nb">{</span>subsec:encabulator<span class="nb">}</span>) also leverages inverse reactive current in unilateral phase detractors
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p>The turbo encabulator (§2.3.1) also leverages inverse reactive current in unilateral phase detractors</p>
+</blockquote>
+<p>Within those definitions you can define whatever behavior you want. You can make it say "Section 2.3.1" instead of "subsubsection 2.3.1", enforce capitalization in all places, etc.</p>
+<h2 id="quotation-marks"><a class="toclink" href="#quotation-marks">Quotation marks</a><a class="header-link" href="#quotation-marks" title="Permalink to this section">¶</a></h2>
+<p>One of the most infuriating Knuthisms in LaTeX is the way quotation marks are handled. </p>
+<p>The characters <code>'</code> and <code>"</code>, in most fonts, <strong>specifically refer to backwards marks</strong>. So</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>In the turbo encabulator power is generated by "capacitive diractance" and 'magneto reluctance.'
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p>In the turbo encabulator power is generated by ”capacitive diractance” and ’magneto reluctance.’</p>
+</blockquote>
+<p>Note the opening quotation marks are backwards. (This looks worse in the serif fonts most LaTeX documents use than it looks here.)
+To fix this, <strong>you need to use the tick mark `, not the apostrophe ', to open quotes.</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>In the turbo encabulator power is generated by ``capacitive diractance'' and `magneto reluctance.'
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p>In the turbo encabulator power is generated by “capacitive diractance” and ‘magneto reluctance.’</p>
+</blockquote>
+<h2 id="resizing-and-transforming-text"><a class="toclink" href="#resizing-and-transforming-text">Resizing and transforming text</a><a class="header-link" href="#resizing-and-transforming-text" title="Permalink to this section">¶</a></h2>
+<p>There are various useful reasons you may want to resize text.
+Maybe to shrink an equation so it fits on a line, or to do some customization inside a figure or to shrink text in a table cell.</p>
+<p>Text sizing is a site of many hilarious Knuthisms.
+First, to size a line of text, you use these (in ascending order of size)</p>
+<ul>
+<li><code>\tiny</code></li>
+<li><code>\scriptsize</code></li>
+<li><code>\footnotesize</code></li>
+<li><code>\small</code></li>
+<li><code>\normalsize</code></li>
+<li><code>\large</code></li>
+<li><code>\Large</code></li>
+<li><code>\LARGE</code></li>
+<li><code>\huge</code></li>
+<li><code>\Huge</code></li>
+</ul>
+<p>If you're just mad, you should say <code>{\large I am mad}</code> but if you're REALLY angry you can give a <code>{\LARGE I AM FURIOUS}</code>.</p>
+<p>See more in <a href="https://www.overleaf.com/learn/latex/Font_sizes%2C_families%2C_and_styles">Overleaf's docs</a></p>
+<h2 id="defining-colors-and-coloring-text"><a class="toclink" href="#defining-colors-and-coloring-text">Defining colors and coloring text</a><a class="header-link" href="#defining-colors-and-coloring-text" title="Permalink to this section">¶</a></h2>
+<p>By default, LaTeX has colors like "red", "green", "blue", and "magenta" (as I used above in my comment commands).</p>
+<p>However, the <code>xcolor</code> package is pretty much a must-use even with those colors defined.
+I'm pretty sure it is what gives the <code>\color{green}</code> macro its power, even if the color green already exists.</p>
+<p>To color a bit of text, you wrap all the text you want <em>inside brackets, with the color macro</em>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>This text is black and <span class="nb">{</span><span class="k">\color</span><span class="nb">{</span>green<span class="nb">}</span> this text is green<span class="nb">}</span>.
+</code></pre></div></td></tr></table></div>
+<p>Additionally, it gives access to more elaborate colors depending on how you import. For example, <code>\usepackage[dvipsnames]{xcolor}</code> gives you access to more colors like "aquamarine," "skyblue", "navyblue", etc.</p>
+<p><img alt="The how boys see colors vs how girls see colors meme except for base latex vs dvips colors" src="../../2025/latex-tips/images/xcolor-meme.jpg"/></p>
+<p>Additionally, we can use xcolor to define our own colors.
+The precise way is with an RGB code.
+For example, <code>\definecolor{tifablue}{RGB}{226, 232, 248}</code> defines the exact color we used in Table 2 of our <a href="https://arxiv.org/pdf/2404.04251">TS2 paper</a> to define the highlight color of TIFA-related runs. Once defined, one of these colors can be invoked with <code>\color{tifablue}</code>.</p>
+<p>If you just need a one-off hacky new color though, getting RGB may be too much.
+Here you can use this fractional combination-based technique I don't fully understand. 
+<code>\color{blue!50!black}</code> is the mix of 50% pure blue (<code>#0000FF</code>) and 100% pure black (<code>#000000</code>). The practical use of this color notation is that it can be directly used inline, inside the <code>color</code> command, rather than requiring a color definition.</p>
+<p>Other color models you can use include cmyk, HTML, and wavelength of the color in nanometers. 
+More explanation of colors with the predefined names are given <a href="https://latex-tutorial.com/color-latex/">here</a>.</p>
+<h3 id="custom-colored-highlighting"><a class="toclink" href="#custom-colored-highlighting">Custom-colored highlighting</a><a class="header-link" href="#custom-colored-highlighting" title="Permalink to this section">¶</a></h3>
+<p>The <code>soul</code> package provides useful macros for custom highlighting and background coloring for text.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\usepackage</span><span class="nb">{</span>soul<span class="nb">}</span>
+
+<span class="k">\sethlcolor</span><span class="nb">{</span>green<span class="nb">}</span>
+This is <span class="k">\hl</span><span class="nb">{</span>cool<span class="nb">}</span> stuff!
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p>This is <span style="background-color: #0F0;">cool</span> stuff!</p>
+</blockquote>
+<p>The purpose of this <code>soul</code>-based solution for coloring text rather than <code>colorbox</code> is that soul properly breaks lines, while colorbox doesn't.</p>
+<h2 id="size-units-for-spacing-em-ex-pt-etc"><a class="toclink" href="#size-units-for-spacing-em-ex-pt-etc">Size units for spacing: em, ex, pt, etc</a><a class="header-link" href="#size-units-for-spacing-em-ex-pt-etc" title="Permalink to this section">¶</a></h2>
+<p>When we want to define the size or spacing of an object, we have a few choices of unit which have different uses in different settings.</p>
+<p>You probably already know <code>pt</code>, or typographical point. I usually use this to size inline components (see <strong>Inline icons</strong> below). Depending on the document, 10, 11, or 12 pt will usually give you an element equal in size to the height of a tall letter in the main text.</p>
+<p><code>em</code> and <code>ex</code> come from CSS, and are <strong>useful size units defined relative to the font size.</strong>
+<code>1em</code> is equivalent to the current font size. <code>1ex</code> is equivalent to the height of the letter "x" in the current font size, roughly 50% of <code>1em</code>.</p>
+<p>These units are very useful for quickly iterating on heights and widths that are large relative to the whole document (for example, setting negative vspace in the <strong>Dark arts</strong> section)</p>
+<p>Finally, if you wish, you can use <code>cm</code>, <code>mm</code>, and <code>in</code> for sizing. Self-explanatory, they are relative to the current document. I prefer not to use them.</p>
+<h2 id="annoying-extra-formatting-which-i-sometimes-use"><a class="toclink" href="#annoying-extra-formatting-which-i-sometimes-use">Annoying extra formatting (which I sometimes use)</a><a class="header-link" href="#annoying-extra-formatting-which-i-sometimes-use" title="Permalink to this section">¶</a></h2>
+<p>If you really want to go the extra mile to make your paper pop, you can do things like making your method name colorful every time it shows up, or use exotic symbols for author affiliation marks rather than numbers, playing card suits, or crosses.</p>
+<p>Also, you can decorate quotations with big colored boxes!</p>
+<h3 id="big-colored-text-boxes"><a class="toclink" href="#big-colored-text-boxes">Big colored text boxes</a><a class="header-link" href="#big-colored-text-boxes" title="Permalink to this section">¶</a></h3>
+<p>In our COLM paper from last year, we wanted to insert cute little vignettes from the real sciences relating to our position on AI science.</p>
+<p>To do this I wrote a <code>\vig</code> command to make a nice colored box, something like the warning boxes I implemented for this website!</p>
+<blockquote class="infobox infobox-note">
+<p><strong><em>Example colorbox!</em></strong></p>
+<p>Text of the box!</p>
+</blockquote>
+<p>We did this using the <code>tcolorbox</code> package.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\usepackage</span><span class="na">[skins,breakable]</span><span class="nb">{</span>tcolorbox<span class="nb">}</span>
+
+<span class="k">\newtcolorbox</span><span class="nb">{</span>boxblue<span class="nb">}{</span>enhanced,colback=blue!5!white,colframe=blue!75!black,breakable=true<span class="nb">}</span>
+
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\vig</span><span class="nb">}</span>[2]<span class="nb">{</span>
+<span class="k">\begin</span><span class="nb">{</span>boxblue<span class="nb">}</span>
+<span class="k">\textit</span><span class="nb">{</span><span class="k">\color</span><span class="nb">{</span>blue!50!black<span class="nb">}</span><span class="k">\textbf</span><span class="nb">{</span>#1<span class="nb">}}</span>
+
+<span class="k">\vspace</span><span class="nb">{</span>6pt<span class="nb">}</span>#2
+<span class="k">\end</span><span class="nb">{</span>boxblue<span class="nb">}</span>
+<span class="nb">}</span>
+
+<span class="k">\vig</span><span class="nb">{</span>Example colorbox!<span class="nb">}{</span>Text of the box!<span class="nb">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Here you can see I used the fractional color models discussed above. The options <code>skins</code> enables a subpackage which provides a LOT of different options for themeing colorboxes beyond the simple one we used (full documentation <a href="https://texdoc.org/serve/tcolorbox.pdf/">here</a>). This allowed us to set the frame color and background color.
+The <code>breakable</code> option allows us to let the colorbox break across pages rather than being forced to the top of a following page and adding a bunch of whitespace like a forced inline figure would.</p>
+<h3 id="fancy-colored-gradients-inline"><a class="toclink" href="#fancy-colored-gradients-inline">Fancy colored gradients inline</a><a class="header-link" href="#fancy-colored-gradients-inline" title="Permalink to this section">¶</a></h3>
+<p>If a single xcolor isn't enough to make your methodname look good (it wasn't enough in <a href="https://arxiv.org/pdf/2404.04251">TS2</a>) you can use the <code>gradient-text</code> package to achieve this.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\usepackage</span><span class="na">[dvipsnames]</span><span class="nb">{</span>xcolor<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>gradient-text<span class="nb">}</span>
+
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\resourcename</span><span class="nb">}{</span><span class="k">\texttt</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span><span class="k">\gradientRGB</span><span class="nb">{</span>T2IScoreScore<span class="nb">}{</span>68,67,147<span class="nb">}{</span>61,130,217<span class="nb">}}}}</span>
+</code></pre></div></td></tr></table></div>
+<p><code>\gradientRGB</code> colors all <em>n</em> letters in the first argument text with <em>n</em> intermediate colors it calculates which interpolate between the colors in arguments 2 and 3.</p>
+<h3 id="inline-icons"><a class="toclink" href="#inline-icons">Inline icons</a><a class="header-link" href="#inline-icons" title="Permalink to this section">¶</a></h3>
+<p>Say you want to put a cute image or icon in the title of your paper, like the <a href="https://upload.wikimedia.org/wikipedia/commons/f/f2/On_the_Dangers_of_Stochastic_Parrots_Can_Language_Models_Be_Too_Big.pdf">Stochastic Parrots</a> paper did.</p>
+<p>You can just<sup id="fnref:4"><a class="footnote-ref footnote-toggle" href="javascript:void(0)"><svg class="footnote-icon" viewbox="0 0 24 24">
+<g class="icon-group" stroke="currentColor" stroke-linecap="round" stroke-width="3">
+<line x1="7" x2="17" y1="12" y2="12"></line>
+<line x1="12" x2="12" y1="7" y2="17"></line>
+</g>
+</svg></a><span class="footnote-popup">do things</span></sup> put <code>\includegraphics</code> macros inline with text.</p>
+<p>For example, I put a logo for an upcoming preprint in our title like this:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\vspace</span><span class="nb">{</span>-3pt<span class="nb">}</span><span class="k">\raisebox</span><span class="nb">{</span>-3pt<span class="nb">}{</span><span class="k">\includegraphics</span><span class="na">[width=20pt]</span><span class="nb">{</span>pics/logo.png<span class="nb">}}</span>
+</code></pre></div></td></tr></table></div>
+<p>Basically, here's what's going on here. The icon image itself is very big, much bigger than a line of text. If you just put <code>\includegraphics</code> inline without anything around it, the image will scale to its natural size.</p>
+<p>To counteract this, I have to both manipulate its sizing and positioning.
+Through manual experimentation I found that setting the width to 20pt roughly sized it according to my desires. However, the spacing was off. The image was too far above the line and making the line itself taller. To fix this, I had to use negative <code>\vspace{}</code> to keep the line positioning in subsequent lines from being impacted by the symbol, and negative <code>\raisebox{}</code> to slightly push the bottom of the image under the line.</p>
+<h3 id="exotic-symbols-eg-as-author-affiliation-marks"><a class="toclink" href="#exotic-symbols-eg-as-author-affiliation-marks">Exotic symbols (eg., as author affiliation marks)</a><a class="header-link" href="#exotic-symbols-eg-as-author-affiliation-marks" title="Permalink to this section">¶</a></h3>
+<p>I used to really dislike the trend of quirky affiliation marks in author lists, and was basically doing them ironically<sup id="fnref:5"><a class="footnote-ref footnote-toggle" href="javascript:void(0)"><svg class="footnote-icon" viewbox="0 0 24 24">
+<g class="icon-group" stroke="currentColor" stroke-linecap="round" stroke-width="3">
+<line x1="7" x2="17" y1="12" y2="12"></line>
+<line x1="12" x2="12" y1="7" y2="17"></line>
+</g>
+</svg></a><span class="footnote-popup">I know, I'm obnoxious</span></sup> until I came to love them. Here are some ways I got them.</p>
+<p>In my <a href="https://arxiv.org/abs/2403.11092">NAACL paper</a> last year I used Egyptian hieroglyphs as affiliation marks.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\usepackage</span><span class="nb">{</span>hieroglf<span class="nb">}</span>
+
+I love Egypt! <span class="k">\textpmhg</span><span class="nb">{</span>eFR<span class="k">\Hibl</span><span class="nb">}</span>
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p>I love Egypt! 𓁹𓆛𓅃𓅠</p>
+</blockquote>
+<p>In our TS2 paper, I wanted to have PlayStation button symbols as author affiliation marks. I drew these using custom tikz:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\usepackage</span><span class="nb">{</span>xcolor<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>tikz<span class="nb">}</span>
+
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\pssymb</span><span class="nb">}</span>[2]<span class="nb">{</span>
+<span class="k">\resizebox</span><span class="nb">{</span>#1<span class="nb">}{</span>!<span class="nb">}{</span><span class="k">\begin</span><span class="nb">{</span>tikzpicture<span class="nb">}</span>#2<span class="k">\end</span><span class="nb">{</span>tikzpicture<span class="nb">}}</span>
+<span class="nb">}</span>
+
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\pscirc</span><span class="nb">}{</span>
+<span class="k">\pssymb</span><span class="nb">{</span>6pt<span class="nb">}{</span>
+    <span class="k">\draw</span> (0,0) circle [radius=1.5];
+    <span class="k">\draw</span><span class="na">[line width=5pt, red]</span> (0,0) circle [radius=0.8];
+<span class="nb">}}</span>
+
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\psx</span><span class="nb">}{</span>
+<span class="k">\pssymb</span><span class="nb">{</span>6pt<span class="nb">}{</span>
+    <span class="k">\draw</span> (0,0) circle [radius=1.5];
+    <span class="k">\draw</span><span class="na">[line width=5pt, blue]</span> (-0.8,-0.8) -- (0.8,0.8);
+    <span class="k">\draw</span><span class="na">[line width=5pt, blue]</span> (0.8,-0.8) -- (-0.8,0.8);
+<span class="nb">}}</span>
+
+...
+
+<span class="k">\author</span><span class="nb">{</span>Michael Saxon<span class="s">$</span><span class="nb">^{</span><span class="nv">\psx\pscirc</span><span class="nb">}</span><span class="s">$</span>...<span class="nb">}</span>
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p>Michael Saxon<sup><img src="https://t2iscorescore.github.io/static/images/psx.svg" style="width:12pt;border:0;"/><img src="https://t2iscorescore.github.io/static/images/psc.svg" style="width:12pt;border:0;"/></sup></p>
+</blockquote>
+<p>Providing a tikz tutorial is out of scope here. Look it up yourself ;)</p>
+<h2 id="non-latin-cjk-alphabets-on-arxiv"><a class="toclink" href="#non-latin-cjk-alphabets-on-arxiv">Non-Latin (CJK) alphabets on arXiv</a><a class="header-link" href="#non-latin-cjk-alphabets-on-arxiv" title="Permalink to this section">¶</a></h2>
+<p>XeLaTeX is the best way to do this, with native unicode support, and a much more comprehensive distribution of multilingual fonts and modules. 
+But arXiv (as of writing) doesn't support it 😭😭😭😭😭</p>
+<p>So we need to figure out how to do it with pdfLaTeX.</p>
+<p>We have to hack it in using various packages depending on language. In my multilingual paper, I <em>wanted</em> to include CJK and Hebrew characters, but I just could not figure out Hebrew without XeLaTeX at least for CJK you can use the CJK packages.</p>
+<p>I was able to get this working on arXiv:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c">%%% preamble</span>
+<span class="k">\usepackage</span><span class="na">[utf8]</span><span class="nb">{</span>inputenc<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>CJKutf8<span class="nb">}</span>
+
+<span class="c">%%% set the font for each language</span>
+<span class="c">% mincho font for Japanese</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\inlinejp</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\begin</span><span class="nb">{</span>CJK<span class="nb">}{</span>UTF8<span class="nb">}{</span>min<span class="nb">}{</span>#1<span class="nb">}</span><span class="k">\end</span><span class="nb">{</span>CJK<span class="nb">}}</span>
+<span class="c">% gbsn font for Chinese</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\inlinezh</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\begin</span><span class="nb">{</span>CJK<span class="nb">}{</span>UTF8<span class="nb">}{</span>gbsn<span class="nb">}{</span>#1<span class="nb">}</span><span class="k">\end</span><span class="nb">{</span>CJK<span class="nb">}}</span>
+
+<span class="c">%%% in document</span>
+<span class="k">\inlinejp</span><span class="nb">{</span>お前はもう死んでいる<span class="nb">}</span>
+<span class="k">\inlinezh</span><span class="nb">{</span>迈克不喜欢卷<span class="nb">}</span>
+</code></pre></div></td></tr></table></div>
+<h1 id="3-turning-the-tables"><a class="toclink" href="#3-turning-the-tables">3. Turning the Tables</a><a class="header-link" href="#3-turning-the-tables" title="Permalink to this section">¶</a></h1>
+<p>Default LaTeX tables aren't very appealing. Use <code>booktabs.</code></p>
+<h2 id="basic-table-hygiene-with-booktabs"><a class="toclink" href="#basic-table-hygiene-with-booktabs">Basic table hygiene with <code>booktabs</code></a><a class="header-link" href="#basic-table-hygiene-with-booktabs" title="Permalink to this section">¶</a></h2>
+<p>Within the <code>tabular</code> environment, <code>booktabs</code> gives you macros like <code>\toprule</code>, <code>\bottomrule</code>, and <code>\midrule</code>, which give you lines of different thickness, width, and spacing which look nicer than the default table lines.</p>
+<p>When you define the columns of your table in the <code>tabular</code> environment, (<code>|</code>) puts a pipe between lines. The cells can be defined with left, center, or right alignment with <code>l</code>, <code>c</code>, and <code>r</code>. For example:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\usepackage</span><span class="nb">{</span>booktabs<span class="nb">}</span>
+
+<span class="k">\begin</span><span class="nb">{</span>table<span class="nb">}</span><span class="k">\centering</span>
+<span class="k">\begin</span><span class="nb">{</span>tabular<span class="nb">}{</span>l|cr<span class="nb">}</span>
+<span class="k">\toprule</span>
+Thing 1 <span class="nb">&amp;</span> Thing 2 <span class="nb">&amp;</span> Thing 3 <span class="k">\\</span>
+<span class="k">\midrule</span>
+A <span class="nb">&amp;</span> B <span class="nb">&amp;</span> C <span class="k">\\</span>
+<span class="k">\bottomrule</span>
+<span class="k">\end</span><span class="nb">{</span>tabular<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>table<span class="nb">}</span>
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p><table style="border-top: 2px solid black; border-bottom: 2px solid black; padding: 1px;"><tr><td style="border-bottom: 1px solid black; margin:0; width: 100pt; border-right: 1px solid black;">Thing 1</td><td style="border-bottom: 1px solid black; margin:0; padding-right 5pt; width: 100pt; text-align:center;">Thing 2</td><td style="border-bottom: 1px solid black; margin:0; width: 100pt;text-align:right;">Thing 3</td></tr><tr style="border:0;"><td style="border-right: 1px solid black;">A</td><td style="text-align:center;">B</td><td style="text-align:right;">C</td></tr></table></p>
+</blockquote>
+<p>Please use <code>|</code> tastefully. Resist the impulse to do <code>\tabular{|c|c|c|}</code>, because this is harder to scan over and read:</p>
+<blockquote class="infobox infobox-warning">
+<p><table style="border-top: 2px solid black; border-bottom: 2px solid black; padding: 1px;"><tr><td style="border-bottom: 1px solid black; margin:0; width: 100pt; border-right: 1px solid black; text-align:center;border-left: 1px solid black; ">Thing 1</td><td style="border-bottom: 1px solid black; margin:0; padding-right 5pt; width: 100pt; text-align:center; border-right: 1px solid black; ">Thing 2</td><td style="border-bottom: 1px solid black; margin:0; width: 100pt;text-align:center;border-right: 1px solid black; ">Thing 3</td></tr><tr style="border:0;"><td style="border-right: 1px solid black; border-left: 1px solid black; text-align:center;">A</td><td style="border-right: 1px solid black; text-align:center;">B</td><td style="border-right: 1px solid black; text-align:center;">C</td></tr></table></p>
+</blockquote>
+<h2 id="multirow-and-multicolumn"><a class="toclink" href="#multirow-and-multicolumn"><code>multirow</code> and <code>multicolumn</code></a><a class="header-link" href="#multirow-and-multicolumn" title="Permalink to this section">¶</a></h2>
+<p>You can define multi-row and multi-column cells using these environments.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\multirow</span><span class="nb">{</span>NUM<span class="nb">_</span>ROWS<span class="nb">}{</span>ALIGNMENT<span class="nb">}{</span>Text<span class="nb">}</span>
+<span class="k">\multicolumn</span><span class="nb">{</span>NUM<span class="nb">_</span>COLUMNS<span class="nb">}{</span>ALIGNMENT<span class="nb">}{</span>Text<span class="nb">}</span>
+</code></pre></div></td></tr></table></div>
+<p><code>NUM_ROWS</code> and <code>NUM_COLUMNS</code> should be self-explanatory. For <code>ALIGNMENT</code> you can use <code>l</code>, <code>r</code>, <code>c</code> as in tabular for multicolumn. For multirow, you should usually use <code>*</code> for vertical centering.</p>
+<h2 id="cmidrule-to-partially-underline-a-row"><a class="toclink" href="#cmidrule-to-partially-underline-a-row"><code>cmidrule</code> to partially underline a row</a><a class="header-link" href="#cmidrule-to-partially-underline-a-row" title="Permalink to this section">¶</a></h2>
+<p>Sometimes you want to only underline some of the cells in a row (for example, you want to underline a multicolumn cell in the row above.) <code>cmidrule</code> does this with arguments for edges to thin and cell numbers.
+For example, </p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\usepackage</span><span class="nb">{</span>booktabs<span class="nb">}</span>
+
+<span class="k">\begin</span><span class="nb">{</span>table<span class="nb">}</span><span class="k">\centering</span>
+<span class="k">\begin</span><span class="nb">{</span>tabular<span class="nb">}{</span>l|cr<span class="nb">}</span>
+<span class="k">\toprule</span>
+Thing 1 <span class="nb">&amp;</span> Thing 2 <span class="nb">&amp;</span> Thing 3 <span class="k">\\</span>
+<span class="k">\cmidrule</span><span class="nb">{</span>2-3<span class="nb">}</span>
+A <span class="nb">&amp;</span> B <span class="nb">&amp;</span> C <span class="k">\\</span>
+<span class="k">\bottomrule</span>
+<span class="k">\end</span><span class="nb">{</span>tabular<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>table<span class="nb">}</span>
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p><table style="border-top: 2px solid black; border-bottom: 2px solid black; padding: 1px;"><tr><td style="margin:0; width: 100pt; border-right: 1px solid black;">Thing 1</td><td style="border-bottom: 1px solid black; margin:0; padding-right 5pt; width: 100pt; text-align:center;">Thing 2</td><td style="border-bottom: 1px solid black; margin:0; width: 100pt;text-align:right;">Thing 3</td></tr><tr style="border:0;"><td style="border-right: 1px solid black;">A</td><td style="text-align:center;">B</td><td style="text-align:right;">C</td></tr></table></p>
+</blockquote>
+<p>Usually, if you have multiple <code>cmidrule</code> side-by-side, you want to "chop off" parts on the left and right sides so they don't connect, providing some visually pleasing separation. To do this, you can include <code>(lr)</code> like:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\cmidrule</span>(lr)<span class="nb">{</span>2-3<span class="nb">}</span><span class="k">\cmidrule</span>(lr)<span class="nb">{</span>4-5<span class="nb">}</span>
+</code></pre></div></td></tr></table></div>
+<p>To provide multiple partial midrules that are adjacent but not connected.</p>
+<h2 id="fancy-stuff"><a class="toclink" href="#fancy-stuff">Fancy stuff</a><a class="header-link" href="#fancy-stuff" title="Permalink to this section">¶</a></h2>
+<p>Now for some more advanced beautification techniques for your tables.</p>
+<h3 id="coloring-table-cells"><a class="toclink" href="#coloring-table-cells">Coloring table cells</a><a class="header-link" href="#coloring-table-cells" title="Permalink to this section">¶</a></h3>
+<p>The <code>colortbl</code> package provides a simple interface to coloring cells, using colors we defined above. <code>\cellcolor{COLOR}</code> will color the background of the cell it's in.</p>
+<h3 id="special-table-symbols"><a class="toclink" href="#special-table-symbols">Special table symbols</a><a class="header-link" href="#special-table-symbols" title="Permalink to this section">¶</a></h3>
+<p>For my CoCo-CroLa paper I wanted an efficient way to mark equivalence between cells in a column, rather than repeat the same value several times.
+I wanted something very easy to skim with minimum visual noise, and came up with:</p>
+<p><img alt="Vertical line through duplicate cells" src="../../2025/latex-tips/images/cccltable.png"/></p>
+<p>I called this "same line" command <code>\samel</code>, defined with:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\samel</span><span class="nb">}</span>[0]<span class="nb">{</span><span class="k">\multicolumn</span><span class="nb">{</span>1<span class="nb">}{</span>l<span class="nb">}{</span><span class="k">\space\hspace</span><span class="nb">{</span>0.5em<span class="nb">}</span><span class="k">\vline</span><span class="nb">}}</span>
+</code></pre></div></td></tr></table></div>
+<p>Inside of a environment of a single multicolumn we can use a <code>\vline</code> (equivalent to putting <code>|</code> in the tabular environment definition), which would normally be to the far left side of the cell. We then push it rightward by <code>0.5em</code>, or half the vertical height of the text.</p>
+<h3 id="rotating-the-text-inside-a-cell"><a class="toclink" href="#rotating-the-text-inside-a-cell">Rotating the text inside a cell</a><a class="header-link" href="#rotating-the-text-inside-a-cell" title="Permalink to this section">¶</a></h3>
+<p>Often, plots can make axis labels more compact by rotating their text.
+I wanted to replicate this in a table I made last year and was able to pretty easily using the <code>rotating</code> package.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\usepackage</span><span class="nb">{</span>rotating<span class="nb">}</span>
+
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\myrotcell</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\begin</span><span class="nb">{</span>turn<span class="nb">}{</span>75<span class="nb">}</span>#1<span class="k">\end</span><span class="nb">{</span>turn<span class="nb">}}</span>
+</code></pre></div></td></tr></table></div>
+<p><code>\myrotcel</code> basically behaves exactly as I wanted inside of a table, turning the rotated text into an element with the proper width and height for positioning elements around it without overlapping or other weird clipping behavior.</p>
+<h2 id="putting-it-together"><a class="toclink" href="#putting-it-together">Putting it together</a><a class="header-link" href="#putting-it-together" title="Permalink to this section">¶</a></h2>
+<p>Using all of the above components we've discussed, including the <code>booktabs</code> line rules and <code>cmidrule</code>, the text cell rotation command <code>\myrotcel</code> we made, cell coloring and rotated <code>multicolumn</code>, we can generate this table from the TS2 paper:</p>
+<p><img alt="Table from the TS2 paper using all of these tricks." src="../../2025/latex-tips/images/ts2table.png"/></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\ty</span><span class="nb">}</span>[0]<span class="nb">{</span><span class="k">\cellcolor</span><span class="nb">{</span>otheryellow<span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\tr</span><span class="nb">}</span>[0]<span class="nb">{</span><span class="k">\cellcolor</span><span class="nb">{</span>dsgred<span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\tb</span><span class="nb">}</span>[0]<span class="nb">{</span><span class="k">\cellcolor</span><span class="nb">{</span>tifablue<span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\tg</span><span class="nb">}</span>[0]<span class="nb">{</span><span class="k">\cellcolor</span><span class="nb">{</span>llmgreen<span class="nb">}}</span>
+
+
+<span class="k">\begin</span><span class="nb">{</span>table*<span class="nb">}</span>[t!]
+<span class="k">\centering</span>
+<span class="k">\begin</span><span class="nb">{</span>tabular<span class="nb">}{</span>llb<span class="nb">{</span>15pt<span class="nb">}</span>b<span class="nb">{</span>15pt<span class="nb">}</span>b<span class="nb">{</span>15pt<span class="nb">}</span>b<span class="nb">{</span>15pt<span class="nb">}</span>b<span class="nb">{</span>15pt<span class="nb">}</span>b<span class="nb">{</span>15pt<span class="nb">}</span>b<span class="nb">{</span>15pt<span class="nb">}</span>b<span class="nb">{</span>15pt<span class="nb">}</span>b<span class="nb">{</span>15pt<span class="nb">}</span>b<span class="nb">{</span>15pt<span class="nb">}</span>b<span class="nb">{</span>15pt<span class="nb">}</span>b<span class="nb">{</span>15pt<span class="nb">}</span>b<span class="nb">{</span>15pt<span class="nb">}</span>b<span class="nb">{</span>15pt<span class="nb">}</span>b<span class="nb">{</span>15pt<span class="nb">}</span>b<span class="nb">{</span>15pt<span class="nb">}</span>b<span class="nb">{</span>15pt<span class="nb">}</span>b<span class="nb">{</span>15pt<span class="nb">}</span>b<span class="nb">{</span>15pt<span class="nb">}}</span>
+<span class="k">\toprule</span>
+<span class="nb">&amp;</span> <span class="nb">&amp;</span> <span class="k">\myrotcell</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span>CLIPScore<span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\myrotcell</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span>ALIGNScore<span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\myrotcell</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span>mPLUG<span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\myrotcell</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span>LLaVA 1.5<span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\myrotcell</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span>LLaVA 1.5 (alt)<span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\myrotcell</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span>InstructBLIP<span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\myrotcell</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span>BLIP1<span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\myrotcell</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span>Fuyu<span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\myrotcell</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span>GPT4-V<span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\myrotcell</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span>mPLUG<span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\myrotcell</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span>LLaVA 1.5<span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\myrotcell</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span>LLaVA 1.5 (alt)<span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\myrotcell</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span>InstructBLIP<span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\myrotcell</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span>BLIP1<span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\myrotcell</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span>Fuyu<span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\myrotcell</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span>GPT4-V<span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\myrotcell</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span>LLMScore EC<span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\myrotcell</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span>LLMScore Over<span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\myrotcell</span><span class="nb">{</span><span class="k">\textbf</span><span class="nb">{</span>VIEScore<span class="nb">}}</span> <span class="k">\\</span>
+<span class="k">\cmidrule</span>(l<span class="nb">{</span>5pt<span class="nb">}</span>r<span class="nb">{</span>5pt<span class="nb">}</span>)<span class="nb">{</span>3-4<span class="nb">}</span> <span class="k">\cmidrule</span>(l<span class="nb">{</span>5pt<span class="nb">}</span>r<span class="nb">{</span>5pt<span class="nb">}</span>)<span class="nb">{</span>5-11<span class="nb">}</span> <span class="k">\cmidrule</span>(l<span class="nb">{</span>5pt<span class="nb">}</span>r<span class="nb">{</span>5pt<span class="nb">}</span>)<span class="nb">{</span>12-18<span class="nb">}</span> <span class="k">\cmidrule</span>(l<span class="nb">{</span>5pt<span class="nb">}</span>r<span class="nb">{</span>5pt<span class="nb">}</span>)<span class="nb">{</span>19-21<span class="nb">}</span> 
+<span class="nb">&amp;</span> <span class="nb">&amp;</span> <span class="k">\multicolumn</span><span class="nb">{</span>2<span class="nb">}{</span>c<span class="nb">}{</span> <span class="k">\footnotesize</span> <span class="k">\textbf</span><span class="nb">{</span>Emb-based<span class="nb">}}&amp;</span> <span class="k">\multicolumn</span><span class="nb">{</span>7<span class="nb">}{</span>c<span class="nb">}{</span> <span class="k">\textbf</span><span class="nb">{</span>TIFA<span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\multicolumn</span><span class="nb">{</span>7<span class="nb">}{</span>c<span class="nb">}{</span><span class="k">\textbf</span><span class="nb">{</span>DSG<span class="nb">}}</span> <span class="nb">&amp;</span>  <span class="k">\multicolumn</span><span class="nb">{</span>3<span class="nb">}{</span>c<span class="nb">}{</span><span class="k">\footnotesize</span> <span class="k">\textbf</span><span class="nb">{</span>Caption-based<span class="nb">}}</span>  <span class="k">\\</span>
+<span class="k">\midrule</span>
+<span class="k">\multirow</span><span class="nb">{</span>4<span class="nb">}{</span>*<span class="nb">}{</span><span class="k">\rotninety</span><span class="nb">{</span><span class="s">$</span><span class="nv">\mathtt</span><span class="nb">{rank}_m</span><span class="s">$</span><span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\textbf</span><span class="nb">{</span>Avg<span class="nb">}</span> <span class="nb">&amp;</span>  71.4 <span class="nb">&amp;</span> 73.9 <span class="nb">&amp;</span> 71.0 <span class="nb">&amp;</span> 74.5 <span class="nb">&amp;</span> 74.4 <span class="nb">&amp;</span> <span class="k">\tb</span> 76.5 <span class="nb">&amp;</span> 73.8 <span class="nb">&amp;</span> 38.7 <span class="nb">&amp;</span> <span class="k">\tb</span> 77.9 <span class="nb">&amp;</span> 70.4 <span class="nb">&amp;</span> 76.2 <span class="nb">&amp;</span> 75.0 <span class="nb">&amp;</span> <span class="k">\tr</span> <span class="k">\textul</span><span class="nb">{</span>79.0<span class="nb">}</span> <span class="nb">&amp;</span> 76.6 <span class="nb">&amp;</span> 29.5 <span class="nb">&amp;</span> <span class="k">\tr</span> <span class="k">\textbf</span><span class="nb">{</span>79.6<span class="nb">}</span> <span class="nb">&amp;</span> 48.8 <span class="nb">&amp;</span> 57.7 <span class="nb">&amp;</span> 37.8 <span class="k">\\</span>
+<span class="nb">&amp;</span> <span class="k">\textbf</span><span class="nb">{</span>Synth<span class="nb">}</span> <span class="nb">&amp;</span> 75.0 <span class="nb">&amp;</span> 77.6 <span class="nb">&amp;</span> 72.6 <span class="nb">&amp;</span> 79.2 <span class="nb">&amp;</span> 79.2 <span class="nb">&amp;</span> 80.2 <span class="nb">&amp;</span> 78.8 <span class="nb">&amp;</span> 44.5 <span class="nb">&amp;</span> <span class="k">\tb</span> 83.6 <span class="nb">&amp;</span> 74.6 <span class="nb">&amp;</span> 80.1 <span class="nb">&amp;</span> <span class="k">\tr</span> 81.6 <span class="nb">&amp;</span> <span class="k">\tr</span> <span class="k">\textbf</span><span class="nb">{</span>85.1<span class="nb">}</span> <span class="nb">&amp;</span> 81.6 <span class="nb">&amp;</span> 35.4 <span class="nb">&amp;</span> <span class="k">\tr</span> 82.6 <span class="nb">&amp;</span> 50.2 <span class="nb">&amp;</span> 61.6 <span class="nb">&amp;</span> 42.5 <span class="k">\\</span>
+<span class="nb">&amp;</span> <span class="k">\textbf</span><span class="nb">{</span>Nat<span class="nb">}</span> <span class="nb">&amp;</span> 58.0 <span class="nb">&amp;</span> <span class="k">\ty</span> 70.2 <span class="nb">&amp;</span> 66.9 <span class="nb">&amp;</span> 62.8 <span class="nb">&amp;</span> 64.0 <span class="nb">&amp;</span> 65.1 <span class="nb">&amp;</span> 62.2 <span class="nb">&amp;</span> 23.5 <span class="nb">&amp;</span> 61.6 <span class="nb">&amp;</span> 65.3 <span class="nb">&amp;</span> 65.9 <span class="nb">&amp;</span> 68.8 <span class="nb">&amp;</span> <span class="k">\tr</span> <span class="k">\textul</span><span class="nb">{</span>70.7<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\tr</span> <span class="k">\textul</span><span class="nb">{</span>71.6<span class="nb">}</span> <span class="nb">&amp;</span> 20.5 <span class="nb">&amp;</span> <span class="k">\tr</span> <span class="k">\textbf</span><span class="nb">{</span>73.7<span class="nb">}</span> <span class="nb">&amp;</span> 36.2 <span class="nb">&amp;</span> 44.4 <span class="nb">&amp;</span> 22.4 <span class="k">\\</span>
+<span class="nb">&amp;</span> <span class="k">\textbf</span><span class="nb">{</span>Real<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\ty</span> 69.3 <span class="nb">&amp;</span> 62.6 <span class="nb">&amp;</span> <span class="k">\tb</span> 68.2 <span class="nb">&amp;</span> 66.7 <span class="nb">&amp;</span> 64.5 <span class="nb">&amp;</span> 71.6 <span class="nb">&amp;</span> 64.0 <span class="nb">&amp;</span> 29.7 <span class="nb">&amp;</span> <span class="k">\tb</span> 69.5 <span class="nb">&amp;</span> 58.4 <span class="nb">&amp;</span> 70.0 <span class="nb">&amp;</span> 54.2 <span class="nb">&amp;</span> 62.0 <span class="nb">&amp;</span> 61.2 <span class="nb">&amp;</span> 14.2 <span class="nb">&amp;</span> <span class="k">\tr</span> <span class="k">\textbf</span><span class="nb">{</span>73.0<span class="nb">}</span> <span class="nb">&amp;</span> 54.4 <span class="nb">&amp;</span> 54.1 <span class="nb">&amp;</span> 33.2 <span class="k">\\</span>
+<span class="k">\midrule</span>
+<span class="k">\multirow</span><span class="nb">{</span>4<span class="nb">}{</span>*<span class="nb">}{</span><span class="k">\rotninety</span><span class="nb">{</span><span class="s">$</span><span class="nv">\mathtt</span><span class="nb">{sep}_m</span><span class="s">$</span><span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\textbf</span><span class="nb">{</span>Avg<span class="nb">}</span> <span class="nb">&amp;</span>  <span class="k">\ty</span> 90.7 <span class="nb">&amp;</span> <span class="k">\ty</span> <span class="k">\textbf</span><span class="nb">{</span>92.8<span class="nb">}</span> <span class="nb">&amp;</span> 80.6 <span class="nb">&amp;</span> 82.5 <span class="nb">&amp;</span> 81.9 <span class="nb">&amp;</span> <span class="k">\tb</span> 85.0 <span class="nb">&amp;</span> 81.8 <span class="nb">&amp;</span> 67.2 <span class="nb">&amp;</span> 83.2 <span class="nb">&amp;</span> 78.4 <span class="nb">&amp;</span> 83.1 <span class="nb">&amp;</span> 80.3 <span class="nb">&amp;</span> 84.2 <span class="nb">&amp;</span> 80.8 <span class="nb">&amp;</span> 63.6 <span class="nb">&amp;</span> <span class="k">\tr</span> 84.2 <span class="nb">&amp;</span> 73.6 <span class="nb">&amp;</span> 73.5 <span class="nb">&amp;</span> 51.8 <span class="k">\\</span>
+<span class="nb">&amp;</span> <span class="k">\textbf</span><span class="nb">{</span>Synth<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\ty</span> 90.5 <span class="nb">&amp;</span> <span class="k">\ty\textbf</span><span class="nb">{</span>94.1<span class="nb">}</span> <span class="nb">&amp;</span> 80.6 <span class="nb">&amp;</span> 85.5 <span class="nb">&amp;</span> 85.2 <span class="nb">&amp;</span> <span class="k">\tb</span> 86.7 <span class="nb">&amp;</span> 84.1 <span class="nb">&amp;</span> 67.3 <span class="nb">&amp;</span> 86.2 <span class="nb">&amp;</span> 80.9 <span class="nb">&amp;</span> 85.7 <span class="nb">&amp;</span> 83.9 <span class="nb">&amp;</span> <span class="k">\tr</span> 87.8 <span class="nb">&amp;</span> 84.9 <span class="nb">&amp;</span> 65.8 <span class="nb">&amp;</span> <span class="k">\tr</span> 86.6 <span class="nb">&amp;</span> 71.1 <span class="nb">&amp;</span> 72.8 <span class="nb">&amp;</span> 53.7 <span class="k">\\</span>
+<span class="nb">&amp;</span> <span class="k">\textbf</span><span class="nb">{</span>Nat<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\ty</span> 91.5 <span class="nb">&amp;</span> <span class="k">\ty</span> <span class="k">\textbf</span><span class="nb">{</span>92.6<span class="nb">}</span> <span class="nb">&amp;</span> 84.2 <span class="nb">&amp;</span> 75.1 <span class="nb">&amp;</span> 75.6 <span class="nb">&amp;</span> 82.8 <span class="nb">&amp;</span> 77.9 <span class="nb">&amp;</span> 75.7 <span class="nb">&amp;</span> 80.5 <span class="nb">&amp;</span> 71.2 <span class="nb">&amp;</span> 80.9 <span class="nb">&amp;</span> 76.7 <span class="nb">&amp;</span> 81.8 <span class="nb">&amp;</span> 73.3 <span class="nb">&amp;</span> 68.6 <span class="nb">&amp;</span> 81.7 <span class="nb">&amp;</span> 80.5 <span class="nb">&amp;</span> 76.7 <span class="nb">&amp;</span> 44.5 <span class="k">\\</span>
+<span class="nb">&amp;</span> <span class="k">\textbf</span><span class="nb">{</span>Real<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\ty</span> <span class="k">\textbf</span><span class="nb">{</span>90.3<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\ty</span> 87.9 <span class="nb">&amp;</span> <span class="k">\tb</span> 77.4 <span class="nb">&amp;</span> 76.8 <span class="nb">&amp;</span> 74.4 <span class="nb">&amp;</span> 80.5 <span class="nb">&amp;</span> 76.4 <span class="nb">&amp;</span> 59.3 <span class="nb">&amp;</span> 73.7 <span class="nb">&amp;</span> 75.1 <span class="nb">&amp;</span> 74.5 <span class="nb">&amp;</span> 69.4 <span class="nb">&amp;</span> 71.9 <span class="nb">&amp;</span> 70.8 <span class="nb">&amp;</span> 50.3 <span class="nb">&amp;</span> 76.6 <span class="nb">&amp;</span> <span class="k">\tg</span> 77.3 <span class="nb">&amp;</span> 73.6 <span class="nb">&amp;</span> 50.7 <span class="k">\\</span>
+<span class="k">\midrule</span>
+<span class="k">\multirow</span><span class="nb">{</span>4<span class="nb">}{</span>*<span class="nb">}{</span><span class="k">\rotninety</span><span class="nb">{</span><span class="s">$</span><span class="nv">\mathtt</span><span class="nb">{delta}_m</span><span class="s">$</span><span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\textbf</span><span class="nb">{</span>Avg<span class="nb">}</span>  <span class="nb">&amp;</span> 89.7 <span class="nb">&amp;</span> 95.6 <span class="nb">&amp;</span> 92.4 <span class="nb">&amp;</span> 97.5 <span class="nb">&amp;</span> 97.1 <span class="nb">&amp;</span> 99.8 <span class="nb">&amp;</span> 94.0 <span class="nb">&amp;</span> 43.9 <span class="nb">&amp;</span> 92.3 <span class="nb">&amp;</span> 94.2 <span class="nb">&amp;</span> <span class="k">\tr</span> 104.7 <span class="nb">&amp;</span>  102.0 <span class="nb">&amp;</span> <span class="k">\tr\textbf</span><span class="nb">{</span>110.6<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\tr</span> 103.7 <span class="nb">&amp;</span> 37.7 <span class="nb">&amp;</span> <span class="k">\tr</span> 110.2 <span class="nb">&amp;</span> 66.9 <span class="nb">&amp;</span> 56.3 <span class="nb">&amp;</span> 45.9 <span class="k">\\</span>
+<span class="nb">&amp;</span> <span class="k">\textbf</span><span class="nb">{</span>Synth<span class="nb">}</span> <span class="nb">&amp;</span> 89.9 <span class="nb">&amp;</span> 95.6 <span class="nb">&amp;</span> 92.5 <span class="nb">&amp;</span> 97.6 <span class="nb">&amp;</span> 97.3 <span class="nb">&amp;</span> 99.9 <span class="nb">&amp;</span> 93.9 <span class="nb">&amp;</span> 44.6 <span class="nb">&amp;</span> 92.5 <span class="nb">&amp;</span> 94.4 <span class="nb">&amp;</span> <span class="k">\tr</span> 104.7 <span class="nb">&amp;</span>  102.1 <span class="nb">&amp;</span> <span class="k">\tr</span> <span class="k">\textbf</span><span class="nb">{</span>110.7<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\tr</span> 103.6 <span class="nb">&amp;</span> 37.8 <span class="nb">&amp;</span> <span class="k">\tr</span> 110.1 <span class="nb">&amp;</span> 67.2 <span class="nb">&amp;</span> 56.7 <span class="nb">&amp;</span> 46.7 <span class="k">\\</span>
+<span class="nb">&amp;</span> <span class="k">\textbf</span><span class="nb">{</span>Nat<span class="nb">}</span> <span class="nb">&amp;</span> 92.5 <span class="nb">&amp;</span> 98.6 <span class="nb">&amp;</span> 94.4 <span class="nb">&amp;</span> 98.7 <span class="nb">&amp;</span> 98.8 <span class="nb">&amp;</span> 101.1 <span class="nb">&amp;</span> 95.5 <span class="nb">&amp;</span> 46.1 <span class="nb">&amp;</span> 93.9 <span class="nb">&amp;</span> 96.0 <span class="nb">&amp;</span> <span class="k">\tr</span> 105.5 <span class="nb">&amp;</span> 103.0 <span class="nb">&amp;</span> <span class="k">\tr</span> <span class="k">\textbf</span><span class="nb">{</span>111.6<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\tr</span> 104.6 <span class="nb">&amp;</span> 39.3 <span class="nb">&amp;</span> <span class="k">\tr</span> 111.5 <span class="nb">&amp;</span> 66.2 <span class="nb">&amp;</span> 56.4 <span class="nb">&amp;</span> 46.6 <span class="k">\\</span>
+<span class="nb">&amp;</span> <span class="k">\textbf</span><span class="nb">{</span>Real<span class="nb">}</span> <span class="nb">&amp;</span> 95.1 <span class="nb">&amp;</span> 100.8 <span class="nb">&amp;</span> 96.0 <span class="nb">&amp;</span> 100.5 <span class="nb">&amp;</span> 100.4 <span class="nb">&amp;</span> 102.6 <span class="nb">&amp;</span> 96.9 <span class="nb">&amp;</span> 46.9 <span class="nb">&amp;</span> 95.9 <span class="nb">&amp;</span> 97.3 <span class="nb">&amp;</span> <span class="k">\tr</span> 106.8 <span class="nb">&amp;</span> 104.2 <span class="nb">&amp;</span> <span class="k">\tr</span> <span class="k">\textbf</span><span class="nb">{</span>113.0<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\tr</span> 105.9 <span class="nb">&amp;</span> 39.4 <span class="nb">&amp;</span> <span class="k">\tr</span> <span class="k">\textbf</span><span class="nb">{</span>113.0<span class="nb">}</span> <span class="nb">&amp;</span> 65.0 <span class="nb">&amp;</span> 56.0 <span class="nb">&amp;</span> 46.3 <span class="k">\\</span>
+<span class="k">\midrule</span>
+<span class="k">\multicolumn</span><span class="nb">{</span>2<span class="nb">}{</span>c<span class="nb">}{</span><span class="k">\textbf</span><span class="nb">{</span>FLOP/run<span class="nb">}}</span> <span class="nb">&amp;</span> <span class="k">\ty</span> <span class="k">\textbf</span><span class="nb">{</span>604M<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\ty</span> 688M <span class="nb">&amp;</span> 224T <span class="nb">&amp;</span> 224T <span class="nb">&amp;</span> 224T <span class="nb">&amp;</span> 224T <span class="nb">&amp;</span> 224T <span class="nb">&amp;</span> 224T <span class="nb">&amp;</span> 1.66P <span class="nb">&amp;</span> 140T <span class="nb">&amp;</span> 140T <span class="nb">&amp;</span> 140T <span class="nb">&amp;</span> 140T <span class="nb">&amp;</span> 140T <span class="nb">&amp;</span> 140T <span class="nb">&amp;</span> 860T <span class="nb">&amp;</span> <span class="k">\tg</span> 7.01T <span class="nb">&amp;</span> <span class="k">\tg</span> 7.01T <span class="nb">&amp;</span> <span class="k">\tg</span> 2.6T  <span class="k">\\</span>
+<span class="k">\bottomrule</span>
+<span class="k">\end</span><span class="nb">{</span>tabular<span class="nb">}</span>
+<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>table*<span class="nb">}</span>
+</code></pre></div></td></tr></table></div>
+<!-- # 4. Figures
+
+## TODO Combining multiple images into one image
+
+I wanted to make a grid of adjacent images in a table.
+I'm gonna be honest, I do not remember how I made this. But it works
+
+
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\timg</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\includegraphics</span><span class="na">[width=0.25\linewidth]</span><span class="nb">{</span>img/storyprop/#1<span class="nb">}}</span>
+
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\specialcell</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="c">%</span>
+  <span class="k">\begin</span><span class="nb">{</span>tabular<span class="nb">}</span>[c]<span class="nb">{</span>@<span class="nb">{}</span>c@<span class="nb">{}}</span>#1<span class="k">\end</span><span class="nb">{</span>tabular<span class="nb">}}</span>
+
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\imgf</span><span class="nb">}</span>[4]<span class="nb">{</span><span class="k">\specialcell</span><span class="nb">{</span><span class="k">\timg</span><span class="nb">{</span>#1<span class="nb">}</span><span class="k">\timg</span><span class="nb">{</span>#2<span class="nb">}</span><span class="k">\vspace</span><span class="nb">{</span>-3pt<span class="nb">}</span><span class="k">\\\timg</span><span class="nb">{</span>#3<span class="nb">}</span><span class="k">\timg</span><span class="nb">{</span>#4<span class="nb">}}</span><span class="k">\hspace</span><span class="nb">{</span>-5pt<span class="nb">}}</span>
+</code></pre></div></td></tr></table></div>
+
+
+
+
+
+## making subfigures with/without captions
+
+### subfig
+
+### subcaption
+
+### minipage
+
+## How to do pyplot and make it readable
+
+Generating your figure to be readable in pyplot
+MAKE THE FIGURE SMALL IN GENERATION AS AN SVG THEN IT WILL BE BIG
+
+
+## Colors etc
+
+- blue!50!black
+- rgb
+- named colors (link) -->
+<!-- # 5. TODO: Overleaf in VSCode
+
+- use latex workshop
+- use overleaf workshop
+
+https://github.com/iamhyc/Overleaf-Workshop
+
+Install instructions -->
+<h1 id="4-the-dark-arts-advanced"><a class="toclink" href="#4-the-dark-arts-advanced">4. The Dark Arts (Advanced)</a><a class="header-link" href="#4-the-dark-arts-advanced" title="Permalink to this section">¶</a></h1>
+<blockquote class="infobox infobox-warning">
+<p>These incantations will give you dark powers and break you free from the shackles of conference style files. Use wisely.</p>
+</blockquote>
+<h2 id="switching-between-conference-formats"><a class="toclink" href="#switching-between-conference-formats">Switching between conference formats</a><a class="header-link" href="#switching-between-conference-formats" title="Permalink to this section">¶</a></h2>
+<p>Some conference submission formats are disgusting, like ECCV.
+I wrote a setup that gives me a flag to swap between that sickening abomination and the NeurIPS format.</p>
+<p>First, you need both sty files in your project. For me it was <code>eccv.sty</code> and <code>neurips_2024.sty</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c">% set this flag to 0 to use ECCV format, 1 to use neurips format</span>
+<span class="k">\def\useformat</span><span class="nb">{</span>1<span class="nb">}</span>
+<span class="k">\if\useformat</span>0
+    <span class="k">\documentclass</span><span class="na">[runningheads]</span><span class="nb">{</span>llncs<span class="nb">}</span>
+    <span class="c">%%%%%% START ECCV HEADER</span>
+    <span class="k">\usepackage</span><span class="na">[review,year=2024,ID=11071]</span><span class="nb">{</span>eccv<span class="nb">}</span>
+    <span class="c">% final submission, options</span>
+    <span class="c">%\usepackage{eccv}</span>
+    <span class="c">%\usepackage[mobile]{eccv}</span>
+    <span class="k">\usepackage</span><span class="nb">{</span>eccvabbrv<span class="nb">}</span>
+    <span class="c">%%%%%% END ECCV HEADER</span>
+<span class="k">\else</span>
+    <span class="c">%%%%%% NEURIPS HEADER</span>
+    <span class="k">\documentclass</span><span class="nb">{</span>article<span class="nb">}</span>
+    <span class="c">% if you need to pass options to natbib, use, e.g.:</span>
+    <span class="c">% before loading neurips_2023</span>
+    <span class="k">\usepackage</span><span class="na">[final,nonatbib]</span><span class="nb">{</span>neurips<span class="nb">_</span>2024<span class="nb">}</span>
+    <span class="k">\usepackage</span><span class="na">[sort&amp;compress,numbers]</span><span class="nb">{</span>natbib<span class="nb">}</span>
+    <span class="c">%     \usepackage{neurips_2023} % submission anonymized</span>
+    <span class="c">%     \usepackage[final]{neurips_2023}</span>
+    <span class="c">%%%%% END NEURIPS HEADER</span>
+    <span class="c">%%%%%%%%%% MORE ACL STUFF</span>
+    <span class="c">% For proper rendering and hyphenation of words containing Latin characters (including in bib files)</span>
+    <span class="k">\usepackage</span><span class="na">[utf8]</span><span class="nb">{</span>inputenc<span class="nb">}</span>
+    <span class="k">\usepackage</span><span class="na">[T1]</span><span class="nb">{</span>fontenc<span class="nb">}</span>
+    <span class="k">\usepackage</span><span class="nb">{</span>microtype<span class="nb">}</span>
+    <span class="k">\usepackage</span><span class="nb">{</span>inconsolata<span class="nb">}</span>
+    <span class="c">%%%%% OPTIONS FOR NICER FONTS (MUST COMMENT OUT FOR NEURIPS FINAL VERSION)</span>
+    <span class="k">\usepackage</span><span class="nb">{</span>times<span class="nb">}</span>
+    <span class="k">\usepackage</span><span class="nb">{</span>subcaption<span class="nb">}</span>
+    <span class="k">\usepackage</span><span class="nb">{</span>adjustbox<span class="nb">}</span>
+<span class="k">\fi</span>
+</code></pre></div></td></tr></table></div>
+<p>Then throughout the document for select other commands that I wanted to only use with one I would have to add that flag into them. <code>\useformat0</code> or <code>1</code> would switch between either ECCV or NeurIPS.</p>
+<h2 id="making-a-centered-figure-wider-than-pagewidth"><a class="toclink" href="#making-a-centered-figure-wider-than-pagewidth">Making a centered figure wider than <code>\pagewidth</code></a><a class="header-link" href="#making-a-centered-figure-wider-than-pagewidth" title="Permalink to this section">¶</a></h2>
+<ul>
+<li>dark art: making a figure oversized relative to the text
+<em>there are legitimate reasons to do this, for example if your figure has whitespace baked in but you want the filled part to be 100%</em></li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\usepackage</span><span class="nb">{</span>graphicx<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>adjustbox<span class="nb">}</span>
+
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\bigln</span><span class="nb">}</span>[2]<span class="nb">{</span>
+    <span class="k">\begin</span><span class="nb">{</span>adjustbox<span class="nb">}{</span>center<span class="nb">}</span>
+        <span class="k">\resizebox</span><span class="nb">{</span>#1<span class="k">\linewidth</span><span class="nb">}{</span>!<span class="nb">}{</span>
+            <span class="k">\centering</span>
+            #2
+        <span class="nb">}</span>
+    <span class="k">\end</span><span class="nb">{</span>adjustbox<span class="nb">}</span>
+<span class="nb">}</span>
+</code></pre></div></td></tr></table></div>
+<p>You wrap the <code>\includegraphics</code> inside of the <code>\bigln</code></p>
+<h2 id="teaser-figures-in-the-acl-format"><a class="toclink" href="#teaser-figures-in-the-acl-format">Teaser figures in the *ACL format</a><a class="header-link" href="#teaser-figures-in-the-acl-format" title="Permalink to this section">¶</a></h2>
+<p>Suppose you want to put a full-width figure at the top of your ACL paper, as seen in this example.</p>
+<p><img alt="Top of Michael's ACL 2023 paper with a big teaser figure" src="https://gist.github.com/michaelsaxon/21ab96429ffb86fb7691945dfe3f657a/raw/6ec0322422b20f70264faf1211e53138d5409021/0_z_cccl_example.png"/></p>
+<p>The <code>\figure*{}</code> macro does not work to insert a full-width figure above the abstract in the ACL template for some reason. Thus, we need to hack together a command that does it for us.</p>
+<p>This command does a few things:
+- Breaks out of the document rendering defined by the ACL template with <code>strip</code>
+- Manually implements a hacked Figure macro with manually-written "Figure 1:", manual font size setting, etc.
+- Manually sets the figure count variable to not duplicate "Figure 1"</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c">%%%%%%%%% in preamble %%%%%%%%%</span>
+
+<span class="c">% to make \strip work</span>
+<span class="k">\usepackage</span><span class="nb">{</span>cuted<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>hyperref<span class="nb">}</span>
+
+<span class="c">% hack commands to create a centered `\incudegraphics`-like macro that </span>
+<span class="c">% doesn't cause weird errors</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\adjustimg</span><span class="nb">}{</span><span class="c">% Horizontal adjustment of image</span>
+  <span class="k">\hspace*</span><span class="nb">{</span><span class="k">\dimexpr\evensidemargin</span>-<span class="k">\oddsidemargin</span><span class="nb">}</span><span class="c">%</span>
+<span class="nb">}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\centerimg</span><span class="nb">}</span>[2][width=<span class="k">\textwidth</span>]<span class="nb">{</span><span class="c">% Center an image</span>
+  <span class="k">\makebox</span><span class="na">[\textwidth]</span><span class="nb">{</span><span class="k">\adjustimg\includegraphics</span><span class="na">[#1]</span><span class="nb">{</span>#2<span class="nb">}}</span><span class="c">%</span>
+<span class="nb">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Once we have defined our figure commands in the preamble and imported relevant packages, we insert the figure at the top of our document, before <code>\begin{abstract}</code> is written.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c">%%%%%%%%% in document %%%%%%%%%</span>
+
+<span class="c">%%% before abstract %%%</span>
+
+<span class="k">\begin</span><span class="nb">{</span>strip<span class="nb">}</span>
+  <span class="c">% set this to something that looks good.</span>
+  <span class="k">\vspace</span><span class="nb">{</span>-58pt<span class="nb">}</span>
+
+  <span class="c">% we use the centerimg macro here instead of \includegraphics to make the text </span>
+  <span class="c">% on the rest of this fake figure macro correctly render</span>
+    <span class="k">\noindent\centerimg</span><span class="na">[width=\linewidth]</span><span class="nb">{</span>TEASER<span class="nb">_</span>FIG<span class="nb">}</span>
+
+  <span class="c">% Note: we need to manually write the text "Figure 1:" here as we aren't actually </span>
+  <span class="c">% using the "figure" macro.</span>
+  <span class="k">\fontsize</span><span class="nb">{</span>10pt<span class="nb">}{</span>12pt<span class="nb">}</span><span class="k">\selectfont</span>
+    Figure 1: TEASER CAPTION HERE
+  <span class="k">\label</span><span class="nb">{</span>fig:teaser<span class="nb">}</span>
+
+<span class="k">\end</span><span class="nb">{</span>strip<span class="nb">}</span>
+
+<span class="c">% because we manually made a figure without the macro, we need to increment the </span>
+<span class="c">% figure counter so that the next one is Figure 2</span>
+<span class="k">\setcounter</span><span class="nb">{</span>figure<span class="nb">}{</span>1<span class="nb">}</span>
+
+<span class="c">%%% start abstract %%%</span>
+</code></pre></div></td></tr></table></div>
+<p>Because we didn't produce this inside of the <code>figure</code> macro, using <code>\ref{}</code>, <code>\cref{}</code>, and <code>\autorref</code> won't work! Instead, we have to use this hack:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c">% replacing ref</span>
+...in Figure <span class="k">\hyperref</span><span class="na">[fig:teaser]</span><span class="nb">{</span>1<span class="nb">}</span>...
+
+<span class="c">% replacing autorref</span>
+...in <span class="k">\hyperref</span><span class="na">[fig:teaser]</span><span class="nb">{</span>Figure 1<span class="nb">}</span>...
+
+etc
+</code></pre></div></td></tr></table></div>
+</article>
+</div>
+<footer style="margin-top:25pt; border-top: 1px dotted #676767; padding-top:10pt;">
+<ul class="icons">
+<li><a href="https://www.semanticscholar.org/author/Michael-Stephen-Saxon/48227633"><img class="filtercolor" src="../../../img/ico/svg/semantic-scholar.svg"/></a></li>
+<li><a href="https://scholar.google.com/citations?user=pAlwjdgAAAAJ&amp;hl=en"><img class="filtercolor" src="../../../img/ico/svg/google-scholar.svg"/></a></li>
+<li><a href="https://www.researchgate.net/profile/Michael_Saxon"><img class="filtercolor" src="../../../img/ico/svg/researchgate.svg"/></a></li>
+<li><a href="mailto:saxon@ucsb.edu"><img class="filtercolor" src="../../../img/ico/svg/envelope.svg"/></a></li>
+<li><a href="https://github.com/michaelsaxon"><img class="filtercolor" src="../../../img/ico/svg/github-alt.svg"/></a></li>
+<li><a href="https://www.youtube.com/@mssaxonUCSB"><img class="filtercolor" src="../../../img/ico/svg/youtube.svg"/></a></li>
+<li><a href="https://www.linkedin.com/in/mssaxon/"><img class="filtercolor" src="../../../img/ico/svg/linkedin-in.svg"/></a></li>
+<li><a href="https://bsky.app/profile/saxon.me"><img class="filtercolor" src="../../../img/ico/svg/cloud.svg"/></a></li>
+<li><a href="https://sigmoid.social/@saxon" rel="me"><img class="filtercolor" src="../../../img/ico/svg/mastodon.svg"/></a></li>
+<li><a href="https://twitter.com/m2saxon"><img class="filtercolor" src="../../../img/ico/svg/twitter.svg"/></a></li>
+</ul>
+<div class="worldmap"><script id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=ffffff&amp;w=a&amp;t=tt&amp;d=IuxqtNT-Q6MDtRyPajTC07_66TRmeCIPbVD4z2v4M_U&amp;co=474747&amp;cmn=547bfc" type="text/javascript"></script></div>
+<div style="max-width: 800px;   margin-right: auto; margin-left: auto;">
+<p style="font-size:10pt; text-align: center">Core webpage incrementally scratchbuilt by me. Feel free to steal my source from <a href="https://github.com/michaelsaxon/michaelsaxon.github.io">GitHub</a>. Blog functionality made using <a href="https://getpelican.com/">Pelican</a>.</p>
+</div>
+<div style="max-width: 800px; margin-right: auto; margin-left: auto; text-align: center;">
+<img src="https://web.badges.world/badges/operated/getfirefox.gif">
+<img src="https://web.badges.world/badges/operated/linuxpenguin(2).png">
+<img src="https://web.badges.world/badges/memes/allyourbase.gif">
+</img></img></img></div>
+</footer>
+<script src="../../../static/js/popups.js"></script></body>
+</html>
