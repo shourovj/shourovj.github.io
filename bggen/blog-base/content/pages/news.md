@@ -1,4 +1,5 @@
 Title: news
+save_as: 
 
 12/13/2024 Presented our work on meta-evaluation of text-to-image metrics at NeurIPS! [paper]
 
