@@ -11,46 +11,46 @@
           document.documentElement.setAttribute('data-theme', 'dark');
       }
   </script>
-<script src="https://saxon.me/blog/../static/js/theme.js"></script>
-<script src="https://saxon.me/blog/../static/js/copy-code.js"></script>
-<script src="https://saxon.me/blog/../static/js/toc.js"></script>
-<link href="https://saxon.me/blog/../style.css" rel="stylesheet"/>
+<script src="../../../theme/js/theme.js"></script>
+<script src="../../../theme/js/copy-code.js"></script>
+<script src="../../../theme/js/toc.js"></script>
+<script src="../../../theme/js/popups.js"></script>
+<link href="../../../theme/css/style.css" rel="stylesheet"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <link href="https://fonts.googleapis.com/css?family=PT+Serif&amp;Merriweather&amp;Oswald&amp;Ubuntu+Mono&amp;Arimo:ital,wght@0,400..700;1,400..700" rel="stylesheet"/>
 <title>Michael's TeXronomicon (LaTeX tips, tricks, and hacks)</title>
-<link href="https://saxon.me/blog/theme/css/code.css" rel="stylesheet"/>
-<link href="https://saxon.me/blog/theme/css/pubs.css" rel="stylesheet"/>
+<link href="../../../theme/css/code.css" rel="stylesheet"/>
+<link href="../../../theme/css/pubs.css" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css" rel="stylesheet"/>
 <link href="feeds/all.atom.xml" rel="alternate" title="Michael Saxon Full Atom Feed" type="application/atom+xml">
-<link href="feeds/all.rss.xml" rel="alternate" title="Michael Saxon Full RSS Feed" type="application/rss+xml">
 <meta content="Michael's TeXronomicon (LaTeX tips, tricks, and hacks)" name="title">
 <meta content="Various snippets, tricks, and lessons I've developed and learned from messing around in LaTeX and scrutinizing source files on arXiv." name="description"/>
 <meta content="article" property="og:type"/>
 <meta content="https://saxon.me/" property="og:url"/>
 <meta content="Michael's TeXronomicon (LaTeX tips, tricks, and hacks)" property="og:title"/>
 <meta content="Various snippets, tricks, and lessons I've developed and learned from messing around in LaTeX and scrutinizing source files on arXiv." property="og:description"/>
-<meta content="https://saxon.me/blog/images/latex-tips.jpg" property="og:image"/>
+<meta content="../../../images/latex-tips.jpg" property="og:image"/>
 <meta content="summary_large_image" property="twitter:card"/>
 <meta content="https://saxon.me/" property="twitter:site"/>
 <meta content="@m2saxon" property="twitter:creator"/>
 <meta content="Michael's TeXronomicon (LaTeX tips, tricks, and hacks)" property="twitter:title"/>
 <meta content="Various snippets, tricks, and lessons I've developed and learned from messing around in LaTeX and scrutinizing source files on arXiv." property="twitter:description"/>
-<meta content="https://saxon.me/blog/images/latex-tips.jpg" property="twitter:image"/>
-</meta></link></link></head>
+<meta content="../../../images/latex-tips.jpg" property="twitter:image"/>
+</meta></link></head>
 <body>
 <header class="site-header">
 <div class="top-nav">
 <div style="margin-right: auto;">
-<h1><a href="https://saxon.me/blog/../">Michael Saxon</a></h1>
+<h1><a href="../../../">Michael Saxon</a></h1>
 </div>
 <input id="menu-toggle" type="checkbox"/>
 <label class="menu-button-container" for="menu-toggle">
 <div class="menu-button"></div>
 </label>
 <ul class="menu">
-<li><a href="https://saxon.me/blog/../research">Publications</a></li>
-<li><a href="https://saxon.me/blog/../doc/cv_saxon.pdf">CV</a></li>
-<li><a href="https://saxon.me/blog">Blog</a></li>
+<li><a href="../../../publications">Publications</a></li>
+<li><a href="../../../doc/cv_saxon.pdf">CV</a></li>
+<li><a href="../../../blog">Blog</a></li>
 <li>
 <a aria-label="Toggle dark mode" href="#" id="theme-toggle">
 <svg aria-hidden="true" class="sun-and-moon" height="24" viewbox="0 0 24 24" width="24">
@@ -79,19 +79,19 @@
 <div class="page" style="word-spacing: 0.09em;">
 <article class="post">
 <header class="post-header">
-<div class="post-hero" style="background-image: url('https://saxon.me/blog/images/latex-tips.jpg')"></div>
+<div class="post-hero" style="background-image: url('../../../images/latex-tips.jpg')"></div>
 <div class="post-content-wrapper">
 <h1 class="post-title">
-<a href="https://saxon.me/blog/2025/latex-tips/" rel="bookmark" title="Permalink to Michael's TeXronomicon (LaTeX tips, tricks, and hacks)">Michael's TeXronomicon (LaTeX tips, tricks, and hacks)</a>
+<a href="../../../blog/2025/latex-tips/" rel="bookmark" title="Permalink to Michael's TeXronomicon (LaTeX tips, tricks, and hacks)">Michael's TeXronomicon (LaTeX tips, tricks, and hacks)</a>
 </h1>
 <div class="post-meta">
 <time>April 10, 2025</time>
 <span>•</span>
 <span>25 min read</span>
 <span>•</span>
-<span><a href="https://saxon.me/blog/category/tips.html">Tips</a></span>
+<span><a href="../../../blog/category/tips.html">Tips</a></span>
 <!-- <span>•</span>
-                <span><a href="https://saxon.me/blog/tag/latex.html">latex</a></span> -->
+                <span><a href="../../../tag/latex.html">latex</a></span> -->
 </div>
 <div class="post-description">
                 Various snippets, tricks, and lessons I've developed and learned from messing around in LaTeX and scrutinizing source files on arXiv.
@@ -178,7 +178,7 @@ If a command already exists, and you want to override its behavior, use <code>\r
 <line x1="7" x2="17" y1="12" y2="12"></line>
 <line x1="12" x2="12" y1="7" y2="17"></line>
 </g>
-</svg></a><span class="footnote-popup">I know, I'm obnoxious &lt;a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 1 in the text"&gt;↩&lt;/a&gt;</span></sup>, as it is in all other conference formats.</p>
+</svg></a><span class="footnote-popup">I know, I'm obnoxious <a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 1 in the text">↩</a></span></sup>, as it is in all other conference formats.</p>
 <p>With <code>\renewcommand</code> it's a one line fix:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\cite</span><span class="nb">}{</span><span class="k">\citep</span><span class="nb">}</span>
 </code></pre></div></td></tr></table></div>
@@ -241,7 +241,7 @@ Also if you want to use fancy coloring or fonts in your method name<sup id="fnre
 <line x1="7" x2="17" y1="12" y2="12"></line>
 <line x1="12" x2="12" y1="7" y2="17"></line>
 </g>
-</svg></a><span class="footnote-popup">As I often do...</span></sup>, putting it in a comment is a must.</p>
+</svg></a><span class="footnote-popup">As I often do... </span></sup>, putting it in a comment is a must.</p>
 <p>Unfortunately, text in LaTeX commands have infuriating spacing behavior. If you put the command as is, it will <em>ignore</em> trailing whitespace,  so "<code>\methodname is great</code>" renders as "BiG-BiRdis great".</p>
 <p>The <code>\xspace</code> package makes spacing work right:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
@@ -259,7 +259,7 @@ Also if you want to use fancy coloring or fonts in your method name<sup id="fnre
 <line x1="7" x2="17" y1="12" y2="12"></line>
 <line x1="12" x2="12" y1="7" y2="17"></line>
 </g>
-</svg></a><span class="footnote-popup">My tongue-in-cheek name for the many peculiar ways commands in TeX are written, often to enable extreme precision, whose existence make complete sense coming from the particularly detail-obsessed mind of its creator Don Knuth, pictured in the thumbnail (his typographical perfectionism drove the invention of TeX after all)</span></sup> that pervade LaTeX to make your text look right.</p>
+</svg></a><span class="footnote-popup">My tongue-in-cheek name for the many peculiar ways commands in TeX are written, often to enable extreme precision, whose existence make complete sense coming from the particularly detail-obsessed mind of its creator Don Knuth, pictured in the thumbnail (his typographical perfectionism drove the invention of TeX after all) </span></sup> that pervade LaTeX to make your text look right.</p>
 <h2 id="citations"><a class="toclink" href="#citations">Citations</a><a class="header-link" href="#citations" title="Permalink to this section">¶</a></h2>
 <p>Two different styles of inline citation are invoked with <code>\citet</code>, and <code>\citep</code>.
 In parenthetical citation styles (such as *ACL or COLM) these mean <em>text-inline</em> (<code>\citet</code> for <em>t</em>ext) and <em>inside the parentheses</em> (<code>\citep</code>).</p>
@@ -351,7 +351,7 @@ I'm pretty sure it is what gives the <code>\color{green}</code> macro its power,
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>This text is black and <span class="nb">{</span><span class="k">\color</span><span class="nb">{</span>green<span class="nb">}</span> this text is green<span class="nb">}</span>.
 </code></pre></div></td></tr></table></div>
 <p>Additionally, it gives access to more elaborate colors depending on how you import. For example, <code>\usepackage[dvipsnames]{xcolor}</code> gives you access to more colors like "aquamarine," "skyblue", "navyblue", etc.</p>
-<p><img alt="The how boys see colors vs how girls see colors meme except for base latex vs dvips colors" src="https://saxon.me/blog/2025/latex-tips/images/xcolor-meme.jpg"/></p>
+<p><img alt="The how boys see colors vs how girls see colors meme except for base latex vs dvips colors" src="../../../blog/2025/latex-tips/images/xcolor-meme.jpg"/></p>
 <p>Additionally, we can use xcolor to define our own colors.
 The precise way is with an RGB code.
 For example, <code>\definecolor{tifablue}{RGB}{226, 232, 248}</code> defines the exact color we used in Table 2 of our <a href="https://arxiv.org/pdf/2404.04251">TS2 paper</a> to define the highlight color of TIFA-related runs. Once defined, one of these colors can be invoked with <code>\color{tifablue}</code>.</p>
@@ -438,7 +438,7 @@ The <code>breakable</code> option allows us to let the colorbox break across pag
 <line x1="7" x2="17" y1="12" y2="12"></line>
 <line x1="12" x2="12" y1="7" y2="17"></line>
 </g>
-</svg></a><span class="footnote-popup">do things</span></sup> put <code>\includegraphics</code> macros inline with text.</p>
+</svg></a><span class="footnote-popup">do things </span></sup> put <code>\includegraphics</code> macros inline with text.</p>
 <p>For example, I put a logo for an upcoming preprint in our title like this:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\vspace</span><span class="nb">{</span>-3pt<span class="nb">}</span><span class="k">\raisebox</span><span class="nb">{</span>-3pt<span class="nb">}{</span><span class="k">\includegraphics</span><span class="na">[width=20pt]</span><span class="nb">{</span>pics/logo.png<span class="nb">}}</span>
 </code></pre></div></td></tr></table></div>
@@ -621,7 +621,7 @@ A <span class="nb">&amp;</span> B <span class="nb">&amp;</span> C <span class="k
 <h3 id="special-table-symbols"><a class="toclink" href="#special-table-symbols">Special table symbols</a><a class="header-link" href="#special-table-symbols" title="Permalink to this section">¶</a></h3>
 <p>For my CoCo-CroLa paper I wanted an efficient way to mark equivalence between cells in a column, rather than repeat the same value several times.
 I wanted something very easy to skim with minimum visual noise, and came up with:</p>
-<p><img alt="Vertical line through duplicate cells" src="https://saxon.me/blog/2025/latex-tips/images/cccltable.png"/></p>
+<p><img alt="Vertical line through duplicate cells" src="../../../blog/2025/latex-tips/images/cccltable.png"/></p>
 <p>I called this "same line" command <code>\samel</code>, defined with:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\samel</span><span class="nb">}</span>[0]<span class="nb">{</span><span class="k">\multicolumn</span><span class="nb">{</span>1<span class="nb">}{</span>l<span class="nb">}{</span><span class="k">\space\hspace</span><span class="nb">{</span>0.5em<span class="nb">}</span><span class="k">\vline</span><span class="nb">}}</span>
 </code></pre></div></td></tr></table></div>
@@ -638,7 +638,7 @@ I wanted to replicate this in a table I made last year and was able to pretty ea
 <p><code>\myrotcel</code> basically behaves exactly as I wanted inside of a table, turning the rotated text into an element with the proper width and height for positioning elements around it without overlapping or other weird clipping behavior.</p>
 <h2 id="putting-it-together"><a class="toclink" href="#putting-it-together">Putting it together</a><a class="header-link" href="#putting-it-together" title="Permalink to this section">¶</a></h2>
 <p>Using all of the above components we've discussed, including the <code>booktabs</code> line rules and <code>cmidrule</code>, the text cell rotation command <code>\myrotcel</code> we made, cell coloring and rotated <code>multicolumn</code>, we can generate this table from the TS2 paper:</p>
-<p><img alt="Table from the TS2 paper using all of these tricks." src="https://saxon.me/blog/2025/latex-tips/images/ts2table.png"/></p>
+<p><img alt="Table from the TS2 paper using all of these tricks." src="../../../blog/2025/latex-tips/images/ts2table.png"/></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -982,16 +982,16 @@ etc
 </div>
 <footer style="margin-top:25pt; padding-top:10pt;">
 <ul class="icons">
-<li><a href="https://www.semanticscholar.org/author/Michael-Stephen-Saxon/48227633"><img class="filtercolor" src="https://saxon.me/blog/../img/ico/svg/semantic-scholar.svg"/></a></li>
-<li><a href="https://scholar.google.com/citations?user=pAlwjdgAAAAJ&amp;hl=en"><img class="filtercolor" src="https://saxon.me/blog/../img/ico/svg/google-scholar.svg"/></a></li>
-<li><a href="https://www.researchgate.net/profile/Michael_Saxon"><img class="filtercolor" src="https://saxon.me/blog/../img/ico/svg/researchgate.svg"/></a></li>
-<li><a href="mailto:saxon@ucsb.edu"><img class="filtercolor" src="https://saxon.me/blog/../img/ico/svg/envelope.svg"/></a></li>
-<li><a href="https://github.com/michaelsaxon"><img class="filtercolor" src="https://saxon.me/blog/../img/ico/svg/github-alt.svg"/></a></li>
-<li><a href="https://www.youtube.com/@mssaxonUCSB"><img class="filtercolor" src="https://saxon.me/blog/../img/ico/svg/youtube.svg"/></a></li>
-<li><a href="https://www.linkedin.com/in/mssaxon/"><img class="filtercolor" src="https://saxon.me/blog/../img/ico/svg/linkedin-in.svg"/></a></li>
-<li><a href="https://bsky.app/profile/saxon.me"><img class="filtercolor" src="https://saxon.me/blog/../img/ico/svg/cloud.svg"/></a></li>
-<li><a href="https://sigmoid.social/@saxon" rel="me"><img class="filtercolor" src="https://saxon.me/blog/../img/ico/svg/mastodon.svg"/></a></li>
-<li><a href="https://twitter.com/m2saxon"><img class="filtercolor" src="https://saxon.me/blog/../img/ico/svg/twitter.svg"/></a></li>
+<li><a href="https://www.semanticscholar.org/author/Michael-Stephen-Saxon/48227633"><img class="filtercolor" src="../../../theme/img/ico/svg/semantic-scholar.svg"/></a></li>
+<li><a href="https://scholar.google.com/citations?user=pAlwjdgAAAAJ&amp;hl=en"><img class="filtercolor" src="../../../theme/img/ico/svg/google-scholar.svg"/></a></li>
+<li><a href="https://www.researchgate.net/profile/Michael_Saxon"><img class="filtercolor" src="../../../theme/img/ico/svg/researchgate.svg"/></a></li>
+<li><a href="mailto:saxon@ucsb.edu"><img class="filtercolor" src="../../../theme/img/ico/svg/envelope.svg"/></a></li>
+<li><a href="https://github.com/michaelsaxon"><img class="filtercolor" src="../../../theme/img/ico/svg/github-alt.svg"/></a></li>
+<li><a href="https://www.youtube.com/@mssaxonUCSB"><img class="filtercolor" src="../../../theme/img/ico/svg/youtube.svg"/></a></li>
+<li><a href="https://www.linkedin.com/in/mssaxon/"><img class="filtercolor" src="../../../theme/img/ico/svg/linkedin-in.svg"/></a></li>
+<li><a href="https://bsky.app/profile/saxon.me"><img class="filtercolor" src="../../../theme/img/ico/svg/cloud.svg"/></a></li>
+<li><a href="https://sigmoid.social/@saxon" rel="me"><img class="filtercolor" src="../../../theme/img/ico/svg/mastodon.svg"/></a></li>
+<li><a href="https://twitter.com/m2saxon"><img class="filtercolor" src="../../../theme/img/ico/svg/twitter.svg"/></a></li>
 </ul>
 <div class="worldmap"><script id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=ffffff&amp;w=a&amp;t=tt&amp;d=IuxqtNT-Q6MDtRyPajTC07_66TRmeCIPbVD4z2v4M_U&amp;co=474747&amp;cmn=547bfc" type="text/javascript"></script></div>
 <div style="max-width: 800px;   margin-right: auto; margin-left: auto;">

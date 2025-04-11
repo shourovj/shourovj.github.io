@@ -12,12 +12,12 @@ DEFAULT_DATE_FORMAT= '%B %-d, %Y'
 DEFAULT_LANG = 'en'
 
 # Feed generation is usually not desired when developing
-FEED_ALL_ATOM = "feeds/all.atom.xml"
-CATEGORY_FEED_ATOM = "feeds/{slug}.atom.xml"
-AUTHOR_FEED_ATOM = "feeds/{slug}.atom.xml"
-FEED_ALL_RSS = 'feeds/all.rss.xml'
-CATEGORY_FEED_RSS = 'feeds/{slug}.rss.xml'
-AUTHOR_FEED_RSS = 'feeds/{slug}.rss.xml'
+# FEED_ALL_ATOM = "feeds/all.atom.xml"
+# CATEGORY_FEED_ATOM = "feeds/{slug}.atom.xml"
+# AUTHOR_FEED_ATOM = "feeds/{slug}.atom.xml"
+# FEED_ALL_RSS = 'feeds/all.rss.xml'
+# CATEGORY_FEED_RSS = 'feeds/{slug}.rss.xml'
+# AUTHOR_FEED_RSS = 'feeds/{slug}.rss.xml'
 
 # Add the plugin path
 PLUGIN_PATHS = ['plugins']
@@ -33,16 +33,18 @@ PLUGINS = [
 
 SLUGIFY_SOURCE = 'basename'
 
-ARTICLE_URL = '{date:%Y}/{slug}/'
-ARTICLE_SAVE_AS = '{date:%Y}/{slug}/index.html'
+ARTICLE_URL = 'blog/{date:%Y}/{slug}/'
+ARTICLE_SAVE_AS = 'blog/{date:%Y}/{slug}/index.html'
 
 PAGE_URL = '{slug}/'
 PAGE_SAVE_AS = '{slug}/index.html'
 
+PUBLICATIONS_SAVE_AS = 'publications/index.html'
+
 #BLOG_INDEX_SAVE_AS = 'blog.html'
 
 # Uncomment following line if you want document-relative URLs when developing
-# RELATIVE_URLS = True
+RELATIVE_URLS = True
 
 
 # Add these settings
@@ -56,7 +58,7 @@ ARTICLE_EXCLUDES = ['pages']
 
 PUBLICATIONS_SRC = 'content/pubs.bib'
 
-DIRECT_TEMPLATES = ['publications','index','archives']
+DIRECT_TEMPLATES = ['publications','index']
 
 MARKDOWN = {
     'extension_configs': {
@@ -92,4 +94,10 @@ DEFAULT_PAGINATION = 10
 #PAGINATED_TEMPLATES = ['index','archives']
 PAGINATED_DIRECT_TEMPLATES = ['index','archives']
 
-ARCHIVES_SAVE_AS = 'test.html'
+#ARCHIVES_SAVE_AS = 'blog/index.html'
+INDEX_SAVE_AS = 'blog/index.html'
+
+CATEGORY_SAVE_AS = 'blog/category/{slug}.html'
+CATEGORIES_SAVE_AS = 'blog/categories/index.html'
+TAG_SAVE_AS = 'blog/tag/{slug}.html'
+TAGS_SAVE_AS = 'blog/tags/index.html'

@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html> 
+<head>
+    <script>
+      // Check and apply theme immediately
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+      }
+  </script>
+<script src="../theme/js/theme.js"></script>
+    <script src="../theme/js/copy-code.js"></script>
+    <script src="../theme/js/toc.js"></script>
+    <script src="../theme/js/popups.js"></script>
+    <link rel="stylesheet" href="../theme/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif&Merriweather&Oswald&Ubuntu+Mono&Arimo:ital,wght@0,400..700;1,400..700" rel="stylesheet">
+    <title>Publications</title>
+    <link rel="stylesheet" href="../theme/css/code.css">
+    <link rel="stylesheet" href="../theme/css/pubs.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
+          crossorigin="anonymous">
+    <link href="feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Michael Saxon Full Atom Feed" />
+    <meta name="title" content="Publications" />
+    <meta name="description" content="" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://saxon.me/" />
+    <meta property="og:title" content="Publications" />
+    <meta property="og:description" content="" />
+    <meta property="og:image" content="../../theme/img/bg-sba.jpg " />
+   <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:site" content="https://saxon.me/" />
+    <meta property="twitter:creator" content="@m2saxon" />
+    <meta property="twitter:title" content="Publications" />
+    <meta property="twitter:description" content="" />
+    <meta property="twitter:image" content="../../theme/img/bg-sba.jpg " />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="top-nav">
+  <div style="margin-right: auto;">
+  <h1><a href="../">Michael Saxon</a></h1>
+  </div>
+  <input id="menu-toggle" type="checkbox" />
+  <label class='menu-button-container' for="menu-toggle">
+  <div class='menu-button'></div>
+</label>
+  <ul class="menu">
+    <li><a href="../publications">Publications</a></li>
+    <li><a href="../doc/cv_saxon.pdf">CV</a></li>
+  <li><a href="../blog">Blog</a></li>
+  <li>
+    <a href="#" id="theme-toggle" aria-label="Toggle dark mode">
+      <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+        <!-- Moon shape -->
+        <path class="moon" 
+              d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z"
+              fill="currentColor"/>
+        <!-- Sun shape (initially hidden) -->
+        <g class="sun" opacity="0">
+          <circle cx="12" cy="12" r="6" fill="currentColor"/>
+          <g class="sun-beams">
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </g>
+        </g>
+      </svg>
+    </a>
+  </li>
+  </ul>
+</div>
+</header>
+
+
+<div class="page" style="word-spacing: 0.09em;">
+<div class="content-container">
+    <h1>Publications</h1>
+    
+            
+            <h2>2024</h2>
+            <div class="pub-year-group">
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <a href="https://openreview.net/forum?id=S4YRCLbUK1" class="pub-title-link">
+                        <strong>Who Evaluates the Evaluations? Objectively Scoring Text-to-Image Prompt Coherence Metrics with T2IScoreScore (TS2)</strong>
+                    </a>
+                <br>
+                <span><span class="me">Michael Saxon</span>, Fatima Jahara, Mahsa Khoshnoodi, Yujie Lu, Aditya Sharma, William Yang Wang</span><br>
+                <span>
+                        NeurIPS 2024
+                            <span class="venue-separator">·</span> <span class="additional-info">Spotlight</span>
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <a href="https://openreview.net/forum?id=S4YRCLbUK1" class="pub-badge arxiv-badge">OpenReview</a>
+                    <a href="https://openreview.net/pdf?id=S4YRCLbUK1" class="pub-badge link-badge">PDF</a>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'abstract-1')" aria-expanded="false">Abstract</button>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-1')" aria-expanded="false">BibTeX</button>
+            </div>
+            
+            <div id="abstract-1" class="expandable-content hidden">
+                <div class="abstract">
+                    <strong>Abstract:</strong> With advances in the quality of text-to-image (T2I) models has come interest in benchmarking their prompt faithfulness -- the semantic coherence of generated images to the prompts they were conditioned on. A variety of T2I faithfulness metrics have been proposed, leveraging advances in cross-modal embeddings and vision-language models (VLMs). However, these metrics are not rigorously compared and benchmarked, instead presented with correlation to human Likert scores over a set of easy-to-discriminate images against seemingly weak baselines. We introduce T2IScoreScore, a curated set of semantic error graphs containing a prompt and a set of increasingly erroneous images. These allow us to rigorously judge whether a given prompt faithfulness metric can correctly order images with respect to their objective error count and significantly discriminate between different error nodes, using meta-metric scores derived from established statistical tests. Surprisingly, we find that the state-of-the-art VLM-based metrics (e.g., TIFA, DSG, LLMScore, VIEScore) we tested fail to significantly outperform simple (and supposedly worse) feature-based metrics like CLIPScore, particularly on a hard subset of naturally-occurring T2I model errors. TS2 will enable the development of better T2I prompt faithfulness metrics through more rigorous comparison of their conformity to expected orderings and separations under objective criteria.
+                </div>
+            </div>
+            <div id="bibtex-1" class="highlight bibtex-highlight expandable-content hidden"><code>@inproceedings{saxon2024evaluates,
+    author = "Saxon, Michael and Jahara, Fatima and Khoshnoodi, Mahsa and Lu, Yujie and Sharma, Aditya and Wang, William Yang",
+    title = "Who Evaluates the Evaluations? Objectively Scoring Text-to-Image Prompt Coherence Metrics with T2IScoreScore (TS2)",
+    booktitle = "The Thirty-eighth Annual Conference on Neural Information Processing Systems",
+    year = "2024",
+    abstract = "With advances in the quality of text-to-image (T2I) models has come interest in benchmarking their prompt faithfulness -- the semantic coherence of generated images to the prompts they were conditioned on. A variety of T2I faithfulness metrics have been proposed, leveraging advances in cross-modal embeddings and vision-language models (VLMs). However, these metrics are not rigorously compared and benchmarked, instead presented with correlation to human Likert scores over a set of easy-to-discriminate images against seemingly weak baselines. We introduce T2IScoreScore, a curated set of semantic error graphs containing a prompt and a set of increasingly erroneous images. These allow us to rigorously judge whether a given prompt faithfulness metric can correctly order images with respect to their objective error count and significantly discriminate between different error nodes, using meta-metric scores derived from established statistical tests. Surprisingly, we find that the state-of-the-art VLM-based metrics (e.g., TIFA, DSG, LLMScore, VIEScore) we tested fail to significantly outperform simple (and supposedly worse) feature-based metrics like CLIPScore, particularly on a hard subset of naturally-occurring T2I model errors. TS2 will enable the development of better T2I prompt faithfulness metrics through more rigorous comparison of their conformity to expected orderings and separations under objective criteria.",
+  url = {https://openreview.net/forum?id=S4YRCLbUK1},
+}</code></div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <a href="https://aclanthology.org/2024.findings-emnlp.312/" class="pub-title-link">
+                        <strong>Losing Visual Needles in Image Haystacks: Vision Language Models are Easily Distracted in Short and Long Contexts</strong>
+                    </a>
+                <br>
+                <span><span class="me">Michael Saxon*</span>, Aditya Sharma*, William Yang Wang</span><br>
+                <span>
+                        EMNLP 2024
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <a href="https://aclanthology.org/2024.findings-emnlp.312/" class="pub-badge acl-badge">ACL Anthology</a>
+                    <a href="https://aclanthology.org/2024.findings-emnlp.312.pdf" class="pub-badge link-badge">PDF</a>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'abstract-2')" aria-expanded="false">Abstract</button>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-2')" aria-expanded="false">BibTeX</button>
+            </div>
+            
+            <div id="abstract-2" class="expandable-content hidden">
+                <div class="abstract">
+                    <strong>Abstract:</strong> We present LoCoVQA, a dynamic benchmark generator for evaluating long-context reasoning in vision language models (VLMs). LoCoVQA augments test examples for mathematical reasoning, VQA, and character recognition tasks with increasingly long visual contexts composed of both in-distribution and out-of-distribution distractor images.Across these tasks, a diverse set of VLMs rapidly lose performance as the visual context length grows, often exhibiting a striking logarithmic decay trend. This test assesses how well VLMs can ignore irrelevant information when answering queries—a task that is quite easy for language models (LMs) in the text domain—demonstrating that current state-of-the-art VLMs lack this essential capability for many long-context applications.
+                </div>
+            </div>
+            <div id="bibtex-2" class="highlight bibtex-highlight expandable-content hidden"><code>@inproceedings{sharma2024losing,
+    author = "Sharma*, Aditya and Saxon*, Michael and Wang, William Yang",
+    title = "Losing Visual Needles in Image Haystacks: Vision Language Models are Easily Distracted in Short and Long Contexts",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2024",
+    pages = "5429--5451",
+    year = "2024",
+    abstract = "We present LoCoVQA, a dynamic benchmark generator for evaluating long-context reasoning in vision language models (VLMs). LoCoVQA augments test examples for mathematical reasoning, VQA, and character recognition tasks with increasingly long visual contexts composed of both in-distribution and out-of-distribution distractor images.Across these tasks, a diverse set of VLMs rapidly lose performance as the visual context length grows, often exhibiting a striking logarithmic decay trend. This test assesses how well VLMs can ignore irrelevant information when answering queries—a task that is quite easy for language models (LMs) in the text domain—demonstrating that current state-of-the-art VLMs lack this essential capability for many long-context applications.",
+  url = {https://aclanthology.org/2024.findings-emnlp.312/},
+}</code></div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <a href="https://openreview.net/forum?id=bttKwCZDkm" class="pub-title-link">
+                        <strong>Benchmarks as Microscopes: A Call for Model Metrology</strong>
+                    </a>
+                <br>
+                <span><span class="me">Michael Saxon</span>, Ari Holtzman, Peter West, William Yang Wang, Naomi Saphra</span><br>
+                <span>
+                        COLM 2024
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <a href="https://openreview.net/forum?id=bttKwCZDkm" class="pub-badge arxiv-badge">OpenReview</a>
+                    <a href="https://arxiv.org/pdf/2407.16711" class="pub-badge link-badge">PDF</a>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'abstract-3')" aria-expanded="false">Abstract</button>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-3')" aria-expanded="false">BibTeX</button>
+            </div>
+            
+            <div id="abstract-3" class="expandable-content hidden">
+                <div class="abstract">
+                    <strong>Abstract:</strong> Modern language models (LMs) pose a new challenge in capability assessment. Static benchmarks inevitably saturate without providing confidence in the deployment tolerances of LM-based systems, but developers nonetheless claim that their models have generalized traits such as reasoning or open-domain language understanding based on these flawed metrics. The science and practice of LMs requires a new approach to benchmarking which measures specific capabilities with dynamic assessments. To be confident in our metrics, we need a new discipline of model metrology -- one which focuses on how to generate benchmarks that predict performance under deployment. Motivated by our evaluation criteria, we outline how building a community of model metrology practitioners -- one focused on building tools and studying how to measure system capabilities -- is the best way to meet these needs to and add clarity to the AI discussion.
+                </div>
+            </div>
+            <div id="bibtex-3" class="highlight bibtex-highlight expandable-content hidden"><code>@inproceedings{saxon2024benchmarks,
+    author = "Saxon, Michael and Holtzman, Ari and West, Peter and Wang, William Yang and Saphra, Naomi",
+    title = "Benchmarks as Microscopes: A Call for Model Metrology",
+    booktitle = "First Conference on Language Modeling (COLM 2024)",
+    year = "2024",
+    abstract = "Modern language models (LMs) pose a new challenge in capability assessment. Static benchmarks inevitably saturate without providing confidence in the deployment tolerances of LM-based systems, but developers nonetheless claim that their models have generalized traits such as reasoning or open-domain language understanding based on these flawed metrics. The science and practice of LMs requires a new approach to benchmarking which measures specific capabilities with dynamic assessments. To be confident in our metrics, we need a new discipline of model metrology -- one which focuses on how to generate benchmarks that predict performance under deployment. Motivated by our evaluation criteria, we outline how building a community of model metrology practitioners -- one focused on building tools and studying how to measure system capabilities -- is the best way to meet these needs to and add clarity to the AI discussion.",
+  url = {https://openreview.net/forum?id=bttKwCZDkm},
+}</code></div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <a href="https://arxiv.org/abs/2406.08656" class="pub-title-link">
+                        <strong>Tc-bench: Benchmarking temporal compositionality in text-to-video and image-to-video generation</strong>
+                    </a>
+                <br>
+                <span>Weixi Feng, Jiachen Li, <span class="me">Michael Saxon</span>, Tsu-jui Fu, Wenhu Chen, William Yang Wang</span><br>
+                <span>
+                            arXiv preprint arXiv:2406.08656
+                        , 2024
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <a href="https://arxiv.org/abs/2406.08656" class="pub-badge arxiv-badge">arXiv:2406.08656</a>
+                    <a href="https://arxiv.org/pdf/2406.08656" class="pub-badge link-badge">PDF</a>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'abstract-4')" aria-expanded="false">Abstract</button>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-4')" aria-expanded="false">BibTeX</button>
+            </div>
+            
+            <div id="abstract-4" class="expandable-content hidden">
+                <div class="abstract">
+                    <strong>Abstract:</strong> Video generation has many unique challenges beyond those of image generation. The temporal dimension introduces extensive possible variations across frames, over which consistency and continuity may be violated. In this study, we move beyond evaluating simple actions and argue that generated videos should incorporate the emergence of new concepts and their relation transitions like in real-world videos as time progresses. To assess the Temporal Compositionality of video generation models, we propose TC-Bench, a benchmark of meticulously crafted text prompts, corresponding ground truth videos, and robust evaluation metrics. The prompts articulate the initial and final states of scenes, effectively reducing ambiguities for frame development and simplifying the assessment of transition completion. In addition, by collecting aligned real-world videos corresponding to the prompts, we expand TC-Bench's applicability from text-conditional models to image-conditional ones that can perform generative frame interpolation. We also develop new metrics to measure the completeness of component transitions in generated videos, which demonstrate significantly higher correlations with human judgments than existing metrics. Our comprehensive experimental results reveal that most video generators achieve less than 20% of the compositional changes, highlighting enormous space for future improvement. Our analysis indicates that current video generation models struggle to interpret descriptions of compositional changes and synthesize various components across different time steps.
+                </div>
+            </div>
+            <div id="bibtex-4" class="highlight bibtex-highlight expandable-content hidden"><code>@article{feng2024tc,
+    author = "Feng, Weixi and Li, Jiachen and Saxon, Michael and Fu, Tsu-jui and Chen, Wenhu and Wang, William Yang",
+    title = "Tc-bench: Benchmarking temporal compositionality in text-to-video and image-to-video generation",
+    journal = "arXiv preprint arXiv:2406.08656",
+    year = "2024",
+    abstract = "Video generation has many unique challenges beyond those of image generation. The temporal dimension introduces extensive possible variations across frames, over which consistency and continuity may be violated. In this study, we move beyond evaluating simple actions and argue that generated videos should incorporate the emergence of new concepts and their relation transitions like in real-world videos as time progresses. To assess the Temporal Compositionality of video generation models, we propose TC-Bench, a benchmark of meticulously crafted text prompts, corresponding ground truth videos, and robust evaluation metrics. The prompts articulate the initial and final states of scenes, effectively reducing ambiguities for frame development and simplifying the assessment of transition completion. In addition, by collecting aligned real-world videos corresponding to the prompts, we expand TC-Bench's applicability from text-conditional models to image-conditional ones that can perform generative frame interpolation. We also develop new metrics to measure the completeness of component transitions in generated videos, which demonstrate significantly higher correlations with human judgments than existing metrics. Our comprehensive experimental results reveal that most video generators achieve less than 20\% of the compositional changes, highlighting enormous space for future improvement. Our analysis indicates that current video generation models struggle to interpret descriptions of compositional changes and synthesize various components across different time steps.",
+  url = {https://arxiv.org/abs/2406.08656},
+}</code></div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <a href="https://aclanthology.org/2024.naacl-short.48/" class="pub-title-link">
+                        <strong>Lost in Translation? Translation Errors and Challenges for Fair Assessment of Text-to-Image Models on Multilingual Concepts</strong>
+                    </a>
+                <br>
+                <span><span class="me">Michael Saxon</span>, Yiran Luo, Sharon Levy, Chitta Baral, Yezhou Yang, William Yang Wang</span><br>
+                <span>
+                        NAACL 2024
+                            <span class="venue-separator">·</span> <span class="additional-info">Conference Oral</span>
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <a href="https://aclanthology.org/2024.naacl-short.48/" class="pub-badge acl-badge">ACL Anthology</a>
+                    <a href="https://aclanthology.org/2024.naacl-short.48.pdf" class="pub-badge link-badge">PDF</a>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'abstract-5')" aria-expanded="false">Abstract</button>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-5')" aria-expanded="false">BibTeX</button>
+                    <a href="https://www.youtube.com/watch?v=zzW2HRYod2o" class="pub-badge video-badge">Presentation</a>
+            </div>
+            
+            <div id="abstract-5" class="expandable-content hidden">
+                <div class="abstract">
+                    <strong>Abstract:</strong> Benchmarks of the multilingual capabilities of text-to-image (T2I) models compare generated images prompted in a test language to an expected image distribution over a concept set. One such benchmark, "Conceptual Coverage Across Languages" (CoCo-CroLa), assesses the tangible noun inventory of T2I models by prompting them to generate pictures from a concept list translated to seven languages and comparing the output image populations. Unfortunately, we find that this benchmark contains translation errors of varying severity in Spanish, Japanese, and Chinese. We provide corrections for these errors and analyze how impactful they are on the utility and validity of CoCo-CroLa as a benchmark. We reassess multiple baseline T2I models with the revisions, compare the outputs elicited under the new translations to those conditioned on the old, and show that a correction's impactfulness on the image-domain benchmark results can be predicted in the text domain with similarity scores. Our findings will guide the future development of T2I multilinguality metrics by providing analytical tools for practical translation decisions.
+                </div>
+            </div>
+            <div id="bibtex-5" class="highlight bibtex-highlight expandable-content hidden"><code>@inproceedings{saxon2024lost,
+    author = "Saxon, Michael and Luo, Yiran and Levy, Sharon and Baral, Chitta and Yang, Yezhou and Wang, William Yang",
+    title = "Lost in Translation? Translation Errors and Challenges for Fair Assessment of Text-to-Image Models on Multilingual Concepts",
+    booktitle = "NAACL 2024",
+    pages = "572--582",
+    year = "2024",
+    abstract = {Benchmarks of the multilingual capabilities of text-to-image (T2I) models compare generated images prompted in a test language to an expected image distribution over a concept set. One such benchmark, "Conceptual Coverage Across Languages" (CoCo-CroLa), assesses the tangible noun inventory of T2I models by prompting them to generate pictures from a concept list translated to seven languages and comparing the output image populations. Unfortunately, we find that this benchmark contains translation errors of varying severity in Spanish, Japanese, and Chinese. We provide corrections for these errors and analyze how impactful they are on the utility and validity of CoCo-CroLa as a benchmark. We reassess multiple baseline T2I models with the revisions, compare the outputs elicited under the new translations to those conditioned on the old, and show that a correction's impactfulness on the image-domain benchmark results can be predicted in the text domain with similarity scores. Our findings will guide the future development of T2I multilinguality metrics by providing analytical tools for practical translation decisions.},
+  url = {https://aclanthology.org/2024.naacl-short.48/},
+}</code></div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <a href="https://aclanthology.org/2024.tacl-1.27/" class="pub-title-link">
+                        <strong>Automatically correcting large language models: Surveying the landscape of diverse automated correction strategies</strong>
+                    </a>
+                <br>
+                <span>Liangming Pan, <span class="me">Michael Saxon</span>, Wenda Xu, Deepak Nathani, Xinyi Wang, William Yang Wang</span><br>
+                <span>
+                        TACL 2024
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <a href="https://aclanthology.org/2024.tacl-1.27/" class="pub-badge acl-badge">ACL Anthology</a>
+                    <a href="https://aclanthology.org/2024.tacl-1.27.pdf" class="pub-badge link-badge">PDF</a>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'abstract-6')" aria-expanded="false">Abstract</button>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-6')" aria-expanded="false">BibTeX</button>
+            </div>
+            
+            <div id="abstract-6" class="expandable-content hidden">
+                <div class="abstract">
+                    <strong>Abstract:</strong> While large language models (LLMs) have shown remarkable effectiveness in various NLP tasks, they are still prone to issues such as hallucination, unfaithful reasoning, and toxicity. A promising approach to rectify these flaws is correcting LLMs with feedback, where the LLM itself is prompted or guided with feedback to fix problems in its own output. Techniques leveraging automated feedback—either produced by the LLM itself (self-correction) or some external system—are of particular interest as they make LLM-based solutions more practical and deployable with minimal human intervention. This paper provides an exhaustive review of the recent advances in correcting LLMs with automated feedback, categorizing them into training-time, generation-time, and post-hoc approaches. We also identify potential challenges and future directions in this emerging field.
+                </div>
+            </div>
+            <div id="bibtex-6" class="highlight bibtex-highlight expandable-content hidden"><code>@article{pan2024automatically,
+    author = "Pan, Liangming and Saxon, Michael and Xu, Wenda and Nathani, Deepak and Wang, Xinyi and Wang, William Yang",
+    title = "Automatically correcting large language models: Surveying the landscape of diverse automated correction strategies",
+    journal = "Transactions of the Association for Computational Linguistics",
+    volume = "12",
+    pages = "484--506",
+    year = "2024",
+    abstract = "While large language models (LLMs) have shown remarkable effectiveness in various NLP tasks, they are still prone to issues such as hallucination, unfaithful reasoning, and toxicity. A promising approach to rectify these flaws is correcting LLMs with feedback, where the LLM itself is prompted or guided with feedback to fix problems in its own output. Techniques leveraging automated feedback—either produced by the LLM itself (self-correction) or some external system—are of particular interest as they make LLM-based solutions more practical and deployable with minimal human intervention. This paper provides an exhaustive review of the recent advances in correcting LLMs with automated feedback, categorizing them into training-time, generation-time, and post-hoc approaches. We also identify potential challenges and future directions in this emerging field.",
+  url = {https://aclanthology.org/2024.tacl-1.27/},
+}</code></div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <a href="https://arxiv.org/abs/2407.01863" class="pub-title-link">
+                        <strong>Vsp: Assessing the dual challenges of perception and reasoning in spatial planning tasks for vlms</strong>
+                    </a>
+                <br>
+                <span>Qiucheng Wu, Handong Zhao, <span class="me">Michael Saxon</span>, Trung Bui, William Yang Wang, Yang Zhang, Shiyu Chang</span><br>
+                <span>
+                            arXiv preprint arXiv:2407.01863
+                        , 2024
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <a href="https://arxiv.org/abs/2407.01863" class="pub-badge arxiv-badge">arXiv:2407.01863</a>
+                    <a href="https://arxiv.org/pdf/2407.01863" class="pub-badge link-badge">PDF</a>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-7')" aria-expanded="false">BibTeX</button>
+            </div>
+            
+            <div id="bibtex-7" class="highlight bibtex-highlight expandable-content hidden"><code>@article{wu2024vsp,
+    author = "Wu, Qiucheng and Zhao, Handong and Saxon, Michael and Bui, Trung and Wang, William Yang and Zhang, Yang and Chang, Shiyu",
+    title = "Vsp: Assessing the dual challenges of perception and reasoning in spatial planning tasks for vlms",
+    journal = "arXiv preprint arXiv:2407.01863",
+    year = "2024",
+  url = {https://arxiv.org/abs/2407.01863},
+}</code></div>
+        </div>
+                </div>  <!-- Close previous year group -->
+            
+            <h2>2023</h2>
+            <div class="pub-year-group">
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <a href="https://arxiv.org/abs/2305.13903" class="pub-title-link">
+                        <strong>Let's think frame by frame with vip: A video infilling and prediction dataset for evaluating video chain-of-thought</strong>
+                    </a>
+                <br>
+                <span>Vaishnavi Himakunthala, Andy Ouyang, Daniel Rose, Ryan He, Alex Mei, Yujie Lu, Chinmay Sonar, <span class="me">Michael Saxon</span>, William Yang Wang</span><br>
+                <span>
+                        EMNLP 2023
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <a href="https://arxiv.org/abs/2305.13903" class="pub-badge arxiv-badge">arXiv:2305.13903</a>
+                    <a href="https://arxiv.org/pdf/2305.13903" class="pub-badge link-badge">PDF</a>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-8')" aria-expanded="false">BibTeX</button>
+            </div>
+            
+            <div id="bibtex-8" class="highlight bibtex-highlight expandable-content hidden"><code>@inproceedings{himakunthala2023let,
+    author = "Himakunthala, Vaishnavi and Ouyang, Andy and Rose, Daniel and He, Ryan and Mei, Alex and Lu, Yujie and Sonar, Chinmay and Saxon, Michael and Wang, William Yang",
+    title = "Let's think frame by frame with vip: A video infilling and prediction dataset for evaluating video chain-of-thought",
+    booktitle = "Conference on Empirical Methods in Natural Language Processing",
+    year = "2023",
+  url = {https://arxiv.org/abs/2305.13903},
+}</code></div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <a href="https://proceedings.neurips.cc/paper_files/paper/2023/hash/3255a7554605a88800f4e120b3a929e1-Abstract-Conference.html" class="pub-title-link">
+                        <strong>Large language models are latent variable models: Explaining and finding good demonstrations for in-context learning</strong>
+                    </a>
+                <br>
+                <span>Xinyi Wang, Wanrong Zhu, <span class="me">Michael Saxon</span>, Mark Steyvers, William Yang Wang</span><br>
+                <span>
+                        NeurIPS 2023
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <a href="https://proceedings.neurips.cc/paper_files/paper/2023/hash/3255a7554605a88800f4e120b3a929e1-Abstract-Conference.html" class="pub-badge link-badge">Official</a>
+                    <a href="https://proceedings.neurips.cc/paper_files/paper/2023/file/3255a7554605a88800f4e120b3a929e1-Paper-Conference.pdf" class="pub-badge link-badge">PDF</a>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'abstract-9')" aria-expanded="false">Abstract</button>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-9')" aria-expanded="false">BibTeX</button>
+            </div>
+            
+            <div id="abstract-9" class="expandable-content hidden">
+                <div class="abstract">
+                    <strong>Abstract:</strong> In recent years, pre-trained large language models (LLMs) have demonstrated remarkable efficiency in achieving an inference-time few-shot learning capability known as in-context learning. However, existing literature has highlighted the sensitivity of this capability to the selection of few-shot demonstrations. Current understandings of the underlying mechanisms by which this capability arises from regular language model pretraining objectives remain disconnected from the real-world LLMs. This study aims to examine the in-context learning phenomenon through a Bayesian lens, viewing real-world LLMs as latent variable models. On this premise, we propose an algorithm to select optimal demonstrations from a set of annotated data with a small LM, and then directly generalize the selected demonstrations to larger LMs. We demonstrate significant improvement over baselines, averaged over eight GPT models on eight real-world text classification datasets. We also demonstrate the real-world usefulness of our algorithm on GSM8K, a math word problem dataset. Our empirical findings support our hypothesis that LLMs implicitly infer a latent variable containing task information.
+                </div>
+            </div>
+            <div id="bibtex-9" class="highlight bibtex-highlight expandable-content hidden"><code>@article{wang2023large,
+    author = "Wang, Xinyi and Zhu, Wanrong and Saxon, Michael and Steyvers, Mark and Wang, William Yang",
+    title = "Large language models are latent variable models: Explaining and finding good demonstrations for in-context learning",
+    journal = "Advances in Neural Information Processing Systems",
+    volume = "36",
+    pages = "15614--15638",
+    year = "2023",
+    abstract = "In recent years, pre-trained large language models (LLMs) have demonstrated remarkable efficiency in achieving an inference-time few-shot learning capability known as in-context learning. However, existing literature has highlighted the sensitivity of this capability to the selection of few-shot demonstrations. Current understandings of the underlying mechanisms by which this capability arises from regular language model pretraining objectives remain disconnected from the real-world LLMs. This study aims to examine the in-context learning phenomenon through a Bayesian lens, viewing real-world LLMs as latent variable models. On this premise, we propose an algorithm to select optimal demonstrations from a set of annotated data with a small LM, and then directly generalize the selected demonstrations to larger LMs. We demonstrate significant improvement over baselines, averaged over eight GPT models on eight real-world text classification datasets. We also demonstrate the real-world usefulness of our algorithm on GSM8K, a math word problem dataset. Our empirical findings support our hypothesis that LLMs implicitly infer a latent variable containing task information.",
+  url = {https://proceedings.neurips.cc/paper_files/paper/2023/hash/3255a7554605a88800f4e120b3a929e1-Abstract-Conference.html},
+}</code></div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <a href="https://aclanthology.org/2023.acl-long.266/" class="pub-title-link">
+                        <strong>Multilingual Conceptual Coverage in Text-to-Image Models</strong>
+                    </a>
+                <br>
+                <span><span class="me">Michael Saxon</span>, William Yang Wang</span><br>
+                <span>
+                        ACL 2023
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <a href="https://aclanthology.org/2023.acl-long.266/" class="pub-badge acl-badge">ACL Anthology</a>
+                    <a href="https://aclanthology.org/2023.acl-long.266.pdf" class="pub-badge link-badge">PDF</a>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'abstract-10')" aria-expanded="false">Abstract</button>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-10')" aria-expanded="false">BibTeX</button>
+            </div>
+            
+            <div id="abstract-10" class="expandable-content hidden">
+                <div class="abstract">
+                    <strong>Abstract:</strong> We propose "Conceptual Coverage Across Languages" (CoCo-CroLa), a technique for benchmarking the degree to which any generative text-to-image system provides multilingual parity to its training language in terms of tangible nouns. For each model we can assess "conceptual coverage" of a given target language relative to a source language by comparing the population of images generated for a series of tangible nouns in the source language to the population of images generated for each noun under translation in the target language. This technique allows us to estimate how well-suited a model is to a target language as well as identify model-specific weaknesses, spurious correlations, and biases without a-priori assumptions. We demonstrate how it can be used to benchmark T2I models in terms of multilinguality, and how despite its simplicity it is a good proxy for impressive generalization.
+                </div>
+            </div>
+            <div id="bibtex-10" class="highlight bibtex-highlight expandable-content hidden"><code>@inproceedings{saxon2023multilingual,
+    author = "Saxon, Michael and Wang, William Yang",
+    title = "Multilingual Conceptual Coverage in Text-to-Image Models",
+    booktitle = "Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
+    pages = "4831--4848",
+    year = "2023",
+    abstract = {We propose "Conceptual Coverage Across Languages" (CoCo-CroLa), a technique for benchmarking the degree to which any generative text-to-image system provides multilingual parity to its training language in terms of tangible nouns. For each model we can assess "conceptual coverage" of a given target language relative to a source language by comparing the population of images generated for a series of tangible nouns in the source language to the population of images generated for each noun under translation in the target language. This technique allows us to estimate how well-suited a model is to a target language as well as identify model-specific weaknesses, spurious correlations, and biases without a-priori assumptions. We demonstrate how it can be used to benchmark T2I models in terms of multilinguality, and how despite its simplicity it is a good proxy for impressive generalization.},
+  url = {https://aclanthology.org/2023.acl-long.266/},
+}</code></div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <strong>CausalDialogue: Modeling Utterance-level Causality in Conversations</strong>
+                <br>
+                <span>Yi-Lin Tuan, Alon Albalak, Wenda Xu, <span class="me">Michael Saxon</span>, Connor Pryor, Lise Getoor, William Yang Wang</span><br>
+                <span>
+                        ACL 2023
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-11')" aria-expanded="false">BibTeX</button>
+            </div>
+            
+            <div id="bibtex-11" class="highlight bibtex-highlight expandable-content hidden"><code>@inproceedings{tuan2023causaldialogue,
+    author = "Tuan, Yi-Lin and Albalak, Alon and Xu, Wenda and Saxon, Michael and Pryor, Connor and Getoor, Lise and Wang, William Yang",
+    title = "CausalDialogue: Modeling Utterance-level Causality in Conversations",
+    booktitle = "Findings of the Association for Computational Linguistics: ACL 2023",
+    pages = "12506--12522",
+    year = "2023",
+}</code></div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <a href="https://arxiv.org/abs/2305.02317" class="pub-title-link">
+                        <strong>Visual chain of thought: bridging logical gaps with multimodal infillings</strong>
+                    </a>
+                <br>
+                <span>Daniel Rose, Vaishnavi Himakunthala, Andy Ouyang, Ryan He, Alex Mei, Yujie Lu, <span class="me">Michael Saxon</span>, Chinmay Sonar, Diba Mirza, William Yang Wang</span><br>
+                <span>
+                            arXiv preprint arXiv:2305.02317
+                        , 2023
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <a href="https://arxiv.org/abs/2305.02317" class="pub-badge arxiv-badge">arXiv:2305.02317</a>
+                    <a href="https://arxiv.org/pdf/2305.02317" class="pub-badge link-badge">PDF</a>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-12')" aria-expanded="false">BibTeX</button>
+            </div>
+            
+            <div id="bibtex-12" class="highlight bibtex-highlight expandable-content hidden"><code>@article{rose2023visual,
+    author = "Rose, Daniel and Himakunthala, Vaishnavi and Ouyang, Andy and He, Ryan and Mei, Alex and Lu, Yujie and Saxon, Michael and Sonar, Chinmay and Mirza, Diba and Wang, William Yang",
+    title = "Visual chain of thought: bridging logical gaps with multimodal infillings",
+    journal = "arXiv preprint arXiv:2305.02317",
+    year = "2023",
+  url = {https://arxiv.org/abs/2305.02317},
+}</code></div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <a href="https://arxiv.org/abs/2303.05500" class="pub-title-link">
+                        <strong>Users are the north star for ai transparency</strong>
+                    </a>
+                <br>
+                <span>Alex Mei, <span class="me">Michael Saxon</span>, Shiyu Chang, Zachary C Lipton, William Yang Wang</span><br>
+                <span>
+                            arXiv preprint arXiv:2303.05500
+                        , 2023
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <a href="https://arxiv.org/abs/2303.05500" class="pub-badge arxiv-badge">arXiv:2303.05500</a>
+                    <a href="https://arxiv.org/pdf/2303.05500" class="pub-badge link-badge">PDF</a>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-13')" aria-expanded="false">BibTeX</button>
+            </div>
+            
+            <div id="bibtex-13" class="highlight bibtex-highlight expandable-content hidden"><code>@article{mei2023users,
+    author = "Mei, Alex and Saxon, Michael and Chang, Shiyu and Lipton, Zachary C and Wang, William Yang",
+    title = "Users are the north star for ai transparency",
+    journal = "arXiv preprint arXiv:2303.05500",
+    year = "2023",
+  url = {https://arxiv.org/abs/2303.05500},
+}</code></div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <a href="https://aclanthology.org/2023.eacl-main.223/" class="pub-title-link">
+                        <strong>PECO: Examining Single Sentence Label Leakage in Natural Language Inference Datasets through Progressive Evaluation of Cluster Outliers</strong>
+                    </a>
+                <br>
+                <span><span class="me">Michael Saxon</span>, Xinyi Wang, Wenda Xu, William Yang Wang</span><br>
+                <span>
+                        EACL 2023
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <a href="https://aclanthology.org/2023.eacl-main.223/" class="pub-badge acl-badge">ACL Anthology</a>
+                    <a href="https://aclanthology.org/2023.eacl-main.223.pdf" class="pub-badge link-badge">PDF</a>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'abstract-14')" aria-expanded="false">Abstract</button>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-14')" aria-expanded="false">BibTeX</button>
+                    <a href="https://www.youtube.com/watch?v=nwB35LocgCs" class="pub-badge video-badge">Presentation</a>
+            </div>
+            
+            <div id="abstract-14" class="expandable-content hidden">
+                <div class="abstract">
+                    <strong>Abstract:</strong> Building natural language inference (NLI) benchmarks that are both challenging for modern techniques, and free from shortcut biases is difficult. Chief among these biases is “single sentence label leakage,” where annotator-introduced spurious correlations yield datasets where the logical relation between (premise, hypothesis) pairs can be accurately predicted from only a single sentence, something that should in principle be impossible. We demonstrate that despite efforts to reduce this leakage, it persists in modern datasets that have been introduced since its 2018 discovery. To enable future amelioration efforts, introduce a novel model-driven technique, the progressive evaluation of cluster outliers (PECO) which enables both the objective measurement of leakage, and the automated detection of subpopulations in the data which maximally exhibit it.
+                </div>
+            </div>
+            <div id="bibtex-14" class="highlight bibtex-highlight expandable-content hidden"><code>@inproceedings{saxon2023peco,
+    author = "Saxon, Michael and Wang, Xinyi and Xu, Wenda and Wang, William Yang",
+    title = "PECO: Examining Single Sentence Label Leakage in Natural Language Inference Datasets through Progressive Evaluation of Cluster Outliers",
+    booktitle = "Proceedings of the 17th Conference of the European Chapter of the Association for Computational Linguistics",
+    pages = "3061--3074",
+    year = "2023",
+    abstract = "Building natural language inference (NLI) benchmarks that are both challenging for modern techniques, and free from shortcut biases is difficult. Chief among these biases is “single sentence label leakage,” where annotator-introduced spurious correlations yield datasets where the logical relation between (premise, hypothesis) pairs can be accurately predicted from only a single sentence, something that should in principle be impossible. We demonstrate that despite efforts to reduce this leakage, it persists in modern datasets that have been introduced since its 2018 discovery. To enable future amelioration efforts, introduce a novel model-driven technique, the progressive evaluation of cluster outliers (PECO) which enables both the objective measurement of leakage, and the automated detection of subpopulations in the data which maximally exhibit it.",
+  url = {https://aclanthology.org/2023.eacl-main.223/},
+}</code></div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <a href="https://openreview.net/forum?id=vaxnu-Ut" class="pub-title-link">
+                        <strong>Wikiwhy: Answering and explaining cause-and-effect questions</strong>
+                    </a>
+                <br>
+                <span>Matthew Ho, Aditya Sharma, Justin Chang, <span class="me">Michael Saxon</span>, Sharon Levy, Yujie Lu, William Yang Wang</span><br>
+                <span>
+                        ICLR 2023
+                            <span class="venue-separator">·</span> <span class="additional-info">Conference Oral</span>
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <a href="https://openreview.net/forum?id=vaxnu-Ut" class="pub-badge arxiv-badge">OpenReview</a>
+                    <a href="https://openreview.net/pdf?id=vaxnu-Ut" class="pub-badge link-badge">PDF</a>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'abstract-15')" aria-expanded="false">Abstract</button>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-15')" aria-expanded="false">BibTeX</button>
+            </div>
+            
+            <div id="abstract-15" class="expandable-content hidden">
+                <div class="abstract">
+                    <strong>Abstract:</strong> As large language models (LLMs) grow larger and more sophisticated, assessing their "reasoning" capabilities in natural language grows more challenging. Recent question answering (QA) benchmarks that attempt to assess reasoning are often limited by a narrow scope of covered situations and subject matters. We introduce WikiWhy, a QA dataset built around a novel auxiliary task: explaining why an answer is true in natural language. WikiWhy contains over 9,000 "why" question-answer-rationale triples, grounded on Wikipedia facts across a diverse set of topics. Each rationale is a set of supporting statements connecting the question to the answer. WikiWhy serves as a benchmark for the reasoning capabilities of LLMs because it demands rigorous explicit rationales for each answer to demonstrate the acquisition of implicit commonsense knowledge, which is unlikely to be easily memorized. GPT-3 baselines achieve only 38.7% human-evaluated correctness in the end-to-end answer & explain condition, leaving significant room for future improvements.
+                </div>
+            </div>
+            <div id="bibtex-15" class="highlight bibtex-highlight expandable-content hidden"><code>@inproceedings{ho2023wikiwhy,
+    author = "Ho, Matthew and Sharma, Aditya and Chang, Justin and Saxon, Michael and Levy, Sharon and Lu, Yujie and Wang, William Yang",
+    title = "Wikiwhy: Answering and explaining cause-and-effect questions",
+    booktitle = "The Eleventh International Conference on Learning Representations",
+    year = "2023",
+    abstract = {As large language models (LLMs) grow larger and more sophisticated, assessing their "reasoning" capabilities in natural language grows more challenging. Recent question answering (QA) benchmarks that attempt to assess reasoning are often limited by a narrow scope of covered situations and subject matters. We introduce WikiWhy, a QA dataset built around a novel auxiliary task: explaining why an answer is true in natural language. WikiWhy contains over 9,000 "why" question-answer-rationale triples, grounded on Wikipedia facts across a diverse set of topics. Each rationale is a set of supporting statements connecting the question to the answer. WikiWhy serves as a benchmark for the reasoning capabilities of LLMs because it demands rigorous explicit rationales for each answer to demonstrate the acquisition of implicit commonsense knowledge, which is unlikely to be easily memorized. GPT-3 baselines achieve only 38.7\% human-evaluated correctness in the end-to-end answer \& explain condition, leaving significant room for future improvements.},
+  url = {https://openreview.net/forum?id=vaxnu-Ut},
+}</code></div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <a href="https://openreview.net/forum?id=F91SROvVJ_6" class="pub-title-link">
+                        <strong>Causal Balancing for Domain Generalization</strong>
+                    </a>
+                <br>
+                <span>Xinyi Wang, <span class="me">Michael Saxon</span>, Jiachen Li, Hongyang Zhang, Kun Zhang, William Yang Wang</span><br>
+                <span>
+                        ICLR 2023
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <a href="https://openreview.net/forum?id=F91SROvVJ_6" class="pub-badge arxiv-badge">OpenReview</a>
+                    <a href="https://openreview.net/pdf?id=F91SROvVJ_6" class="pub-badge link-badge">PDF</a>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'abstract-16')" aria-expanded="false">Abstract</button>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-16')" aria-expanded="false">BibTeX</button>
+            </div>
+            
+            <div id="abstract-16" class="expandable-content hidden">
+                <div class="abstract">
+                    <strong>Abstract:</strong> While machine learning models rapidly advance the state-of-the-art on various real-world tasks, out-of-domain (OOD) generalization remains a challenging problem given the vulnerability of these models to spurious correlations. We propose a balanced mini-batch sampling strategy to transform a biased data distribution into a spurious-free balanced distribution, based on the invariance of the underlying causal mechanisms for the data generation process. We argue that the Bayes optimal classifiers trained on such balanced distribution are minimax optimal across a diverse enough environment space. We also provide an identifiability guarantee of the latent variable model of the proposed data generation process, when utilizing enough train environments. Experiments are conducted on DomainBed, demonstrating empirically that our method obtains the best performance across 20 baselines reported on the benchmark.
+                </div>
+            </div>
+            <div id="bibtex-16" class="highlight bibtex-highlight expandable-content hidden"><code>@inproceedings{wang2023causal,
+    author = "Wang, Xinyi and Saxon, Michael and Li, Jiachen and Zhang, Hongyang and Zhang, Kun and Wang, William Yang",
+    title = "Causal Balancing for Domain Generalization",
+    booktitle = "The Eleventh International Conference on Learning Representations",
+    pages = "https--openreview",
+    year = "2023",
+    abstract = "While machine learning models rapidly advance the state-of-the-art on various real-world tasks, out-of-domain (OOD) generalization remains a challenging problem given the vulnerability of these models to spurious correlations. We propose a balanced mini-batch sampling strategy to transform a biased data distribution into a spurious-free balanced distribution, based on the invariance of the underlying causal mechanisms for the data generation process. We argue that the Bayes optimal classifiers trained on such balanced distribution are minimax optimal across a diverse enough environment space. We also provide an identifiability guarantee of the latent variable model of the proposed data generation process, when utilizing enough train environments. Experiments are conducted on DomainBed, demonstrating empirically that our method obtains the best performance across 20 baselines reported on the benchmark.",
+  url = {https://openreview.net/forum?id=F91SROvVJ_6},
+}</code></div>
+        </div>
+                </div>  <!-- Close previous year group -->
+            
+            <h2>2022</h2>
+            <div class="pub-year-group">
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <strong>Self-supervised knowledge assimilation for expert-layman text style transfer</strong>
+                <br>
+                <span>Wenda Xu, <span class="me">Michael Saxon</span>, Misha Sra, William Yang Wang</span><br>
+                <span>
+                        AAAI 2022
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-17')" aria-expanded="false">BibTeX</button>
+            </div>
+            
+            <div id="bibtex-17" class="highlight bibtex-highlight expandable-content hidden"><code>@inproceedings{xu2022self,
+    author = "Xu, Wenda and Saxon, Michael and Sra, Misha and Wang, William Yang",
+    title = "Self-supervised knowledge assimilation for expert-layman text style transfer",
+    booktitle = "Proceedings of the AAAI Conference on Artificial Intelligence",
+    volume = "36",
+    number = "10",
+    pages = "11566--11574",
+    year = "2022",
+}</code></div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <strong>Not All Errors are Equal: Learning Text Generation Metrics using Stratified Error Synthesis</strong>
+                <br>
+                <span>Wenda Xu, Yilin Tuan, Yujie Lu, <span class="me">Michael Saxon</span>, Lei Li, William Yang Wang</span><br>
+                <span>
+                        EMNLP 2022
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-18')" aria-expanded="false">BibTeX</button>
+            </div>
+            
+            <div id="bibtex-18" class="highlight bibtex-highlight expandable-content hidden"><code>@inproceedings{xu2022not,
+    author = "Xu, Wenda and Tuan, Yilin and Lu, Yujie and Saxon, Michael and Li, Lei and Wang, William Yang",
+    title = "Not All Errors are Equal: Learning Text Generation Metrics using Stratified Error Synthesis",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2022",
+    pages = "6559--6574",
+    year = "2022",
+}</code></div>
+        </div>
+                </div>  <!-- Close previous year group -->
+            
+            <h2>2021</h2>
+            <div class="pub-year-group">
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <strong>Investigating Memorization of Conspiracy Theories in Text Generation</strong>
+                <br>
+                <span>Sharon Levy, <span class="me">Michael Saxon</span>, William Yang Wang</span><br>
+                <span>
+                        ACL-IJCNLP 2021
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-19')" aria-expanded="false">BibTeX</button>
+            </div>
+            
+            <div id="bibtex-19" class="highlight bibtex-highlight expandable-content hidden"><code>@article{levy2021investigating,
+    author = "Levy, Sharon and Saxon, Michael and Wang, William Yang",
+    title = "Investigating Memorization of Conspiracy Theories in Text Generation",
+    journal = "Findings of the Association for Computational Linguistics: ACL-IJCNLP 2021",
+    pages = "4718--4729",
+    year = "2021",
+    publisher = "Association for Computational Linguistics",
+}</code></div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <strong>End-to-End Spoken Language Understanding for Generalized Voice Assistants</strong>
+                <br>
+                <span><span class="me">Michael Saxon</span>, Samridhi Choudhary, Joseph P McKenna, Athanasios Mouchtaris</span><br>
+                <span>
+                        Interspeech 2021
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-20')" aria-expanded="false">BibTeX</button>
+            </div>
+            
+            <div id="bibtex-20" class="highlight bibtex-highlight expandable-content hidden"><code>@inproceedings{saxon2021end,
+    author = "Saxon, Michael and Choudhary, Samridhi and McKenna, Joseph P and Mouchtaris, Athanasios",
+    title = "End-to-End Spoken Language Understanding for Generalized Voice Assistants",
+    booktitle = "Interspeech 2021",
+    pages = "4738--4742",
+    year = "2021",
+}</code></div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <a href="https://aclanthology.org/2021.emnlp-main.153/" class="pub-title-link">
+                        <strong>Modeling Disclosive Transparency in NLP Application Descriptions</strong>
+                    </a>
+                <br>
+                <span><span class="me">Michael Saxon</span>, Sharon Levy, Xinyi Wang, Alon Albalak, William Yang Wang</span><br>
+                <span>
+                        EMNLP 2021
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <a href="https://aclanthology.org/2021.emnlp-main.153/" class="pub-badge acl-badge">ACL Anthology</a>
+                    <a href="https://aclanthology.org/2021.emnlp-main.153.pdf" class="pub-badge link-badge">PDF</a>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-21')" aria-expanded="false">BibTeX</button>
+            </div>
+            
+            <div id="bibtex-21" class="highlight bibtex-highlight expandable-content hidden"><code>@inproceedings{saxon2021modeling,
+    author = "Saxon, Michael and Levy, Sharon and Wang, Xinyi and Albalak, Alon and Wang, William Yang",
+    title = "Modeling Disclosive Transparency in NLP Application Descriptions",
+    booktitle = "Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing",
+    pages = "2023--2037",
+    year = "2021",
+  url = {https://aclanthology.org/2021.emnlp-main.153/},
+}</code></div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <strong>Counterfactual maximum likelihood estimation for training deep networks</strong>
+                <br>
+                <span>Xinyi Wang, Wenhu Chen, <span class="me">Michael Saxon</span>, William Yang Wang</span><br>
+                <span>
+                        NeurIPS 2021
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-22')" aria-expanded="false">BibTeX</button>
+            </div>
+            
+            <div id="bibtex-22" class="highlight bibtex-highlight expandable-content hidden"><code>@article{wang2021counterfactual,
+    author = "Wang, Xinyi and Chen, Wenhu and Saxon, Michael and Wang, William Yang",
+    title = "Counterfactual maximum likelihood estimation for training deep networks",
+    journal = "Advances in Neural Information Processing Systems",
+    volume = "34",
+    pages = "25072--25085",
+    year = "2021",
+}</code></div>
+        </div>
+                </div>  <!-- Close previous year group -->
+            
+            <h2>2020</h2>
+            <div class="pub-year-group">
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <strong>Semantic Complexity in End-to-End Spoken Language Understanding</strong>
+                <br>
+                <span><span class="me">Michael Saxon*</span>, Joseph P McKenna*, Samridhi Choudhary*, Grant P Strimel, Athanasios Mouchtaris</span><br>
+                <span>
+                        Interspeech 2020
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-23')" aria-expanded="false">BibTeX</button>
+            </div>
+            
+            <div id="bibtex-23" class="highlight bibtex-highlight expandable-content hidden"><code>@inproceedings{mckenna2020semantic,
+    author = "McKenna*, Joseph P and Choudhary*, Samridhi and Saxon*, Michael and Strimel, Grant P and Mouchtaris, Athanasios",
+    title = "Semantic Complexity in End-to-End Spoken Language Understanding",
+    booktitle = "Proc. Interspeech 2020",
+    pages = "4273--4277",
+    year = "2020",
+}</code></div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <strong>UncommonVoice: A Crowdsourced Dataset of Dysphonic Speech</strong>
+                <br>
+                <span>Meredith Moore, Piyush Papreja, <span class="me">Michael Saxon</span>, Visar Berisha, Sethuraman Panchanathan</span><br>
+                <span>
+                        Interspeech 2020
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-24')" aria-expanded="false">BibTeX</button>
+            </div>
+            
+            <div id="bibtex-24" class="highlight bibtex-highlight expandable-content hidden"><code>@article{moore2020uncommonvoice,
+    author = "Moore, Meredith and Papreja, Piyush and Saxon, Michael and Berisha, Visar and Panchanathan, Sethuraman",
+    title = "UncommonVoice: A Crowdsourced Dataset of Dysphonic Speech",
+    journal = "Proc. Interspeech 2020",
+    pages = "2532--2536",
+    year = "2020",
+}</code></div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <strong>Robust Estimation of Hypernasality in Dysarthria with Acoustic Model Likelihood Features</strong>
+                <br>
+                <span><span class="me">Michael Saxon</span>, Ayush Tripathi, Yishan Jiao, Julie Liss, Visar Berisha</span><br>
+                <span>
+                        IEEE/ACM TASLP 2020
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-25')" aria-expanded="false">BibTeX</button>
+            </div>
+            
+            <div id="bibtex-25" class="highlight bibtex-highlight expandable-content hidden"><code>@article{saxon2020robust,
+    author = "Saxon, Michael and Tripathi, Ayush and Jiao, Yishan and Liss, Julie and Berisha, Visar",
+    title = "Robust Estimation of Hypernasality in Dysarthria with Acoustic Model Likelihood Features",
+    journal = "IEEE/ACM Transactions on Audio, Speech, and Language Processing",
+    volume = "28",
+    pages = "2511--2522",
+    year = "2020",
+    publisher = "IEEE",
+}</code></div>
+        </div>
+                </div>  <!-- Close previous year group -->
+            
+            <h2>2019</h2>
+            <div class="pub-year-group">
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <strong>Say What? A Dataset for Exploring the Error Patterns That Two ASR Engines Make</strong>
+                <br>
+                <span>Meredith Moore, <span class="me">Michael Saxon</span>, Hemanth Venkateswara, Visar Berisha, Sethuraman Panchanathan</span><br>
+                <span>
+                        Interspeech 2019
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-26')" aria-expanded="false">BibTeX</button>
+            </div>
+            
+            <div id="bibtex-26" class="highlight bibtex-highlight expandable-content hidden"><code>@article{moore2019say,
+    author = "Moore, Meredith and Saxon, Michael and Venkateswara, Hemanth and Berisha, Visar and Panchanathan, Sethuraman",
+    title = "Say What? A Dataset for Exploring the Error Patterns That Two ASR Engines Make",
+    journal = "Proc. Interspeech 2019",
+    pages = "2528--2532",
+    year = "2019",
+}</code></div>
+        </div>
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <strong>Objective measures of plosive nasalization in hypernasal speech</strong>
+                <br>
+                <span><span class="me">Michael Saxon</span>, Julie Liss, Visar Berisha</span><br>
+                <span>
+                        ICASSP 2019
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-27')" aria-expanded="false">BibTeX</button>
+            </div>
+            
+            <div id="bibtex-27" class="highlight bibtex-highlight expandable-content hidden"><code>@inproceedings{saxon2019objective,
+    author = "Saxon, Michael and Liss, Julie and Berisha, Visar",
+    title = "Objective measures of plosive nasalization in hypernasal speech",
+    booktitle = "ICASSP 2019-2019 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)",
+    pages = "6520--6524",
+    year = "2019",
+    organization = "IEEE",
+}</code></div>
+        </div>
+                </div>  <!-- Close previous year group -->
+            
+            <h2>2016</h2>
+            <div class="pub-year-group">
+        
+        <div class="publication">
+            <div class="pub-main-info">
+                    <a href="https://ieeexplore.ieee.org/document/7545732" class="pub-title-link">
+                        <strong>2D Grating Pitch Mapping of a through Silicon Via (TSV) and Solder Ball Interconnect Region Using Laser Diffraction: IEEE Electronic Components and Technology Conference, 2016</strong>
+                    </a>
+                <br>
+                <span>Todd Houghton, <span class="me">Michael Saxon</span>, Zeming Song, Hoa Nyugen, Hanqing Jiang, Hongbin Yu</span><br>
+                <span>
+                        IEEE ECTC 2016
+                </span>
+            </div>
+            
+            <div class="pub-badges">
+                    <a href="https://ieeexplore.ieee.org/document/7545732" class="pub-badge link-badge">Official</a>
+                    <a href="https://drive.google.com/file/u/1/d/1GDoAOWInqJMCIIIUepIAmu3_oWTnioIi/view" class="pub-badge link-badge">PDF</a>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'abstract-28')" aria-expanded="false">Abstract</button>
+                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-28')" aria-expanded="false">BibTeX</button>
+            </div>
+            
+            <div id="abstract-28" class="expandable-content hidden">
+                <div class="abstract">
+                    <strong>Abstract:</strong> Planar Strain mapping of interconnects, such as Ball Grid Arrays (BGA) and Through-Silicon Vias (TSVs), is an important step in the development and testing of electronics packages, as excessive strain can lead to device failure. Today, the two most widely adopted methods of experimental strain field measurement, Digital Image Correlation and Moiré Interferometry, encounter limitations when the average strain magnitude drops below 1μm on thermally loaded samples. DIC provides only limited fields of view and increases measurement complexity, while Moiré Interferometry suffers from resolution near material interfaces. If well bonded to a surface, changes in periodicity of a thin diffraction grating can be strongly dependent on the strain field. The local grating periodicity, can then be measured using laser diffraction. We present a means of mapping the pitch of a grating bonded to the surface of a through-silicon via interconnect in two dimensions over a wide field of view, with a high degree of repeatability at room and elevated temperature.
+                </div>
+            </div>
+            <div id="bibtex-28" class="highlight bibtex-highlight expandable-content hidden"><code>@inproceedings{houghton20162d,
+    author = "Houghton, Todd and Saxon, Michael and Song, Zeming and Nyugen, Hoa and Jiang, Hanqing and Yu, Hongbin",
+    title = "2D Grating Pitch Mapping of a through Silicon Via (TSV) and Solder Ball Interconnect Region Using Laser Diffraction: IEEE Electronic Components and Technology Conference, 2016",
+    booktitle = "2016 IEEE 66th Electronic Components and Technology Conference (ECTC)",
+    pages = "2222--2227",
+    year = "2016",
+    organization = "IEEE",
+    abstract = "Planar Strain mapping of interconnects, such as Ball Grid Arrays (BGA) and Through-Silicon Vias (TSVs), is an important step in the development and testing of electronics packages, as excessive strain can lead to device failure. Today, the two most widely adopted methods of experimental strain field measurement, Digital Image Correlation and Moiré Interferometry, encounter limitations when the average strain magnitude drops below 1μm on thermally loaded samples. DIC provides only limited fields of view and increases measurement complexity, while Moiré Interferometry suffers from resolution near material interfaces. If well bonded to a surface, changes in periodicity of a thin diffraction grating can be strongly dependent on the strain field. The local grating periodicity, can then be measured using laser diffraction. We present a means of mapping the pitch of a grating bonded to the surface of a through-silicon via interconnect in two dimensions over a wide field of view, with a high degree of repeatability at room and elevated temperature.",
+  url = {https://ieeexplore.ieee.org/document/7545732},
+}</code></div>
+        </div>
+    
+        </div>  <!-- Close the last year group -->
+
+        <h2>Non-archival Presenations and Workshop Papers</h2>
+        
+                
+                <h3>2023</h3>
+                <div class="pub-year-group">
+            
+            <div class="publication workshop-publication">
+                <div class="pub-main-info">
+                        <strong>Disparities in Text-to-Image Model Concept Possession Across Languages</strong>
+                    <br>
+                    <span><span class="me">Michael Saxon</span>, William Yang Wang</span><br>
+                    <span>
+                            FAccT 2023
+                    </span>
+                </div>
+                
+                <div class="pub-badges">
+                        <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-1')" aria-expanded="false">BibTeX</button>
+                        <a href="https://www.youtube.com/watch?v=tBYJFLaM71U" class="pub-badge video-badge">Presentation</a>
+                </div>
+                
+                <div id="bibtex-1" class="highlight bibtex-highlight expandable-content hidden"><code>@inproceedings{saxon2023disparities,
+    author = "Saxon, Michael and Wang, William Yang",
+    title = "Disparities in Text-to-Image Model Concept Possession Across Languages",
+    booktitle = "Proceedings of the 2023 ACM Conference on Fairness, Accountability, and Transparency",
+    pages = "1870--1870",
+    year = "2023",
+}</code></div>
+            </div>
+            
+            <div class="publication workshop-publication">
+                <div class="pub-main-info">
+                        <strong>Data Augmentation for Diverse Voice Conversion in Noisy Environments</strong>
+                    <br>
+                    <span>Avani Tanna, <span class="me">Michael Saxon</span>, Amr El Abbadi, William Yang Wang</span><br>
+                    <span>
+                            INTERSPEECH 2023
+                    </span>
+                </div>
+                
+                <div class="pub-badges">
+                        <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-2')" aria-expanded="false">BibTeX</button>
+                </div>
+                
+                <div id="bibtex-2" class="highlight bibtex-highlight expandable-content hidden"><code>@inproceedings{tanna2023data,
+    author = "Tanna, Avani and Saxon, Michael and Abbadi, Amr El and Wang, William Yang",
+    title = "Data Augmentation for Diverse Voice Conversion in Noisy Environments",
+    booktitle = "Interspeech 2023 Demos",
+    pages = "2024--2025",
+    year = "2023",
+}</code></div>
+            </div>
+                    </div>  <!-- Close previous year group -->
+                
+                <h3>2019</h3>
+                <div class="pub-year-group">
+            
+            <div class="publication workshop-publication">
+                <div class="pub-main-info">
+                        <a href="https://ceur-ws.org/Vol-2328/" class="pub-title-link">
+                            <strong>Word pair convolutional model for happy moment classification</strong>
+                        </a>
+                    <br>
+                    <span><span class="me">Michael Saxon</span>, Samarth Bhandari, Lewis Ruskin, Gabrielle Honda</span><br>
+                    <span>
+                            AffCon2019
+                    </span>
+                </div>
+                
+                <div class="pub-badges">
+                        <a href="https://ceur-ws.org/Vol-2328/" class="pub-badge link-badge">Official</a>
+                        <a href="https://ceur-ws.org/Vol-2328/4_paper_1.pdf" class="pub-badge link-badge">PDF</a>
+                        <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-3')" aria-expanded="false">BibTeX</button>
+                </div>
+                
+                <div id="bibtex-3" class="highlight bibtex-highlight expandable-content hidden"><code>@inproceedings{saxon2019word,
+    author = "Saxon, Michael and Bhandari, Samarth and Ruskin, Lewis and Honda, Gabrielle",
+    title = "Word pair convolutional model for happy moment classification",
+    booktitle = "Proceedings of the 2nd Workshop on Affective Content Analysis@ AAAI (AffCon2019), Honolulu, Hawaii (January 2019)",
+    pages = "111--119",
+    year = "2019",
+  url = {https://ceur-ws.org/Vol-2328/},
+}</code></div>
+            </div>
+                    </div>  <!-- Close previous year group -->
+                
+                <h3>2018</h3>
+                <div class="pub-year-group">
+            
+            <div class="publication workshop-publication">
+                <div class="pub-main-info">
+                        <a href="https://link.springer.com/chapter/10.1007/978-3-319-92279-9_53" class="pub-title-link">
+                            <strong>Chat-Box: Proposing a Mood Analyzer for Individuals with Social Interaction Disabilities</strong>
+                        </a>
+                    <br>
+                    <span>Bineeta Gupta, <span class="me">Michael Saxon</span>, Troy McDaniel, Sethuraman Panchanathan</span><br>
+                    <span>
+                            HCI International 2018
+                    </span>
+                </div>
+                
+                <div class="pub-badges">
+                        <a href="https://link.springer.com/chapter/10.1007/978-3-319-92279-9_53" class="pub-badge link-badge">Official</a>
+                        <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'abstract-4')" aria-expanded="false">Abstract</button>
+                        <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-4')" aria-expanded="false">BibTeX</button>
+                </div>
+                
+                <div id="abstract-4" class="expandable-content hidden">
+                    <div class="abstract">
+                        <strong>Abstract:</strong> Perception of social cues is a fundamental communicative skill that can be hampered by hearing and cognitive disorders. Understanding slang and sarcastic intent is often difficult in verbal communication, particularly for individuals who struggle with the perception of social cues. Misinterpretation of slang terms can cause discomfort or social isolation. Sarcasm is particularly difficult to recognize due to its inherently ambiguous and context-dependent nature. We have identified two problems of particular interest in social assistive technologies – slang word sentiment assessment and sarcasm detection. We propose combining a slang sentiment analysis model with a speech emotion analysis model to create an assistive tool, Chat-Box, which will detect social cues such as sarcasm, slang, and sentiment.
+                    </div>
+                </div>
+                <div id="bibtex-4" class="highlight bibtex-highlight expandable-content hidden"><code>@inproceedings{gupta2018chat,
+    author = "Gupta, Bineeta and Saxon, Michael and McDaniel, Troy and Panchanathan, Sethuraman",
+    title = "Chat-Box: Proposing a Mood Analyzer for Individuals with Social Interaction Disabilities",
+    booktitle = "HCI International 2018--Posters' Extended Abstracts: 20th International Conference, HCI International 2018, Las Vegas, NV, USA, July 15-20, 2018, Proceedings, Part II 20",
+    pages = "394--401",
+    year = "2018",
+    organization = "Springer International Publishing",
+    abstract = "Perception of social cues is a fundamental communicative skill that can be hampered by hearing and cognitive disorders. Understanding slang and sarcastic intent is often difficult in verbal communication, particularly for individuals who struggle with the perception of social cues. Misinterpretation of slang terms can cause discomfort or social isolation. Sarcasm is particularly difficult to recognize due to its inherently ambiguous and context-dependent nature. We have identified two problems of particular interest in social assistive technologies – slang word sentiment assessment and sarcasm detection. We propose combining a slang sentiment analysis model with a speech emotion analysis model to create an assistive tool, Chat-Box, which will detect social cues such as sarcasm, slang, and sentiment.",
+  url = {https://link.springer.com/chapter/10.1007/978-3-319-92279-9_53},
+}</code></div>
+            </div>
+        
+            </div>  <!-- Close the last year group -->
+</div>
+
+<script>
+function toggleContent(button, targetId) {
+    const content = document.getElementById(targetId);
+    if (!content) return; // Exit if target not found
+
+    const isExpanded = content.classList.contains('hidden');
+    content.classList.toggle('hidden');
+    button.setAttribute('aria-expanded', isExpanded);
+}
+</script>
+
+<style>
+.venue-separator {
+    margin: 0 0.5em;
+    opacity: 0.7;
+}
+
+.workshop-publication {
+    /* Optional: style workshop publications differently */
+    opacity: 0.9;
+}
+
+.additional-info {
+    font-style: italic;
+}
+</style>
+</div>
+
+
+<footer style="margin-top:25pt; padding-top:10pt;">
+  <ul class="icons">
+    <li><a href="https://www.semanticscholar.org/author/Michael-Stephen-Saxon/48227633" ><img class="filtercolor" src="../theme/img/ico/svg/semantic-scholar.svg"></a></li>
+    <li><a href="https://scholar.google.com/citations?user=pAlwjdgAAAAJ&hl=en" ><img class="filtercolor" src="../theme/img/ico/svg/google-scholar.svg"></a></li>
+    <li><a href="https://www.researchgate.net/profile/Michael_Saxon"><img class="filtercolor" src="../theme/img/ico/svg/researchgate.svg"></a></li>
+    <li><a href="mailto:saxon@ucsb.edu"><img class="filtercolor" src="../theme/img/ico/svg/envelope.svg"></a></li>
+    <li><a href="https://github.com/michaelsaxon"><img class="filtercolor" src="../theme/img/ico/svg/github-alt.svg"></a></li>
+    <li><a href="https://www.youtube.com/@mssaxonUCSB"><img class="filtercolor" src="../theme/img/ico/svg/youtube.svg"></a></li>
+    <li><a href="https://www.linkedin.com/in/mssaxon/"><img class="filtercolor" src="../theme/img/ico/svg/linkedin-in.svg"></a></li>
+    <li><a href="https://bsky.app/profile/saxon.me" ><img class="filtercolor" src="../theme/img/ico/svg/cloud.svg"></a></li>
+    <li><a rel="me" href="https://sigmoid.social/@saxon"><img class="filtercolor" src="../theme/img/ico/svg/mastodon.svg"></a></li>
+    <li><a href="https://twitter.com/m2saxon" ><img class="filtercolor" src="../theme/img/ico/svg/twitter.svg"></a></li>
+      
+    </ul>
+
+    <div class="worldmap"><script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=tt&d=IuxqtNT-Q6MDtRyPajTC07_66TRmeCIPbVD4z2v4M_U&co=474747&cmn=547bfc'></script></div>
+
+    <div style="max-width: 800px;   margin-right: auto; margin-left: auto;">
+	    <p style="font-size:10pt; text-align: center">Core webpage incrementally scratchbuilt by me. Feel free to steal my source from <a href="https://github.com/michaelsaxon/michaelsaxon.github.io">GitHub</a>. Blog functionality made using <a href="https://getpelican.com/">Pelican</a>.</p>
+    </div>
+
+  
+  <div style="max-width: 800px; margin-right: auto; margin-left: auto; text-align: center;">
+     <img src="https://web.badges.world/badges/operated/getfirefox.gif"/>
+    <img src="https://web.badges.world/badges/operated/linuxpenguin(2).png"/>
+    <img src="https://web.badges.world/badges/memes/allyourbase.gif"/>
+  </div>
+</footer>
+
+
+</body>
+</html>

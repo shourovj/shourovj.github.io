@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html> 
+<head>
+    <script>
+      // Check and apply theme immediately
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+      }
+  </script>
+<script src="../theme/js/theme.js"></script>
+    <script src="../theme/js/copy-code.js"></script>
+    <script src="../theme/js/toc.js"></script>
+    <script src="../theme/js/popups.js"></script>
+    <link rel="stylesheet" href="../theme/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif&Merriweather&Oswald&Ubuntu+Mono&Arimo:ital,wght@0,400..700;1,400..700" rel="stylesheet">
+    <title>Michael Saxon - news</title>
+    <link rel="stylesheet" href="../theme/css/code.css">
+    <link rel="stylesheet" href="../theme/css/pubs.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
+          crossorigin="anonymous">
+    <link href="feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Michael Saxon Full Atom Feed" />
+    <meta name="title" content="Michael Saxon - news" />
+    <meta name="description" content="" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://saxon.me/" />
+    <meta property="og:title" content="Michael Saxon - news" />
+    <meta property="og:description" content="" />
+    <meta property="og:image" content="../../theme/img/bg-sba.jpg " />
+   <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:site" content="https://saxon.me/" />
+    <meta property="twitter:creator" content="@m2saxon" />
+    <meta property="twitter:title" content="Michael Saxon - news" />
+    <meta property="twitter:description" content="" />
+    <meta property="twitter:image" content="../../theme/img/bg-sba.jpg " />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="top-nav">
+  <div style="margin-right: auto;">
+  <h1><a href="../">Michael Saxon</a></h1>
+  </div>
+  <input id="menu-toggle" type="checkbox" />
+  <label class='menu-button-container' for="menu-toggle">
+  <div class='menu-button'></div>
+</label>
+  <ul class="menu">
+    <li><a href="../publications">Publications</a></li>
+    <li><a href="../doc/cv_saxon.pdf">CV</a></li>
+  <li><a href="../blog">Blog</a></li>
+  <li>
+    <a href="#" id="theme-toggle" aria-label="Toggle dark mode">
+      <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+        <!-- Moon shape -->
+        <path class="moon" 
+              d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z"
+              fill="currentColor"/>
+        <!-- Sun shape (initially hidden) -->
+        <g class="sun" opacity="0">
+          <circle cx="12" cy="12" r="6" fill="currentColor"/>
+          <g class="sun-beams">
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </g>
+        </g>
+      </svg>
+    </a>
+  </li>
+  </ul>
+</div>
+</header>
+
+
+<div class="page" style="word-spacing: 0.09em;">
+    <h1>news</h1>
+    <h1>THIS PAGE WAS GENERATED IN ERROR, DO NOT USE</h1>
+    
+
+    <p>12/13/2024 Presented our work on meta-evaluation of text-to-image metrics at NeurIPS! [paper]</p>
+<p>11/13/2024 Presented our work on long-context capabilities in VLMs at EMNLP! [paper]</p>
+<p>10/7/2024 Presented our work on Model Metrology at COLM 2024! [paper]</p>
+<p>9/25/2024 Recognized as a Rising Star in Generative AI!</p>
+<p>8/1/2024 Invited talk on multilinguality in text-to-image models to the SALT group at Stanford</p>
+<p>6/29/2024 Interviewed in TechCrunch on the problems with claiming long-context capabilities of VLMs, based on our LoCoVQA preprint! [arXiv:2406.16851]</p>
+<p>6/22/2024 Gave an Oral presentation at NAACL 2024 on our work on translation errors in multilingual benchmarking. See the recording! [YouTube]</p>
+<p>5/4/2024 Had a great week visiting UMBC, Georgetown, UMD, and Johns Hopkins to present my work on rigorous measurement for text-to-image models. Check out the talk recording! [YouTube]</p>
+<p>4/8/2024 We were suprised to find that fancy VLM-based text-to-image faithfulness metrics don't actually outperform simple correlation-based ones using our new meta-evaluation T2IScoreScore! Check out our interactive leaderboard! [arXiv:2404.04251]</p>
+<p>3/18/2024 Excited about our work diving deeper on characterizing failure cases in translation for text-to-image model testing! [arXiv:2403.11092]</p>
+<p>12/10/2023 Wanrong presented our (mostly Xinyi's) work analyzing how in-context learning works for LLMs at NeurIPS 2023! Check out the paper: [arXiv:2301.11916]</p>
+<p>11/16/2023 Gave an invited talk on my recent work on assessing and improving multilingual knowledge and capabilities in T2I models at USC ISI! Video link: [YouTube]</p>
+<p>11/3/2023 Our dataset/paper proposing the task of "video infilling and prediction" for assessing reasoning capabilities of VLMs has been accepted to EMNLP! Link: [arXiv:2305.13903]</p>
+<p>8/6/2023 Our survey paper on self-correcting and automated correction methods for LLM workflows, "Automatically Correcting Large Language Models: Surveying the landscape of diverse self-correction strategies" is up on arXiv! Link: [arXiv:2308.03188]</p>
+<p>7/13/2023 Presented CoCo-CroLa in the paper "Multilingual Conceptual Coverage in Text-to-Image Models" at ACL 2023! See the benchmark demo [demo link] and paper in ACL Anthology: [ACL Anthology]</p>
+<p>6/20/2023 Gave a talk at FAccT 2023 on CoCo-CroLa and our initial findings of interesting cross-lingual biases. Watch the talk! [YouTube]</p>
+<p>5/8/2023 Presenting at ICLR 2023 was a blast! Check out the new dataset we presented in an oral, WikiWhy: [arXiv:2210.12152]</p>
+<p>3/9/2023 Check out me and Alex's position paper, "Users are the North Star for AI Transparency," written in collaboration with our advisor William, and profs Shiyu Chang and Zack Lipton! You'll probably like it more than the IJCAI reviewers did 😉 Preprint: [arXiv:2303.05500]</p>
+<p>1/23/2023 2 of my papers were accepted to ICLR 2023 and one to EACL 2023! In particular I'm happy to share that WikiWhy, a new benchmark for analyzing reasoning in LMs using QA got accepted as an oral presentation! Super proud of my undergrad group to get such an honor at ICLR for their first paper! Preprint here: [arXiv:2210.12152]</p>
+<p>12/20/2022 Check out my preprint "Multilingual Conceptual Coverage in Text-to-Image Models" on OpenReview! We quantify the degree to which T2I models including DALL-E and StableDiffusion contain representations of ~200 tangible concepts across EN, ES, DE, ZH, JA, HE, and ID. Preprint here: [OpenReview:5H2m3tCEaQ] Demo available here: [demo link]</p>
+<p>11/18/2022 The 2022 Southern California NLP Symposium (SoCalNLP22) was a massive success! Co-chairing the program committee and participating in event organization was a great privilege and it was wonderful meeting everybody. Please check out our full event livestream [YouTube Link] and some event photos [Twitter:@m2saxon] [Twitter:@ucsbNLP]!</p>
+<p>10/24/2022 Our general-purpose text-reference comparison metric that simulates human preferences for translation and summarization, SEScore, is now available on HuggingFace spaces! Preprint here: [arXiv:2210.05035]</p>
+<p>10/12/2022 Our work "Not All Errors are Equal: Learning Text Generation Metrics using Stratified Error Synthesis" will appear in Findings of EMNLP 2022! Preprint here: [arXiv:2210.05035]</p>
+<p>10/12/2022 Check out the latest preprint of my work "PECO: Examining Single Sentence Label Leakage in Natural Language Inference Datasets through Progressive Evaluation of Cluster Outliers" on arXiv! We demonstrated automated detection of spurious, annotator-driven correlations that lead to cheating features in NLI. Preprint here: [arXiv:2112.09237]</p>
+<p>6/6/2022 Excited to start my 2022 AI Research Scientist Internship at Meta in Menlo Park!</p>
+<p>12/3/2021 Our work "Self-Supervised Knowledge Assimilation for Expert-Layman Text Style Transfer" will appear at AAAI 2022! Preprint here: [arXiv:2110.02950]</p>
+<p>11/8/2021 Had a great time presenting our Disclosive Transparency work at EMNLP 2021! Our work was even highlighted in an EMNLP overview article! Oral presentation prerecording: [YouTube]</p>
+<p>10/1/2021 Our work "Counterfactual Maximum Likelihood Estimation for Training Deep Networks" will appear at NeurIPS 2021! Preprint here: [arXiv:2106.03831]</p>
+<p>9/23/2021 Our work "Modeling Disclosive Transparency in NLP Application Descriptions" will appear at EMNLP 2021 as an oral presentation! Preprint here: [arXiv:2101.00433]</p>
+<p>9/13/2021 I was profiled on the Amazon Science Blog about my experience doing multiple applied science internships with the company! Article here: [amazon.science]</p>
+
+</div>
+
+
+<footer style="margin-top:25pt; padding-top:10pt;">
+  <ul class="icons">
+    <li><a href="https://www.semanticscholar.org/author/Michael-Stephen-Saxon/48227633" ><img class="filtercolor" src="../theme/img/ico/svg/semantic-scholar.svg"></a></li>
+    <li><a href="https://scholar.google.com/citations?user=pAlwjdgAAAAJ&hl=en" ><img class="filtercolor" src="../theme/img/ico/svg/google-scholar.svg"></a></li>
+    <li><a href="https://www.researchgate.net/profile/Michael_Saxon"><img class="filtercolor" src="../theme/img/ico/svg/researchgate.svg"></a></li>
+    <li><a href="mailto:saxon@ucsb.edu"><img class="filtercolor" src="../theme/img/ico/svg/envelope.svg"></a></li>
+    <li><a href="https://github.com/michaelsaxon"><img class="filtercolor" src="../theme/img/ico/svg/github-alt.svg"></a></li>
+    <li><a href="https://www.youtube.com/@mssaxonUCSB"><img class="filtercolor" src="../theme/img/ico/svg/youtube.svg"></a></li>
+    <li><a href="https://www.linkedin.com/in/mssaxon/"><img class="filtercolor" src="../theme/img/ico/svg/linkedin-in.svg"></a></li>
+    <li><a href="https://bsky.app/profile/saxon.me" ><img class="filtercolor" src="../theme/img/ico/svg/cloud.svg"></a></li>
+    <li><a rel="me" href="https://sigmoid.social/@saxon"><img class="filtercolor" src="../theme/img/ico/svg/mastodon.svg"></a></li>
+    <li><a href="https://twitter.com/m2saxon" ><img class="filtercolor" src="../theme/img/ico/svg/twitter.svg"></a></li>
+      
+    </ul>
+
+    <div class="worldmap"><script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=tt&d=IuxqtNT-Q6MDtRyPajTC07_66TRmeCIPbVD4z2v4M_U&co=474747&cmn=547bfc'></script></div>
+
+    <div style="max-width: 800px;   margin-right: auto; margin-left: auto;">
+	    <p style="font-size:10pt; text-align: center">Core webpage incrementally scratchbuilt by me. Feel free to steal my source from <a href="https://github.com/michaelsaxon/michaelsaxon.github.io">GitHub</a>. Blog functionality made using <a href="https://getpelican.com/">Pelican</a>.</p>
+    </div>
+
+  
+  <div style="max-width: 800px; margin-right: auto; margin-left: auto; text-align: center;">
+     <img src="https://web.badges.world/badges/operated/getfirefox.gif"/>
+    <img src="https://web.badges.world/badges/operated/linuxpenguin(2).png"/>
+    <img src="https://web.badges.world/badges/memes/allyourbase.gif"/>
+  </div>
+</footer>
+
+
+</body>
+</html>

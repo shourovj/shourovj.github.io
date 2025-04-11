@@ -47,9 +47,12 @@ def process_footnotes(content):
             logger.info(f"Processing footnote {i+1}: {fn_id}")
             # Extract footnote text (excluding the backref)
             try:
-                footnote_text = ''.join(str(c) for c in footnote.p.contents[:-1]).strip()
+                # Replace string concatenation with direct HTML extraction
+                footnote_text = ''.join(str(c) for c in footnote.p.contents[:-1])
                 popup = soup.new_tag('span', attrs={'class': 'footnote-popup'})
-                popup.string = footnote_text
+                # Instead of setting string (which escapes HTML), append parsed content
+                popup_content = BeautifulSoup(footnote_text, 'html.parser')
+                popup.append(popup_content)
                 
                 # If removing footnote section, modify the link behavior and text
                 if remove_section:
