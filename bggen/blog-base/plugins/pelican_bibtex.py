@@ -105,7 +105,12 @@ def determine_venue_badge(pubdict):
     if 'arxiv.org' in pubdict.get('url_official', ''):
         venue_badge_class = 'arxiv-badge'
     else:
-        venue_badge_class = venue_badges.get(venue_abbrev, 'link-badge')
+        # Check if any venue key is contained within venue_abbrev
+        venue_badge_class = 'link-badge'  # default
+        for venue_key, badge_class in venue_badges.items():
+            if venue_key in venue_abbrev:
+                venue_badge_class = badge_class
+                break
     
     # Determine additional info badge class
     if 'oral' in additional_info:
@@ -302,20 +307,20 @@ def add_publications(generator):
             logger.warn(f"Failed to render HTML for entry {key}: {e}")
             entry_dict['plaintext'] = None
 
-        # **** ADD BADGE LOGIC HERE ****
+        # Add badge classes to the entry dict
+        venue_badge_class, info_badge_class = determine_venue_badge(entry_dict)
+        entry_dict['venue_badge_class'] = venue_badge_class
+        entry_dict['info_badge_class'] = info_badge_class
+
+        # Keep any existing badge processing for PDF/arXiv links
         badge_text, badge_class = determine_badge_info(entry_dict)
-        if badge_text: # Only add if a badge should be generated
+        if badge_text:
             entry_dict['badge_text'] = badge_text
             entry_dict['badge_class'] = badge_class
-        # **** END BADGE LOGIC ****
 
         # Check if this is a workshop paper
         is_workshop = entry.fields.get('routing', '').lower() == 'workshop'
         
-        # Add any additional info to the entry dict
-        if 'additional_info' in entry.fields:
-            entry_dict['additional_info'] = entry.fields['additional_info']
-
         # Add to appropriate list
         if is_workshop:
             workshop_publications.append(entry_dict)
@@ -336,19 +341,6 @@ def add_publications(generator):
     # Add both lists to the context
     generator.context['publications'] = publications
     generator.context['workshop_publications'] = workshop_publications
-
-    for pub_list in [publications, workshop_publications]:
-        for entry_dict in pub_list:
-            # Add badge classes to the entry dict
-            venue_badge_class, info_badge_class = determine_venue_badge(entry_dict)
-            entry_dict['venue_badge_class'] = venue_badge_class
-            entry_dict['info_badge_class'] = info_badge_class
-
-            # Keep any existing badge processing for PDF/arXiv links
-            badge_text, badge_class = determine_badge_info(entry_dict)
-            if badge_text:
-                entry_dict['badge_text'] = badge_text
-                entry_dict['badge_class'] = badge_class
 
 def register():
     signals.generator_init.connect(add_publications)

@@ -56,90 +56,6 @@
     color: var(--brand-main); /* Use brand-main for hover highlight */
 }
 
-.pub-badges {
-    display: flex;
-    flex-wrap: wrap; /* Allow badges to wrap on smaller screens */
-    gap: 0.5rem; /* Space between badges */
-    /* Space below badges before potential content */
-    /* margin-bottom: 0.5rem;  */
-}
-
-.pub-badge {
-    display: inline-block;
-    padding: 0.2rem 0.6rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    text-decoration: none;
-    cursor: pointer;
-    border: 1px solid var(--brand-main);
-    transition: background-color 0.2s, color 0.2s;
-    white-space: nowrap; /* Prevent text wrapping within badge */
-}
-
-.link-badge {
-    background: var(--brand-main); 
-    color: var(--bg-main);         
-    border-color: var(--brand-main); 
-}
-
-.link-badge:hover {
-    background: var(--brand-dark); 
-    color: var(--bg-main);
-    border-color: var(--brand-dark);
-}
-
-/* arXiv Badge Style */
-.arxiv-badge {
-    background-color: var(--kanagawa-dark-red); /* Use a distinct color */
-    border-color: var(--kanagawa-dark-red);
-    color: var(--bg-main); /* Ensure text contrast */
-}
-.arxiv-badge:hover {
-    background-color: var(--kanagawa-medium-red); /* Slightly lighter red on hover */
-    border-color: var(--kanagawa-medium-red);
-    color: var(--bg-main);
-}
-
-/* ACL Anthology Badge Style */
-.acl-badge {
-    background-color: var(--kanagawa-dark-red); /* Use a distinct blue */
-    border-color: var(--kanagawa-dark-red);
-    color: var(--bg-main);
-}
-.acl-badge:hover {
-    background-color: var(--kanagawa-light-red); /* Lighter blue on hover */
-    border-color: var(--kanagawa-light-red);
-    color: var(--bg-main);
-}
-
-/* Conference Badge Style (for OpenReview links) */
-.conf-badge {
-    /* Let's use the default link-badge style for now */
-    /* You could make this distinct if desired, e.g.: */
-    /* background-color: var(--kanagawa-dark-green); */
-    /* border-color: var(--kanagawa-dark-green); */
-    /* color: var(--bg-main); */
-}
-/* Add hover if you make it distinct */
-/* .conf-badge:hover { ... } */
-
-.toggle-badge {
-    background: var(--bg-main);
-    color: var(--text-muted);
-}
-
-.toggle-badge:hover {
-    background: var(--brand-light);
-    color: var(--text-body);
-    border-color: var(--brand-main);
-}
-
-.toggle-badge[aria-expanded="true"] {
-    background: var(--brand-main);
-    color: var(--bg-main);
-    border-color: var(--brand-main);
-}
-
 .hidden {
     display: none;
 }
@@ -258,97 +174,117 @@
     text-decoration: underline;
 }
 
-/* Adjust spacing for the buttons container */
-.publication .buttons {
-    /* slightly more space before buttons */
-    /* margin-top: 0.4rem; */
+/* Base badge style */
+.pub-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.1rem 0.4rem;
+    border: 1px solid;
+    border-radius: 4px;
+    font-size: 0.9em;
+    white-space: nowrap;
+    line-height: 1.2;
+    margin: 0 0.2rem;
+    background: none;
+    text-decoration: none;
 }
 
-.video-badge {
-    background-color: #ffcc00;  /* Example color, adjust as needed */
-    color: #333;
-    padding: 0.2rem 0.5rem;
-    border-radius: 0.3rem;
-    font-size: 0.9rem;
-    margin-right: 0.5rem;
-    display: inline-block;
+/* Interactive badges */
+a.pub-badge, button.pub-badge {
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
 }
 
-/* Conference Badge Styles */
-.acl-badge, .naacl-badge, .eacl-badge, .aacl-badge {
-    background-color: var(--kanagawa-dark-red);
+/* Badge colors - using border and text color */
+.acl-badge, .naacl-badge, .eacl-badge, .aacl-badge, .arxiv-badge {
+    color: var(--kanagawa-dark-red);
     border-color: var(--kanagawa-dark-red);
-    color: var(--bg-main);
-}
-.acl-badge:hover, .naacl-badge:hover, .eacl-badge:hover, .aacl-badge:hover {
-    background-color: var(--kanagawa-medium-red);
-    border-color: var(--kanagawa-medium-red);
-    color: var(--bg-main);
 }
 
 .iclr-badge {
-    background-color: var(--kanagawa-dark-cyan);
+    color: var(--kanagawa-dark-cyan);
     border-color: var(--kanagawa-dark-cyan);
-    color: var(--bg-main);
-}
-.iclr-badge:hover {
-    background-color: var(--kanagawa-medium-cyan);
-    border-color: var(--kanagawa-medium-cyan);
-    color: var(--bg-main);
 }
 
 .colm-badge {
-    background-color: var(--kanagawa-dark-black);
+    color: var(--kanagawa-dark-black);
     border-color: var(--kanagawa-dark-black);
-    color: var(--bg-main);
-}
-.colm-badge:hover {
-    background-color: var(--kanagawa-light-black);
-    border-color: var(--kanagawa-light-black);
-    color: var(--bg-main);
 }
 
 .neurips-badge {
-    background-color: var(--kanagawa-dark-magenta);
+    color: var(--kanagawa-dark-magenta);
     border-color: var(--kanagawa-dark-magenta);
-    color: var(--bg-main);
-}
-.neurips-badge:hover {
-    background-color: var(--kanagawa-medium-magenta);
-    border-color: var(--kanagawa-medium-magenta);
-    color: var(--bg-main);
 }
 
 .emnlp-badge {
-    background-color: var(--kanagawa-dark-green);
+    color: var(--kanagawa-dark-green);
     border-color: var(--kanagawa-dark-green);
-    color: var(--bg-main);
-}
-.emnlp-badge:hover {
-    background-color: var(--kanagawa-medium-green);
-    border-color: var(--kanagawa-medium-green);
-    color: var(--bg-main);
 }
 
-/* Presentation Type Badge Styles */
-.oral-badge {
-    background-color: var(--kanagawa-dark-yellow);
+.oral-badge, .video-badge {
+    color: var(--kanagawa-dark-yellow);
     border-color: var(--kanagawa-dark-yellow);
-    color: var(--bg-main);
-}
-.oral-badge:hover {
-    background-color: var(--kanagawa-medium-yellow);
-    border-color: var(--kanagawa-medium-yellow);
-    color: var(--bg-main);
 }
 
 .spotlight-badge {
-    background-color: var(--kanagawa-dark-blue);
+    color: var(--kanagawa-dark-blue);
     border-color: var(--kanagawa-dark-blue);
-    color: var(--bg-main);
 }
-.spotlight-badge:hover {
-    background-color: var(--kanagawa-light-blue);
+
+.link-badge, .toggle-badge[aria-expanded="true"] {
+    color: var(--brand-main);
+    border-color: var(--brand-main);
+}
+
+.toggle-badge {
+    color: var(--text-muted);
+    border-color: var(--text-muted);
+}
+
+/* Hover states for interactive elements */
+a.acl-badge:hover, button.acl-badge:hover,
+a.naacl-badge:hover, button.naacl-badge:hover,
+a.eacl-badge:hover, button.eacl-badge:hover,
+a.aacl-badge:hover, button.aacl-badge:hover,
+a.arxiv-badge:hover, button.arxiv-badge:hover {
+    color: var(--kanagawa-medium-red);
+    border-color: var(--kanagawa-medium-red);
+}
+
+a.iclr-badge:hover, button.iclr-badge:hover {
+    color: var(--kanagawa-medium-cyan);
+    border-color: var(--kanagawa-medium-cyan);
+}
+
+a.colm-badge:hover, button.colm-badge:hover {
+    color: var(--kanagawa-light-black);
+    border-color: var(--kanagawa-light-black);
+}
+
+a.neurips-badge:hover, button.neurips-badge:hover {
+    color: var(--kanagawa-medium-magenta);
+    border-color: var(--kanagawa-medium-magenta);
+}
+
+a.emnlp-badge:hover, button.emnlp-badge:hover {
+    color: var(--kanagawa-medium-green);
+    border-color: var(--kanagawa-medium-green);
+}
+
+a.oral-badge:hover, button.oral-badge:hover,
+a.video-badge:hover, button.video-badge:hover {
+    color: var(--kanagawa-medium-yellow);
+    border-color: var(--kanagawa-medium-yellow);
+}
+
+a.spotlight-badge:hover, button.spotlight-badge:hover {
+    color: var(--kanagawa-light-blue);
     border-color: var(--kanagawa-light-blue);
-    color: var(--bg-main);
+}
+
+a.link-badge:hover, button.link-badge:hover,
+button.toggle-badge:hover {
+    color: var(--brand-dark);
+    border-color: var(--brand-dark);
 }
