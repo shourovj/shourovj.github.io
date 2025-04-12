@@ -44,7 +44,7 @@ PUBLICATIONS_SAVE_AS = 'publications/index.html'
 #BLOG_INDEX_SAVE_AS = 'blog.html'
 
 # Uncomment following line if you want document-relative URLs when developing
-RELATIVE_URLS = True
+# RELATIVE_URLS = True
 
 # Add these settings
 USE_FOLDER_AS_CATEGORY = False
