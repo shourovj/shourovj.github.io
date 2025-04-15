@@ -10,16 +10,16 @@
           document.documentElement.setAttribute('data-theme', 'dark');
       }
   </script>
-<script src="../theme/js/theme.js"></script>
-    <script src="../theme/js/copy-code.js"></script>
-    <script src="../theme/js/toc.js"></script>
-    <script src="../theme/js/popups.js"></script>
-    <link rel="stylesheet" href="../theme/css/style.css">
+<script src="https://saxon.me/theme/js/theme.js"></script>
+    <script src="https://saxon.me/theme/js/copy-code.js"></script>
+    <script src="https://saxon.me/theme/js/toc.js"></script>
+    <script src="https://saxon.me/theme/js/popups.js"></script>
+    <link rel="stylesheet" href="https://saxon.me/theme/css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=PT+Serif&Merriweather&Oswald&Ubuntu+Mono&Arimo:ital,wght@0,400..700;1,400..700" rel="stylesheet">
     <title>Publications</title>
-    <link rel="stylesheet" href="../theme/css/code.css">
-    <link rel="stylesheet" href="../theme/css/pubs.css">
+    <link rel="stylesheet" href="https://saxon.me/theme/css/code.css">
+    <link rel="stylesheet" href="https://saxon.me/theme/css/pubs.css">
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
           crossorigin="anonymous">
@@ -31,29 +31,29 @@
     <meta property="og:url" content="https://saxon.me/" />
     <meta property="og:title" content="Publications" />
     <meta property="og:description" content="" />
-    <meta property="og:image" content="../../theme/img/bg-sba.jpg " />
+    <meta property="og:image" content="https://saxon.me/https://saxon.me/theme/img/bg-sba.jpg " />
    <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:site" content="https://saxon.me/" />
     <meta property="twitter:creator" content="@m2saxon" />
     <meta property="twitter:title" content="Publications" />
     <meta property="twitter:description" content="" />
-    <meta property="twitter:image" content="../../theme/img/bg-sba.jpg " />
+    <meta property="twitter:image" content="https://saxon.me/https://saxon.me/theme/img/bg-sba.jpg " />
 </head>
 <body>
 
 <header class="site-header">
   <div class="top-nav">
   <div style="margin-right: auto;">
-  <h1><a href="../">Michael Saxon</a></h1>
+  <h1><a href="https://saxon.me/">Michael Saxon</a></h1>
   </div>
   <input id="menu-toggle" type="checkbox" />
   <label class='menu-button-container' for="menu-toggle">
   <div class='menu-button'></div>
 </label>
   <ul class="menu">
-    <li><a href="../publications">Publications</a></li>
-    <li><a href="../doc/cv_saxon.pdf">CV</a></li>
-  <li><a href="../blog">Blog</a></li>
+    <li><a href="https://saxon.me/publications">Publications</a></li>
+    <li><a href="https://saxon.me/doc/cv_saxon.pdf">CV</a></li>
+  <li><a href="https://saxon.me/blog">Blog</a></li>
   <li>
     <a href="#" id="theme-toggle" aria-label="Toggle dark mode">
       <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
@@ -86,12 +86,61 @@
 <div class="page" style="word-spacing: 0.09em;">
 <div class="content-container">
     <h1>Publications</h1>
-    
+
+    <div id="pub-filters" class="pub-filters">
+        <div class="filter-column">
+          <div class="filter-label">Authorship</div>
+          <label class="custom-checkbox">
+            <input type="checkbox" id="filter-first" checked>
+            <span class="checkmark"></span>
+            <span class="filter-text">First Author Only</span>
+          </label>
+          <label class="custom-checkbox">
+            <input type="checkbox" id="filter-allauthors" checked>
+            <span class="checkmark"></span>
+            <span class="filter-text">All Author Positions</span>
+          </label>
+        </div>
+        <div class="filter-column">
+          <div class="filter-label">Venue</div>
+          <div class="venue-grid">
+            <label class="custom-checkbox venue-topml" style="grid-row: 1; grid-column: 1;">
+            <input type="checkbox" id="filter-topml" checked>
+            <span class="checkmark"></span>
+            <span class="filter-text">COLM/ICLR/NeurIPS</span>
+          </label>
+          <label class="custom-checkbox venue-acl" style="grid-row: 2; grid-column: 1;">
+            <input type="checkbox" id="filter-acl" checked>
+            <span class="checkmark"></span>
+            <span class="filter-text">*ACL</span>
+          </label>
+          <label class="custom-checkbox venue-speech" style="grid-row: 2; grid-column: 2;">
+            <input type="checkbox" id="filter-speech">
+            <span class="checkmark"></span>
+            <span class="filter-text">Speech Venues</span>
+          </label>
+          <label class="custom-checkbox venue-preprint" style="grid-row: 1; grid-column: 2;">
+            <input type="checkbox" id="filter-preprint" checked>
+            <span class="checkmark"></span>
+            <span class="filter-text">Preprints</span>
+          </label>
+          <label class="custom-checkbox venue-other" style="grid-row: 1; grid-column: 3;">
+            <input type="checkbox" id="filter-other">
+            <span class="checkmark"></span>
+            <span class="filter-text">Other</span>
+          </label>
+        </div>
+      </div>
+    </div>
             
-            <h2>2024</h2>
-            <div class="pub-year-group">
+            <h2 id="year-2024">2024</h2>
+            <div class="pub-year-group" data-year="2024">
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="1"
+            data-venue="topml"
+            data-year="2024"
+            id="pub-1">
             <div class="pub-main-info">
                     <a href="https://openreview.net/forum?id=S4YRCLbUK1" class="pub-title-link">
                         <strong>Who Evaluates the Evaluations? Objectively Scoring Text-to-Image Prompt Coherence Metrics with T2IScoreScore (TS2)</strong>
@@ -127,7 +176,11 @@
 }</code></div>
         </div>
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="1"
+            data-venue="acl"
+            data-year="2024"
+            id="pub-2">
             <div class="pub-main-info">
                     <a href="https://aclanthology.org/2024.findings-emnlp.312/" class="pub-title-link">
                         <strong>Losing Visual Needles in Image Haystacks: Vision Language Models are Easily Distracted in Short and Long Contexts</strong>
@@ -162,7 +215,11 @@
 }</code></div>
         </div>
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="1"
+            data-venue="topml"
+            data-year="2024"
+            id="pub-3">
             <div class="pub-main-info">
                     <a href="https://openreview.net/forum?id=bttKwCZDkm" class="pub-title-link">
                         <strong>Benchmarks as Microscopes: A Call for Model Metrology</strong>
@@ -196,7 +253,11 @@
 }</code></div>
         </div>
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="0"
+            data-venue="preprint"
+            data-year="2024"
+            id="pub-4">
             <div class="pub-main-info">
                     <a href="https://arxiv.org/abs/2406.08656" class="pub-title-link">
                         <strong>Tc-bench: Benchmarking temporal compositionality in text-to-video and image-to-video generation</strong>
@@ -230,7 +291,11 @@
 }</code></div>
         </div>
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="1"
+            data-venue="acl"
+            data-year="2024"
+            id="pub-5">
             <div class="pub-main-info">
                     <a href="https://aclanthology.org/2024.naacl-short.48/" class="pub-title-link">
                         <strong>Lost in Translation? Translation Errors and Challenges for Fair Assessment of Text-to-Image Models on Multilingual Concepts</strong>
@@ -268,7 +333,11 @@
 }</code></div>
         </div>
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="0"
+            data-venue="acl"
+            data-year="2024"
+            id="pub-6">
             <div class="pub-main-info">
                     <a href="https://aclanthology.org/2024.tacl-1.27/" class="pub-title-link">
                         <strong>Automatically correcting large language models: Surveying the landscape of diverse automated correction strategies</strong>
@@ -304,7 +373,11 @@
 }</code></div>
         </div>
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="0"
+            data-venue="preprint"
+            data-year="2024"
+            id="pub-7">
             <div class="pub-main-info">
                     <a href="https://arxiv.org/abs/2407.01863" class="pub-title-link">
                         <strong>Vsp: Assessing the dual challenges of perception and reasoning in spatial planning tasks for vlms</strong>
@@ -332,10 +405,14 @@
         </div>
                 </div>  <!-- Close previous year group -->
             
-            <h2>2023</h2>
-            <div class="pub-year-group">
+            <h2 id="year-2023">2023</h2>
+            <div class="pub-year-group" data-year="2023">
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="0"
+            data-venue="preprint"
+            data-year="2023"
+            id="pub-8">
             <div class="pub-main-info">
                     <a href="https://arxiv.org/abs/2305.13903" class="pub-title-link">
                         <strong>Let's think frame by frame with vip: A video infilling and prediction dataset for evaluating video chain-of-thought</strong>
@@ -362,7 +439,11 @@
 }</code></div>
         </div>
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="0"
+            data-venue="topml"
+            data-year="2023"
+            id="pub-9">
             <div class="pub-main-info">
                     <a href="https://proceedings.neurips.cc/paper_files/paper/2023/hash/3255a7554605a88800f4e120b3a929e1-Abstract-Conference.html" class="pub-title-link">
                         <strong>Large language models are latent variable models: Explaining and finding good demonstrations for in-context learning</strong>
@@ -398,7 +479,11 @@
 }</code></div>
         </div>
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="1"
+            data-venue="acl"
+            data-year="2023"
+            id="pub-10">
             <div class="pub-main-info">
                     <a href="https://aclanthology.org/2023.acl-long.266/" class="pub-title-link">
                         <strong>Multilingual Conceptual Coverage in Text-to-Image Models</strong>
@@ -433,7 +518,11 @@
 }</code></div>
         </div>
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="0"
+            data-venue="acl"
+            data-year="2023"
+            id="pub-11">
             <div class="pub-main-info">
                     <strong>CausalDialogue: Modeling Utterance-level Causality in Conversations</strong>
                 <br>
@@ -456,7 +545,11 @@
 }</code></div>
         </div>
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="0"
+            data-venue="preprint"
+            data-year="2023"
+            id="pub-12">
             <div class="pub-main-info">
                     <a href="https://arxiv.org/abs/2305.02317" class="pub-title-link">
                         <strong>Visual chain of thought: bridging logical gaps with multimodal infillings</strong>
@@ -483,7 +576,11 @@
 }</code></div>
         </div>
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="0"
+            data-venue="preprint"
+            data-year="2023"
+            id="pub-13">
             <div class="pub-main-info">
                     <a href="https://arxiv.org/abs/2303.05500" class="pub-title-link">
                         <strong>Users are the north star for ai transparency</strong>
@@ -510,7 +607,11 @@
 }</code></div>
         </div>
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="1"
+            data-venue="acl"
+            data-year="2023"
+            id="pub-14">
             <div class="pub-main-info">
                     <a href="https://aclanthology.org/2023.eacl-main.223/" class="pub-title-link">
                         <strong>PECO: Examining Single Sentence Label Leakage in Natural Language Inference Datasets through Progressive Evaluation of Cluster Outliers</strong>
@@ -546,7 +647,11 @@
 }</code></div>
         </div>
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="0"
+            data-venue="topml"
+            data-year="2023"
+            id="pub-15">
             <div class="pub-main-info">
                     <a href="https://openreview.net/forum?id=vaxnu-Ut" class="pub-title-link">
                         <strong>Wikiwhy: Answering and explaining cause-and-effect questions</strong>
@@ -582,7 +687,11 @@
 }</code></div>
         </div>
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="0"
+            data-venue="topml"
+            data-year="2023"
+            id="pub-16">
             <div class="pub-main-info">
                     <a href="https://openreview.net/forum?id=F91SROvVJ_6" class="pub-title-link">
                         <strong>Causal Balancing for Domain Generalization</strong>
@@ -618,10 +727,14 @@
         </div>
                 </div>  <!-- Close previous year group -->
             
-            <h2>2022</h2>
-            <div class="pub-year-group">
+            <h2 id="year-2022">2022</h2>
+            <div class="pub-year-group" data-year="2022">
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="0"
+            data-venue="other"
+            data-year="2022"
+            id="pub-17">
             <div class="pub-main-info">
                     <strong>Self-supervised knowledge assimilation for expert-layman text style transfer</strong>
                 <br>
@@ -646,11 +759,15 @@
 }</code></div>
         </div>
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="0"
+            data-venue="acl"
+            data-year="2022"
+            id="pub-18">
             <div class="pub-main-info">
                     <strong>Not All Errors are Equal: Learning Text Generation Metrics using Stratified Error Synthesis</strong>
                 <br>
-                <span>Wenda Xu, Yilin Tuan, Yujie Lu, <span class="me">Michael Saxon</span>, Lei Li, William Yang Wang</span><br>
+                <span>Wenda Xu, Yi-Lin Tuan, Yujie Lu, <span class="me">Michael Saxon</span>, Lei Li, William Yang Wang</span><br>
                 <span>
                         <span class="pub-badge emnlp-badge">EMNLP 2022</span>
                 </span>
@@ -661,7 +778,7 @@
             </div>
             
             <div id="bibtex-18" class="highlight bibtex-highlight expandable-content hidden"><code>@inproceedings{xu2022not,
-    author = "Xu, Wenda and Tuan, Yilin and Lu, Yujie and Saxon, Michael and Li, Lei and Wang, William Yang",
+    author = "Xu, Wenda and Tuan, Yi-Lin and Lu, Yujie and Saxon, Michael and Li, Lei and Wang, William Yang",
     title = "Not All Errors are Equal: Learning Text Generation Metrics using Stratified Error Synthesis",
     booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2022",
     pages = "6559--6574",
@@ -670,10 +787,14 @@
         </div>
                 </div>  <!-- Close previous year group -->
             
-            <h2>2021</h2>
-            <div class="pub-year-group">
+            <h2 id="year-2021">2021</h2>
+            <div class="pub-year-group" data-year="2021">
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="0"
+            data-venue="acl"
+            data-year="2021"
+            id="pub-19">
             <div class="pub-main-info">
                     <strong>Investigating Memorization of Conspiracy Theories in Text Generation</strong>
                 <br>
@@ -697,7 +818,11 @@
 }</code></div>
         </div>
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="1"
+            data-venue="speech"
+            data-year="2021"
+            id="pub-20">
             <div class="pub-main-info">
                     <strong>End-to-End Spoken Language Understanding for Generalized Voice Assistants</strong>
                 <br>
@@ -720,7 +845,11 @@
 }</code></div>
         </div>
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="1"
+            data-venue="acl"
+            data-year="2021"
+            id="pub-21">
             <div class="pub-main-info">
                     <a href="https://aclanthology.org/2021.emnlp-main.153/" class="pub-title-link">
                         <strong>Modeling Disclosive Transparency in NLP Application Descriptions</strong>
@@ -748,7 +877,11 @@
 }</code></div>
         </div>
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="0"
+            data-venue="topml"
+            data-year="2021"
+            id="pub-22">
             <div class="pub-main-info">
                     <strong>Counterfactual maximum likelihood estimation for training deep networks</strong>
                 <br>
@@ -773,10 +906,14 @@
         </div>
                 </div>  <!-- Close previous year group -->
             
-            <h2>2020</h2>
-            <div class="pub-year-group">
+            <h2 id="year-2020">2020</h2>
+            <div class="pub-year-group" data-year="2020">
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="1"
+            data-venue="speech"
+            data-year="2020"
+            id="pub-23">
             <div class="pub-main-info">
                     <strong>Semantic Complexity in End-to-End Spoken Language Understanding</strong>
                 <br>
@@ -799,7 +936,11 @@
 }</code></div>
         </div>
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="0"
+            data-venue="speech"
+            data-year="2020"
+            id="pub-24">
             <div class="pub-main-info">
                     <strong>UncommonVoice: A Crowdsourced Dataset of Dysphonic Speech</strong>
                 <br>
@@ -822,7 +963,11 @@
 }</code></div>
         </div>
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="1"
+            data-venue="speech"
+            data-year="2020"
+            id="pub-25">
             <div class="pub-main-info">
                     <strong>Robust Estimation of Hypernasality in Dysarthria with Acoustic Model Likelihood Features</strong>
                 <br>
@@ -848,10 +993,14 @@
         </div>
                 </div>  <!-- Close previous year group -->
             
-            <h2>2019</h2>
-            <div class="pub-year-group">
+            <h2 id="year-2019">2019</h2>
+            <div class="pub-year-group" data-year="2019">
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="0"
+            data-venue="speech"
+            data-year="2019"
+            id="pub-26">
             <div class="pub-main-info">
                     <strong>Say What? A Dataset for Exploring the Error Patterns That Two ASR Engines Make</strong>
                 <br>
@@ -874,7 +1023,11 @@
 }</code></div>
         </div>
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="1"
+            data-venue="speech"
+            data-year="2019"
+            id="pub-27">
             <div class="pub-main-info">
                     <strong>Objective measures of plosive nasalization in hypernasal speech</strong>
                 <br>
@@ -899,10 +1052,14 @@
         </div>
                 </div>  <!-- Close previous year group -->
             
-            <h2>2016</h2>
-            <div class="pub-year-group">
+            <h2 id="year-2016">2016</h2>
+            <div class="pub-year-group" data-year="2016">
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="0"
+            data-venue="other"
+            data-year="2016"
+            id="pub-28">
             <div class="pub-main-info">
                     <a href="https://ieeexplore.ieee.org/document/7545732" class="pub-title-link">
                         <strong>2D Grating Pitch Mapping of a through Silicon Via (TSV) and Solder Ball Interconnect Region Using Laser Diffraction: IEEE Electronic Components and Technology Conference, 2016</strong>
@@ -940,14 +1097,19 @@
     
         </div>  <!-- Close the last year group -->
 
+    <div id="nonarchival-section">
         <h2>Non-archival Presenations and Workshop Papers</h2>
         
                 
-                <h3>2023</h3>
-                <div class="pub-year-group">
+                <h3 id="workshop-year-2023">2023</h3>
+                <div class="pub-year-group workshop-group" data-year="2023">
             
-            <div class="publication workshop-publication">
-                <div class="pub-main-info">
+            <div class="publication workshop-publication"
+                data-first-author="1"
+                data-venue="other"
+                data-year="2023"
+                id="workshop-pub-1">
+                   <div class="pub-main-info">
                         <strong>Disparities in Text-to-Image Model Concept Possession Across Languages</strong>
                     <br>
                     <span><span class="me">Michael Saxon</span>, William Yang Wang</span><br>
@@ -970,8 +1132,12 @@
 }</code></div>
             </div>
             
-            <div class="publication workshop-publication">
-                <div class="pub-main-info">
+            <div class="publication workshop-publication"
+                data-first-author="0"
+                data-venue="speech"
+                data-year="2023"
+                id="workshop-pub-2">
+                   <div class="pub-main-info">
                         <strong>Data Augmentation for Diverse Voice Conversion in Noisy Environments</strong>
                     <br>
                     <span>Avani Tanna, <span class="me">Michael Saxon</span>, Amr El Abbadi, William Yang Wang</span><br>
@@ -994,11 +1160,15 @@
             </div>
                     </div>  <!-- Close previous year group -->
                 
-                <h3>2019</h3>
-                <div class="pub-year-group">
+                <h3 id="workshop-year-2019">2019</h3>
+                <div class="pub-year-group workshop-group" data-year="2019">
             
-            <div class="publication workshop-publication">
-                <div class="pub-main-info">
+            <div class="publication workshop-publication"
+                data-first-author="1"
+                data-venue="other"
+                data-year="2019"
+                id="workshop-pub-3">
+                   <div class="pub-main-info">
                         <a href="https://ceur-ws.org/Vol-2328/" class="pub-title-link">
                             <strong>Word pair convolutional model for happy moment classification</strong>
                         </a>
@@ -1026,11 +1196,15 @@
             </div>
                     </div>  <!-- Close previous year group -->
                 
-                <h3>2018</h3>
-                <div class="pub-year-group">
+                <h3 id="workshop-year-2018">2018</h3>
+                <div class="pub-year-group workshop-group" data-year="2018">
             
-            <div class="publication workshop-publication">
-                <div class="pub-main-info">
+            <div class="publication workshop-publication"
+                data-first-author="0"
+                data-venue="other"
+                data-year="2018"
+                id="workshop-pub-4">
+                   <div class="pub-main-info">
                         <a href="https://link.springer.com/chapter/10.1007/978-3-319-92279-9_53" class="pub-title-link">
                             <strong>Chat-Box: Proposing a Mood Analyzer for Individuals with Social Interaction Disabilities</strong>
                         </a>
@@ -1063,8 +1237,9 @@
   url = {https://link.springer.com/chapter/10.1007/978-3-319-92279-9_53},
 }</code></div>
             </div>
-        
+        </div>
             </div>  <!-- Close the last year group -->
+    </div>
 </div>
 
 <script>
@@ -1076,6 +1251,90 @@ function toggleContent(button, targetId) {
     content.classList.toggle('hidden');
     button.setAttribute('aria-expanded', isExpanded);
 }
+
+function updatePubFilters() {
+    const showFirst = document.getElementById('filter-first').checked;
+    const showAll = document.getElementById('filter-allauthors').checked;
+    const showACL = document.getElementById('filter-acl').checked;
+    const showTopML = document.getElementById('filter-topml').checked;
+    const showSpeech = document.getElementById('filter-speech').checked;
+    const showPreprint = document.getElementById('filter-preprint').checked;
+    const showOther = document.getElementById('filter-other').checked;
+
+    const pubs = document.querySelectorAll('.publication');
+    pubs.forEach(pub => {
+        const isFirst = pub.getAttribute('data-first-author') === '1';
+        const venue = pub.getAttribute('data-venue');
+        let show = false;
+
+        // Author position logic
+        if (showAll) {
+            show = true;
+        } else if (showFirst && isFirst) {
+            show = true;
+        }
+
+        // Venue logic
+        if (show) {
+            if ((venue === 'acl' && !showACL) ||
+                (venue === 'topml' && !showTopML) ||
+                (venue === 'speech' && !showSpeech) ||
+                (venue === 'preprint' && !showPreprint) ||
+                (venue === 'other' && !showOther)) {
+                show = false;
+            }
+        }
+
+        pub.style.display = show ? '' : 'none';
+    });
+
+    // Hide year headers if all pubs in that year are hidden (main pubs)
+    document.querySelectorAll('.pub-year-group:not(.workshop-group)').forEach(group => {
+        const year = group.getAttribute('data-year');
+        const visiblePubs = group.querySelectorAll('.publication:not([style*="display: none"])');
+        const yearHeader = document.getElementById('year-' + year);
+        if (visiblePubs.length === 0) {
+            group.style.display = 'none';
+            if (yearHeader) yearHeader.style.display = 'none';
+        } else {
+            group.style.display = '';
+            if (yearHeader) yearHeader.style.display = '';
+        }
+    });
+
+    // Hide year headers if all pubs in that year are hidden (workshop/non-archival pubs)
+    document.querySelectorAll('.pub-year-group.workshop-group').forEach(group => {
+        const year = group.getAttribute('data-year');
+        const visiblePubs = group.querySelectorAll('.publication:not([style*="display: none"])');
+        const yearHeader = document.getElementById('workshop-year-' + year);
+        if (visiblePubs.length === 0) {
+            group.style.display = 'none';
+            if (yearHeader) yearHeader.style.display = 'none';
+        } else {
+            group.style.display = '';
+            if (yearHeader) yearHeader.style.display = '';
+        }
+    });
+
+    // Hide the entire non-archival section if all workshop pubs are hidden
+    const nonarchivalSection = document.getElementById('nonarchival-section');
+    if (nonarchivalSection) {
+        const visibleWorkshopPubs = nonarchivalSection.querySelectorAll('.publication:not([style*="display: none"])');
+        if (visibleWorkshopPubs.length === 0) {
+            nonarchivalSection.style.display = 'none';
+        } else {
+            nonarchivalSection.style.display = '';
+        }
+    }
+}
+
+// Attach listeners
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('#pub-filters input[type="checkbox"]').forEach(cb => {
+        cb.addEventListener('change', updatePubFilters);
+    });
+    updatePubFilters();
+});
 </script>
 
 <style>
@@ -1098,16 +1357,16 @@ function toggleContent(button, targetId) {
 
 <footer style="margin-top:25pt; padding-top:10pt;">
   <ul class="icons">
-    <li><a href="https://www.semanticscholar.org/author/Michael-Stephen-Saxon/48227633" ><img class="filtercolor" src="../theme/img/ico/svg/semantic-scholar.svg"></a></li>
-    <li><a href="https://scholar.google.com/citations?user=pAlwjdgAAAAJ&hl=en" ><img class="filtercolor" src="../theme/img/ico/svg/google-scholar.svg"></a></li>
-    <li><a href="https://www.researchgate.net/profile/Michael_Saxon"><img class="filtercolor" src="../theme/img/ico/svg/researchgate.svg"></a></li>
-    <li><a href="mailto:saxon@ucsb.edu"><img class="filtercolor" src="../theme/img/ico/svg/envelope.svg"></a></li>
-    <li><a href="https://github.com/michaelsaxon"><img class="filtercolor" src="../theme/img/ico/svg/github-alt.svg"></a></li>
-    <li><a href="https://www.youtube.com/@mssaxonUCSB"><img class="filtercolor" src="../theme/img/ico/svg/youtube.svg"></a></li>
-    <li><a href="https://www.linkedin.com/in/mssaxon/"><img class="filtercolor" src="../theme/img/ico/svg/linkedin-in.svg"></a></li>
-    <li><a href="https://bsky.app/profile/saxon.me" ><img class="filtercolor" src="../theme/img/ico/svg/cloud.svg"></a></li>
-    <li><a rel="me" href="https://sigmoid.social/@saxon"><img class="filtercolor" src="../theme/img/ico/svg/mastodon.svg"></a></li>
-    <li><a href="https://twitter.com/m2saxon" ><img class="filtercolor" src="../theme/img/ico/svg/twitter.svg"></a></li>
+    <li><a href="https://www.semanticscholar.org/author/Michael-Stephen-Saxon/48227633" ><img class="filtercolor" src="https://saxon.me/theme/img/ico/svg/semantic-scholar.svg"></a></li>
+    <li><a href="https://scholar.google.com/citations?user=pAlwjdgAAAAJ&hl=en" ><img class="filtercolor" src="https://saxon.me/theme/img/ico/svg/google-scholar.svg"></a></li>
+    <li><a href="https://www.researchgate.net/profile/Michael_Saxon"><img class="filtercolor" src="https://saxon.me/theme/img/ico/svg/researchgate.svg"></a></li>
+    <li><a href="mailto:saxon@ucsb.edu"><img class="filtercolor" src="https://saxon.me/theme/img/ico/svg/envelope.svg"></a></li>
+    <li><a href="https://github.com/michaelsaxon"><img class="filtercolor" src="https://saxon.me/theme/img/ico/svg/github-alt.svg"></a></li>
+    <li><a href="https://www.youtube.com/@mssaxonUCSB"><img class="filtercolor" src="https://saxon.me/theme/img/ico/svg/youtube.svg"></a></li>
+    <li><a href="https://www.linkedin.com/in/mssaxon/"><img class="filtercolor" src="https://saxon.me/theme/img/ico/svg/linkedin-in.svg"></a></li>
+    <li><a href="https://bsky.app/profile/saxon.me" ><img class="filtercolor" src="https://saxon.me/theme/img/ico/svg/cloud.svg"></a></li>
+    <li><a rel="me" href="https://sigmoid.social/@saxon"><img class="filtercolor" src="https://saxon.me/theme/img/ico/svg/mastodon.svg"></a></li>
+    <li><a href="https://twitter.com/m2saxon" ><img class="filtercolor" src="https://saxon.me/theme/img/ico/svg/twitter.svg"></a></li>
       
     </ul>
 

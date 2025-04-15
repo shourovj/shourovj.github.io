@@ -284,8 +284,10 @@ def add_publications(generator):
                 else:
                     authors.append(this_author)
             entry_dict['authors'] = ", ".join(authors) # Use 'authors' key
+            is_first_author = ME in authors[0]
         except KeyError:
             entry_dict['authors'] = entry_dict.get('author', '') # Fallback to raw author field
+            is_first_author = False
 
         # Render the bibtex string for the entry
         try:
@@ -320,6 +322,19 @@ def add_publications(generator):
 
         # Check if this is a workshop paper
         is_workshop = entry.fields.get('routing', '').lower() == 'workshop'
+
+        # Add show/hide logic
+        entry_dict['is_first_author'] = is_first_author
+        venue_category = 'other'
+        if any(key in venue_badge_class for key in ['acl', 'naacl', 'eacl', 'aacl', 'emnlp']):
+            venue_category = 'acl'
+        elif any(key in venue_badge_class for key in ['colm', 'iclr', 'neurips']):
+            venue_category = 'topml'
+        elif any(key in entry_dict.get('venue_abbrev', '').lower() for key in ['icassp', 'interspeech', 'taslp']):
+            venue_category = 'speech'
+        elif 'arxiv' in entry_dict.get('url_official', '') or 'arxiv' in venue_badge_class or 'preprint' in venue_badge_class:
+            venue_category = 'preprint'
+        entry_dict['venue_category'] = venue_category
         
         # Add to appropriate list
         if is_workshop:

@@ -5,7 +5,52 @@
 {% block content %}
 <div class="content-container">
     <h1>Publications</h1>
-    
+
+    <div id="pub-filters" class="pub-filters">
+        <div class="filter-column">
+          <div class="filter-label">Authorship</div>
+          <label class="custom-checkbox">
+            <input type="checkbox" id="filter-first" checked>
+            <span class="checkmark"></span>
+            <span class="filter-text">First Author Only</span>
+          </label>
+          <label class="custom-checkbox">
+            <input type="checkbox" id="filter-allauthors" checked>
+            <span class="checkmark"></span>
+            <span class="filter-text">All Author Positions</span>
+          </label>
+        </div>
+        <div class="filter-column">
+          <div class="filter-label">Venue</div>
+          <div class="venue-grid">
+            <label class="custom-checkbox venue-topml" style="grid-row: 1; grid-column: 1;">
+            <input type="checkbox" id="filter-topml" checked>
+            <span class="checkmark"></span>
+            <span class="filter-text">COLM/ICLR/NeurIPS</span>
+          </label>
+          <label class="custom-checkbox venue-acl" style="grid-row: 2; grid-column: 1;">
+            <input type="checkbox" id="filter-acl" checked>
+            <span class="checkmark"></span>
+            <span class="filter-text">*ACL</span>
+          </label>
+          <label class="custom-checkbox venue-speech" style="grid-row: 2; grid-column: 2;">
+            <input type="checkbox" id="filter-speech">
+            <span class="checkmark"></span>
+            <span class="filter-text">Speech Venues</span>
+          </label>
+          <label class="custom-checkbox venue-preprint" style="grid-row: 1; grid-column: 2;">
+            <input type="checkbox" id="filter-preprint" checked>
+            <span class="checkmark"></span>
+            <span class="filter-text">Preprints</span>
+          </label>
+          <label class="custom-checkbox venue-other" style="grid-row: 1; grid-column: 3;">
+            <input type="checkbox" id="filter-other">
+            <span class="checkmark"></span>
+            <span class="filter-text">Other</span>
+          </label>
+        </div>
+      </div>
+    </div>
     {# Main Publications Section #}
     {% set ns = namespace(current_year=None) %}
     {% for pubdict in publications %}
@@ -15,11 +60,15 @@
             {% endif %}
             
             {% set ns.current_year = pubdict['year']|int %}
-            <h2>{{ ns.current_year }}</h2>
-            <div class="pub-year-group">
+            <h2 id="year-{{ ns.current_year }}">{{ ns.current_year }}</h2>
+            <div class="pub-year-group" data-year="{{ ns.current_year }}">
         {% endif %}
         
-        <div class="publication">
+        <div class="publication"
+            data-first-author="{{ '1' if pubdict.is_first_author else '0' }}"
+            data-venue="{{ pubdict.venue_category }}"
+            data-year="{{ pubdict.year }}"
+            id="pub-{{ loop.index }}">
             <div class="pub-main-info">
                 {% if pubdict['url_official'] %}
                     <a href="{{ pubdict['url_official'] }}" class="pub-title-link">
@@ -101,6 +150,7 @@
 
     {# Non-archival  Section #}
     {% if workshop_publications %}
+    <div id="nonarchival-section">
         <h2>Non-archival Presenations and Workshop Papers</h2>
         
         {% set ns = namespace(current_year=None) %}
@@ -111,12 +161,16 @@
                 {% endif %}
                 
                 {% set ns.current_year = pubdict['year']|int %}
-                <h3>{{ ns.current_year }}</h3>
-                <div class="pub-year-group">
+                <h3 id="workshop-year-{{ ns.current_year }}">{{ ns.current_year }}</h3>
+                <div class="pub-year-group workshop-group" data-year="{{ ns.current_year }}">
             {% endif %}
             
-            <div class="publication workshop-publication">
-                <div class="pub-main-info">
+            <div class="publication workshop-publication"
+                data-first-author="{{ '1' if pubdict.is_first_author else '0' }}"
+                data-venue="{{ pubdict.venue_category }}"
+                data-year="{{ pubdict.year }}"
+                id="workshop-pub-{{ loop.index }}">
+                   <div class="pub-main-info">
                     {% if pubdict['url_official'] %}
                         <a href="{{ pubdict['url_official'] }}" class="pub-title-link">
                             <strong>{{ pubdict['title'] }}</strong>
@@ -170,10 +224,11 @@
                 {% endif %}
             </div>
         {% endfor %}
-        
+        </div>
         {% if ns.current_year is not none %}
             </div>  <!-- Close the last year group -->
         {% endif %}
+    </div>
     {% endif %}
 </div>
 
@@ -186,6 +241,90 @@ function toggleContent(button, targetId) {
     content.classList.toggle('hidden');
     button.setAttribute('aria-expanded', isExpanded);
 }
+
+function updatePubFilters() {
+    const showFirst = document.getElementById('filter-first').checked;
+    const showAll = document.getElementById('filter-allauthors').checked;
+    const showACL = document.getElementById('filter-acl').checked;
+    const showTopML = document.getElementById('filter-topml').checked;
+    const showSpeech = document.getElementById('filter-speech').checked;
+    const showPreprint = document.getElementById('filter-preprint').checked;
+    const showOther = document.getElementById('filter-other').checked;
+
+    const pubs = document.querySelectorAll('.publication');
+    pubs.forEach(pub => {
+        const isFirst = pub.getAttribute('data-first-author') === '1';
+        const venue = pub.getAttribute('data-venue');
+        let show = false;
+
+        // Author position logic
+        if (showAll) {
+            show = true;
+        } else if (showFirst && isFirst) {
+            show = true;
+        }
+
+        // Venue logic
+        if (show) {
+            if ((venue === 'acl' && !showACL) ||
+                (venue === 'topml' && !showTopML) ||
+                (venue === 'speech' && !showSpeech) ||
+                (venue === 'preprint' && !showPreprint) ||
+                (venue === 'other' && !showOther)) {
+                show = false;
+            }
+        }
+
+        pub.style.display = show ? '' : 'none';
+    });
+
+    // Hide year headers if all pubs in that year are hidden (main pubs)
+    document.querySelectorAll('.pub-year-group:not(.workshop-group)').forEach(group => {
+        const year = group.getAttribute('data-year');
+        const visiblePubs = group.querySelectorAll('.publication:not([style*="display: none"])');
+        const yearHeader = document.getElementById('year-' + year);
+        if (visiblePubs.length === 0) {
+            group.style.display = 'none';
+            if (yearHeader) yearHeader.style.display = 'none';
+        } else {
+            group.style.display = '';
+            if (yearHeader) yearHeader.style.display = '';
+        }
+    });
+
+    // Hide year headers if all pubs in that year are hidden (workshop/non-archival pubs)
+    document.querySelectorAll('.pub-year-group.workshop-group').forEach(group => {
+        const year = group.getAttribute('data-year');
+        const visiblePubs = group.querySelectorAll('.publication:not([style*="display: none"])');
+        const yearHeader = document.getElementById('workshop-year-' + year);
+        if (visiblePubs.length === 0) {
+            group.style.display = 'none';
+            if (yearHeader) yearHeader.style.display = 'none';
+        } else {
+            group.style.display = '';
+            if (yearHeader) yearHeader.style.display = '';
+        }
+    });
+
+    // Hide the entire non-archival section if all workshop pubs are hidden
+    const nonarchivalSection = document.getElementById('nonarchival-section');
+    if (nonarchivalSection) {
+        const visibleWorkshopPubs = nonarchivalSection.querySelectorAll('.publication:not([style*="display: none"])');
+        if (visibleWorkshopPubs.length === 0) {
+            nonarchivalSection.style.display = 'none';
+        } else {
+            nonarchivalSection.style.display = '';
+        }
+    }
+}
+
+// Attach listeners
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('#pub-filters input[type="checkbox"]').forEach(cb => {
+        cb.addEventListener('change', updatePubFilters);
+    });
+    updatePubFilters();
+});
 </script>
 
 <style>
