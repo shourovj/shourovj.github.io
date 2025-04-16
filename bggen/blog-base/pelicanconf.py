@@ -57,7 +57,7 @@ ARTICLE_EXCLUDES = ['pages']
 
 PUBLICATIONS_SRC = 'content/pubs.bib'
 
-DIRECT_TEMPLATES = ['publications','index']
+DIRECT_TEMPLATES = ['publications','index','archives']
 
 MARKDOWN = {
     'extension_configs': {
@@ -89,11 +89,11 @@ READERS = {'jpg': None}
 
 
 DEFAULT_PAGINATION = 10
-#PAGINATED_TEMPLATES = {'index': 10, 'archives': 10}
+#PAGINATED_TEMPLATES = {'index': 10, 'archives': None}
 #PAGINATED_TEMPLATES = ['index','archives']
 PAGINATED_DIRECT_TEMPLATES = ['index','archives']
 
-#ARCHIVES_SAVE_AS = 'blog/index.html'
+ARCHIVES_SAVE_AS = 'blog/archives/index.html'
 INDEX_SAVE_AS = 'blog/index.html'
 
 CATEGORY_SAVE_AS = 'blog/category/{slug}.html'

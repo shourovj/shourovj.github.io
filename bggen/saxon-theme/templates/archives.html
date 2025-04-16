@@ -1,17 +1,98 @@
 {% extends "base.html" %}
 {% block content %}
-{% for article in articles_page.object_list %}
-<div class="article-preview">
-    <a href="{{ SITEURL }}/{{ article.url }}" class="article-preview-link"></a>
-    <div class="preview-image" style="background-image: url('{{ SITEURL }}/{{ article.image }}')"></div>
-    <div class="preview-content">
-        <div>
-            <h3 class="preview-title">{{ article.title }}</h3>
-            <div class="preview-meta">{{ article.locale_date }}{% if article.ert %} <span style="margin-right: 0.5em; margin-left: 0.5em;">•</span> {{ article.ert }}{% endif %}</div>
-            <p class="preview-description">{{ article.summary|shorten(30) }}</p>
+<div class="archives-container">
+    {% set ns = namespace(current_year=None) %}
+    {% for article in articles %}
+        {% set year = article.date.strftime('%Y') %}
+        
+        {% if year != ns.current_year %}
+            {% if ns.current_year is not none %}
+                </div>  {# Close previous year's article group #}
+            {% endif %}
+            
+            {% set ns.current_year = year %}
+            <div class="archive-year-group">
+                <h3 class="archive-year">{{ year }}</h3>
+                <div class="archive-entries">
+        {% endif %}
+        
+        <div class="archive-entry">
+            <a href="{{ SITEURL }}/{{ article.url }}" class="archive-title">{{ article.title }}</a>
+            <div class="archive-meta">
+                {{ article.locale_date }}
+                {% if article.ert %}
+                    <span class="meta-separator">•</span>
+                    {{ article.ert }}
+                {% endif %}
+            </div>
         </div>
-    </div>
+        
+        {% if loop.last %}
+                </div>
+            </div>  {# Close the last year group #}
+        {% endif %}
+    {% endfor %}
 </div>
-{% endfor %}
-{% include 'pagination.html' %}
 {% endblock content %}
+
+/* Archives page styling */
+.archives-container {
+    max-width: var(--page-width);
+    margin: 0 auto;
+}
+
+.archive-year-group {
+    margin-top: 3rem;  /* Spacing between year groups */
+}
+
+.archive-year-group:first-child {
+    margin-top: 0;  /* Remove top margin for first year */
+}
+
+.archive-year {
+    color: var(--brand-main);
+    margin: 0 0 1.5rem 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.archive-entries {
+    border-left: 2px solid var(--brand-light);
+    padding-left: 1.5rem;
+}
+
+.archive-entry {
+    margin-bottom: 1.2rem;  /* Increased spacing between entries */
+    padding-bottom: 1.2rem;  /* Padding for the border */
+    border-bottom: 1px solid var(--brand-light);
+    line-height: 1.4;
+}
+
+.archive-entry:last-child {
+    border-bottom: none;  /* Remove border from last entry in group */
+    margin-bottom: 0;     /* Remove margin from last entry */
+    padding-bottom: 0;    /* Remove padding from last entry */
+}
+
+.archive-title {
+    display: block;
+    color: var(--text-body);
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+
+.archive-title:hover {
+    color: var(--brand-main);
+    text-decoration: underline;
+}
+
+.archive-meta {
+    font-size: 0.9em;
+    color: var(--text-muted);
+}
+
+.meta-separator {
+    margin: 0 0.5em;
+    opacity: 0.7;
+}

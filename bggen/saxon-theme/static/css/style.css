@@ -2036,3 +2036,65 @@ h6 .toclink:hover ~ .header-link::after,
 .icon-next::before {
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23dcd7ba" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>');
 }
+
+/* Archives page styling */
+.archives-container {
+  max-width: var(--page-width);
+  margin: 0 auto;
+}
+
+.archive-year-group {
+  margin-top: 3rem;  /* Spacing between year groups */
+}
+
+.archive-year-group:first-child {
+  margin-top: 0;  /* Remove top margin for first year */
+}
+
+.archive-year {
+  color: var(--text-main);
+  margin: 0 0 1.5rem 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.archive-entries {
+  border-left: 2px solid var(--brand-light);
+  padding-left: 0.5rem;
+}
+
+.archive-entry {
+  margin-bottom: 0.5rem;  /* Increased spacing between entries */
+  padding-bottom: 0.5rem;  /* Padding for the border */
+  border-bottom: 1px solid var(--brand-light);
+  line-height: 1.4;
+}
+
+.archive-entry:last-child {
+  border-bottom: none;  /* Remove border from last entry in group */
+  margin-bottom: 0;     /* Remove margin from last entry */
+  padding-bottom: 0;    /* Remove padding from last entry */
+}
+
+.archive-title {
+  display: block;
+  color: var(--brand-main);
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.archive-title:hover {
+  color: var(--brand-main);
+  text-decoration: underline;
+}
+
+.archive-meta {
+  font-size: 0.9em;
+  color: var(--text-muted);
+}
+
+.meta-separator {
+  margin: 0 0.5em;
+  opacity: 0.7;
+}
