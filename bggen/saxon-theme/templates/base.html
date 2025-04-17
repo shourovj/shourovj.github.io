@@ -50,6 +50,7 @@
     <meta property="twitter:title" content="{{ self.title() }}" />
     <meta property="twitter:description" content="{{ self.description() }}" />
     <meta property="twitter:image" content="{{ SITEURL }}/{{ self.imgurl() }}" />
+    <link rel="icon" type="image/png" href="{{ SITEURL }}/theme/img/logomark_fill.png">
 </head>
 <body>
 
@@ -115,8 +116,9 @@
     <li><a href="https://twitter.com/m2saxon" ><img class="filtercolor" src="{{ SITEURL }}/theme/img/ico/svg/twitter.svg"></a></li>
       
     </ul>
-
+    {% if ENABLE_WORLD_MAP %}
     <div class="worldmap"><script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=tt&d=IuxqtNT-Q6MDtRyPajTC07_66TRmeCIPbVD4z2v4M_U&co=474747&cmn=547bfc'></script></div>
+    {% endif %}
 
     <div style="max-width: 800px;   margin-right: auto; margin-left: auto;">
 	    <p style="font-size:10pt; text-align: center">Core webpage incrementally scratchbuilt by me. Feel free to steal my source from <a href="https://github.com/michaelsaxon/michaelsaxon.github.io">GitHub</a>. Blog functionality made using <a href="https://getpelican.com/">Pelican</a>.</p>

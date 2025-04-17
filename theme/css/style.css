@@ -1271,6 +1271,7 @@ sup[id^="fnref"]:hover .footnote-popup {
   min-height: 200px;
   border: 1px solid var(--brand-main);  /* Direct red border */
 }
+
 .about-image {
   width: 200px;
   flex: none;
@@ -2116,4 +2117,38 @@ h6 .toclink:hover ~ .header-link::after,
 .meta-separator {
   margin: 0 0.5em;
   opacity: 0.7;
+}
+
+/* Add styling for the background logomark */
+.about-header {
+    position: relative;
+    overflow: hidden;
+}
+
+.about-header::before {
+    content: '';
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    width: 6rem;
+    height: 6rem;
+    background-image: url('../img/logomark_trans.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.2;
+    filter: var(--logo-filter);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Ensure content stays above the background image */
+.about-content {
+    position: relative;
+    z-index: 2;
+}
+
+.about-image {
+    position: relative;
+    z-index: 2;
 }

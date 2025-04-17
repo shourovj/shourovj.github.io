@@ -43,8 +43,10 @@ PUBLICATIONS_SAVE_AS = 'publications/index.html'
 
 #BLOG_INDEX_SAVE_AS = 'blog.html'
 
-# Uncomment following line if you want document-relative URLs when developing
+ENABLE_WORLD_MAP = True 
+# Uncomment following lines for local development
 # RELATIVE_URLS = True
+# ENABLE_WORLD_MAP = False 
 
 # Add these settings
 USE_FOLDER_AS_CATEGORY = False
