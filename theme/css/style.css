@@ -2141,14 +2141,3 @@ h6 .toclink:hover ~ .header-link::after,
     pointer-events: none;
     z-index: 1;
 }
-
-/* Ensure content stays above the background image */
-.about-content {
-    position: relative;
-    z-index: 2;
-}
-
-.about-image {
-    position: relative;
-    z-index: 2;
-}

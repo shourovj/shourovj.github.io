@@ -45,8 +45,8 @@ PUBLICATIONS_SAVE_AS = 'publications/index.html'
 
 ENABLE_WORLD_MAP = True 
 # Uncomment following lines for local development
-RELATIVE_URLS = True
-ENABLE_WORLD_MAP = False 
+# RELATIVE_URLS = True
+# ENABLE_WORLD_MAP = False 
 
 # Add these settings
 USE_FOLDER_AS_CATEGORY = False
