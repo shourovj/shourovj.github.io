@@ -325,8 +325,9 @@ header.site-header {
   padding: 0;
   margin: 0;
   padding-bottom: 5pt;
-  border-top:2px solid var(--brand-dark);
-  position:relative;
+  border-top: 2px solid var(--brand-dark);
+  position: relative;
+  border-bottom: 1px solid color-mix(in srgb, var(--brand-dark) 20%, var(--bg-main) 80%);
 }
 
 /* .site-header::after {
@@ -454,7 +455,7 @@ ul.icons li a {
     padding: 10px 10px;
     text-decoration: none;
     background-color: var(--bg-main);
-
+    opacity: 0.6;
 } 
 
 ul.icons li img {
@@ -625,6 +626,7 @@ footer {
     position: relative;
     margin-top: 2rem;
     padding-top: 1rem;
+    border-top: 1px solid color-mix(in srgb, var(--brand-dark) 20%, var(--bg-main) 80%);
 }
 
 /* footer::before {
