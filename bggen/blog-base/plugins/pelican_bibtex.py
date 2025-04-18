@@ -1,24 +1,14 @@
 """
-Pelican BibTeX
+Publications page from BiBTeX
 ==============
 
-A Pelican plugin that populates the context with a list of formatted
-citations, loaded from a BibTeX file at a configurable path.
-
-The use case for now is to generate a ``Publications'' page for academic
-websites.
+Adapted from Vlad Niculae's pelican_bibtex plugin.
 """
-# Author: Vlad Niculae <vlad@vene.ro>
-# Unlicense (see UNLICENSE for details)
 
 import logging
 logger = logging.getLogger(__name__)
 
 from pelican import signals
-# NOTE: Removed unused BaseReader import if it wasn't used elsewhere
-# from pelican.readers import BaseReader
-# NOTE: Removed import of process_bibtex as this file handles processing
-# from pelican_bibtex import process_bibtex 
 
 import re
 from urllib.parse import urlparse
