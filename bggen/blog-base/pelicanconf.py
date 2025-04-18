@@ -45,8 +45,8 @@ PUBLICATIONS_SAVE_AS = 'publications/index.html'
 
 ENABLE_WORLD_MAP = True 
 # Uncomment following lines for local development
-RELATIVE_URLS = True
-ENABLE_WORLD_MAP = False 
+# RELATIVE_URLS = True
+# ENABLE_WORLD_MAP = False 
 
 # Add these settings
 USE_FOLDER_AS_CATEGORY = False
@@ -59,7 +59,7 @@ ARTICLE_EXCLUDES = ['pages']
 
 PUBLICATIONS_SRC = 'content/pubs.bib'
 
-DIRECT_TEMPLATES = ['publications','index','archives']
+DIRECT_TEMPLATES = ['publications','index','archives', '404']
 
 MARKDOWN = {
     'extension_configs': {
@@ -95,7 +95,7 @@ DEFAULT_PAGINATION = 10
 #PAGINATED_TEMPLATES = ['index','archives']
 PAGINATED_DIRECT_TEMPLATES = ['index','archives']
 
-ARCHIVES_SAVE_AS = 'blog/archives/index.html'
+ARCHIVES_SAVE_AS = 'blog/archives/index.html'   
 INDEX_SAVE_AS = 'blog/index.html'
 
 CATEGORY_SAVE_AS = 'blog/category/{slug}.html'
@@ -104,3 +104,5 @@ TAG_SAVE_AS = 'blog/tag/{slug}.html'
 TAGS_SAVE_AS = 'blog/tags/index.html'
 AUTHORS_SAVE_AS = ''
 AUTHOR_SAVE_AS = ''
+
+
