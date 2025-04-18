@@ -129,8 +129,9 @@
 </ol>
 
 
+<link rel="stylesheet" href="https://saxon.me/theme/css/experience.css">
 <h3>Experience</h3>
-<h4>Academic</h4>
+<h4 class="collapsible" aria-expanded="true" aria-controls="academic-content">Academic</h4>
 
 <!-- <div class="experience-block" style="--experience-color: var(--kanagawa-dark-magenta);">
 <div class="experience-content">
@@ -146,6 +147,8 @@
 </div>
 <img src="https://saxon.me/theme/img/uw-seal-resized.png" alt="University of Washington logo" class="experience-logo">
 </div> -->
+
+<div id="academic-content" class="collapsible-content" aria-hidden="false">
 
 <div class="experience-block" style="--experience-color: var(--kanagawa-dark-blue);">
   <div class="experience-content">
@@ -182,7 +185,11 @@
   <img src="https://saxon.me/theme/img/asu-seal-cropped-resized.png" alt="ASU Seal" class="experience-logo">
 </div>
 
-<h4>Industry</h4>
+</div>
+
+<h4 class="collapsible" aria-expanded="false" aria-controls="industry-content">Industry</h4>
+
+<div id="industry-content" class="collapsible-content" aria-hidden="true">
 
 <div class="experience-block" style="--experience-color: var(--kanagawa-dark-cyan);">
   <div class="experience-content">
@@ -216,12 +223,32 @@
       </div>
   </div>
   <img src="https://saxon.me/theme/img/amazon-logo-cropped-resized.png" alt="Amazon Logo" class="experience-logo logo-medium">
-</div>  
+</div>
 
-<div class="news-section">
-  <h3>News</h3>
-  <div class="news-box">
-        <p><strong>12/13/2024</strong> Presented our work on meta-evaluation of text-to-image metrics at NeurIPS! <a href="https://openreview.net/forum?id=S4YRCLbUK1">[paper]</a></p>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const collapsibles = document.querySelectorAll('.collapsible');
+    
+    collapsibles.forEach(function(collapsible) {
+        const contentId = collapsible.getAttribute('aria-controls');
+        const content = document.getElementById(contentId);
+        
+        collapsible.addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !isExpanded);
+            content.setAttribute('aria-hidden', isExpanded);
+        });
+    });
+});
+</script>  
+
+<h3 class="collapsible" aria-expanded="true" aria-controls="news-content">News</h3>
+<div id="news-content" class="collapsible-content" aria-hidden="false">
+  <div class="news-section">
+     <div class="news-box">
+          <p><strong>12/13/2024</strong> Presented our work on meta-evaluation of text-to-image metrics at NeurIPS! <a href="https://openreview.net/forum?id=S4YRCLbUK1">[paper]</a></p>
 <p><strong>11/13/2024</strong> Presented our work on long-context capabilities in VLMs at EMNLP! <a href="https://aclanthology.org/2024.findings-emnlp.312/">[paper]</a></p>
 <p><strong>10/7/2024</strong> Presented our work on Model Metrology at COLM 2024! <a href="https://openreview.net/forum?id=bttKwCZDkm">[paper]</a></p>
 <p><strong>9/25/2024</strong> Recognized as a Rising Star in Generative AI!</p>
@@ -252,6 +279,7 @@
 <p><strong>9/23/2021</strong> Our work "Modeling Disclosive Transparency in NLP Application Descriptions" will appear at EMNLP 2021 as an oral presentation! Preprint here: [arXiv:2101.00433]</p>
 <p><strong>9/13/2021</strong> I was profiled on the Amazon Science Blog about my experience doing multiple applied science internships with the company! Article here: [amazon.science]</p>
  
+    </div>
   </div>
 </div>
 </article>

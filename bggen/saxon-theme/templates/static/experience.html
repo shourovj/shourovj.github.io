@@ -1,5 +1,5 @@
 <h3>Experience</h3>
-<h4>Academic</h4>
+<h4 class="collapsible" aria-expanded="true" aria-controls="academic-content">Academic</h4>
 
 <!-- <div class="experience-block" style="--experience-color: var(--kanagawa-dark-magenta);">
 <div class="experience-content">
@@ -15,6 +15,8 @@
 </div>
 <img src="{{ SITEURL }}/theme/img/uw-seal-resized.png" alt="University of Washington logo" class="experience-logo">
 </div> -->
+
+<div id="academic-content" class="collapsible-content" aria-hidden="false">
 
 <div class="experience-block" style="--experience-color: var(--kanagawa-dark-blue);">
   <div class="experience-content">
@@ -51,7 +53,11 @@
   <img src="{{ SITEURL }}/theme/img/asu-seal-cropped-resized.png" alt="ASU Seal" class="experience-logo">
 </div>
 
-<h4>Industry</h4>
+</div>
+
+<h4 class="collapsible" aria-expanded="false" aria-controls="industry-content">Industry</h4>
+
+<div id="industry-content" class="collapsible-content" aria-hidden="true">
 
 <div class="experience-block" style="--experience-color: var(--kanagawa-dark-cyan);">
   <div class="experience-content">
@@ -86,3 +92,22 @@
   </div>
   <img src="{{ SITEURL }}/theme/img/amazon-logo-cropped-resized.png" alt="Amazon Logo" class="experience-logo logo-medium">
 </div>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const collapsibles = document.querySelectorAll('.collapsible');
+    
+    collapsibles.forEach(function(collapsible) {
+        const contentId = collapsible.getAttribute('aria-controls');
+        const content = document.getElementById(contentId);
+        
+        collapsible.addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !isExpanded);
+            content.setAttribute('aria-hidden', isExpanded);
+        });
+    });
+});
+</script>

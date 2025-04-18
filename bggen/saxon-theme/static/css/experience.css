@@ -1,0 +1,40 @@
+/* Experience collapsible section */
+.collapsible {
+    cursor: pointer;
+    position: relative;
+    padding-right: 0;
+    display: flex;
+    align-items: center;
+}
+
+.collapsible::after {
+    content: '';
+    position: relative;
+    margin-left: 0.5rem;
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-top: -0.2rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'%3E%3Cpath fill='%23000000' d='M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 137.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.3s ease;
+    filter: var(--logo-filter);
+}
+
+.collapsible[aria-expanded="true"]::after {
+    transform: rotate(90deg);
+}
+
+.collapsible:hover {
+    text-decoration: underline;
+}
+
+.collapsible-content {
+    display: none;
+    transition: max-height 0.3s ease-out;
+}
+
+.collapsible-content[aria-hidden="false"] {
+    display: block;
+} 

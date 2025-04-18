@@ -69,17 +69,14 @@
             data-venue="{{ pubdict.venue_category }}"
             data-year="{{ pubdict.year }}"
             id="pub-{{ loop.index }}">
-            <div class="pub-main-info">
                 {% if pubdict['url_official'] %}
-                    <a href="{{ pubdict['url_official'] }}" class="pub-title-link">
-                        <strong>{{ pubdict['title'] }}</strong>
-                    </a>
+                    <span class="title"><a href="{{ pubdict['url_official'] }}" class="pub-title-link">{{ pubdict['title'] }}</a></span>
                 {% else %}
-                    <strong>{{ pubdict['title'] }}</strong>
+                    <span class="title">{{ pubdict['title'] }}</span>
                 {% endif %}
                 <br>
-                <span>{{ pubdict['authors'] }}</span><br>
-                <span>
+                <span class="authors">{{ pubdict['authors'] }}</span><br>
+                <div class="venue">
                     {% if pubdict['venue_abbrev'] %}
                         <span class="pub-badge {{ pubdict['venue_badge_class'] }}">{{ pubdict['venue_abbrev'] }}</span>
                         {% if pubdict['additional_info'] %}
@@ -110,26 +107,24 @@
                             , {{ pubdict['year'] }}
                         {% endif %}
                     {% endif %}
-                </span>
-            </div>
-            
-            <div class="pub-badges">
-                {% if pubdict.badge_text and pubdict.badge_class %}
-                    <a href="{{ pubdict.get('url_official', '#') }}" class="pub-badge {{ pubdict.badge_class }}">{{ pubdict.badge_text }}</a>
-                {% endif %}
-                {% if pubdict['url_pdf'] %}
-                    <a href="{{ pubdict['url_pdf'] }}" class="pub-badge link-badge">PDF</a>
-                {% endif %}
-                {% if pubdict['abstract'] %}
-                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'abstract-{{ loop.index }}')" aria-expanded="false">Abstract</button>
-                {% endif %}
-                {% if pubdict['bibtex'] %}
-                    <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-{{ loop.index }}')" aria-expanded="false">BibTeX</button>
-                {% endif %}
-                {% if pubdict['video_link'] %}
-                    <a href="{{ pubdict['video_link'] }}" class="pub-badge video-badge">Presentation</a>
-                {% endif %}
-            </div>
+                </div>
+                <div class="pub-badges">
+                    {% if pubdict.badge_text and pubdict.badge_class %}
+                        <a href="{{ pubdict.get('url_official', '#') }}" class="pub-badge {{ pubdict.badge_class }}">{{ pubdict.badge_text }}</a>
+                    {% endif %}
+                    {% if pubdict['url_pdf'] %}
+                        <a href="{{ pubdict['url_pdf'] }}" class="pub-badge link-badge">PDF</a>
+                    {% endif %}
+                    {% if pubdict['abstract'] %}
+                        <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'abstract-{{ loop.index }}')" aria-expanded="false">Abstract</button>
+                    {% endif %}
+                    {% if pubdict['bibtex'] %}
+                        <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-{{ loop.index }}')" aria-expanded="false">BibTeX</button>
+                    {% endif %}
+                    {% if pubdict['video_link'] %}
+                        <a href="{{ pubdict['video_link'] }}" class="pub-badge video-badge">Presentation Video</a>
+                    {% endif %}
+                </div>    
             
             {% if pubdict['abstract'] %}
             <div id="abstract-{{ loop.index }}" class="expandable-content hidden">
@@ -192,6 +187,24 @@
                             , {{ pubdict['year'] }}
                         {% endif %}
                     </span>
+                
+                    <div class="pub-badges">
+                        {% if pubdict.badge_text and pubdict.badge_class %}
+                            <a href="{{ pubdict.get('url_official', '#') }}" class="pub-badge {{ pubdict.badge_class }}">{{ pubdict.badge_text }}</a>
+                        {% endif %}
+                        {% if pubdict['url_pdf'] %}
+                            <a href="{{ pubdict['url_pdf'] }}" class="pub-badge link-badge">PDF</a>
+                        {% endif %}
+                        {% if pubdict['abstract'] %}
+                            <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'abstract-{{ loop.index }}')" aria-expanded="false">Abstract</button>
+                        {% endif %}
+                        {% if pubdict['bibtex'] %}
+                            <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-{{ loop.index }}')" aria-expanded="false">BibTeX</button>
+                        {% endif %}
+                        {% if pubdict['video_link'] %}
+                            <a href="{{ pubdict['video_link'] }}" class="pub-badge video-badge">Presentation</a>
+                        {% endif %}
+                    </div>    
                 </div>
                 
                 <div class="pub-badges">

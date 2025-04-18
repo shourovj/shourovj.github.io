@@ -32,16 +32,19 @@
 
 {{ page.content }}
 
+<link rel="stylesheet" href="{{ SITEURL }}/theme/css/experience.css">
 {% include "static/experience.html" %}  
 
-<div class="news-section">
-  <h3>News</h3>
-  <div class="news-box">
-    {% for p in pages %}
-    {% if p.title == "news" %}
-        {{ p.content }}
-    {% endif %}
-    {% endfor %} 
+<h3 class="collapsible" aria-expanded="true" aria-controls="news-content">News</h3>
+<div id="news-content" class="collapsible-content" aria-hidden="false">
+  <div class="news-section">
+     <div class="news-box">
+      {% for p in pages %}
+      {% if p.title == "news" %}
+          {{ p.content }}
+      {% endif %}
+      {% endfor %} 
+    </div>
   </div>
 </div>
 </article>

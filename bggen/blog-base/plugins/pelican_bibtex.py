@@ -36,7 +36,7 @@ def determine_badge_info(pubdict):
             return f'arXiv:{arxiv_id.group(1)}', 'arxiv-badge'
         return 'arXiv', 'arxiv-badge'  # Fallback if ID not found
     elif 'aclanthology.org' in url:
-        return 'ACL Anthology', 'acl-badge'
+        return 'ACL Anthology', 'acl-anthology-badge'
     elif 'openreview.net' in url:
         # Try to determine conference from booktitle
         conf_label = 'OpenReview' # Default
@@ -58,7 +58,7 @@ def determine_badge_info(pubdict):
         # elif 'association for computational linguistics' in booktitle or ' acl' in booktitle: # Add space before acl to avoid matching 'tacl' etc.
         #      conf_label = 'ACL'
 
-        return conf_label, 'arxiv-badge' # Use specific conf label, generic conf class
+        return conf_label, 'link-badge' # Use specific conf label, generic conf class
     else:
         # Default official link
         return 'Official', 'link-badge'
@@ -82,9 +82,9 @@ def determine_venue_badge(pubdict):
     # Determine venue badge class
     venue_badges = {
         'acl': 'acl-badge',
-        'naacl': 'acl-badge',
-        'eacl': 'acl-badge',
-        'aacl': 'acl-badge',
+        'naacl': 'naacl-badge',
+        'eacl': 'eacl-badge',
+        'aacl': 'aacl-badge',
         'iclr': 'iclr-badge',
         'colm': 'colm-badge',
         'neurips': 'neurips-badge',
@@ -93,7 +93,7 @@ def determine_venue_badge(pubdict):
     
     # Handle arXiv preprints
     if 'arxiv.org' in pubdict.get('url_official', ''):
-        venue_badge_class = 'arxiv-badge'
+        venue_badge_class = 'preprint-badge'
     else:
         # Check if any venue key is contained within venue_abbrev
         venue_badge_class = 'link-badge'  # default
