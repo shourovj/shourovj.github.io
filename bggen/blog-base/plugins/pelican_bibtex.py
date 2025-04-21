@@ -167,6 +167,10 @@ def clean_bibtex(bibtex_str, entry_dict):
             cleaned_lines.append(f'  url = {{{selected_url}}},')
             url_added = True
 
+        # Remove asterisks from authors
+        if 'author =' in line:
+            line = line.replace('*', '')
+
         # Keep this line
         cleaned_lines.append(line)
 
@@ -281,6 +285,7 @@ def add_publications(generator):
 
         # Render the bibtex string for the entry
         try:
+            # Create a copy of the entry dict to avoid modifying the original
             bib_buf = StringIO()
             bibdata_this = BibliographyData(entries={key: entry})
             bibtex_writer.write_stream(bibdata_this, bib_buf)
