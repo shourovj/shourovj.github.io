@@ -116,10 +116,10 @@
                         <a href="{{ pubdict['url_pdf'] }}" class="pub-badge link-badge">PDF</a>
                     {% endif %}
                     {% if pubdict['abstract'] %}
-                        <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'abstract-{{ loop.index }}')" aria-expanded="false">Abstract</button>
+                        <span class="pub-badge toggle-badge" onclick="toggleContent(this, 'abstract-{{ loop.index }}')" aria-expanded="false" role="button" tabindex="0">Abstract</span>
                     {% endif %}
                     {% if pubdict['bibtex'] %}
-                        <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-{{ loop.index }}')" aria-expanded="false">BibTeX</button>
+                        <span class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-{{ loop.index }}')" aria-expanded="false" role="button" tabindex="0">BibTeX</span>
                     {% endif %}
                     {% if pubdict['video_link'] %}
                         <a href="{{ pubdict['video_link'] }}" class="pub-badge video-badge">Presentation Video</a>
@@ -196,10 +196,10 @@
                             <a href="{{ pubdict['url_pdf'] }}" class="pub-badge link-badge">PDF</a>
                         {% endif %}
                         {% if pubdict['abstract'] %}
-                            <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'abstract-{{ loop.index }}')" aria-expanded="false">Abstract</button>
+                            <span class="pub-badge toggle-badge" onclick="toggleContent(this, 'abstract-{{ loop.index }}')" aria-expanded="false" role="button" tabindex="0">Abstract</span>
                         {% endif %}
                         {% if pubdict['bibtex'] %}
-                            <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-{{ loop.index }}')" aria-expanded="false">BibTeX</button>
+                            <span class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-{{ loop.index }}')" aria-expanded="false" role="button" tabindex="0">BibTeX</span>
                         {% endif %}
                         {% if pubdict['video_link'] %}
                             <a href="{{ pubdict['video_link'] }}" class="pub-badge video-badge">Presentation</a>
@@ -215,10 +215,10 @@
                         <a href="{{ pubdict['url_pdf'] }}" class="pub-badge link-badge">PDF</a>
                     {% endif %}
                     {% if pubdict['abstract'] %}
-                        <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'abstract-{{ loop.index }}')" aria-expanded="false">Abstract</button>
+                        <span class="pub-badge toggle-badge" onclick="toggleContent(this, 'abstract-{{ loop.index }}')" aria-expanded="false" role="button" tabindex="0">Abstract</span>
                     {% endif %}
                     {% if pubdict['bibtex'] %}
-                        <button class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-{{ loop.index }}')" aria-expanded="false">BibTeX</button>
+                        <span class="pub-badge toggle-badge" onclick="toggleContent(this, 'bibtex-{{ loop.index }}')" aria-expanded="false" role="button" tabindex="0">BibTeX</span>
                     {% endif %}
                     {% if pubdict['video_link'] %}
                         <a href="{{ pubdict['video_link'] }}" class="pub-badge video-badge">Presentation</a>
@@ -246,13 +246,13 @@
 </div>
 
 <script>
-function toggleContent(button, targetId) {
+function toggleContent(element, targetId) {
     const content = document.getElementById(targetId);
     if (!content) return; // Exit if target not found
 
     const isExpanded = content.classList.contains('hidden');
     content.classList.toggle('hidden');
-    button.setAttribute('aria-expanded', isExpanded);
+    element.setAttribute('aria-expanded', isExpanded);
 }
 
 function updatePubFilters() {

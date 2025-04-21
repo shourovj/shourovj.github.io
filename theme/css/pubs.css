@@ -176,7 +176,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.1rem 0.4rem;
+    padding: 0.3rem 0.5rem 0.1rem 0.5rem;
     border: 1px solid;
     border-radius: 4px;
     font-size: 0.9em;
@@ -327,9 +327,20 @@ a.spotlight-badge:hover, button.spotlight-badge:hover {
 }
 
 a.link-badge:hover, button.link-badge:hover,
-button.toggle-badge:hover {
+button.toggle-badge:hover, span.toggle-badge:hover {
     color: var(--brand-dark);
     border-color: var(--brand-dark);
+}
+
+/* Make toggle-badge spans look and behave like buttons */
+span.toggle-badge {
+    cursor: pointer;
+    user-select: none;
+}
+
+span.toggle-badge:focus {
+    outline: 2px solid var(--brand-main);
+    outline-offset: 2px;
 }
 
 .pub-filters {
