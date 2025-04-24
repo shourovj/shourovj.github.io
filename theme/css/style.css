@@ -246,6 +246,33 @@
   font-style: italic;
 }
 
+/* Berkeley Mono */
+@font-face {
+  font-family: "Berkeley Mono";
+  src: url('https://saxon.me/theme/font/BerkeleyMono-Regular.woff2');
+}
+@font-face {
+  font-family: "Berkeley Mono";
+  src: url('https://saxon.me/theme/font/BerkeleyMono-Bold.woff2');
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Berkeley Mono";
+  src: url('https://saxon.me/theme/font/BerkeleyMono-Bold-Oblique.woff2');
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Berkeley Mono";
+  src: url('https://saxon.me/theme/font/BerkeleyMono-Oblique.woff2');
+  font-style: italic;
+}
+
+
+
+
+
+
 a {
   text-decoration: none;
   color: var(--link-color);
