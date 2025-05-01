@@ -14,3 +14,4 @@ I have broad interests in generative AI, NLP, and multimodal systems. In particu
 [^1]: In our work "Benchmarks as Microscopes: A call for Model Metrology" we lay out an agenda for building a science of evaluation.
 [^2]: ![example image](https://t2iscorescore.github.io/static/images/ts2teaser.svg)<br>We introduced T2IScoreScore, a meta-evaluation of text-to-image faithfulness metrics that uses "semantic error graphs" to evaluate how well metrics can rank closely related images with objective error counts.
 
+I have had the wonderful opportunity to mentor [over a dozen students in research](./mentorship/) over the course of my PhD.

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html> 
+<head>
+    <script>
+      // Check and apply theme immediately
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+      }
+  </script>
+<script src="https://saxon.me/theme/js/theme.js"></script>
+    <script src="https://saxon.me/theme/js/copy-code.js"></script>
+    <script src="https://saxon.me/theme/js/toc.js"></script>
+    <script src="https://saxon.me/theme/js/popups.js"></script>
+    <link rel="stylesheet" href="https://saxon.me/theme/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Michael Saxon - Mentorship</title>
+    <link rel="stylesheet" href="https://saxon.me/theme/css/code.css">
+    <link rel="stylesheet" href="https://saxon.me/theme/css/pubs.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
+          crossorigin="anonymous">
+    <link href="feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Michael Saxon Full Atom Feed" />
+    <link href="feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Michael Saxon Full RSS Feed" />
+    <meta name="title" content="Michael Saxon - Mentorship" />
+    <meta name="description" content="" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://saxon.me/" />
+    <meta property="og:title" content="Michael Saxon - Mentorship" />
+    <meta property="og:description" content="" />
+    <meta property="og:image" content="https://saxon.me/https://saxon.me/theme/img/bg-sba.jpg " />
+   <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:site" content="https://saxon.me/" />
+    <meta property="twitter:creator" content="@m2saxon" />
+    <meta property="twitter:title" content="Michael Saxon - Mentorship" />
+    <meta property="twitter:description" content="" />
+    <meta property="twitter:image" content="https://saxon.me/https://saxon.me/theme/img/bg-sba.jpg " />
+    <link rel="icon" type="image/png" href="https://saxon.me/theme/img/logomark_fill.png">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="top-nav">
+  <div style="margin-right: auto;">
+  <h1><a href="https://saxon.me/">Michael Saxon</a></h1>
+  </div>
+  <input id="menu-toggle" type="checkbox" />
+  <label class='menu-button-container' for="menu-toggle">
+  <div class='menu-button'></div>
+</label>
+  <ul class="menu">
+    <li><a href="https://saxon.me/publications">Publications</a></li>
+    <li><a href="https://saxon.me/doc/cv_saxon.pdf">CV</a></li>
+  <li><a href="https://saxon.me/blog">Blog</a></li>
+  <li>
+    <a href="#" id="theme-toggle" aria-label="Toggle dark mode">
+      <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+        <!-- Moon shape -->
+        <path class="moon" 
+              d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z"
+              fill="currentColor"/>
+        <!-- Sun shape (initially hidden) -->
+        <g class="sun" opacity="0">
+          <circle cx="12" cy="12" r="6" fill="currentColor"/>
+          <g class="sun-beams">
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </g>
+        </g>
+      </svg>
+    </a>
+  </li>
+  </ul>
+</div>
+</header>
+
+
+<div class="page" style="word-spacing: 0.09em;">
+    <h1>Mentorship</h1>
+    
+
+    <p>I've been blessed with the opportunity to mentor many passionate undergraduate, predoctoral, and masters students during my time at UCSB.
+Here's a little rundown:</p>
+<h1 id="group-mentorship"><a class="toclink" href="#group-mentorship">Group mentorship</a><a class="header-link" href="#group-mentorship" title="Permalink to this section">¶</a></h1>
+<p>Since 2021 I have mentored at least one group of young researchers a year.</p>
+<p>I mentored two <a href="https://ersp.cs.ucsb.edu/">Early Research Scholars Program</a> groups, in a direct supervisory role from 2021-2022, and as a sort of "secondary" supervisor, helping guide the junior grad student mentors of the following group from 2022 onward.
+Additionally, I led a <a href="https://www.fatimafellowship.com/">Fatima Al-Fihri Predoctoral Fellowship</a> group from 2023-2024.</p>
+<p>Each of these groups has published at least one top conference paper with the mentees as lead authors, an ICLR 2023 Oral, and EMNLP 2023 poster, and a NeurIPS 2024 spotlight poster respectively.</p>
+<h2 id="ersp-2021-group"><a class="toclink" href="#ersp-2021-group">ERSP 2021 group</a><a class="header-link" href="#ersp-2021-group" title="Permalink to this section">¶</a></h2>
+<p>With mentees Matthew Ho, Aditya Sharma, and Justin Chang we released <a href="https://openreview.net/forum?id=vaxnu-Utr4l">WikiWhy</a>, a challenge QA dataset containing "why" questions which requires that LMs successfully produce rationales alongside each answer. 
+We devised a creative pipeline to produce good why questions with nontrivial rationales by crawling Wikipedia for sentences indicating complex causal relations.
+I coached the students in designing and scoping a project, data collection, crowdworker annotation, and baseline model training and assessment.
+The students put forth exceptional effort and polish in codebase and resources.
+Our paper appeared as an oral at ICLR 2023.</p>
+<h3 id="where-are-they-now"><a class="toclink" href="#where-are-they-now">Where are they now?</a><a class="header-link" href="#where-are-they-now" title="Permalink to this section">¶</a></h3>
+<ul>
+<li><a href="https://matt-seb-ho.github.io/"><em>Matthew Ho</em></a> completed his BS in 2024 and is now a PhD student in Lianhui Qin's group at UCSD</li>
+<li><a href="https://justinchang.dev/"><em>Justin Chang</em></a> completed his BS in 2024 and is now a SWE at Aptos</li>
+<li><a href="https://scholar.google.com/citations?user=4SRc4qkAAAAJ&amp;hl=en"><em>Aditya Sharma</em></a> completed his BS/MS in 2024 and is now a SWE at Google Pixel AI</li>
+</ul>
+<h2 id="ersp-2022-group"><a class="toclink" href="#ersp-2022-group">ERSP 2022 group</a><a class="header-link" href="#ersp-2022-group" title="Permalink to this section">¶</a></h2>
+<p>Primary mentors Yujie Lu and Alex Mei led this group of students Vaishnavi Himakunthala, Andy Ouyang, Danny Rose, and Ryan He. I was a sort of meta-mentor who participated heavily in the early stages of scoping the project.
+The group devised a "<a href="https://arxiv.org/abs/2305.02317">visual chain of thought</a>" method for VLM reasoning in videos, where the "chain of thought" entails infilling the sequence of frames, and the <a href="https://arxiv.org/abs/2305.13903">VIP dataset</a> to further evaluation of vision-language models, which they presented at EMNLP 2023.</p>
+<p>All four are currently in their senior year at UCSB and plan to graduate in 2025.</p>
+<h2 id="fatima-fellowship-2023-group"><a class="toclink" href="#fatima-fellowship-2023-group">Fatima Fellowship 2023 group</a><a class="header-link" href="#fatima-fellowship-2023-group" title="Permalink to this section">¶</a></h2>
+<p>I worked with Fatima Jahara and Mahsa Khoshnoodi, members of a Fatima Al-Fihri Fellowship group remotely from Bangladesh and Iran respectively. 
+Our project rescoped a few times based on surprising findings they made over the course of the investigation, until we landed on meta-evaluation of text-to-image faithfulness metrics.
+We produced the <a href="https://t2iscorescore.github.io">T2IScoreScore</a> meta-evaluation of faithfulness benchmarks and found that current evaluation practices are inadequate. This work was a spotlight paper at NeurIPS 2024.</p>
+<h3 id="where-are-they-now_1"><a class="toclink" href="#where-are-they-now_1">Where are they now?</a><a class="header-link" href="#where-are-they-now_1" title="Permalink to this section">¶</a></h3>
+<ul>
+<li><a href="https://github.com/Arenaa"><em>Mahsa Khoshnoodi</em></a> will be joining Georgetown University as a PhD student in 2025</li>
+<li><a href="https://fatimajahara.com/"><em>Fatima Jahara</em></a> is a PhD student at Rutgers University</li>
+</ul>
+<h1 id="1-on-1-mentorship"><a class="toclink" href="#1-on-1-mentorship">1-on-1 mentorship</a><a class="header-link" href="#1-on-1-mentorship" title="Permalink to this section">¶</a></h1>
+<p>In addition to mentorship groups, I have worked with many students on 1-1 projects, including:</p>
+<p><em>Avani Tanna</em> (UCSB MS 2023): as a part of her MS thesis project we trained a more robust voice conversion system for accent robustness which she presented at Interspeech 2023.</p>
+<p><em>Aditya Sharma</em> (UCSB MS student 2023-2024): after the ERSP program, I continued working with Aditya, and as a part of his MS thesis project we produced "LoCoVQA", a work where we demonstrated failure cases of VLMs in long-context reasoning under visual distractors which we presented at EMNLP 2024.</p>
+<p><em>Siddharth Yayavaram and Arnav Yayavaram</em> (BITS Pilani undergrads, 2024-2025): with primary mentor Simran Khanuja we produced the CAIRe tool, a method for performing cultural attribution of images which is currently under review.</p>
+
+</div>
+
+
+<footer style="margin-top:25pt; padding-top:10pt;">
+  <ul class="icons">
+    <li><a href="https://www.semanticscholar.org/author/Michael-Stephen-Saxon/48227633" ><img class="filtercolor" src="https://saxon.me/theme/img/ico/svg/semantic-scholar.svg"></a></li>
+    <li><a href="https://scholar.google.com/citations?user=pAlwjdgAAAAJ&hl=en" ><img class="filtercolor" src="https://saxon.me/theme/img/ico/svg/google-scholar.svg"></a></li>
+    <li><a href="https://www.researchgate.net/profile/Michael_Saxon"><img class="filtercolor" src="https://saxon.me/theme/img/ico/svg/researchgate.svg"></a></li>
+    <li><a href="mailto:saxon@ucsb.edu"><img class="filtercolor" src="https://saxon.me/theme/img/ico/svg/envelope.svg"></a></li>
+    <li><a href="https://github.com/michaelsaxon"><img class="filtercolor" src="https://saxon.me/theme/img/ico/svg/github-alt.svg"></a></li>
+    <li><a href="https://www.youtube.com/@mssaxonUCSB"><img class="filtercolor" src="https://saxon.me/theme/img/ico/svg/youtube.svg"></a></li>
+    <li><a href="https://www.linkedin.com/in/mssaxon/"><img class="filtercolor" src="https://saxon.me/theme/img/ico/svg/linkedin-in.svg"></a></li>
+    <li><a href="https://bsky.app/profile/saxon.me" ><img class="filtercolor" src="https://saxon.me/theme/img/ico/svg/cloud.svg"></a></li>
+    <li><a rel="me" href="https://sigmoid.social/@saxon"><img class="filtercolor" src="https://saxon.me/theme/img/ico/svg/mastodon.svg"></a></li>
+    <li><a href="https://twitter.com/m2saxon" ><img class="filtercolor" src="https://saxon.me/theme/img/ico/svg/twitter.svg"></a></li>
+      
+    </ul>
+    <div class="worldmap"><script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=tt&d=IuxqtNT-Q6MDtRyPajTC07_66TRmeCIPbVD4z2v4M_U&co=474747&cmn=547bfc'></script></div>
+
+    <div style="max-width: 800px;   margin-right: auto; margin-left: auto;">
+	    <p style="font-size:10pt; text-align: center">Jinja template scratchbuilt in framework-free HTML/CSS by me & Cursor. 
+        Powered by <a href="https://getpelican.com/">Pelican</a>.
+        <br>
+        Feel free to steal my source from <a href="https://github.com/michaelsaxon/michaelsaxon.github.io">GitHub</a>. 
+        Theme, templates, and plugins are CC-BY-SA.</p>
+      </p>
+    </div>
+
+  
+  <div style="max-width: 800px; margin-right: auto; margin-left: auto; text-align: center;">
+     <!-- <img src="https://web.badges.world/badges/operated/getfirefox.gif"/> -->
+     <div style="width: 90pt; height: 25pt; 
+     background-color: var(--background-color); font-size: 9pt; 
+       border: 1pt solid var(--text-body); margin-right: auto; margin-left: auto; 
+     color: var(--text-body) !important; font-family: 'Arial', sans-serif;
+     background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Mozilla_Firefox_logo_2004.svg/133px-Mozilla_Firefox_logo_2004.svg.png);
+     background-size: 27pt; background-repeat: no-repeat; padding-left:30pt; margin-bottom: 10pt;">
+     Looks best in <b><a href="https://www.mozilla.org/en-US/firefox/new/" style="color:#e27f2e;">Mozilla Firefox</a></b> on a <b style="color: #0060df;">real PC!</b>
+   </div> 
+ 
+  </div>
+</footer>
+
+
+</body>
+</html>
