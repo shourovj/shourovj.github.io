@@ -5,6 +5,9 @@ remove_footnote_section: true
 my_title: Ph.D. Candidate
 my_affiliation: University of California, Santa Barbara
 
+> [!NOTE]
+> **Some exciting news**: I will be joining the [*Tech Policy Lab*](https://techpolicylab.uw.edu/) at the **University of Washington** as a postdoctoral scholar in September!
+
 I have broad interests in generative AI, NLP, and multimodal systems. In particular, I'm interested in:
 
 1. Rigorous evaluation of **difficult-to-measure capabilities** in language models and generative image systems. ([COLM 2024](https://arxiv.org/abs/2407.16711)[^1], [NeurIPS 2024 Spotlight](https://arxiv.org/abs/2404.04251)[^2])
