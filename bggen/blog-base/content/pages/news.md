@@ -1,6 +1,12 @@
 Title: news
 save_as: 
 
+**5/8/2025** Interviewed in IEEE Spectrum about reasoning models; our ThoughtTerminator work was mentioned! [[article link]](https://spectrum.ieee.org/chain-of-thought-prompting)
+
+**4/17/2025** New paper! ThoughtTerminator: Benchmarking, Calibrating, and Mitigating Overthinking in Reasoning Models [[arXiv]](https://arxiv.org/abs/2504.13367)
+
+**3/29/2025** I will be joining the University of Washington for a postdoc position in September!
+
 **12/13/2024** Presented our work on meta-evaluation of text-to-image metrics at NeurIPS! [[paper]](https://openreview.net/forum?id=S4YRCLbUK1)
 
 **11/13/2024** Presented our work on long-context capabilities in VLMs at EMNLP! [[paper]](https://aclanthology.org/2024.findings-emnlp.312/)
