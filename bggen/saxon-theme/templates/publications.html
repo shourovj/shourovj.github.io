@@ -124,6 +124,9 @@
                     {% if pubdict['video_link'] %}
                         <a href="{{ pubdict['video_link'] }}" class="pub-badge video-badge">Presentation Video</a>
                     {% endif %}
+                    {% if pubdict['press_link'] %}
+                        <a href="{{ pubdict['press_link'] }}" class="pub-badge press-badge">Press Coverage</a>
+                    {% endif %}
                 </div>    
             
             {% if pubdict['abstract'] %}

@@ -131,7 +131,8 @@ def clean_bibtex(bibtex_str, entry_dict):
         'routing',
         'video_link',
         'github',
-        'huggingface'
+        'huggingface',
+        'press_link'
     ]
 
     # Split into lines for processing

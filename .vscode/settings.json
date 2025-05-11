@@ -1,0 +1,3 @@
+{
+    "terminal.integrated.shellArgs.osx": ["-i", "-c", "conda activate pelican && cd bggen/blog-base"],
+}
