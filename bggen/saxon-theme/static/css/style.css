@@ -268,7 +268,24 @@
   font-style: italic;
 }
 
+/* Triptych */
 
+@font-face {
+  font-family: "Triptych";
+  src: url('https://saxon.me/theme/font/Triptych-Roman.woff');
+}
+
+@font-face {
+  font-family: "Triptych";
+  src: url('https://saxon.me/theme/font/Triptych-Italick.woff')
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Triptych";
+  src: url('https://saxon.me/theme/font/Triptych-Grotesque.woff');
+  font-weight: 700;
+}
 
 
 
