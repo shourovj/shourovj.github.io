@@ -277,7 +277,7 @@
 
 @font-face {
   font-family: "Triptych";
-  src: url('https://saxon.me/theme/font/Triptych-Italick.woff')
+  src: url('https://saxon.me/theme/font/Triptych-Italick.woff');
   font-style: italic;
 }
 
@@ -286,8 +286,6 @@
   src: url('https://saxon.me/theme/font/Triptych-Grotesque.woff');
   font-weight: 700;
 }
-
-
 
 
 a {
