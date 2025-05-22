@@ -5,7 +5,10 @@ remove_footnote_section: true
 my_title: Ph.D. Candidate
 my_affiliation: University of California, Santa Barbara
 
-> [!NOTE]
+> [!WARNING]
+> My Ph.D. defense will be on **June 2nd at 1pm PDT.** If you are interested in watching online, [**[here] is a calendar invite**](https://calendar.google.com/calendar/u/0/event?eid=MDRvOHM0dmFqbm1tMHQ5bm82OGFnMTZ2MGMgNzlpc2xma3RpYWRha2VtdXJrNnBjNGZuNjhAZw).
+
+> [!TIP]
 > **Some exciting news**: I will be joining the [*Tech Policy Lab*](https://techpolicylab.uw.edu/) at the **University of Washington** as a postdoctoral scholar in September!
 
 I have broad interests in generative AI, NLP, and multimodal systems. In particular, I'm interested in:
