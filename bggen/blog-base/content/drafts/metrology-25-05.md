@@ -5,6 +5,7 @@ Tags: Evaluation, Research
 Authors: Michael Saxon
 Summary: Reading list of papers, articles, and blogs about evaluation for May 2025.
 Image: images/grfp.jpg
+Status: draft
 
 > [!NOTE]
 > *Metrology Report is a new series of short reading lists on papers, articles, blogs and other resources dealing with AI evaluation. It's named from our COLM 2024 paper, [Model Metrology](), which discusses how AI evaluation itself may be organized as a mature field.* 
