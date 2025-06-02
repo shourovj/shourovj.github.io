@@ -2,11 +2,8 @@ Title: About
 save_as: index.html
 Template: about
 remove_footnote_section: true
-my_title: Ph.D. Candidate
+my_title: Ph.D. graduate
 my_affiliation: University of California, Santa Barbara
-
-> [!WARNING]
-> My Ph.D. defense will be on **June 2nd at 1pm PDT.** If you are interested in watching online, [**[here] is a calendar invite**](https://calendar.google.com/calendar/u/0/event?eid=MDRvOHM0dmFqbm1tMHQ5bm82OGFnMTZ2MGMgNzlpc2xma3RpYWRha2VtdXJrNnBjNGZuNjhAZw).
 
 > [!TIP]
 > **Some exciting news**: I will be joining the [*Tech Policy Lab*](https://techpolicylab.uw.edu/) at the **University of Washington** as a postdoctoral scholar in September!
