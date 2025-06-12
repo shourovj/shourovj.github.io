@@ -52,9 +52,10 @@ However, James Clerk Maxwell was one of Hopkins's students.
 
 So as much as my Electrical Engineer's heart would love to be an academic great great ... grandchild of Maxwell, I am instead his academic first cousin, nine times removed.
 
-## Famous YouTuber cameo
+## My Bacon number is 4
 
-That's a story for another time.
+Michael Saxon -(Camp Operetta)-> JaidenAnimations -(100 Youtubers)-> Mr. Beast -(Kung Fu Panda 4)-> Dustin Hoffman -(Sleepers)-> Kevin Bacon
+Alternatively, JaidenAnimations -(Youtube Rewind)-> Will Smith -(Independence Day)-> Jeff Goldblum -(Tour de Pharmacy)-> Kevin Bacon
 
 ## Originating a mildly successful meme in college
 
