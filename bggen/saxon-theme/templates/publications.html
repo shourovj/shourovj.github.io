@@ -51,6 +51,11 @@
         </div>
       </div>
     </div>
+    
+    <div id="pub-count-display" class="pub-count-display">
+        Showing <span id="visible-count">0</span> out of <span id="total-count">0</span> references
+    </div>
+    
     {# Main Publications Section #}
     {% set ns = namespace(current_year=None) %}
     {% for pubdict in publications %}
@@ -268,6 +273,9 @@ function updatePubFilters() {
     const showOther = document.getElementById('filter-other').checked;
 
     const pubs = document.querySelectorAll('.publication');
+    let visibleCount = 0;
+    const totalCount = pubs.length;
+    
     pubs.forEach(pub => {
         const isFirst = pub.getAttribute('data-first-author') === '1';
         const venue = pub.getAttribute('data-venue');
@@ -291,8 +299,15 @@ function updatePubFilters() {
             }
         }
 
+        if (show) {
+            visibleCount++;
+        }
         pub.style.display = show ? '' : 'none';
     });
+
+    // Update the count display
+    document.getElementById('visible-count').textContent = visibleCount;
+    document.getElementById('total-count').textContent = totalCount;
 
     // Hide year headers if all pubs in that year are hidden (main pubs)
     document.querySelectorAll('.pub-year-group:not(.workshop-group)').forEach(group => {
@@ -356,6 +371,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 .additional-info {
     font-style: italic;
+}
+
+.pub-count-display {
+    text-align: right;
+    margin: 1em 0;
+    font-size: 0.9em;
+    color: #666;
+    font-style: italic;
+}
+
+.pub-count-display span {
+    font-weight: bold;
+    color: #333;
 }
 </style>
 {% endblock %}
