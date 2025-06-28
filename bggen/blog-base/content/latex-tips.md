@@ -592,6 +592,8 @@ Using all of the above components we've discussed, including the `booktabs` line
 }
 \end{table*}
 
+
+{% raw %}
 ```
 
 
@@ -643,6 +645,7 @@ https://github.com/iamhyc/Overleaf-Workshop
 
 Install instructions -->
 
+{% endraw %}
 # 4. The Dark Arts (Advanced)
 
 > [!WARNING]
@@ -655,6 +658,7 @@ I wrote a setup that gives me a flag to swap between that sickening abomination 
 
 First, you need both sty files in your project. For me it was `eccv.sty` and `neurips_2024.sty`.
 
+{% raw %}
 ```latex
 % set this flag to 0 to use ECCV format, 1 to use neurips format
 \def\useformat{1}
@@ -689,6 +693,7 @@ First, you need both sty files in your project. For me it was `eccv.sty` and `ne
     \usepackage{adjustbox}
 \fi
 ```
+{% endraw %}
 
 Then throughout the document for select other commands that I wanted to only use with one I would have to add that flag into them. `\useformat0` or `1` would switch between either ECCV or NeurIPS.
 
@@ -702,6 +707,7 @@ First, you may want to do this on a preprint-only work.
 Second, there are completely legitimate reasons to use this in archival manuscripts.
 For example, if you are using a graphic which has baked-in whitespace, you may want to compensate, and make the non-empty parts of the figure take up the pagewidth, rather than including that wasted whitespace.
 
+{% raw %}
 ```latex
 \usepackage{graphicx}
 \usepackage{adjustbox}
@@ -723,6 +729,7 @@ For example, if you are using a graphic which has baked-in whitespace, you may w
 ...
 \end{figure}
 ```
+{% endraw %}
 
 Just wrap the `\includegraphics` command inside of `\bigln`, and pass the desired image size (as a multiple of page width) as the first argument.
 
@@ -741,6 +748,7 @@ This command does a few things:
 - Manually implements a hacked Figure macro with manually-written "Figure 1:", manual font size setting, etc.
 - Manually sets the figure count variable to not duplicate "Figure 1"
 
+{% raw %}
 ```latex
 %%%%%%%%% in preamble %%%%%%%%%
 
@@ -757,9 +765,11 @@ This command does a few things:
   \makebox[\textwidth]{\adjustimg\includegraphics[#1]{#2}}%
 }
 ```
+{% endraw %}
 
 Once we have defined our figure commands in the preamble and imported relevant packages, we insert the figure at the top of our document, before `\begin{abstract}` is written.
 
+{% raw %}
 ```latex
 %%%%%%%%% in document %%%%%%%%%
 
@@ -787,9 +797,10 @@ Once we have defined our figure commands in the preamble and imported relevant p
 
 %%% start abstract %%%
 ```
-
+{% endraw %}
 Because we didn't produce this inside of the `figure` macro, using `\ref{}`, `\cref{}`, and `\autorref` won't work! Instead, we have to use this hack:
 
+{% raw %}
 ```latex
 % replacing ref
 ...in Figure \hyperref[fig:teaser]{1}...
@@ -799,3 +810,4 @@ Because we didn't produce this inside of the `figure` macro, using `\ref{}`, `\c
 
 etc
 ```
+{% endraw %}
