@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html> 
+<html>
 <head>
     <script>
       // Check and apply theme immediately
@@ -53,6 +53,52 @@
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
           crossorigin="anonymous">
+
+    <style>
+        /* Basic styling for collapsible sections */
+        .collapsible {
+            cursor: pointer;
+            padding: 10px;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.17em; /* Matches h4 font size */
+            margin-block-start: 1.33em; /* Matches h4 margin */
+            margin-block-end: 1.33em; /* Matches h4 margin */
+            font-weight: bold; /* Matches h4 font weight */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .collapsible::after {
+            content: '\022B2'; /* Unicode character for 'play' arrow (right-pointing triangle) */
+            font-size: 1.2em;
+            color: currentColor;
+            float: right;
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .collapsible[aria-expanded="true"]::after {
+            transform: rotate(90deg); /* Rotate arrow when expanded */
+        }
+
+        .collapsible-content {
+            padding: 0 18px;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            max-height: 0; /* Hidden by default */
+            opacity: 0;
+        }
+
+        .collapsible-content[aria-hidden="false"] {
+            max-height: 1000px; /* A large enough value to show content */
+            opacity: 1;
+            padding-bottom: 20px; /* Add some padding when open */
+        }
+    </style>
 </head>
 <body>
 
@@ -126,9 +172,9 @@
 <h3>Experience</h3>
 
 <!-- This h4 is the trigger for the collapsible section -->
-<h4 class="collapsible" aria-expanded="true" aria-controls="academic-content">Academic & Professional</h4>
+<h4 class="collapsible" aria-expanded="false" aria-controls="academic-content">Academic & Professional</h4>
 
-<div id="academic-content" class="collapsible-content" aria-hidden="false">
+<div id="academic-content" class="collapsible-content" aria-hidden="true">
 
 <div class="experience-block" style="--experience-color: var(--kanagawa-dark-blue);">
   <div class="experience-content">
@@ -158,8 +204,8 @@
 </div>
 
 <!-- === ADD YOUR LATEST NEWS HERE === -->
-<h3>News</h3>
-<div id="news-content" class="collapsible-content" aria-hidden="false">
+<h4 class="collapsible" aria-expanded="false" aria-controls="news-content">Latest News</h4>
+<div id="news-content" class="collapsible-content" aria-hidden="true">
   <div class="news-section">
       <div class="news-box">
           <p><strong>June 2025:</strong> Joined as Lecturer at the Department of CSE, BRAC University.</p>
@@ -191,6 +237,51 @@
       </p>
     </div>
 </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const collapsibles = document.querySelectorAll('.collapsible');
+
+        collapsibles.forEach(collapsible => {
+            // Set initial state based on aria-expanded
+            const content = document.getElementById(collapsible.getAttribute('aria-controls'));
+            if (collapsible.getAttribute('aria-expanded') === 'true') {
+                content.setAttribute('aria-hidden', 'false');
+                content.style.maxHeight = content.scrollHeight + "px"; // Set to actual height
+                content.style.opacity = 1;
+            } else {
+                content.setAttribute('aria-hidden', 'true');
+                content.style.maxHeight = 0;
+                content.style.opacity = 0;
+            }
+
+            collapsible.addEventListener('click', function() {
+                const contentId = this.getAttribute('aria-controls');
+                const content = document.getElementById(contentId);
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+                this.setAttribute('aria-expanded', !isExpanded);
+                content.setAttribute('aria-hidden', isExpanded);
+
+                if (isExpanded) {
+                    content.style.maxHeight = 0;
+                    content.style.opacity = 0;
+                } else {
+                    // Temporarily set height to auto to get scrollHeight, then transition
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    content.style.opacity = 1;
+                    // In case content changes dynamically, recalculate height after transition
+                    content.addEventListener('transitionend', function handler() {
+                        if (content.getAttribute('aria-hidden') === 'false') {
+                            content.style.maxHeight = 'fit-content'; // Or a very large fixed value
+                        }
+                        content.removeEventListener('transitionend', handler);
+                    });
+                }
+            });
+        });
+    });
+</script>
 
 </body>
 </html>
