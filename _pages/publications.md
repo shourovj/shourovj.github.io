@@ -15,6 +15,6 @@ nav_order: 2
 
 <div class="publications">
 
-{% bibliography %}
+<!-- Bibliography disabled for GitHub Pages build compatibility -->
 
 </div>
