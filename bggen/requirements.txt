@@ -1,3 +1,0 @@
-"pelican[markdown]"
-nodejs
-pelican-katex

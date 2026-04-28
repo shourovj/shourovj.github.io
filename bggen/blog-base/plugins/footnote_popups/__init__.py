@@ -1,1 +1,0 @@
-from .footnote_popups import register 

@@ -1,0 +1,9 @@
+github_users:
+  - shourovj
+
+repo_description_lines_max: 2
+
+github_repos:
+  - shourovj/Healthcare_RxGPT
+  - shourovj/Multimodal_VLM_TestTimeTraining
+  - shourovj/Autonomous-Driving-VLM-Reasoning

@@ -1,0 +1,161 @@
+cv:
+  name: Shourov Joarder
+  label: Adjunct Lecturer and Machine Learning Engineer
+  email: joardershourov60@gmail.com
+  location: Bangladesh
+  image: assets/img/prof_pic.jpg
+  summary: Researcher and practitioner focused on multimodal AI, fairness and safety of vision-language models, medical imaging, and autonomous systems.
+
+  social_networks:
+    - network: GitHub
+      username: shourovj
+    - network: LinkedIn
+      username: shourovj
+    - network: X
+      username: shourovjo
+
+  sections:
+    Education:
+      - institution: Bangladesh University of Engineering and Technology (BUET)
+        location: Bangladesh
+        area: Electrical and Electronic Engineering
+        studyType: B.Sc.
+        start_date: 2020-02
+        end_date: 2025-03
+        score: "CGPA: 3.88/4.00 (2nd in CSP major)"
+        highlights:
+          - Major: Communication and Signal Processing
+          - Relevant courses include AI/ML, Digital Image Processing, Linear Algebra, Probability and Statistics, DSP, and Control Systems
+
+    Experience:
+      - company: BRAC University
+        position: Adjunct Lecturer, Department of CSE
+        location: Bangladesh
+        start_date: 2025-06
+        end_date: present
+        highlights:
+          - Teaching Image Processing (CSE428)
+          - Teaching Digital Electronics (CSE350)
+
+      - company: ACI Ltd.
+        position: Machine Learning Engineer (Part-time)
+        location: Bangladesh
+        start_date: 2025-04
+        end_date: present
+        highlights:
+          - Building Medical-ExpertVLM with explainability and personalized assistance
+          - Developing OCR and annotation pipeline using Qwen2.5-VL for prescriptions and cheques
+          - Building AI-assisted systems for drug discovery and development
+
+      - company: BUET Undergraduate Thesis
+        position: Undergraduate Thesis Student
+        location: Bangladesh
+        start_date: 2024-03
+        end_date: 2025-03
+        summary: Multi-Stage Unsupervised Sequential Deep Learning Method for Ultrasound Strain Elastography
+        highlights:
+          - Proposed MUSSE-Net with contextual encoder, tricross attention, and cross-attentive sequential decoder
+          - Improved SNR, CNR, and NRMSE over strong unsupervised baselines
+
+    Awards:
+      - title: University Merit Scholarship (3 times)
+        date: 2020
+        awarder: BUET
+        summary: Merit-based scholarship for academic excellence.
+
+      - title: University Dean's List Scholarship (2 times)
+        date: 2021
+        awarder: BUET
+        summary: Dean's list recognition for top academic performance.
+
+      - title: University Stipend (2 times)
+        date: 2021
+        awarder: BUET
+        summary: Competitive stipend for academic standing.
+
+      - title: 1st Runner-Up, Undergraduate Project Idea Contest
+        date: 2022
+        awarder: ICCIT 2022
+        summary: 25th ICCIT project idea competition in Bangladesh.
+
+      - title: Best Notebook Award, Bengali ASR Competition
+        date: 2022
+        awarder: DL Sprint - BUET CSE Fest
+        summary: Top notebook award in Bengali ASR challenge.
+
+    Publications:
+      - title: Multi-Stage Residual-Aware Unsupervised Deep Learning Framework for Consistent Ultrasound Strain Elastography
+        authors:
+          - Shourov Joader
+          - T. Talukder
+          - K. Hasan
+        publisher: Preprint
+        releaseDate: 2026
+        summary: Ready for submission. Multi-stage unsupervised spatio-temporal framework for deep learning based ultrasound strain imaging.
+
+      - title: Multilingual Voice-Controlled Smart Wheelchair with Advanced Features
+        authors:
+          - S. Hasan
+          - Shourov Joader
+          - A. Nayem
+          - H. Hasan
+          - S. A. Fattah
+        publisher: IEEE ECCE
+        releaseDate: 2025
+        url: https://doi.org/10.1109/ECCE64574.2025.11013785
+        summary: Full-scale wheelchair with multilingual voice control, collision detection, and avoidance.
+
+      - title: Skin Cancer Semantic Segmentation
+        authors:
+          - A. Dhar
+          - D. Sikder
+          - A. Shovon
+          - Shourov Joarder
+        publisher: IEEE ECCE
+        releaseDate: 2025
+        url: https://doi.org/10.1109/ECCE64574.2025.11013785
+        summary: Stacked hourglass with TransUNet for skin lesion semantic segmentation.
+
+    Projects:
+      - name: Coding Google's PaliGemma VLM from Scratch
+        summary: Implemented SigLIP vision encoder, KV-cache, and Gemma language stack with multimodal projection.
+        highlights:
+          - End-to-end implementation
+          - Multimodal projection design
+
+      - name: Autonomous Inventory Robot
+        summary: Voice-controlled robot integrating speech recognition, object detection, robotic manipulation, and line-following navigation.
+        highlights:
+          - Google Speech API integration
+          - YOLOv5s object detection
+
+      - name: Voice Controlled Wheelchair for Disabled Patients
+        summary: Voice recognition based wheelchair supporting multilingual commands, collision avoidance, and emergency assistance.
+        highlights:
+          - Multi-accent command processing
+          - Safety-focused control pipeline
+
+    Skills:
+      - name: ML and DL Frameworks
+        level: Advanced
+        icon: fa-solid fa-hashtag
+        keywords: PyTorch, TensorFlow, Transformers, vLLM, LangChain
+
+      - name: Programming
+        level: Advanced
+        icon: fa-solid fa-code
+        keywords: Python, MATLAB, C/C++, Linux, Verilog, Assembly, LaTeX, Git
+
+      - name: Tools and Systems
+        level: Advanced
+        icon: fa-solid fa-gear
+        keywords: Raspberry Pi, Arduino, Proteus, PSpice, Quartus, Keil, FastAPI, Flask, Gradio
+
+    Languages:
+      - name: English
+        summary: Professional proficiency
+
+    Interests:
+      - name: Research Interests
+        icon: fa-solid fa-tag
+        keywords: Multimodal LLMs, Reinforcement Learning, Fairness and Safety of VLMs, Autonomous Vehicles

@@ -1,1 +1,0 @@
-from .infobox import register 
