@@ -40,7 +40,9 @@
       margin-bottom: 1rem;
 
       .preview {
-        display: inline-block;
+        display: block;
+        width: 100%;
+        max-width: 260px;
       }
 
       .abbr {
