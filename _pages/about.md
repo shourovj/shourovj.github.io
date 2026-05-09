@@ -7,7 +7,7 @@ subtitle: Adjunct Lecturer, CSE at BRAC University | Machine Learning Engineer a
 profile:
   align: right
   image: prof_pic.jpg
-  image_circular: true # crops the image to make it circular
+  image_circular: false # use a rounded rectangle instead of a circle
   more_info: >
     <p>Bangladesh</p>
     <p>Reinforcement Learning, VLMs, Mulimodal Learning</p>
