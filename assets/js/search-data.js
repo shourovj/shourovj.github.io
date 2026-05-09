@@ -30,28 +30,28 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/experience/";
           },
-        },{id: "nav-awards",
-          title: "Awards",
-          description: "Awards, scholarships, competitions, and recognitions.",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/awards/";
-          },
-        },{id: "nav-cv",
-          title: "CV",
-          description: "Download my full curriculum vitae as a PDF.",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/cv/";
-          },
-        },{id: "nav-blog",
-          title: "Blog",
-          description: "",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/blog/";
-          },
-        },{id: "dropdown-repositories",
+        },{id: "dropdown-awards",
+              title: "Awards",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/awards/";
+              },
+            },{id: "dropdown-cv",
+              title: "CV",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/cv/";
+              },
+            },{id: "dropdown-blog",
+              title: "Blog",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/blog/";
+              },
+            },{id: "dropdown-repositories",
               title: "Repositories",
               description: "",
               section: "Dropdown",
