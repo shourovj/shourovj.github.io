@@ -3,8 +3,7 @@ layout: page
 permalink: /awards/
 title: Awards
 description: Awards, scholarships, competitions, and recognitions.
-nav: true
-nav_order: 5
+nav: false
 toc:
   sidebar: left
 ---
