@@ -159,7 +159,7 @@ ninja.data = [{
         title: 'CV',
         section: 'Socials',
         handler: () => {
-          window.open("/assets/pdf/CV_Shourov_Joarder.pdf", "_blank");
+          window.open("/assets/pdf/CV_Shourov_Joarder.pdf?v=20260610", "_blank");
         },
       },{
       id: 'light-theme',
