@@ -78,29 +78,19 @@ ul.task-list input[type="checkbox"] {
   margin-right: 1rem;
 }
 
-.about-hero {
-  margin-top: 0.5rem;
-}
+.about-social-top {
+  margin-top: 0.9rem;
+  margin-bottom: 1.4rem;
+  text-align: left;
 
-.about-hero-profile {
-  display: flex;
-  justify-content: flex-end;
-}
+  .contact-icons {
+    font-size: 2.2rem;
+  }
 
-.about-hero .profile {
-  margin-top: 0;
-}
-
-.about-social {
-  margin-top: 1.5rem;
-}
-
-.about-social .contact-icons {
-  font-size: 2.6rem;
-}
-
-.about-social .contact-note {
-  font-size: 0.8rem;
+  .contact-note {
+    margin-top: 0.35rem;
+    font-size: 0.8rem;
+  }
 }
 
 .about-institutions {
@@ -155,12 +145,16 @@ ul.task-list input[type="checkbox"] {
 }
 
 @media (max-width: 991px) {
-  .about-hero-profile {
-    justify-content: flex-start;
-  }
-
   .institution-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-social-top {
+    .contact-icons {
+      font-size: 1.9rem;
+    }
   }
 }
 
