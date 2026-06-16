@@ -78,6 +78,92 @@ ul.task-list input[type="checkbox"] {
   margin-right: 1rem;
 }
 
+.about-hero {
+  margin-top: 0.5rem;
+}
+
+.about-hero-profile {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.about-hero .profile {
+  margin-top: 0;
+}
+
+.about-social {
+  margin-top: 1.5rem;
+}
+
+.about-social .contact-icons {
+  font-size: 2.6rem;
+}
+
+.about-social .contact-note {
+  font-size: 0.8rem;
+}
+
+.about-institutions {
+  margin-top: 2.5rem;
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+}
+
+.institution-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.institution-card {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 1rem;
+  background: var(--global-card-bg-color);
+}
+
+.institution-mark {
+  flex: 0 0 3rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--global-theme-color);
+  background: color-mix(in srgb, var(--global-theme-color) 12%, transparent);
+}
+
+.institution-name {
+  font-weight: 700;
+}
+
+.institution-role,
+.institution-period {
+  font-size: 0.9rem;
+}
+
+.institution-period {
+  opacity: 0.75;
+}
+
+@media (max-width: 991px) {
+  .about-hero-profile {
+    justify-content: flex-start;
+  }
+
+  .institution-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (min-width: 576px) {
   .profile {
     width: 30%;

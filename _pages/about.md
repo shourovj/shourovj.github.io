@@ -12,6 +12,20 @@ profile:
     <p>Bangladesh</p>
     <p>Reinforcement Learning, VLMs, Mulimodal Learning</p>
 
+institutions:
+  - name: BRAC University
+    role: Adjunct Lecturer, CSE
+    period: 2025 - Present
+    initials: BU
+  - name: ACI Ltd.
+    role: Machine Learning Engineer
+    period: 2025 - Present
+    initials: ACI
+  - name: BUET
+    role: B.Sc. in EEE
+    period: 2020 - 2025
+    initials: BUET
+
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 
