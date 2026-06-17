@@ -53,7 +53,13 @@ layout: default
         <div class="institution-grid">
           {% for institution in page.institutions %}
             <div class="institution-card">
-              <div class="institution-mark">{{ institution.initials }}</div>
+              <div class="institution-mark">
+                {% if institution.image %}
+                  <img src="{{ institution.image | relative_url }}" alt="{{ institution.name }}" loading="lazy">
+                {% else %}
+                  {{ institution.initials }}
+                {% endif %}
+              </div>
               <div class="institution-body">
                 <div class="institution-name">{{ institution.name }}</div>
                 <div class="institution-role">{{ institution.role }}</div>

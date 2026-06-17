@@ -17,14 +17,17 @@ institutions:
     role: Adjunct Lecturer, CSE
     period: 2025 - Present
     initials: BU
+    image: assets/img/institutions/bracu.png
   - name: ACI Ltd.
     role: Machine Learning Engineer
     period: 2025 - Present
     initials: ACI
+    image: assets/img/institutions/aci.png
   - name: BUET
     role: B.Sc. in EEE
     period: 2020 - 2025
     initials: BUET
+    image: assets/img/institutions/buet.png
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
