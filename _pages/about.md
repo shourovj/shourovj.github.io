@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: Adjunct Lecturer, CSE at BRAC University | Machine Learning Engineer at ACI Ltd | Bangladesh
+subtitle: Incoming PhD Student, UT Austin
 
 profile:
   align: right
@@ -43,20 +43,18 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-With the recent advancements in multimodal AI, I am passionate about building real-world systems that are not only accurate, but also reliable, fair, and explainable.
+I am an incoming ECE Ph.D. student at the University of Texas at Austin. I received my Bachelor's degree from Bangladesh University of Engineering and Technology (BUET), where I worked with Prof. Kamrul Hasan. I developed a novel multi-stage unsupervised deep learning framework for optical-flow estimation. 
 
-My work focuses on RL, Reasoning in multimodal foundation models, especially in real-time systems. I have a background in Electrical and Electronic Engineering and practical experience building and deploying computer vision and LLM and VLM-based systems.
+My current research focuses on unsupervised RL, Reasoning in multimodal foundation models, and mulit-agentic RL. I am also exploring multimodal semantic understanding of World Models.
 
-## Interests
-
-- Multimodal AI and Vision-Language Models
+<!-- - Multimodal AI and Vision-Language Models
 - Reinforcement Learning
 - World Models
 - Autonomous Driving with Reasoning-Centric MLLM Pipelines
-- Test-time adaptation and robust inference
+- Test-time adaptation and robust inference -->
 
-## Current Focus
+<!-- ## Current Focus
 
 - Unsupervised reinforcement learning for LLM reasoning
 - VLM debiasing and explainability at inference time
-- Efficient autonomous driving reasoning with LoRA distillation
+- Efficient autonomous driving reasoning with LoRA distillation -->
