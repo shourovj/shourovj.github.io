@@ -95,26 +95,53 @@ ul.task-list input[type="checkbox"] {
 
 .about-social-card {
   margin-top: 2rem;
-  padding: 1.25rem 1.5rem;
+  padding: 1rem 1.25rem;
   border: 1px solid var(--global-divider-color);
   border-radius: 0.45rem;
   background: var(--global-card-bg-color);
 
   .contact-icons {
-    font-size: 2.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem;
 
     a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.35rem 0.45rem;
+      border-radius: 0.3rem;
+      line-height: 1;
+      transition: background-color 0.15s ease-in-out;
+
+      i,
+      i::before {
+        font-size: 1.3rem;
+        color: var(--global-text-color);
+        transition: color 0.15s ease-in-out;
+      }
+
       img,
       svg {
-        width: 1.8rem;
-        height: 1.8rem;
-        vertical-align: middle;
+        width: 1.3rem;
+        height: 1.3rem;
+      }
+
+      &:hover {
+        background-color: color-mix(in srgb, var(--global-theme-color) 10%, transparent);
+        text-decoration: none;
+
+        i,
+        i::before {
+          color: var(--global-theme-color);
+        }
       }
     }
   }
 
   .contact-note {
-    margin-top: 0.5rem;
+    margin-top: 0.4rem;
     font-size: 0.8rem;
   }
 }
@@ -192,10 +219,23 @@ ul.task-list input[type="checkbox"] {
   }
 
   .about-social-card {
-    padding: 1rem;
+    padding: 0.75rem 1rem;
 
     .contact-icons {
-      font-size: 1.7rem;
+      a {
+        padding: 0.3rem 0.35rem;
+
+        i,
+        i::before {
+          font-size: 1.15rem;
+        }
+
+        img,
+        svg {
+          width: 1.15rem;
+          height: 1.15rem;
+        }
+      }
     }
   }
 }
