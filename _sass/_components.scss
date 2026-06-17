@@ -93,11 +93,16 @@ ul.task-list input[type="checkbox"] {
   }
 }
 
+.about-hero {
+  background: var(--global-subtle-bg-color);
+  margin: 0 -1.5rem;
+  padding: 2rem 1.5rem 0.5rem;
+}
+
 .about-social-card {
   margin-top: 2rem;
   padding: 1.5rem 1.25rem;
   border-radius: 0.45rem;
-  background: var(--global-subtle-bg-color);
 
   .contact-icons {
     display: flex;
