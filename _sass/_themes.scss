@@ -46,6 +46,7 @@
   --navbar-socials-accent: #d63384;
   --navbar-socials-accent-bg: rgba(214, 51, 132, 0.08);
   --navbar-socials-accent-shadow: rgba(214, 51, 132, 0.15);
+  --global-subtle-bg-color: #f7f7f8;
 
   #light-toggle-system {
     display: inline-block;
@@ -105,6 +106,8 @@ html[data-theme="dark"] {
   --global-back-to-top-text-color: #{v.$black-color};
   --global-newsletter-bg-color: #{v.$grey-color-light};
   --global-newsletter-text-color: #{v.$grey-color-dark};
+
+  --global-subtle-bg-color: #2a2a2e;
 
   --global-tip-block: #42b983;
   --global-tip-block-bg: #215d42;

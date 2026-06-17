@@ -95,6 +95,9 @@ ul.task-list input[type="checkbox"] {
 
 .about-social-card {
   margin-top: 2rem;
+  padding: 1.5rem 1.25rem;
+  border-radius: 0.45rem;
+  background: var(--global-subtle-bg-color);
 
   .contact-icons {
     display: flex;
