@@ -93,6 +93,32 @@ ul.task-list input[type="checkbox"] {
   }
 }
 
+.about-social-card {
+  margin-top: 2rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 0.45rem;
+  background: var(--global-card-bg-color);
+
+  .contact-icons {
+    font-size: 2.2rem;
+
+    a {
+      img,
+      svg {
+        width: 1.8rem;
+        height: 1.8rem;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .contact-note {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+
 .about-institutions {
   margin-top: 2.5rem;
 
@@ -154,6 +180,14 @@ ul.task-list input[type="checkbox"] {
   .about-social-top {
     .contact-icons {
       font-size: 1.9rem;
+    }
+  }
+
+  .about-social-card {
+    padding: 1rem;
+
+    .contact-icons {
+      font-size: 1.7rem;
     }
   }
 }
