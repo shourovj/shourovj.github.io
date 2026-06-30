@@ -152,66 +152,30 @@ ul.task-list input[type="checkbox"] {
 
 .about-institutions {
   margin-top: 2.5rem;
-
-  h2 {
-    margin-bottom: 1rem;
-  }
+  margin-bottom: 2.5rem;
 }
 
-.institution-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.institution-card {
+.institution-logos {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 0.9rem;
-  padding: 1rem 1.1rem;
-  border: 1px solid var(--global-divider-color);
-  border-radius: 1rem;
-  background: var(--global-card-bg-color);
+  gap: 2.5rem;
 }
 
-.institution-mark {
-  flex: 0 0 3rem;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 0.85rem;
-  color: var(--global-theme-color);
-  background: color-mix(in srgb, var(--global-theme-color) 12%, transparent);
-  overflow: hidden;
+.institution-logo {
+  height: 3.5rem;
+  width: auto;
+  object-fit: contain;
+}
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 999px;
+@media (max-width: 576px) {
+  .institution-logos {
+    gap: 1.5rem;
+    justify-content: center;
   }
-}
 
-.institution-name {
-  font-weight: 700;
-}
-
-.institution-role,
-.institution-period {
-  font-size: 0.9rem;
-}
-
-.institution-period {
-  opacity: 0.75;
-}
-
-@media (max-width: 991px) {
-  .institution-grid {
-    grid-template-columns: 1fr;
+  .institution-logo {
+    height: 2.75rem;
   }
 }
 

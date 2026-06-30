@@ -43,7 +43,7 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am an incoming ECE Ph.D. student at the University of Texas at Austin. I received my Bachelor's degree from Bangladesh University of Engineering and Technology (BUET), where I worked with Prof. Kamrul Hasan. I developed a novel multi-stage unsupervised deep learning framework for optical-flow estimation. 
+I am an incoming ECE Ph.D. student at the University of Texas at Austin. I received my Bachelor's degree from Bangladesh University of Engineering and Technology (BUET), where I worked with Prof. Kamrul Hasan. In my thesis, I developed a novel multi-stage unsupervised deep learning framework for optical-flow estimation. 
 
 My current research focuses on unsupervised RL, Reasoning in multimodal foundation models, and mulit-agentic RL. I am also exploring multimodal semantic understanding of World Models.
 

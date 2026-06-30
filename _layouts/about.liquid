@@ -53,23 +53,17 @@ layout: default
   <article>
     {% if page.institutions %}
       <section class="about-institutions">
-        <h2></h2>
-        <div class="institution-grid">
+        <div class="institution-logos">
           {% for institution in page.institutions %}
-            <div class="institution-card">
-              <div class="institution-mark">
-                {% if institution.image %}
-                  <img src="{{ institution.image | relative_url }}" alt="{{ institution.name }}" loading="lazy">
-                {% else %}
-                  {{ institution.initials }}
-                {% endif %}
-              </div>
-              <div class="institution-body">
-                <div class="institution-name">{{ institution.name }}</div>
-                <div class="institution-role">{{ institution.role }}</div>
-                <div class="institution-period">{{ institution.period }}</div>
-              </div>
-            </div>
+            {% if institution.image %}
+              <img
+                class="institution-logo"
+                src="{{ institution.image | relative_url }}"
+                alt="{{ institution.name }}"
+                title="{{ institution.name }}"
+                loading="lazy"
+              >
+            {% endif %}
           {% endfor %}
         </div>
       </section>
