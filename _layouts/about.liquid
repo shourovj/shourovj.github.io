@@ -55,15 +55,19 @@ layout: default
       <section class="about-institutions">
         <div class="institution-logos">
           {% for institution in page.institutions %}
-            {% if institution.image %}
-              <img
-                class="institution-logo"
-                src="{{ institution.image | relative_url }}"
-                alt="{{ institution.name }}"
-                title="{{ institution.name }}"
-                loading="lazy"
-              >
-            {% endif %}
+            <div class="institution-item">
+              {% if institution.image %}
+                <img
+                  class="institution-logo"
+                  src="{{ institution.image | relative_url }}"
+                  alt="{{ institution.name }}"
+                  loading="lazy"
+                >
+              {% endif %}
+              <div class="institution-name">{{ institution.name }}</div>
+              <div class="institution-role">{{ institution.role }}</div>
+              <div class="institution-period">{{ institution.period }}</div>
+            </div>
           {% endfor %}
         </div>
       </section>
@@ -71,7 +75,7 @@ layout: default
 
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
-      <h2>
+      <h2 class="about-section-title">
         <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
       </h2>
       {% include news.liquid limit=true %}
@@ -79,7 +83,7 @@ layout: default
 
     <!-- Latest posts -->
     {% if page.latest_posts and page.latest_posts.enabled %}
-      <h2>
+      <h2 class="about-section-title">
         <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
       </h2>
       {% include latest_posts.liquid %}
@@ -87,7 +91,7 @@ layout: default
 
     <!-- Selected papers -->
     {% if page.selected_papers %}
-      <h2>
+      <h2 class="about-section-title">
         <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
       </h2>
       {% include selected_papers.liquid %}
