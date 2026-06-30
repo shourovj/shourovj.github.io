@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: Incoming PhD Student, UT Austin
+subtitle: Incoming PhD Student @ UT Austin
 
 profile:
   align: right
