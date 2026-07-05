@@ -65,7 +65,18 @@ ninja.data = [{
               handler: () => {
                 window.location.href = "/news/";
               },
-            },{id: "post-building-medical-expertvlm-systems",
+            },{id: "post-zotero-tab-groups-edge-style-tab-organization-for-zotero",
+        
+          title: "Zotero Tab Groups - Edge-style Tab Organization for Zotero",
+        
+        description: "A Zotero plugin that adds grouped tab options, similar to Microsoft Edge&#39;s tab groups.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/zotero-tab-groups/";
+          
+        },
+      },{id: "post-building-medical-expertvlm-systems",
         
           title: "Building Medical-ExpertVLM Systems",
         
