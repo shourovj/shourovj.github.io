@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Zotero Tab Groups - Edge-style Tab Organization for Zotero
-date: 2026-07-05 10:00:00-0400
+date: 2026-07-05 00:00:00-0400
 description: A Zotero plugin that adds grouped tab options, similar to Microsoft Edge's tab groups.
 tags: zotero productivity plugins
 categories: tools
