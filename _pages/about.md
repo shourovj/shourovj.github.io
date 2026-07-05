@@ -13,11 +13,11 @@ profile:
     <p>Reinforcement Learning, VLMs, Mulimodal Learning</p>
 
 institutions:
-  - name: UT Austin
-    role: PhD Student, ECE
-    period: 2026 - Present
-    initials: UT Austin
-    image: assets/img/institutions/ut-austin.png
+  # - name: UT Austin
+  #   role: PhD Student, ECE
+  #   period: 2026 - Present
+  #   initials: UT Austin
+  #   image: assets/img/institutions/ut-austin.png
 
   - name: BRAC University
     role: Adjunct Lecturer, CSE
