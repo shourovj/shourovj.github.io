@@ -4,7 +4,6 @@ This guide covers common issues and their solutions. For more information, see [
 
 <!--ts-->
 
-
 - [Troubleshooting Guide](#troubleshooting-guide)
   - [Deployment Issues](#deployment-issues)
     - [Site fails to deploy on GitHub Pages](#site-fails-to-deploy-on-github-pages)
