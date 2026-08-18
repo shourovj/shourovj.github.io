@@ -1,0 +1,1 @@
+jQuery(document).ready(function(t){t.fn.autosave=function(n){var e=t.extend({interval:6e4,button:!1},n),r=this;if(!e.button)return!1;var u=null,a=function(){var n=t(r).val();null!=n&&""!=n&&n!=u&&(u=n,t(e.button).click())};return e.interval>0&&setInterval(a,e.interval),this}});
