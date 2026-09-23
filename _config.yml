@@ -282,8 +282,8 @@ display_categories: ["tools", "research", "engineering"] # these categories will
 # -----------------------------------------------------------------------------
 
 scholar:
-  last_name: [Einstein]
-  first_name: [Albert, A.]
+  last_name: [Joarder]
+  first_name: [Shourov, S.]
 
   style: apa
   locale: en
