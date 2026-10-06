@@ -237,8 +237,11 @@ td.num b{font-weight:500;color:var(--fg3);margin-left:.55rem;font-size:.88em}
 
 pre{background:var(--prebg);border:1px solid var(--line);border-radius:14px;padding:1.1rem;
   overflow-x:auto;font-family:var(--mono);font-size:.8rem;line-height:1.6;margin:0;color:var(--fg2)}
-footer{text-align:center;padding:2.5rem 1.25rem 3.5rem;color:var(--fg3);font-size:.86rem}
+footer{padding:2.5rem 1.25rem 3.5rem;color:var(--fg3);font-size:.86rem}
 footer a{color:var(--fg2)}
+footer .ack{max-width:52rem;margin:0 auto 1rem;text-align:center;line-height:1.65;color:var(--fg3)}
+footer .ack b{color:var(--fg2);font-weight:700}
+footer .corr{margin:0;text-align:center;color:var(--fg3)}
 
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
 .reveal.in{opacity:1;transform:none}
@@ -505,9 +508,11 @@ footer a{color:var(--fg2)}
 </div>
 
 <footer>
-  Compute provided by the Swiss National Supercomputing Centre (CSCS) under project ID a168 on Alps,
-  as part of the “Swiss AI initiative”.<br>
-  Correspondence to <a href="mailto:prashnna.gyawali@mail.wvu.edu">prashnna.gyawali@mail.wvu.edu</a>.
+  <p class="ack"><b>Acknowledgments.</b> This work was supported by the Defense Advanced Research Projects
+  Agency (DARPA) under Grant AI-CRAFT AWD16069. This work was also supported as part of the Swiss AI
+  Initiative by a grant from the Swiss National Supercomputing Centre (CSCS) under project ID a168 on Alps.</p>
+  <p class="corr">Correspondence to
+  <a href="mailto:prashnna.gyawali@mail.wvu.edu">prashnna.gyawali@mail.wvu.edu</a>.</p>
 </footer>
 
 <script src="data.js"></script>
