@@ -7,7 +7,8 @@
       "Bash(git fetch *)",
       "Bash(sed -n '1,80p' _layouts/cv.liquid)",
       "Bash(sed -n '1,80p' _layouts/cv.html)",
-      "Bash(xargs -I {} sh -c 'echo \"=== {} ===\"; awk \"/^---$/{c++} c==1{print} c==2{exit}\" {}')"
+      "Bash(xargs -I {} sh -c 'echo \"=== {} ===\"; awk \"/^---$/{c++} c==1{print} c==2{exit}\" {}')",
+      "WebFetch(domain:neurips.cc)"
     ]
   }
 }
